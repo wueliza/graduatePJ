@@ -22,11 +22,18 @@ public class gotofunction extends AppCompatActivity {
         chemBt = findViewById(R.id.chemBt);
 
         eisaiBt.setOnClickListener(this::go_eisai);
+        chemBt.setOnClickListener(this::go_chem);
     }
 
     public void go_eisai(View v){
         Intent intent = new Intent();
         intent.setClass(gotofunction.this , eisaicheck.class);
+        startActivity(intent);
+    }
+
+    public void go_chem(View v){
+        Intent intent = new Intent();
+        intent.setClass(gotofunction.this , Chemopm.class);
         startActivity(intent);
     }
 }
