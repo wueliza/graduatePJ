@@ -14,13 +14,6 @@
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
-<<<<<<< HEAD
-        <option name="useQualifiedModuleNames" value="true" />
-=======
-        <option name="gradleJvm" value="1.8"></option>
-
-
->>>>>>> 792b1927794fcb370b280ba5855b4e9b934725ad
       </GradleProjectSettings>
     </option>
   </component>
