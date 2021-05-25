@@ -29,7 +29,7 @@
             android:text="衛材檢查"
             android:textSize="20dp"
             android:layout_marginTop="30dp"
-            android:backgroundTint="@color/black"/>
+            android:backgroundTint="#FF0000"/>
 
         <Button
             android:id="@+id/checkWorkBt"
@@ -59,7 +59,7 @@
             android:text="輸血作業"
             android:textSize="20dp"
             android:layout_marginTop="30dp"
-            android:backgroundTint="#F108E6"/>
+            android:backgroundTint="#0048FF"/>
 
         <Button
             android:id="@+id/chemBt"
