@@ -23,6 +23,7 @@ public class gotofunction extends AppCompatActivity {
 
         eisaiBt.setOnClickListener(this::go_eisai);
         chemBt.setOnClickListener(this::go_chem);
+        surgeryBt.setOnClickListener(this::go_surgery);
     }
 
     public void go_eisai(View v){
@@ -34,6 +35,14 @@ public class gotofunction extends AppCompatActivity {
     public void go_chem(View v){
         Intent intent = new Intent();
         intent.setClass(gotofunction.this , Chemopm.class);
+        startActivity(intent);
+    }
+
+
+
+    public void go_surgery(View v){
+        Intent intent = new Intent();
+        intent.setClass(gotofunction.this , OperationHome.class);
         startActivity(intent);
     }
 }
