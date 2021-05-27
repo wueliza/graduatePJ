@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GraduatePJ">
-        <activity android:name=".Chemopm3"></activity>
+        <activity android:name=".CheckIn2"></activity>
+        <activity android:name=".CheckIn" />
+        <activity android:name=".OperationHome" />
+        <activity android:name=".Chemopm3" />
         <activity android:name=".Chemopm2" />
         <activity android:name=".Chemopm" />
         <activity android:name=".eisairesult" />
