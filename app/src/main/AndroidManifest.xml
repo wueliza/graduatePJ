@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GraduatePJ">
-        <activity android:name=".CheckActivity"></activity>
+        <activity android:name=".Waiting2"></activity>
+        <activity android:name=".OperationVerify2" />
+        <activity android:name=".Waiting" />
+        <activity android:name=".OperationVerify" />
+        <activity android:name=".CheckActivity" />
         <activity android:name=".Sign_sumActivity" />
         <activity android:name=".PagerActivity" />
         <activity android:name=".Transfer_sumActivity" />
