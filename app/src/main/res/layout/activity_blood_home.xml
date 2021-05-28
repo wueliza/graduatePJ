@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D7FAF5"
+    android:rotationX="-360"
+    tools:context=".blood_homeActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical"
+        android:background="#00FFFF"
+        android:layout_gravity="top"
+        android:text="輸血作業"
+        android:textSize = "50sp"
+        android:gravity="center"
+        />
+
+    <Button
+        android:id="@+id/bt"
+        android:layout_width="170dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        android:layout_gravity="center"
+        android:text="血袋簽收"
+        android:textSize="30sp"/>
+
+    <Button
+        android:id="@+id/bt2"
+        android:layout_width="170dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="40dp"
+        android:layout_gravity="center"
+        android:text="核血作業"
+        android:textSize="30sp"/>
+
+    <Button
+        android:id="@+id/bt3"
+        android:layout_width="170dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="40dp"
+        android:text="輸血作業"
+        android:textSize="30sp"
+        android:layout_gravity="center" />
+
+    <Button
+        android:id="@+id/bt4"
+        android:layout_width="170dp"
+        android:layout_height="90dp"
+        android:text="輸血TRP"
+        android:textSize="30sp"
+        android:layout_gravity="center"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:id="@+id/home"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:text="回首頁"
+            android:textSize="15dp"
+            />
+    </LinearLayout>
+</LinearLayout>

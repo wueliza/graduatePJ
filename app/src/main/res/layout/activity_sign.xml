@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#D7F9FA"
+    tools:context=".SignActivity">
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="vertical"
+        android:background="#00B7FF"
+        android:layout_gravity="top"
+        android:text="血袋簽收-護理人員"
+        android:textSize = "30sp"
+        android:gravity="center"/>
+    <SurfaceView
+        android:id="@+id/surfaceView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/titleBar"
+        app:layout_constraintVertical_bias="0.815" />
+
+    <EditText
+        android:id="@+id/input"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="15sp"
+        android:hint="護理人員編號:"
+        />
+    <TextView
+        android:id="@+id/show"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#FFFFFF"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:text="護理人員:"
+        android:paddingLeft="15dp"
+        android:gravity="center_vertical"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="bottom"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="bottom"
+            android:layout_weight = "1"
+            >
+
+            <Button
+                android:id="@+id/frontbt"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:text="上一步"
+                android:textSize="15dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="right"
+            android:layout_weight = "1">
+            <Button
+                android:id="@+id/nextbt"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_gravity="bottom"
+                android:text="下一步"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

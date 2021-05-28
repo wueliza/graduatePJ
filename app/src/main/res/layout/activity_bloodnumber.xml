@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#D7F9FA"
+    tools:context=".BloodnumberActivity">
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="vertical"
+        android:background="#00B7FF"
+        android:layout_gravity="top"
+        android:text="血袋簽收-數量&amp;血品"
+        android:textSize = "30sp"
+        android:gravity="center"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:text="應到血袋數量:"
+            android:textSize = "30sp"
+            />
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:text="2U"
+            android:textSize = "30sp"
+            />
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            >
+            <RadioButton
+                android:id="@+id/yes"
+                android:layout_width="65dp"
+                android:layout_height="60dp"
+                android:text="是"
+                android:textSize = "30sp"
+                />
+            <RadioButton
+                android:id="@+id/no"
+                android:layout_width="65dp"
+                android:layout_height="60dp"
+                android:text="否"
+                android:checked="true"
+                android:textSize = "30sp"
+                />
+        </RadioGroup>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:text="血品:"
+            android:textSize = "30sp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:text="減白之紅血球濃厚液"
+            android:textSize = "30sp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="bottom"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="bottom"
+            android:layout_weight = "1"
+            >
+
+            <Button
+                android:id="@+id/frontbt"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:text="上一步"
+                android:textSize="15dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="right"
+            android:layout_weight = "1">
+            <Button
+                android:id="@+id/nextbt"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_gravity="bottom"
+                android:text="下一步"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
