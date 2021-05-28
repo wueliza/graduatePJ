@@ -26,6 +26,7 @@ public class gotofunction extends AppCompatActivity {
         chemBt.setOnClickListener(this::go_chem);
         surgeryBt.setOnClickListener(this::go_surgery);
         bloodTransBt.setOnClickListener(this::go_bloodTrans);
+        checkWorkBt.setOnClickListener(this::go_checkWork);
     }
 
     public void go_eisai(View v){
@@ -49,6 +50,11 @@ public class gotofunction extends AppCompatActivity {
     public void go_bloodTrans(View v){
         Intent intent = new Intent();
         intent.setClass(gotofunction.this , blood_homeActivity.class);
+        startActivity(intent);
+    }
+    public void go_checkWork(View v){
+        Intent intent = new Intent();
+        intent.setClass(gotofunction.this , examine_homePage.class);
         startActivity(intent);
     }
 }
