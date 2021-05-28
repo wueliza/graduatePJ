@@ -9,31 +9,30 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class CheckIn2 extends AppCompatActivity {
+public class OperationVerify2 extends AppCompatActivity {
     Intent intent = new Intent();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_check_in2);
+        setContentView(R.layout.activity_operation_verify2);
 
         Bundle paitentNumbercheckin3 = this.getIntent().getExtras();
         Bundle wistNumbercheckin3 = this.getIntent().getExtras();
-        String patientNumber = paitentNumbercheckin3.getString("paitentNumber");
-        String wistNumber = wistNumbercheckin3.getString("wistNumber");
-        EditText patientNumberBox = (EditText) findViewById(R.id.patientNumberBox);
-        EditText wistNumberBox = (EditText) findViewById(R.id.wistNumberBox);
-        TextView tv = (TextView) findViewById(R.id.patientNumberBox);
-        TextView tv2 = (TextView) findViewById(R.id.wistNumberBox);
-        tv.setText(patientNumber);
-        tv2.setText(wistNumber);
-
-
+        String KnifeNumber = paitentNumbercheckin3.getString("KnifeNumber");
+        String paitentNumber = wistNumbercheckin3.getString("paitentNumber");
+        EditText KnifeNumberBox = (EditText)findViewById(R.id.KnifeNumberBox);
+        EditText patientNumberBox = (EditText)findViewById(R.id.patientNumberBox);
+        TextView tv = (TextView) findViewById(R.id.KnifeNumberBox);
+        TextView tv2 = (TextView) findViewById(R.id.patientNumberBox);
+        tv.setText(KnifeNumber);
+        tv2.setText(paitentNumber);
         Button BackButton = (Button) findViewById(R.id.BackButton);
+
         BackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                intent.setClass(CheckIn2.this, CheckIn.class);
+                intent.setClass(OperationVerify2.this, OperationVerify.class);
                 startActivity(intent);
             }
         });
@@ -42,7 +41,7 @@ public class CheckIn2 extends AppCompatActivity {
         Upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent.setClass(CheckIn2.this, OperationHome.class);
+                intent.setClass(OperationVerify2.this, OperationHome.class);
                 startActivity(intent);
 
             }
