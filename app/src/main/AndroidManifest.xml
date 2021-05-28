@@ -12,7 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GraduatePJ">
-        <activity android:name=".Waiting2"></activity>
+        <activity android:name=".Print_examineNumber2"></activity>
+        <activity android:name=".Print_examineNumber1" />
+        <activity android:name=".BloodCollect4" />
+        <activity android:name=".BloodCollect3" />
+        <activity android:name=".BloodCollect2" />
+        <activity android:name=".BloodCollect1" />
+        <activity android:name=".examine_homePage" />
+        <activity android:name=".Waiting2" />
         <activity android:name=".OperationVerify2" />
         <activity android:name=".Waiting" />
         <activity android:name=".OperationVerify" />
