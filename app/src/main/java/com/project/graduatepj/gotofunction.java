@@ -10,6 +10,7 @@ import android.widget.Button;
 public class gotofunction extends AppCompatActivity {
 
     private Button eisaiBt , checkWorkBt , surgeryBt , bloodTransBt , chemBt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +25,7 @@ public class gotofunction extends AppCompatActivity {
         eisaiBt.setOnClickListener(this::go_eisai);
         chemBt.setOnClickListener(this::go_chem);
         surgeryBt.setOnClickListener(this::go_surgery);
+        bloodTransBt.setOnClickListener(this::go_bloodTrans);
     }
 
     public void go_eisai(View v){
@@ -38,11 +40,15 @@ public class gotofunction extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-
     public void go_surgery(View v){
         Intent intent = new Intent();
         intent.setClass(gotofunction.this , OperationHome.class);
+        startActivity(intent);
+    }
+
+    public void go_bloodTrans(View v){
+        Intent intent = new Intent();
+        intent.setClass(gotofunction.this , blood_homeActivity.class);
         startActivity(intent);
     }
 }
