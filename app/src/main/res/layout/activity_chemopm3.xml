@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity3">
+    tools:context=".Chemopm3">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -122,7 +122,7 @@
             android:id="@+id/buttonpg3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="300dp"
+            android:layout_marginTop="480dp"
             android:text="傳送" />
 
     </LinearLayout>
