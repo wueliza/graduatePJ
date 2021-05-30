@@ -35,7 +35,7 @@ public class Chemopm extends AppCompatActivity {
 
                 Intent intent = new Intent();
 
-                intent.setClass(Chemopm.this , Chemopm2.class);
+                intent.setClass(Chemopm.this , Chemocheck.class);
 
                 startActivity(intent);
             }
@@ -46,7 +46,7 @@ public class Chemopm extends AppCompatActivity {
 
                 Intent intent = new Intent();
 
-                intent.setClass(Chemopm.this , Chemopm3.class);
+                intent.setClass(Chemopm.this , Chemogiveinfo.class);
 
                 startActivity(intent);
             }
