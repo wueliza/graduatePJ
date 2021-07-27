@@ -7,12 +7,16 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.hardware.Camera;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.vision.CameraSource;
@@ -35,17 +39,27 @@ public class eisaicheck extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eisaicheck);
-        getPermissionsCamera();
+        getPermissionsCamera();             //取得相機權限
 
+        DisplayMetrics metric = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metric);
+        int width = metric.widthPixels;     // 螢幕寬度（畫素）
+        int height = metric.heightPixels;   // 螢幕高度（畫素）
+        float density = metric.density;      // 螢幕密度（0.75 / 1.0 / 1.5）
+        int densityDpi = metric.densityDpi;  // 螢幕密度DPI（120 / 160 / 240）
+        System.out.println("w = " + width + "\nh = " + height);
         surfaceView=(SurfaceView)findViewById(R.id.surfaceView);
         hint1=(TextView)findViewById(R.id.hint1);
         hint2 = (TextView)findViewById(R.id.hint2);
         nextBt = (Button)findViewById(R.id.nextBt);
         nextBt.setOnClickListener(this::nextStep);
-        hint2.setText("請掃描檢驗員員工編號條碼");
+        hint1.setText("請掃描檢驗員員工編號條碼");
 
         barcodeDetector = new BarcodeDetector.Builder(this).setBarcodeFormats(Barcode.ALL_FORMATS).build();
-        cameraSource = new CameraSource.Builder(this,barcodeDetector).setAutoFocusEnabled(true).build();
+        cameraSource = new CameraSource.Builder(this,barcodeDetector)
+                .setRequestedPreviewSize(1920, 1080)
+                .setAutoFocusEnabled(true)
+                .build();
         surfaceView.getHolder().addCallback(new SurfaceHolder.Callback(){
             @Override
             public void surfaceCreated(@NonNull SurfaceHolder holder) {
@@ -54,6 +68,7 @@ public class eisaicheck extends AppCompatActivity {
                     return;
                 try{
                     cameraSource.start(holder);
+
                 }catch (IOException e){
                     e.printStackTrace();
                 }
@@ -69,6 +84,7 @@ public class eisaicheck extends AppCompatActivity {
                 cameraSource.stop();
             }
         });
+
         barcodeDetector.setProcessor(new Detector.Processor<Barcode>(){
             @Override
             public void release() {
