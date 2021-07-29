@@ -98,6 +98,7 @@ public class eisaicheck extends AppCompatActivity {
                     hint1.post(new Runnable() {
                         @Override
                         public void run() {
+
                             hint1.setText(qrCodes.valueAt(0).displayValue);
                         }
                     });
