@@ -35,7 +35,7 @@ public class login extends AppCompatActivity {
     public void login_check(View v){
 
         if(connection != null){
-
+            System.out.println("connect success!");
             String ac = accEt.getText().toString();
             String ps = pwEt.getText().toString();
 
@@ -67,6 +67,6 @@ public class login extends AppCompatActivity {
         }
         else
             loginHint.setText("連線錯誤");
-
+            System.out.println("connect failed");
     }
 }

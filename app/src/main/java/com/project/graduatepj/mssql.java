@@ -25,7 +25,7 @@ public class mssql {
         String ConnectionURL = null;
         try {
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
-            ConnectionURL = "jdbc:jtds:sqlserver://140.136.151.75:1433/mydb;user=guess;password=SQLserver;";
+            ConnectionURL = "jdbc:jtds:sqlserver://106.105.167.136:1433/DataBase;user=guess;password=SQLserver;";
             connection = DriverManager.getConnection(ConnectionURL);
         } catch (SQLException se) {
             Log.e("ERRO", se.getMessage());
