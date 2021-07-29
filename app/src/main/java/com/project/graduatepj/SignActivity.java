@@ -8,14 +8,11 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.gms.vision.CameraSource;
@@ -25,18 +22,9 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.IOException;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
 public class SignActivity extends AppCompatActivity {
     private Button bt;
     private Button bt2;
-    private EditText input;
-    private TextView show;
-    private TextView tv2;
     SurfaceView surfaceView;
     TextView textView;
     CameraSource cameraSource;
@@ -46,31 +34,6 @@ public class SignActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign);
-
-        input = findViewById(R.id.input);
-        show = findViewById(R.id.show);
-        Retrofit retrofit = new Retrofit.Builder()  //連線URL
-                .baseUrl("http://106.105.167.136:8080/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        input.addTextChangedListener(new TextWatcher() { //EditText監控TextView
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if(input.getText().toString() != null){
-                    Get_one(retrofit,editable.toString());
-                }
-                //show.setText(editable);
-            }
-        });
 
         //相機製作
         getPermissionsCamera();
@@ -126,7 +89,7 @@ public class SignActivity extends AppCompatActivity {
 
         TextView tv = (TextView)findViewById(R.id.title);
         TextView tv1 = (TextView)findViewById(R.id.input);
-        tv2 = (TextView)findViewById(R.id.show);
+        TextView tv2 = (TextView)findViewById(R.id.show);
         bt = findViewById(R.id.nextbt);
         bt2 = findViewById(R.id.frontbt);
         Bundle bundle = new Bundle();
@@ -138,16 +101,14 @@ public class SignActivity extends AppCompatActivity {
                 switch (count){
                     case 1:
                         tv.setText("血袋簽收-傳送人員");
-                        tv1.setHint("傳送人員編號");
+                        tv1.setText("傳送人員編號");
                         tv2.setText("傳送人員:");
-                        tv2.setHint("傳送人員:");
                         bundle.putString("transport",tv1.getText().toString());
                         break;
                     case 2:
                         tv.setText("血袋簽收-領血單號");
-                        tv1.setHint("領血單號");
+                        tv1.setText("領血單號");
                         tv2.setText("領血單號:");
-                        tv2.setHint("領血單號:");
                         bundle.putString("take",tv1.getText().toString());
                         break;
                     case 3:
@@ -157,9 +118,8 @@ public class SignActivity extends AppCompatActivity {
                         break;
                     default:
                         tv.setText("血袋簽收-護理人員");
-                        tv1.setHint("護理人員編號");
+                        tv1.setText("護理人員編號");
                         tv2.setText("護理人員:");
-                        tv2.setHint("護理人員:");
                         bundle.putString("nurse",tv1.getText().toString());
                 }
             }
@@ -171,15 +131,13 @@ public class SignActivity extends AppCompatActivity {
                 switch (count){
                     case 1:
                         tv.setText("血袋簽收-傳送人員");
-                        tv1.setHint("傳送人員編號");
+                        tv1.setText("傳送人員編號");
                         tv2.setText("傳送人員:");
-                        tv2.setHint("傳送人員:");
                         break;
                     case 2:
                         tv.setText("血袋簽收-領血單號");
-                        tv1.setHint("領血單號");
+                        tv1.setText("領血單號");
                         tv2.setText("領血單號:");
-                        tv2.setHint("領血單號:");
                         break;
                     case -1:
                         Intent intent = new Intent(SignActivity.this,blood_homeActivity.class);
@@ -187,9 +145,8 @@ public class SignActivity extends AppCompatActivity {
                         break;
                     default:
                         tv.setText("血袋簽收-護理人員");
-                        tv1.setHint("護理人員編號");
+                        tv1.setText("護理人員編號");
                         tv2.setText("護理人員:");
-                        tv2.setHint("護理人員:");
                 }
             }
         });
@@ -199,27 +156,5 @@ public class SignActivity extends AppCompatActivity {
                 != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA},1);
         }
-    }
-
-    public void Get_one(Retrofit retrofit,String id){
-        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-        Call<Paitent_Api> call = jsonPlaceHolderApi.getOne(id);
-        call.enqueue(new Callback<Paitent_Api>() {
-            @Override
-            public void onResponse(Call<Paitent_Api> call, Response<Paitent_Api> response) {
-                if(!response.isSuccessful()){
-                    show.setText("找不到這個id");
-                    return;
-                }
-                String name = response.body().getName();
-                show.setText(name);
-            }
-
-            @Override
-            public void onFailure(Call<Paitent_Api> call, Throwable t) {
-                //show.setText(t.getMessage());
-                show.setText(tv2.getHint().toString());
-            }
-        });
     }
 }
