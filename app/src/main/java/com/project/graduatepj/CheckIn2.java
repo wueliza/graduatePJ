@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class CheckIn2 extends AppCompatActivity {
+
     Intent intent = new Intent();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
