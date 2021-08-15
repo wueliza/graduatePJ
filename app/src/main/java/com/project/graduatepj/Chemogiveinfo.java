@@ -30,9 +30,7 @@ public class Chemogiveinfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chemogiveinfo);
 
-        button = (Button)findViewById(R.id.nextBt);
-
-        Button nextPageBtn = (Button)findViewById(R.id.nextBt);
+        Button nextPageBtn = (Button)findViewById(R.id.chem3nextBt);
 
         nextPageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +55,10 @@ public class Chemogiveinfo extends AppCompatActivity {
         textView=(TextView)findViewById(R.id.hint1);
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.ALL_FORMATS).build();
-        cameraSource = new CameraSource.Builder(this,barcodeDetector).setAutoFocusEnabled(true).build();
+        cameraSource = new CameraSource.Builder(this,barcodeDetector)
+                .setRequestedPreviewSize(1920, 1080)
+                .setAutoFocusEnabled(true)
+                .build();
         surfaceView.getHolder().addCallback(new SurfaceHolder.Callback(){
             @Override
             public void surfaceCreated(@NonNull SurfaceHolder holder) {
