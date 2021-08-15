@@ -4,19 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#D7F9FA"
+    android:orientation="vertical"
     tools:context=".SignActivity">
+
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:orientation="vertical"
-        android:background="#00B7FF"
         android:layout_gravity="top"
+        android:background="#00B7FF"
+        android:gravity="center"
+        android:orientation="vertical"
         android:text="血袋簽收-護理人員"
-        android:textSize = "30sp"
-        android:gravity="center"/>
+        android:textSize="30sp" />
+
     <SurfaceView
         android:id="@+id/surfaceView"
         android:layout_width="match_parent"
@@ -32,62 +34,64 @@
         android:id="@+id/input"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:layout_marginBottom="20dp"
         android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="40dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:hint="護理人員編號:"
+        android:inputType="number"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:textSize="15sp"
-        android:hint="護理人員編號:"
-        />
+        android:textSize="15sp" />
+
     <TextView
         android:id="@+id/show"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#FFFFFF"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:text="護理人員:"
-        android:paddingLeft="15dp"
-        android:gravity="center_vertical"
-        />
+        android:background="#FFFFFF"
+        android:hint="護理人員:"
+        android:text="護理人員:" />
+    android:paddingLeft="15dp"
+    android:gravity="center_vertical"
+    />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
         android:gravity="bottom"
-        >
+        android:orientation="horizontal">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
+            android:layout_weight="1"
             android:gravity="bottom"
-            android:layout_weight = "1"
-            >
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/frontbt"
                 android:layout_width="100dp"
                 android:layout_height="60dp"
                 android:text="上一步"
-                android:textSize="15dp"
-                />
+                android:textSize="15dp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
+            android:layout_weight="1"
             android:gravity="right"
-            android:layout_weight = "1">
+            android:orientation="horizontal">
+
             <Button
                 android:id="@+id/nextbt"
                 android:layout_width="100dp"
                 android:layout_height="60dp"
                 android:layout_gravity="bottom"
-                android:text="下一步"
-                />
+                android:text="下一步" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
