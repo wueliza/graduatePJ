@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#D7FAFA"
-    tools:context=".transfer_sumActivity">
+    tools:context=".Transfer_sumActivity">
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"

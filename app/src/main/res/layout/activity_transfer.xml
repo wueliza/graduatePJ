@@ -29,19 +29,19 @@
         app:layout_constraintVertical_bias="0.815" />
 
     <EditText
-        android:id="@+id/input"
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:layout_marginBottom="20dp"
         android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="40dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:hint="病歷號:"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:textSize="15sp"
-        android:hint="病歷號:"
-        />
+        android:textSize="15sp" />
+
     <TextView
         android:id="@+id/show"
         android:layout_width="match_parent"

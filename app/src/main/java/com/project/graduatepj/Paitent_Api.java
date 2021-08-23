@@ -1,4 +1,5 @@
 package com.project.graduatepj;
+
 public class Paitent_Api {
     private int patientNum;
     private String sex;
@@ -55,4 +56,23 @@ public class Paitent_Api {
     public String getBsno() {
         return bsno;
     }
+
+
+////↓↓↓↓↓2021/8/18↓↓↓↓↓↓/////
+
+    public Paitent_Api(int patientNum, String sex, String birth, String bedNum, String bloodType, String name, String division, String height, String age, String weight, String bsno) {
+        this.patientNum = patientNum;
+        this.sex = sex;
+        this.birth = birth;
+        this.bedNum = bedNum;
+        this.bloodType = bloodType;
+        this.name = name;
+        this.division = division;
+        this.height = height;
+        this.age = age;
+        this.weight = weight;
+        this.bsno = bsno;
+    }
+////↑↑↑↑↑↑↑2021/8/18↑↑↑↑↑↑/////
+
 }

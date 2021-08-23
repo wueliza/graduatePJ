@@ -55,13 +55,12 @@
         android:text="請對準條碼"
         android:textSize="30dp" />
 
-    <TextView
+    <EditText
         android:id="@+id/textView"
         android:layout_width="184dp"
         android:layout_height="56dp"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="TextView"
         android:textSize="30dp" />
 
     <Button

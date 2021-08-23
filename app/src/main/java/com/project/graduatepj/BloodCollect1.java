@@ -24,6 +24,10 @@ import java.io.IOException;
 
 public class BloodCollect1 extends AppCompatActivity {
 
+
+    String wistNumber, BSON/*檢體編號*/, CheckMan;
+    Bundle bundle = new Bundle();
+    Intent intent = new Intent();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,11 +37,10 @@ public class BloodCollect1 extends AppCompatActivity {
         button.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
+
                 intent.setClass(BloodCollect1.this, BloodCollect2.class);
                 startActivity(intent);
                 BloodCollect1.this.finish();
-
             }
         });
 
