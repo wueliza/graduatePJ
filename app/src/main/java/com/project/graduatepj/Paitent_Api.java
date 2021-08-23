@@ -1,5 +1,6 @@
-package com.project.graduatepj;public class Paitent_Api {
+package com.project.graduatepj;
 
+public class Paitent_Api {
     private int patientNum;
     private String sex;
     private String birth;

@@ -12,4 +12,7 @@ public interface RESTfulApi {
 
     @GET("patient/{patientNum}")
     Call<Paitent_Api> getOne(@Path("patientNum")String patientNum);
+
+    @GET("staff/{emid}")
+    Call<Staff_Api> get_staff(@Path("emid")String emid);
 }

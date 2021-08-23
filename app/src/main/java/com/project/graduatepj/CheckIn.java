@@ -8,11 +8,14 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.gms.vision.CameraSource;
@@ -22,9 +25,17 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.IOException;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class CheckIn extends AppCompatActivity {
     SurfaceView surfaceView;
     TextView textView, txt;
+    private TextView show;
+    private TextView input;
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
     String paitentNumber, wistNumber;
@@ -37,10 +48,36 @@ public class CheckIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_in);
 
+        input = findViewById(R.id.textView);
+        show = findViewById(R.id.hint);
         Button CheckInBack = (Button) findViewById(R.id.CheckinBack);
         Button NextButton = (Button) findViewById(R.id.NextButton);
         txt = (TextView) findViewById(R.id.titleName);
         getPermissionsCamera();
+
+        Retrofit retrofit = new Retrofit.Builder() //api連接
+                .baseUrl("http://106.105.167.136:8080/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        input.addTextChangedListener(new TextWatcher() { //監視TextView是否有更變
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(input.getText().toString() != null){
+                    Get_staff(retrofit,editable.toString());
+                }
+                show.setText(editable);
+            }
+        });
 
 
         NextButton.setOnClickListener(new View.OnClickListener() {
@@ -160,5 +197,24 @@ public class CheckIn extends AppCompatActivity {
         }
     }
 
+    public void Get_staff(Retrofit retrofit,String id){
+        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
+        Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id);
+        call.enqueue(new Callback<Staff_Api>() {
+            @Override
+            public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
+                if(!response.isSuccessful()){
+                    show.setText("找不到這個id");
+                    return;
+                }
+                String name = response.body().getName();
+                show.setText(name);
+            }
 
+            @Override
+            public void onFailure(Call<Staff_Api> call, Throwable t) {
+                show.setText("請掃描條碼");
+            }
+        });
+    }
 }

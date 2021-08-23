@@ -55,12 +55,12 @@ public class SignActivity extends AppCompatActivity {
         surfaceView=(SurfaceView)findViewById(R.id.surfaceView);
         textView=(TextView)findViewById(R.id.textView);
 
-        Retrofit retrofit = new Retrofit.Builder()
+        Retrofit retrofit = new Retrofit.Builder() //api連接
                 .baseUrl("http://106.105.167.136:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        input.addTextChangedListener(new TextWatcher() {
+        input.addTextChangedListener(new TextWatcher() { //監視editText是否有更變
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
@@ -73,7 +73,7 @@ public class SignActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 if(input.getText().toString() != null){
-                    Get_one(retrofit,editable.toString());
+                    Get_staff(retrofit,editable.toString());
                 }
                 show.setText(editable);
             }
@@ -140,13 +140,15 @@ public class SignActivity extends AppCompatActivity {
                 switch (count){
                     case 1:
                         tv.setText("血袋簽收-傳送人員");
-                        tv1.setText("傳送人員編號");
+                        tv1.setText(null);
+                        tv1.setHint("傳送人員編號");
                         tv2.setText("傳送人員:");
                         bundle.putString("transport",tv1.getText().toString());
                         break;
                     case 2:
                         tv.setText("血袋簽收-領血單號");
-                        tv1.setText("領血單號");
+                        tv1.setText(null);
+                        tv1.setHint("領血單號");
                         tv2.setText("領血單號:");
                         bundle.putString("take",tv1.getText().toString());
                         break;
@@ -157,7 +159,8 @@ public class SignActivity extends AppCompatActivity {
                         break;
                     default:
                         tv.setText("血袋簽收-護理人員");
-                        tv1.setText("護理人員編號");
+                        tv1.setText(null);
+                        tv1.setHint("護理人員編號");
                         tv2.setText("護理人員:");
                         bundle.putString("nurse",tv1.getText().toString());
                 }
@@ -170,12 +173,14 @@ public class SignActivity extends AppCompatActivity {
                 switch (count){
                     case 1:
                         tv.setText("血袋簽收-傳送人員");
-                        tv1.setText("傳送人員編號");
+                        tv1.setText(null);
+                        tv1.setHint("傳送人員編號");
                         tv2.setText("傳送人員:");
                         break;
                     case 2:
                         tv.setText("血袋簽收-領血單號");
-                        tv1.setText("領血單號");
+                        tv1.setText(null);
+                        tv1.setHint("領血單號");
                         tv2.setText("領血單號:");
                         break;
                     case -1:
@@ -184,7 +189,8 @@ public class SignActivity extends AppCompatActivity {
                         break;
                     default:
                         tv.setText("血袋簽收-護理人員");
-                        tv1.setText("護理人員編號");
+                        tv1.setText(null);
+                        tv1.setHint("護理人員編號");
                         tv2.setText("護理人員:");
                 }
             }
@@ -197,12 +203,12 @@ public class SignActivity extends AppCompatActivity {
         }
     }
 
-    public void Get_one(Retrofit retrofit,String id){
+    public void Get_staff(Retrofit retrofit,String id){
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-        Call<Paitent_Api> call = jsonPlaceHolderApi.getOne(id);
-        call.enqueue(new Callback<Paitent_Api>() {
+        Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id);
+        call.enqueue(new Callback<Staff_Api>() {
             @Override
-            public void onResponse(Call<Paitent_Api> call, Response<Paitent_Api> response) {
+            public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
                 if(!response.isSuccessful()){
                     show.setText("找不到這個id");
                     return;
@@ -212,10 +218,9 @@ public class SignActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Paitent_Api> call, Throwable t) {
+            public void onFailure(Call<Staff_Api> call, Throwable t) {
                 show.setText("請掃描條碼");
             }
         });
     }
-
 }
