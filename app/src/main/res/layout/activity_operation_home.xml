@@ -1,69 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".OperationHome">
-
+    android:rotationX="-360"
+    tools:context=".OperationHome"
+    android:background="#FCFCFC"
+    android:orientation="vertical">
 
     <TextView
+        android:text="手術"
         android:id="@+id/Title"
+        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_gravity="center"
-        android:background="#4CAF50"
+        android:background="#0ADDC9"
         android:gravity="center"
-        android:text="手術"
-        android:textSize="30dp" />
-
-    <Button
-        android:id="@+id/BackButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:backgroundTint="#4CAF50"
-        android:text="上一頁"
-        android:textSize="24dp" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        android:textColor="#ffffff"
+        android:textSize="@dimen/dp_24"/>
 
     <Button
         android:id="@+id/CheckInButton"
-        android:layout_width="308dp"
-        android:layout_height="66dp"
-        android:layout_gravity="center"
-        android:backgroundTint="#4CAF50"
-        android:text="Check in 病人辨識"
-        android:textSize="25dp" />
+        android:text="Check in
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="100dp" />
+            病人辨識"
+        android:layout_width="170dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/collectpagebutton"
+        android:layout_gravity="center"
+        android:textSize="20sp"/>
 
     <Button
         android:id="@+id/OperationButton"
-        android:layout_width="308dp"
-        android:layout_height="66dp"
-        android:layout_gravity="center"
-        android:backgroundTint="#4CAF50"
         android:text="進刀房病人辨識"
-        android:textSize="25dp" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        android:layout_width="170dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="37dp"
+        android:background="@drawable/collectpagebutton"
+        android:layout_gravity="center"
+        android:textSize="20sp"/>
 
     <Button
         android:id="@+id/WaitingButton"
-        android:layout_width="308dp"
-        android:layout_height="66dp"
-        android:layout_gravity="center"
-        android:backgroundTint="#4CAF50"
         android:text="等候室病人辨識"
-        android:textSize="25dp" />
+        android:layout_width="170dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="37dp"
+        android:background="@drawable/collectpagebutton"
+        android:layout_gravity="center"
+        android:textSize="20sp"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:id="@+id/BackButton"
+            android:text="上一步"
+            android:layout_width="130dp"
+            android:layout_height="55dp"
+            android:background="@drawable/functionbutton_2"
+            android:layout_gravity="bottom"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
 </LinearLayout>

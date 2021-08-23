@@ -10,94 +10,106 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="135dp"
-        tools:layout_editor_absoluteY="90dp"
-        android:layout_marginTop="200dp">
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="70dp"
             android:text="登入"
-            android:textSize="30sp"
-            tools:ignore="HardcodedText"
-            android:layout_marginBottom="40dp"/>
+            android:textColor="#5E5B5B"
 
-        <TableLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-
-                    android:layout_weight="1"
-                    android:text="員工編號"
-                    android:textSize="20sp"
-                    android:layout_marginRight="10dp"
-                    tools:ignore="HardcodedText" />
-
-                <EditText
-                    android:id="@+id/accEt"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="請輸入您的員工編號"
-                    android:inputType="textPersonName"
-                    android:textSize="20sp"
-                    tools:ignore="HardcodedText" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:text="        密碼"
-                    android:textSize="20sp"
-                    tools:ignore="HardcodedText" />
-
-                <EditText
-                    android:id="@+id/pwEt"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="請輸入密碼"
-                    android:inputType="textPersonName"
-                    android:textSize="20sp"
-                    tools:ignore="HardcodedText" />
-
-            </TableRow>
-
-        </TableLayout>
-
-        <Button
-            android:id="@+id/loginBt"
+        <ImageView
+            android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="#2196F3"
-            android:text="登入" />
+            android:layout_marginTop="13dp"
+            android:background="@drawable/loginpicture"
+            app:srcCompat="@drawable/ic_launcher_foreground" />
+
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="190dp"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:textColor="#535151"
+                android:text="員工編號"
+                android:textSize="21sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/accEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="請輸入您的員工編號"
+                android:inputType="textPassword"
+                android:textSize="15sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="密碼"
+                android:textColor="#535151"
+                android:textSize="21sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/pwEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="請輸入密碼"
+                android:inputType="textPassword"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/loginBt"
+            android:layout_width="313dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="19dp"
+            android:background="#269F83"
+            android:text="登入"
+            android:textSize="20sp"
+            android:textColor="#A1000000"
+            android:textStyle="bold"
+            app:backgroundTint="#64FFDA"
+            />
+
+
+        <Button
+            android:id="@+id/scanToLog"
+            android:layout_width="130dp"
+            android:layout_height="63dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="22dp"
+            android:text="掃描登入"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:backgroundTint="#B746628A" />
 
         <TextView
             android:id="@+id/loginHint"
@@ -106,8 +118,10 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:textColor="#ff0000"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
 
     </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
