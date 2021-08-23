@@ -134,13 +134,10 @@ public class CheckIn extends AppCompatActivity {
 
                         build();
 
-        cameraSource = new CameraSource.Builder(this, barcodeDetector).
-                setRequestedPreviewSize(640, 480).
-                setFacing(CameraSource.CAMERA_FACING_BACK).
-                setAutoFocusEnabled(true).
-
-
-                build();
+        cameraSource = new CameraSource.Builder(this, barcodeDetector)
+                .setRequestedPreviewSize(1920, 1080)
+                .setAutoFocusEnabled(true)
+                .build();
 
         surfaceView.getHolder().
 
