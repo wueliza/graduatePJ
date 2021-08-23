@@ -27,7 +27,7 @@ public class CheckIn extends AppCompatActivity {
     TextView textView, txt;
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
-    String paitentNumber, wistNumber;
+    String paitentNumber, wistNumber, checkMan;
     int cnt = 0;
     Bundle bundle = new Bundle();
     Intent intent = new Intent();
@@ -56,13 +56,23 @@ public class CheckIn extends AppCompatActivity {
                         bundle.putString("paitentNumber", paitentNumber);
                         intent.putExtras(bundle);
                         break;
+
                     case 2:
+                        txt.setText("檢驗員");
+                        checkMan = textView.getText().toString();
+                        intent.setClass(CheckIn.this, CheckIn2.class);
+                        bundle.putString("checkMan", checkMan);
+                        intent.putExtras(bundle);
+                        break;
+
+                    case 3:
                         wistNumber = textView.getText().toString();
                         intent.setClass(CheckIn.this, CheckIn2.class);
                         bundle.putString("wistNumber", wistNumber);
                         intent.putExtras(bundle);
                         startActivity(intent);
                         break;
+
                 }
             }
         });

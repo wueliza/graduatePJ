@@ -8,11 +8,11 @@ import java.sql.*;
 
 public class mssql {
 
-    private boolean _isOpened=false;
+    private boolean _isOpened = false;
     public static Connection connect;
     Statement st;
-    public boolean isOpened()
-    {
+
+    public boolean isOpened() {
         return _isOpened;
     }
 
@@ -37,28 +37,23 @@ public class mssql {
         return connection;
     }
 
-    public mssql () {
+    public mssql() {
 
         //設定jdbc連結字串，請依你的SQL Server設定值修改
 
         try {
             connect = ConnectionHelper();
 
-            if (connect.isClosed() == false)
-            {
-                _isOpened=true;
+            if (connect.isClosed() == false) {
+                _isOpened = true;
                 System.out.println("connect ok");
-            }
-            else
-            {
-                _isOpened=false;
+            } else {
+                _isOpened = false;
                 System.out.println("connect fail");
             }
 
 
-        }
-
-        catch (Exception ex) {
+        } catch (Exception ex) {
 
             ex.printStackTrace();
 

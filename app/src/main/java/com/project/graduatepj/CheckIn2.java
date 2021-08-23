@@ -17,17 +17,23 @@ public class CheckIn2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_in2);
 
-        Bundle paitentNumbercheckin3 = this.getIntent().getExtras();
-        Bundle wistNumbercheckin3 = this.getIntent().getExtras();
-        String patientNumber = paitentNumbercheckin3.getString("paitentNumber");
-        String wistNumber = wistNumbercheckin3.getString("wistNumber");
+        Bundle paitentNumbercheck = this.getIntent().getExtras();
+        Bundle wistNumbercheck= this.getIntent().getExtras();
+        Bundle checkMancheck = this.getIntent().getExtras();
+        String patientNumber = paitentNumbercheck.getString("paitentNumber");
+        String wistNumber = wistNumbercheck.getString("wistNumber");
+        String checkMan = checkMancheck.getString("checkMan");
+
         EditText patientNumberBox = (EditText) findViewById(R.id.patientNumberBox);
         EditText wistNumberBox = (EditText) findViewById(R.id.wistNumberBox);
-        TextView tv = (TextView) findViewById(R.id.patientNumberBox);
-        TextView tv2 = (TextView) findViewById(R.id.wistNumberBox);
-        tv.setText(patientNumber);
-        tv2.setText(wistNumber);
 
+        TextView tv1 = (TextView) findViewById(R.id.patientNumberBox);
+        TextView tv2 = (TextView) findViewById(R.id.wistNumberBox);
+        TextView tv3 = (TextView) findViewById(R.id.ManCheckBox);
+
+        tv1.setText(patientNumber);
+        tv2.setText(wistNumber);
+        tv3.setText(checkMan);
 
         Button BackButton = (Button) findViewById(R.id.BackButton);
         BackButton.setOnClickListener(new View.OnClickListener() {
@@ -45,7 +51,6 @@ public class CheckIn2 extends AppCompatActivity {
             public void onClick(View v) {
                 intent.setClass(CheckIn2.this, OperationHome.class);
                 startActivity(intent);
-
             }
         });
     }

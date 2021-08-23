@@ -5,9 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+<<<<<<< HEAD
+    android:background="#D7FAFA"
+    tools:context=".Transfer_sumActivity">
+=======
     android:background="#FCFCFC"
     tools:context=".transfer_sumActivity">
 
+>>>>>>> 5a42fa9a4af5f310f1752a1fbf15cdd4a419abff
     <TextView
         android:id="@+id/title"
         android:text="輸血作業-總結"
