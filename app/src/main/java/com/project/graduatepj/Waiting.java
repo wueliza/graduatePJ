@@ -99,11 +99,10 @@ public class Waiting extends AppCompatActivity {
 
                         build();
 
-        cameraSource = new CameraSource.Builder(this, barcodeDetector).
-
-                setAutoFocusEnabled(true).
-
-                build();
+        cameraSource = new CameraSource.Builder(this, barcodeDetector)
+                .setRequestedPreviewSize(1920, 1080)
+                .setAutoFocusEnabled(true)
+                .build();
         surfaceView.getHolder().
 
                 addCallback(new SurfaceHolder.Callback() {

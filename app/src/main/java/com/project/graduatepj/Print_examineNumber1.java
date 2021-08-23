@@ -51,7 +51,10 @@ public class Print_examineNumber1 extends AppCompatActivity {
         textView=(TextView)findViewById(R.id.textView5);
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.ALL_FORMATS).build();
-        cameraSource = new CameraSource.Builder(this,barcodeDetector).setAutoFocusEnabled(true).build();
+        cameraSource = new CameraSource.Builder(this,barcodeDetector)
+                .setRequestedPreviewSize(1920, 1080)
+                .setAutoFocusEnabled(true)
+                .build();
         surfaceView.getHolder().addCallback(new SurfaceHolder.Callback(){
             @Override
             public void surfaceCreated(@NonNull SurfaceHolder holder) {
