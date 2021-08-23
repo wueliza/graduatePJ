@@ -88,9 +88,9 @@
                 android:layout_marginTop="@dimen/dp_50"
                 android:layout_marginRight="@dimen/dp_20"
                 android:background="@drawable/nextbutton_general"
+                android:textColor="#FBFBFB"
                 android:text="下一步"
                 android:textStyle="bold"
-                android:textColor="#FBFBFB"
                 android:textSize="19dp" />
 
         </LinearLayout>
