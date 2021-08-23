@@ -34,8 +34,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class CheckIn extends AppCompatActivity {
     SurfaceView surfaceView;
     TextView textView, txt;
-    private TextView show;
     private TextView input;
+    private TextView show;
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
     String paitentNumber, wistNumber, checkMan;
@@ -48,19 +48,21 @@ public class CheckIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_in);
 
-        input = findViewById(R.id.textView);
-        show = findViewById(R.id.hint);
+        input = findViewById(R.id.hint1);
+        show = findViewById(R.id.hint2);
+
         Button CheckInBack = (Button) findViewById(R.id.CheckinBack);
         Button NextButton = (Button) findViewById(R.id.NextButton);
         txt = (TextView) findViewById(R.id.titleName);
         getPermissionsCamera();
 
-        Retrofit retrofit = new Retrofit.Builder() //api連接
+        //api連接
+        Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://106.105.167.136:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
-        input.addTextChangedListener(new TextWatcher() { //監視TextView是否有更變
+        //監視TextView是否有更變
+        input.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
@@ -78,7 +80,7 @@ public class CheckIn extends AppCompatActivity {
                 show.setText(editable);
             }
         });
-
+        //API結束 ， 下面還有
 
         NextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,9 +151,7 @@ public class CheckIn extends AppCompatActivity {
                 .setAutoFocusEnabled(true)
                 .build();
 
-        surfaceView.getHolder().
-
-                addCallback(new SurfaceHolder.Callback() {
+        surfaceView.getHolder().addCallback(new SurfaceHolder.Callback() {
                     @Override
                     public void surfaceCreated(@NonNull SurfaceHolder holder) {
                         if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA)
@@ -196,17 +196,10 @@ public class CheckIn extends AppCompatActivity {
             }
         });
     }
-
-    private void getPermissionsCamera() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
-        }
-    }
-
+    //API取資料
     public void Get_staff(Retrofit retrofit,String id){
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-        Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id);
+        Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id); //A00010
         call.enqueue(new Callback<Staff_Api>() {
             @Override
             public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
@@ -224,4 +217,14 @@ public class CheckIn extends AppCompatActivity {
             }
         });
     }
+
+    //camera
+    private void getPermissionsCamera() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
+        }
+    }
+
+
 }
