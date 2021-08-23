@@ -4,9 +4,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#D7F9FA"
+    android:orientation="vertical"
     tools:context=".SignActivity">
+<<<<<<< HEAD
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="top"
+        android:background="#00B7FF"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:text="血袋簽收-護理人員"
+        android:textSize="30sp" />
+
+    <SurfaceView
+        android:id="@+id/surfaceView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/titleBar"
+        app:layout_constraintVertical_bias="0.815" />
+
+    <EditText
+        android:id="@+id/input"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:hint="護理人員編號:"
+        android:inputType="number"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/show"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="#FFFFFF"
+        android:hint="護理人員:"
+        android:text="護理人員:" />
+    android:paddingLeft="15dp"
+    android:gravity="center_vertical"
+    />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="horizontal">
+=======
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
@@ -34,13 +92,20 @@
         android:orientation="vertical"
         >
 
+>>>>>>> 5a42fa9a4af5f310f1752a1fbf15cdd4a419abff
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+<<<<<<< HEAD
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+=======
             android:orientation="vertical"
             android:gravity="bottom"
             >
+>>>>>>> 5a42fa9a4af5f310f1752a1fbf15cdd4a419abff
 
             <TextView
                 android:id="@+id/hint1"
@@ -63,6 +128,28 @@
                 android:textSize="@dimen/dp_24" />
 
             <Button
+<<<<<<< HEAD
+                android:id="@+id/frontbt"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:text="上一步"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/nextbt"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_gravity="bottom"
+                android:text="下一步" />
+=======
                 android:id="@+id/nextBt"
                 android:text="下一步"
                 android:layout_width="130dp"
@@ -75,6 +162,7 @@
                 android:textColor="#FBFBFB"
                 android:textSize="20dp" />
 
+>>>>>>> 5a42fa9a4af5f310f1752a1fbf15cdd4a419abff
         </LinearLayout>
 
     </LinearLayout>

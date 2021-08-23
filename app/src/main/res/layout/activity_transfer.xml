@@ -18,6 +18,34 @@
             android:layout_gravity="center" />
     </FrameLayout>
 
+<<<<<<< HEAD
+    <EditText
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:hint="病歷號:"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/show"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#FFFFFF"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:text="病歷號:"
+        android:paddingLeft="15dp"
+        android:gravity="center_vertical"
+        />
+=======
+>>>>>>> 5a42fa9a4af5f310f1752a1fbf15cdd4a419abff
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
