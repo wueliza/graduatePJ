@@ -34,7 +34,7 @@ public class blood_homeActivity extends AppCompatActivity {
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(blood_homeActivity.this,CheckActivity.class);
+                Intent intent = new Intent(blood_homeActivity.this,confirmActivity.class);
                 startActivity(intent);
             }
         });

@@ -32,7 +32,7 @@ public class Check_sumActivity extends AppCompatActivity {
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Check_sumActivity.this,CheckActivity.class);
+                Intent intent = new Intent(Check_sumActivity.this,confirmActivity.class);
                 startActivity(intent);
             }
         });

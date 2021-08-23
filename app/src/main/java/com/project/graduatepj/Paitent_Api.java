@@ -56,6 +56,8 @@ public class Paitent_Api {
     public String getBsno() {
         return bsno;
     }
+<<<<<<< HEAD
+=======
 
 
 ////↓↓↓↓↓2021/8/18↓↓↓↓↓↓/////
@@ -75,4 +77,5 @@ public class Paitent_Api {
     }
 ////↑↑↑↑↑↑↑2021/8/18↑↑↑↑↑↑/////
 
+>>>>>>> b929755c5c7a990e93dfc68ed9bee5897ca29519
 }
