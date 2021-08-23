@@ -4,88 +4,116 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F0F0F0"
+    android:background="#FCFCFC"
     tools:context=".tpr3Fragment">
-    <LinearLayout
+
+    <TextView
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_marginTop="40dp"
+        android:background="#0ADDC9"
+        android:gravity="center"
+        android:text="輸血TPR"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/dp_24" />
+
+    <LinearLayout
+        android:layout_width="380dp"
+        android:background="@color/white"
+        android:layout_gravity="center"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         >
+
         <TextView
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
             android:text="輸血時間:"
-            android:textSize = "30sp"
-            />
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="#504C4C"
+            android:textSize = "20sp" />
         <EditText
             android:id="@+id/input"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="20dp"
-            android:background="#97CBFF"
+            android:background="@drawable/check_background"
             android:layout_marginTop="10dp"
             android:textSize="15sp"
             android:hint="請輸入輸血時間"
             />
     </LinearLayout>
     <LinearLayout
-        android:layout_width="match_parent"
         android:layout_height="80dp"
         android:orientation="horizontal"
+        android:layout_width="380dp"
+        android:layout_gravity="center"
+        android:background="@color/white"
         >
         <TextView
-            android:layout_width="120dp"
+            android:layout_width="100dp"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
-            android:text="T:"
+            android:textStyle="bold"
             android:gravity="center"
-            android:textSize = "30sp"
+            android:textColor="#504C4C"
+            android:textSize = "20sp"
+            android:text="T:"
             />
+
         <EditText
             android:id="@+id/input1"
+            android:hint="請輸入T"
             android:layout_width="120dp"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:background="#97CBFF"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/check_background"
             android:layout_marginTop="10dp"
-            android:textSize="15sp"
-            android:hint="請輸入T"
-            />
+            android:textSize="15sp"/>
+
         <TextView
             android:layout_width="120dp"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="8dp"
             android:text="°C"
-            android:textSize = "30sp"
-            />
+            android:textColor="#504C4C"
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </LinearLayout>
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="380dp"
+        android:layout_gravity="center"
+        android:background="@color/white"
         android:layout_height="80dp"
         android:orientation="horizontal"
         >
         <TextView
-            android:layout_width="120dp"
+            android:layout_width="100dp"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
-            android:gravity="center"
             android:text="P:"
-            android:textSize = "30sp"
-            />
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="#504C4C"
+            android:textSize = "20sp"     />
         <EditText
             android:id="@+id/input2"
             android:layout_width="120dp"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/check_background"
             android:layout_marginTop="10dp"
             android:textSize="15sp"
-            android:background="#97CBFF"
             android:hint="請輸入P"
             />
         <TextView
@@ -93,31 +121,39 @@
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
             android:text="次/min"
-            android:textSize = "30sp"
+            android:textStyle="bold"
+            android:textColor="#504C4C"
+            android:layout_marginLeft="8dp"
+            android:textSize = "20sp"
             />
     </LinearLayout>
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="380dp"
+        android:layout_gravity="center"
+        android:background="@color/white"
         android:layout_height="80dp"
         android:orientation="horizontal"
         >
         <TextView
-            android:layout_width="120dp"
+            android:layout_width="100dp"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
-            android:gravity="center"
             android:text="R:"
-            android:textSize = "30sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="#504C4C"
+            android:textSize = "20sp"
             />
         <EditText
             android:id="@+id/input3"
             android:layout_width="120dp"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/check_background"
             android:layout_marginTop="10dp"
             android:textSize="15sp"
-            android:background="#97CBFF"
             android:hint="請輸入R"
             />
         <TextView
@@ -125,31 +161,39 @@
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
             android:text="次/min"
-            android:textSize = "30sp"
+            android:textStyle="bold"
+            android:textColor="#504C4C"
+            android:layout_marginLeft="8dp"
+            android:textSize = "20sp"
             />
     </LinearLayout>
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_width="380dp"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:layout_height="100dp"
         android:orientation="horizontal"
         >
         <TextView
-            android:layout_width="120dp"
+            android:layout_width="100dp"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
-            android:gravity="center"
             android:text="BP:"
-            android:textSize = "30sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="#504C4C"
+            android:textSize = "20sp"
             />
         <EditText
             android:id="@+id/input4"
             android:layout_width="120dp"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/check_background"
             android:layout_marginTop="10dp"
             android:textSize="15sp"
-            android:background="#97CBFF"
             android:hint="請輸入R"
             />
         <TextView
@@ -157,61 +201,79 @@
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
             android:text="次/min"
-            android:textSize = "30sp"
+            android:textStyle="bold"
+            android:textColor="#504C4C"
+            android:layout_marginLeft="8dp"
+            android:textSize = "20sp"
             />
     </LinearLayout>
     <LinearLayout
-        android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="380dp"
+        android:background="@color/white"
+        android:layout_gravity="center"
         android:orientation="horizontal"
         >
         <TextView
             android:layout_width="150dp"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
+            android:textStyle="bold"
             android:gravity="center"
+            android:textColor="#504C4C"
+            android:textSize = "20sp"
             android:text="輸血反應:"
-            android:textSize = "30sp"
             />
         <RadioButton
             android:id="@+id/yes"
             android:layout_width="65dp"
             android:layout_height="60dp"
-            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
             android:text="是"
-            android:textSize = "30sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="#504C4C"
+            android:textSize = "20sp"
             />
         <RadioButton
             android:id="@+id/no"
             android:layout_width="65dp"
             android:layout_height="60dp"
             android:text="否"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
             android:checked="true"
-            android:textSize = "30sp"
-            />
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="#504C4C"
+            android:textSize = "20sp"            />
     </LinearLayout>
     <LinearLayout
-        android:layout_width="match_parent"
         android:layout_height="80dp"
         android:orientation="horizontal"
+        android:layout_width="380dp"
+        android:background="@color/white"
+        android:layout_gravity="center"
         >
         <TextView
             android:layout_width="150dp"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
-            android:gravity="center"
             android:text="輸血容量:"
-            android:textSize = "30sp"
-            />
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="#504C4C"
+            android:textSize = "20sp"            />
         <EditText
             android:id="@+id/input5"
             android:layout_width="120dp"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/check_background"
             android:layout_marginTop="10dp"
             android:textSize="15sp"
-            android:background="#97CBFF"
             android:hint="輸血容量"
             />
         <TextView
@@ -219,7 +281,10 @@
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
             android:text="CC"
-            android:textSize = "30sp"
-            />
+            android:textStyle="bold"
+            android:textColor="#504C4C"
+            android:layout_marginLeft="8dp"
+            android:textSize = "20sp"
+            />     />
     </LinearLayout>
 </LinearLayout>

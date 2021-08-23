@@ -25,14 +25,13 @@
 
         <TextView
             android:id="@+id/textView6"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_80"
-            android:background="#673AB7"
-            android:gravity="center"
             android:text="給藥作業"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:background="#0ADDC9"
+            android:gravity="center"
             android:textColor="#ffffff"
-            android:textSize="@dimen/dp_24"
-            />
+            android:textSize="@dimen/dp_24"/>
 
 
         <LinearLayout
@@ -64,14 +63,16 @@
 
             <Button
                 android:id="@+id/chem3nextBt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="130dp"
+                android:layout_height="55dp"
                 android:layout_gravity="right"
                 android:layout_marginTop="@dimen/dp_50"
                 android:layout_marginRight="@dimen/dp_20"
-                android:backgroundTint="#673AB7"
+                android:background="@drawable/nextbutton_general"
                 android:text="下一步"
-                android:textSize="@dimen/dp_24" />
+                android:textStyle="bold"
+                android:textColor="#FBFBFB"
+                android:textSize="19dp" />
 
         </LinearLayout>
 
