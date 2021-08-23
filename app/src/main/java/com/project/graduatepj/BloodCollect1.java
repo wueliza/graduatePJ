@@ -29,7 +29,7 @@ public class BloodCollect1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blood_collect1);
 
-        Button button = (Button) findViewById(R.id.next_c);
+        Button button = (Button) findViewById(R.id.nextBt);
         button.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,7 +49,7 @@ public class BloodCollect1 extends AppCompatActivity {
         getPermissionsCamera();
 
         surfaceView=(SurfaceView)findViewById(R.id.surfaceView);
-        textView=(TextView)findViewById(R.id.textView1);
+        textView=(TextView)findViewById(R.id.mytextview111);
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.ALL_FORMATS).build();
         cameraSource = new CameraSource.Builder(this,barcodeDetector)

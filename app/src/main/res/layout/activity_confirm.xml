@@ -5,18 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+<<<<<<< HEAD:app/src/main/res/layout/activity_confirm.xml
     android:background="#D7F9FA"
     tools:context=".confirmActivity">
+=======
+    android:background="#FCFCFC"
+    tools:context=".CheckActivity">
+>>>>>>> 5a42fa9a4af5f310f1752a1fbf15cdd4a419abff:app/src/main/res/layout/activity_check.xml
     <TextView
         android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="vertical"
-        android:background="#00B7FF"
-        android:layout_gravity="top"
         android:text="核血作業-領血單號"
-        android:textSize = "30sp"
-        android:gravity="center"/>
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:background="#0ADDC9"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/dp_24" />
+
     <SurfaceView
         android:id="@+id/surfaceView"
         android:layout_width="match_parent"
@@ -82,11 +87,17 @@
             android:layout_weight = "1">
             <Button
                 android:id="@+id/nextbt"
-                android:layout_width="100dp"
-                android:layout_height="60dp"
-                android:layout_gravity="bottom"
+                android:layout_width="130dp"
+                android:layout_height="55dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="@dimen/dp_50"
+                android:layout_marginRight="@dimen/dp_20"
+                android:background="@drawable/nextbutton_general"
+                android:textColor="#FBFBFB"
                 android:text="下一步"
-                />
+                android:textStyle="bold"
+                android:textSize="19dp" />
+
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

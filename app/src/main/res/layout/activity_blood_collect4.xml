@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".BloodCollect4"
-    android:background="#FAF9F7">
+    android:background="#FCFCFC"
+    >
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -19,12 +20,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
+            android:id="@+id/textView6"
             android:text="採血/備血作業"
-            android:textColor="@color/white"
-            android:textSize="22sp" />
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:background="#0ADDC9"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/dp_24" />
     </LinearLayout>
 
     <Button
@@ -45,11 +48,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
         android:layout_marginTop="32dp"
         android:ems="10"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView13"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
@@ -57,26 +60,47 @@
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="44dp"
         android:text="手圈病例號"
-        android:textColor="#181819"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        android:textColor="#504C4C"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="122dp" />
+
+    <EditText
+        android:id="@+id/editvalue3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.19"
+        app:layout_constraintStart_toEndOf="@+id/textView19"
+        app:layout_constraintTop_toBottomOf="@+id/editvalue2" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="採檢員"
+        android:textColor="#504C4C"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="282dp"/>
 
     <EditText
         android:id="@+id/editvalue2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="36dp"
         android:ems="10"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintHorizontal_bias="0.105"
         app:layout_constraintStart_toEndOf="@+id/textView18"
         app:layout_constraintTop_toBottomOf="@+id/editvalue1" />
 
@@ -84,42 +108,11 @@
         android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="64dp"
         android:text="檢體編號"
-        android:textColor="#181819"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
-
-    <TextView
-        android:id="@+id/textView19"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="60dp"
-        android:text="採檢員"
-        android:textColor="#181819"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
-
-    <EditText
-        android:id="@+id/editvalue3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginLeft="64dp"
-        android:layout_marginTop="52dp"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.615"
-        app:layout_constraintStart_toEndOf="@+id/textView19"
-        app:layout_constraintTop_toBottomOf="@+id/editvalue2"
-        app:layout_constraintVertical_bias="0.113" />
-
+        android:textColor="#504C4C"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="201dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
