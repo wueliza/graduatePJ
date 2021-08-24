@@ -76,12 +76,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-<<<<<<< HEAD
-        android:layout_height="95dp"
-=======
-        android:layout_height="60dp"
->>>>>>> 5a42fa9a4af5f310f1752a1fbf15cdd4a419abff
-        android:orientation="horizontal">
+
+        android:layout_height="95dp">
 
         <TextView
             android:id="@+id/ManCheck"
@@ -131,18 +127,14 @@
 
             <TextView
                 android:id="@+id/Doctor"
-<<<<<<< HEAD
-                android:layout_width="111dp"
-                android:layout_height="69dp"
-=======
                 android:layout_width="117dp"
                 android:layout_height="48dp"
->>>>>>> 5a42fa9a4af5f310f1752a1fbf15cdd4a419abff
                 android:text="主治醫師"
                 android:layout_marginLeft="25dp"
                 android:textSize="20dp" />
 
         </LinearLayout>
+
     </ScrollView>
 
 

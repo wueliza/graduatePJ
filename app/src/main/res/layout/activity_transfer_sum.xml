@@ -5,10 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+<<<<<<< HEAD
+=======
+
+>>>>>>> 379423011d815a4f504427e57613d1ef864c9081
     android:background="#D7FAFA"
     tools:context=".Transfer_sumActivity">
     android:background="#FCFCFC"
     tools:context=".transfer_sumActivity">
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 379423011d815a4f504427e57613d1ef864c9081
     <TextView
         android:id="@+id/title"
         android:text="輸血作業-總結"

@@ -47,8 +47,8 @@ public class OperationVerify extends AppCompatActivity {
         setContentView(R.layout.activity_operation_verify);
 
         input = findViewById(R.id.textView);
-        show = findViewById(R.id.hint);
-        Button OperationBack = (Button) findViewById(R.id.OperationBack);
+        show = findViewById(R.id.hint2);
+        //Button OperationBack = (Button) findViewById(R.id.OperationBack);         (上一頁)
         Button NextButton = (Button) findViewById(R.id.NextButton);
         txt = (TextView) findViewById(R.id.titleName);
 
@@ -101,22 +101,22 @@ public class OperationVerify extends AppCompatActivity {
             }
 
         });
-        OperationBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cnt--;
-                switch (cnt) {
-                    case -1:
-                        Intent intent = new Intent();
-                        intent.setClass(OperationVerify.this, OperationHome.class);
-                        startActivity(intent);
-                        break;
-                    case 0:
-                        txt.setText("備刀單");
-                        break;
-                }
-            }
-        });
+//        OperationBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                cnt--;
+//                switch (cnt) {
+//                    case -1:
+//                        Intent intent = new Intent();
+//                        intent.setClass(OperationVerify.this, OperationHome.class);
+//                        startActivity(intent);
+//                        break;
+//                    case 0:
+//                        txt.setText("備刀單");
+//                        break;
+//                }
+//            }
+//        });
         surfaceView = (SurfaceView)
 
                 findViewById(R.id.surfaceView);

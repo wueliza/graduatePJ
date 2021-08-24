@@ -17,6 +17,11 @@
             android:layout_height="match_parent"
             android:layout_gravity="center" />
     </FrameLayout>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 379423011d815a4f504427e57613d1ef864c9081
     <EditText
         android:id="@+id/textView"
         android:layout_width="match_parent"
