@@ -38,7 +38,7 @@ public class CheckIn extends AppCompatActivity {
     private TextView input;
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
-    String paitentNumber, wistNumber, checkMan;
+    String paitentNumber, wistNumber, ManCheckBox;
     int cnt = 0;
     Bundle bundle = new Bundle();
     Intent intent = new Intent();
@@ -47,10 +47,9 @@ public class CheckIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_in);
-
         input = findViewById(R.id.textView);
-        show = findViewById(R.id.hint);
-        Button CheckInBack = (Button) findViewById(R.id.CheckinBack);
+        show = findViewById(R.id.hint2);
+        //Button CheckInBack = (Button) findViewById(R.id.CheckinBack);  (上一頁)
         Button NextButton = (Button) findViewById(R.id.NextButton);
         txt = (TextView) findViewById(R.id.titleName);
         getPermissionsCamera();
@@ -72,8 +71,8 @@ public class CheckIn extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(input.getText().toString() != null){
-                    Get_staff(retrofit,editable.toString());
+                if (input.getText().toString() != null) {
+                    Get_staff(retrofit, editable.toString());
                 }
                 show.setText(editable);
             }
@@ -96,11 +95,12 @@ public class CheckIn extends AppCompatActivity {
 
                     case 2:
                         txt.setText("檢驗員");
-                        checkMan = textView.getText().toString();
+                        ManCheckBox = textView.getText().toString();
                         intent.setClass(CheckIn.this, CheckIn2.class);
-                        bundle.putString("checkMan", checkMan);
+                        bundle.putString("ManCheckBox", ManCheckBox);
                         intent.putExtras(bundle);
                         break;
+
 
                     case 3:
                         wistNumber = textView.getText().toString();
@@ -113,22 +113,23 @@ public class CheckIn extends AppCompatActivity {
                 }
             }
         });
-        CheckInBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cnt--;
-                switch (cnt) {
-                    case -1:
-                        Intent intent = new Intent();
-                        intent.setClass(CheckIn.this, OperationHome.class);
-                        startActivity(intent);
-                        break;
-                    case 0:
-                        txt.setText("總表病歷號");
-                        break;
-                }
-            }
-        });
+//        CheckInBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                cnt--;
+//                switch (cnt) {
+//                    case -1:
+//                        Intent intent = new Intent();
+//                        intent.setClass(CheckIn.this, OperationHome.class);
+//                        startActivity(intent);
+//                        break;
+//                    case 0:
+//                        txt.setText("總表病歷號");
+//                        break;
+//                }
+//            }
+//        });
+
         surfaceView = (SurfaceView)
 
                 findViewById(R.id.surfaceView);
@@ -149,31 +150,29 @@ public class CheckIn extends AppCompatActivity {
                 .setAutoFocusEnabled(true)
                 .build();
 
-        surfaceView.getHolder().
+        surfaceView.getHolder().addCallback(new SurfaceHolder.Callback() {
+            @Override
+            public void surfaceCreated(@NonNull SurfaceHolder holder) {
+                if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED)
+                    return;
+                try {
+                    cameraSource.start(holder);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
 
-                addCallback(new SurfaceHolder.Callback() {
-                    @Override
-                    public void surfaceCreated(@NonNull SurfaceHolder holder) {
-                        if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA)
-                                != PackageManager.PERMISSION_GRANTED)
-                            return;
-                        try {
-                            cameraSource.start(holder);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
+            @Override
+            public void surfaceChanged(@NonNull SurfaceHolder holder, int format, int width, int height) {
 
-                    @Override
-                    public void surfaceChanged(@NonNull SurfaceHolder holder, int format, int width, int height) {
+            }
 
-                    }
-
-                    @Override
-                    public void surfaceDestroyed(@NonNull SurfaceHolder holder) {
-                        cameraSource.stop();
-                    }
-                });
+            @Override
+            public void surfaceDestroyed(@NonNull SurfaceHolder holder) {
+                cameraSource.stop();
+            }
+        });
         barcodeDetector.setProcessor(new Detector.Processor<Barcode>() {
 
             @Override
@@ -204,13 +203,13 @@ public class CheckIn extends AppCompatActivity {
         }
     }
 
-    public void Get_staff(Retrofit retrofit,String id){
+    public void Get_staff(Retrofit retrofit, String id) {
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
         Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id);
         call.enqueue(new Callback<Staff_Api>() {
             @Override
             public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
-                if(!response.isSuccessful()){
+                if (!response.isSuccessful()) {
                     show.setText("找不到這個id");
                     return;
                 }

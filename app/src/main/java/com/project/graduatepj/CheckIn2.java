@@ -19,13 +19,15 @@ public class CheckIn2 extends AppCompatActivity {
 
         Bundle paitentNumbercheck = this.getIntent().getExtras();
         Bundle wistNumbercheck= this.getIntent().getExtras();
-        Bundle checkMancheck = this.getIntent().getExtras();
+        Bundle ManCheckBox = this.getIntent().getExtras();
+
         String patientNumber = paitentNumbercheck.getString("paitentNumber");
         String wistNumber = wistNumbercheck.getString("wistNumber");
-        String checkMan = checkMancheck.getString("checkMan");
+        String ManCheckNumber = ManCheckBox.getString("ManCheckBox");
 
         EditText patientNumberBox = (EditText) findViewById(R.id.patientNumberBox);
         EditText wistNumberBox = (EditText) findViewById(R.id.wistNumberBox);
+
 
         TextView tv1 = (TextView) findViewById(R.id.patientNumberBox);
         TextView tv2 = (TextView) findViewById(R.id.wistNumberBox);
@@ -33,7 +35,7 @@ public class CheckIn2 extends AppCompatActivity {
 
         tv1.setText(patientNumber);
         tv2.setText(wistNumber);
-        tv3.setText(checkMan);
+        tv3.setText(ManCheckNumber);
 
         Button BackButton = (Button) findViewById(R.id.BackButton);
         BackButton.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +46,7 @@ public class CheckIn2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         Button Upload = (Button) findViewById(R.id.Upload);
 
         Upload.setOnClickListener(new View.OnClickListener() {
