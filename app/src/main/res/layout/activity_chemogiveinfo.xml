@@ -30,10 +30,6 @@
             android:layout_height="78dp"
             android:background="#0ADDC9"
             android:gravity="center"
-<<<<<<< HEAD
-=======
-            android:text="給藥核對"
->>>>>>> 156a7a51757eb6dd61782f34f5b7151be20ebde4
             android:textColor="#ffffff"
             android:textSize="@dimen/dp_24"/>
 
@@ -46,7 +42,7 @@
             >
 
             <TextView
-                android:id="@+id/chem2hint1"
+                android:id="@+id/hint1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -56,7 +52,7 @@
                 android:textSize="@dimen/dp_24" />
 
             <TextView
-                android:id="@+id/chem3hint2"
+                android:id="@+id/hint2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -66,7 +62,7 @@
                 android:textSize="@dimen/dp_24" />
 
             <Button
-                android:id="@+id/chem3nextBt"
+                android:id="@+id/nextBt"
                 android:layout_width="130dp"
                 android:layout_height="55dp"
                 android:layout_gravity="right"
@@ -76,11 +72,9 @@
                 android:text="下一步"
                 android:textStyle="bold"
                 android:textColor="#FBFBFB"
-                android:textSize="19dp" />
+                android:textSize="@dimen/dp_21" />
 
         </LinearLayout>
 
     </LinearLayout>
-
-
 </merge>

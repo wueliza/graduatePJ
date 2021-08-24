@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="#FCFCFC"
     tools:context=".Chemogiveinfo2">
-    @+id/textView10
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,17 +18,12 @@
             android:id="@+id/title"
             android:text="給藥作業"
             android:layout_width="match_parent"
-<<<<<<< HEAD
             android:layout_height="80dp"
             android:background="#0ADDC9"
             android:gravity="center"
             android:textColor="#ffffff"
             android:textSize="@dimen/dp_24"/>
-=======
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="50dp"
-            android:text="病歷號：" />
+
         <EditText
             android:id="@+id/textView"
             android:layout_width="match_parent"
@@ -48,7 +42,7 @@
             android:layout_marginLeft="20dp"
             android:text="病歷號：" />
         <TextView
-            android:id="@+id/textView12"
+            android:id="@+id/textView123"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -111,7 +105,7 @@
             android:layout_marginTop="50dp"
             android:text="成品單號：" />
         <EditText
-            android:id="@+id/textView"
+            android:id="@+id/textView12"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
@@ -121,7 +115,7 @@
             android:textSize="15sp"
             android:hint="成品單號:"/>
 
->>>>>>> 156a7a51757eb6dd61782f34f5b7151be20ebde4
+
 
         <LinearLayout
             android:layout_width="match_parent"

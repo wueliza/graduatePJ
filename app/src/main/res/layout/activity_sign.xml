@@ -5,10 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SignActivity">
-<<<<<<< HEAD
-=======
-
->>>>>>> 379423011d815a4f504427e57613d1ef864c9081
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
@@ -28,11 +24,7 @@
 
         <TextView
             android:id="@+id/textView6"
-<<<<<<< HEAD
             android:text="血袋簽收-護理人員"
-=======
-            android:text="血袋減收-護理人員"
->>>>>>> 379423011d815a4f504427e57613d1ef864c9081
             android:layout_width="match_parent"
             android:layout_height="78dp"
             android:background="#0ADDC9"
@@ -84,9 +76,4 @@
         </LinearLayout>
 
     </LinearLayout>
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 379423011d815a4f504427e57613d1ef864c9081
 </merge>

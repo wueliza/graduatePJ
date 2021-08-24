@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Chemopm2">
 
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
@@ -31,10 +30,6 @@
             android:layout_height="78dp"
             android:background="#0ADDC9"
             android:gravity="center"
-<<<<<<< HEAD
-=======
-            android:text="藥品簽收"
->>>>>>> 156a7a51757eb6dd61782f34f5b7151be20ebde4
             android:textColor="#ffffff"
             android:textSize="@dimen/dp_24"/>
 
@@ -77,11 +72,9 @@
                 android:text="下一步"
                 android:textStyle="bold"
                 android:textColor="#FBFBFB"
-                android:textSize="19dp" />
+                android:textSize="@dimen/dp_21" />
 
         </LinearLayout>
 
     </LinearLayout>
-
-
 </merge>

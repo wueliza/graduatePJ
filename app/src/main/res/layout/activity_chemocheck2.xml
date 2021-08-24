@@ -19,19 +19,12 @@
             android:id="@+id/title"
             android:text="給藥作業"
             android:layout_width="match_parent"
-<<<<<<< HEAD
             android:layout_height="80dp"
             android:background="#0ADDC9"
             android:gravity="center"
             android:textColor="#ffffff"
             android:textSize="@dimen/dp_24"/>
 
-        <LinearLayout
-=======
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="50dp"
-            android:text="成品單號：" />
         <EditText
             android:id="@+id/textView"
             android:layout_width="match_parent"
@@ -108,12 +101,11 @@
 
         <Button
             android:id="@+id/button4"
->>>>>>> 156a7a51757eb6dd61782f34f5b7151be20ebde4
             android:layout_width="match_parent"
             android:layout_height="67dp"
             android:layout_gravity="center"
             android:layout_marginTop="35dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"/>
 
             <TextView
                 android:id="@+id/textView10"
@@ -138,12 +130,9 @@
 
 
 
-        </LinearLayout>
-
         <LinearLayout
             android:layout_width="260dp"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
             android:layout_marginLeft="80dp"
             android:layout_marginTop="400dp"
             android:orientation="horizontal">
@@ -169,10 +158,5 @@
                 android:textSize="18dp" />
 
         </LinearLayout>
-=======
-            android:layout_marginTop="610dp"
-            android:text="傳送" />
->>>>>>> 156a7a51757eb6dd61782f34f5b7151be20ebde4
-
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
