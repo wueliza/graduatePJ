@@ -48,8 +48,8 @@ public class Waiting extends AppCompatActivity {
         setContentView(R.layout.activity_waiting);
 
         input = findViewById(R.id.textView);
-        show = findViewById(R.id.hint);
-        Button WaitingBack = (Button) findViewById(R.id.WaitingBack);
+        show = findViewById(R.id.hint2);
+        // Button WaitingBack = (Button) findViewById(R.id.WaitingBack);
         Button NextButton = (Button) findViewById(R.id.NextButton);
         txt = (TextView) findViewById(R.id.titleName);
         getPermissionsCamera();
@@ -104,22 +104,22 @@ public class Waiting extends AppCompatActivity {
 
         });
 
-        WaitingBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cnt--;
-                switch (cnt) {
-                    case -1:
-                        Intent intent = new Intent();
-                        intent.setClass(Waiting.this, OperationHome.class);
-                        startActivity(intent);
-                        break;
-                    case 0:
-                        txt.setText("總表病歷號");
-                        break;
-                }
-            }
-        });
+//        WaitingBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                cnt--;
+//                switch (cnt) {
+//                    case -1:
+//                        Intent intent = new Intent();
+//                        intent.setClass(Waiting.this, OperationHome.class);
+//                        startActivity(intent);
+//                        break;
+//                    case 0:
+//                        txt.setText("總表病歷號");
+//                        break;
+//                }
+//            }
+//        });
         surfaceView = (SurfaceView)
 
                 findViewById(R.id.surfaceView);
