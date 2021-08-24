@@ -34,14 +34,13 @@ public class TPRActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tpractivity);
-
         //相機製作
         getPermissionsCamera();
-
         surfaceView=(SurfaceView)findViewById(R.id.surfaceView);
         textView=(TextView)findViewById(R.id.textView);
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.ALL_FORMATS).build();
+
         cameraSource = new CameraSource.Builder(this,barcodeDetector)
                 .setRequestedPreviewSize(1920, 1080)
                 .setAutoFocusEnabled(true)
