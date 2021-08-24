@@ -227,13 +227,4 @@ public class CheckIn extends AppCompatActivity {
         });
     }
 
-    //camera
-    private void getPermissionsCamera() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
-        }
-    }
-
-
 }
