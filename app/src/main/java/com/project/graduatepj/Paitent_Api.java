@@ -56,11 +56,6 @@ public class Paitent_Api {
     public String getBsno() {
         return bsno;
     }
-<<<<<<< HEAD
-=======
-
-
-////↓↓↓↓↓2021/8/18↓↓↓↓↓↓/////
 
     public Paitent_Api(int patientNum, String sex, String birth, String bedNum, String bloodType, String name, String division, String height, String age, String weight, String bsno) {
         this.patientNum = patientNum;
@@ -75,7 +70,4 @@ public class Paitent_Api {
         this.weight = weight;
         this.bsno = bsno;
     }
-////↑↑↑↑↑↑↑2021/8/18↑↑↑↑↑↑/////
-
->>>>>>> b929755c5c7a990e93dfc68ed9bee5897ca29519
 }

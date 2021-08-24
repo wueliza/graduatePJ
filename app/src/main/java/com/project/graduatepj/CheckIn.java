@@ -34,8 +34,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class CheckIn extends AppCompatActivity {
     SurfaceView surfaceView;
     TextView textView, txt;
-    private TextView show;
     private TextView input;
+    private TextView show;
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
     String paitentNumber, wistNumber, ManCheckBox;
@@ -54,12 +54,13 @@ public class CheckIn extends AppCompatActivity {
         txt = (TextView) findViewById(R.id.titleName);
         getPermissionsCamera();
 
-        Retrofit retrofit = new Retrofit.Builder() //api連接
+        //api連接
+        Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://106.105.167.136:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
-        input.addTextChangedListener(new TextWatcher() { //監視TextView是否有更變
+        //監視TextView是否有更變
+        input.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
@@ -77,7 +78,7 @@ public class CheckIn extends AppCompatActivity {
                 show.setText(editable);
             }
         });
-
+        //API結束 ， 下面還有
 
         NextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,6 +164,7 @@ public class CheckIn extends AppCompatActivity {
                 }
             }
 
+
             @Override
             public void surfaceChanged(@NonNull SurfaceHolder holder, int format, int width, int height) {
 
@@ -204,8 +206,9 @@ public class CheckIn extends AppCompatActivity {
     }
 
     public void Get_staff(Retrofit retrofit, String id) {
+
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-        Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id);
+        Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id); //A00010
         call.enqueue(new Callback<Staff_Api>() {
             @Override
             public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
@@ -223,4 +226,14 @@ public class CheckIn extends AppCompatActivity {
             }
         });
     }
+
+    //camera
+    private void getPermissionsCamera() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
+        }
+    }
+
+
 }
