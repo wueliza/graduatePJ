@@ -46,7 +46,7 @@ public class BloodCollect2 extends AppCompatActivity {
         String collectorNumber = sampleNumberBloodCollect3.getString("collectorNumber");
         String recheckNumber = sampleNumberBloodCollect3.getString("recheckNumber");
 
-        EditText patientNumberBox = (EditText) findViewById(R.id.paitentNumber1Box);
+        TextView patientNumberBox = (TextView) findViewById(R.id.paitentNumber1Box);
         EditText sampleNumberBox = (EditText) findViewById(R.id.sampleNumberBox);
         EditText collectorNumberBox = (EditText) findViewById(R.id.collectorNumberBox);
         EditText recheckNumberBox = (EditText) findViewById(R.id.recheckNumberBox);
