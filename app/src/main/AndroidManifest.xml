@@ -2,15 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.project.graduatepj">
 
-    <uses-permission android:name="android.permission.CAMERA" />
-<<<<<<< HEAD
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.CAMERA" />
-=======
->>>>>>> 507e7ac434364fdd84eec8cd06800a0c89fd8765
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
 
