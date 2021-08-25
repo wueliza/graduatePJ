@@ -129,7 +129,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/logout"
+            android:id="@+id/loginBt"
             android:layout_width="250dp"
             android:layout_height="60dp"
             android:layout_row="3"
@@ -137,7 +137,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="55dp"
             android:background="@drawable/functionbutton_2"
-            android:text="登出"
+            android:text="登入"
             android:textColor="@color/black"
             android:textSize="18dp"
             android:textStyle="bold" />

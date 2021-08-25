@@ -109,12 +109,14 @@
                         android:background="@drawable/nextbutton_general"/>
                 </LinearLayout>
             </LinearLayout>
+<<<<<<< HEAD
+=======
 
 
 
 
+>>>>>>> 7bc295ba2cfc7578e1aa1f36da2e75d6cbc293d4
         </LinearLayout>
-
     </LinearLayout>
 </merge>
 
