@@ -17,9 +17,8 @@
 
         <TextView
             android:id="@+id/title"
-            android:text="給藥作業"
+            android:text="藥品核對"
             android:layout_width="match_parent"
-<<<<<<< HEAD
             android:layout_height="80dp"
             android:background="#0ADDC9"
             android:gravity="center"
@@ -27,152 +26,352 @@
             android:textSize="@dimen/dp_24"/>
 
         <LinearLayout
-=======
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="50dp"
-            android:text="成品單號：" />
-        <EditText
-            android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:textSize="15sp"
-            android:hint="成品單號:"
-            />
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="病歷號：" />
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="性別：" />
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="姓名：" />
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="BSA：" />
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="床號：" />
-        <TextView
-            android:id="@+id/textView16"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="年齡：" />
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="身高：" />
-        <TextView
-            android:id="@+id/textView18"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="體重：" />
-        <TextView
-            android:id="@+id/textView19"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:text="核藥員：" />
-        <TextView
-            android:id="@+id/textView20"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:text="確認員：" />
+            android:layout_height="260dp"
+            android:layout_margin="15dp"
+            android:background="@color/white"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/button4"
->>>>>>> 156a7a51757eb6dd61782f34f5b7151be20ebde4
-            android:layout_width="match_parent"
-            android:layout_height="67dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="35dp"
-            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="140dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="0dp"
-                android:gravity="left"
-                android:text="成品單號："
-                android:textColor="#504C4C"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="10dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="1"
+                    android:text="病歷號："
+                    android:textColor="#504C4C"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/patientNumberBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:gravity="center"
-                android:inputType="number" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginRight="90dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/check_background"
+                    android:gravity="center"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
 
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:text="姓名 :"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="4dp"
+                    android:textColor="#504C4C"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/check_background"
+                    android:gravity="center"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:text="性別 :"
+                    android:layout_marginLeft="4dp"
+                    android:textColor="#504C4C"
+                    android:layout_marginTop="4dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="0dp"
+                    android:background="@drawable/check_background"
+                    android:gravity="center"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:text="床號 :"
+                    android:layout_marginLeft="4dp"
+                    android:textColor="#504C4C"
+                    android:layout_marginTop="4dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/check_background"
+                    android:gravity="center"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:text="BSA :"
+                    android:layout_marginLeft="4dp"
+                    android:textColor="#504C4C"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/check_background"
+                    android:gravity="center"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:text="身高 :"
+                    android:layout_marginLeft="4dp"
+                    android:textColor="#504C4C"
+                    android:layout_marginTop="4dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/check_background"
+                    android:gravity="center"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:text="體重 :"
+                    android:layout_marginLeft="4dp"
+                    android:textColor="#504C4C"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/check_background"
+                    android:gravity="center"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:text="年齡 :"
+                    android:layout_marginLeft="4dp"
+                    android:textColor="#504C4C"
+                    android:layout_marginTop="4dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/check_background"
+                    android:gravity="center"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
 
         </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="3dp"
+            android:background="#5769F0AE" />
 
         <LinearLayout
-            android:layout_width="260dp"
-            android:layout_height="wrap_content"
-<<<<<<< HEAD
-            android:layout_marginLeft="80dp"
-            android:layout_marginTop="400dp"
-            android:orientation="horizontal">
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            >
 
-            <Button
-                android:id="@+id/BackButtoni"
-                android:layout_width="90dp"
-                android:layout_height="50dp"
-                android:layout_gravity="left"
-                android:background="#9C64FFDA"
-                android:text="重新輸入"
-                android:textSize="15dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
 
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="核藥人員 :"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:textColor="#504C4C"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/check_background"
+                    android:layout_marginRight="90dp"
+                    android:layout_marginTop="4dp"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
 
-            <Button
-                android:id="@+id/button5"
-                android:layout_width="140dp"
-                android:layout_height="55dp"
-                android:layout_gravity="right"
-                android:layout_marginLeft="20dp"
-                android:background="@drawable/nextbutton_general"
-                android:text="傳送"
-                android:textSize="18dp" />
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="確認人員 :"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:textColor="#504C4C"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/check_background"
+                    android:layout_marginRight="90dp"
+                    android:textSize="18sp"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
 
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="成品單號 :"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:textColor="#504C4C"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/check_background"
+                    android:layout_marginRight="90dp"
+                    android:layout_marginTop="4dp"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"/>
         </LinearLayout>
-=======
-            android:layout_marginTop="610dp"
-            android:text="傳送" />
->>>>>>> 156a7a51757eb6dd61782f34f5b7151be20ebde4
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="bottom"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="bottom"
+                android:layout_weight = "1"
+                >
 
+                <Button
+                    android:id="@+id/BackButtoni"
+                    android:layout_width="110dp"
+                    android:layout_height="50dp"
+                    android:text="上一步"
+                    android:textSize="16dp"
+                    android:background="#6646628A"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="right"
+                android:layout_weight = "1">
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="130dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="bottom"
+                    android:textSize="18dp"
+                    android:background="@drawable/nextbutton_general"
+                    android:text="傳送"
+                    />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,6 +12,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
@@ -19,86 +20,68 @@ import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
 import java.io.IOException;
 
-public class BloodCollect2 extends AppCompatActivity {
-    private Button next_d;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+public class BloodCollect2 extends AppCompatActivity {
+    private Button bt1;
+    private Button bt22;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blood_collect2);
 
-        Button button = (Button) findViewById(R.id.next_d);
-        button.setOnClickListener(new Button.OnClickListener() {
+        Bundle paitentNumber1BloodCollect3 = this.getIntent().getExtras();
+        Bundle sampleNumberBloodCollect3 = this.getIntent().getExtras();
+        Bundle collectorNumberBloodCollect3 = this.getIntent().getExtras();
+        Bundle recheckNumberBloodCollect3 = this.getIntent().getExtras();
+
+        String paitentNumber1 = paitentNumber1BloodCollect3.getString("paitentNumber1");
+        String sampleNumber = sampleNumberBloodCollect3.getString("sampleNumber");
+        String collectorNumber = sampleNumberBloodCollect3.getString("collectorNumber");
+        String recheckNumber = sampleNumberBloodCollect3.getString("recheckNumber");
+
+        EditText patientNumberBox = (EditText) findViewById(R.id.paitentNumber1Box);
+        EditText sampleNumberBox = (EditText) findViewById(R.id.sampleNumberBox);
+        EditText collectorNumberBox = (EditText) findViewById(R.id.collectorNumberBox);
+        EditText recheckNumberBox = (EditText) findViewById(R.id.recheckNumberBox);
+
+        TextView tv = (TextView) findViewById(R.id.paitentNumber1Box);
+        TextView tv2 = (TextView) findViewById(R.id.sampleNumberBox);
+        TextView tv3 = (TextView) findViewById(R.id.collectorNumberBox);
+        TextView tv4 = (TextView) findViewById(R.id.recheckNumberBox);
+
+        tv.setText(paitentNumber1);
+        tv2.setText(sampleNumber);
+        tv3.setText(sampleNumber);
+        tv4.setText(sampleNumber);
+
+
+
+
+
+
+        bt1 = findViewById(R.id.nextbt);
+        bt22 = findViewById(R.id.frontbt);
+
+        bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(BloodCollect2.this, BloodCollect3.class);
+                Intent intent = new Intent(BloodCollect2.this,examine_homePage.class);
                 startActivity(intent);
-                BloodCollect2.this.finish();
             }
         });
-
-        SurfaceView surfaceView;
-        TextView textView;
-        CameraSource cameraSource;
-        BarcodeDetector barcodeDetector;
-
-        getPermissionsCamera();
-
-        surfaceView=(SurfaceView)findViewById(R.id.surfaceView);
-        textView=(TextView)findViewById(R.id.textView2);
-        barcodeDetector = new BarcodeDetector.Builder(this)
-                .setBarcodeFormats(Barcode.ALL_FORMATS).build();
-        cameraSource = new CameraSource.Builder(this,barcodeDetector).setAutoFocusEnabled(true).build();
-        surfaceView.getHolder().addCallback(new SurfaceHolder.Callback(){
+        bt22.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void surfaceCreated(@NonNull SurfaceHolder holder) {
-                if(ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA)
-                        != PackageManager.PERMISSION_GRANTED)
-                    return;
-                try{
-                    cameraSource.start(holder);
-                }catch (IOException e){
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void surfaceChanged(@NonNull SurfaceHolder holder, int format, int width, int height) {
-
-            }
-
-            @Override
-            public void surfaceDestroyed(@NonNull SurfaceHolder holder) {
-                cameraSource.stop();
+            public void onClick(View v) {
+                Intent intent = new Intent(BloodCollect2.this,BloodCollect1.class);
+                startActivity(intent);
             }
         });
-        barcodeDetector.setProcessor(new Detector.Processor<Barcode>(){
-
-            @Override
-            public void release() {
-
-            }
-
-            @Override
-            public void receiveDetections(Detector.Detections<Barcode> detections) {
-                final SparseArray<Barcode> qrCodes=detections.getDetectedItems();
-                if(qrCodes.size()!=0){
-                    textView.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            textView.setText(qrCodes.valueAt(0).displayValue);
-                        }
-                    });
-                }
-            }
-        });
-    }
-
-    private void getPermissionsCamera() {
-        if(ActivityCompat.checkSelfPermission(this,Manifest.permission.CAMERA)
-                != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA},1);
-        }
     }
 }

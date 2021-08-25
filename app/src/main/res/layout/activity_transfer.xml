@@ -7,6 +7,7 @@
     android:orientation="vertical"
     android:background="#D7FAFA"
     tools:context=".TransferActivity">
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
@@ -18,7 +19,6 @@
             android:layout_gravity="center" />
     </FrameLayout>
 
-<<<<<<< HEAD
     <EditText
         android:id="@+id/textView"
         android:layout_width="match_parent"
@@ -44,8 +44,7 @@
         android:paddingLeft="15dp"
         android:gravity="center_vertical"
         />
-=======
->>>>>>> 5a42fa9a4af5f310f1752a1fbf15cdd4a419abff
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

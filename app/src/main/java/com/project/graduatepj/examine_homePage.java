@@ -15,7 +15,7 @@ public class examine_homePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_examine_home_page);
 
-        Button button1 = (Button) findViewById(R.id.button_a);
+        Button button1 = (Button) findViewById(R.id.button1);
         button1.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -25,7 +25,7 @@ public class examine_homePage extends AppCompatActivity {
             }
         });
 
-        Button button2 = (Button) findViewById(R.id.button_b);
+        Button button2 = (Button) findViewById(R.id.button2);
         button2.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,12 +34,5 @@ public class examine_homePage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
-
-
-
     }
-
 }

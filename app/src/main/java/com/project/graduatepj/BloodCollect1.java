@@ -1,10 +1,12 @@
 package com.project.graduatepj;
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -23,36 +25,26 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 import java.io.IOException;
 
 public class BloodCollect1 extends AppCompatActivity {
-
-
-    String wistNumber, BSON/*檢體編號*/, CheckMan;
+    private Button bt1;
+    private Button bt22;
+    SurfaceView surfaceView;
+    TextView textView;
+    CameraSource cameraSource;
+    BarcodeDetector barcodeDetector;
+    String paitentNumber1, sampleNumber, collectorNumber, recheckNumber;
+    int count=0;
     Bundle bundle = new Bundle();
     Intent intent = new Intent();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blood_collect1);
 
-        Button button = (Button) findViewById(R.id.nextBt);
-        button.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                intent.setClass(BloodCollect1.this, BloodCollect2.class);
-                startActivity(intent);
-                BloodCollect1.this.finish();
-            }
-        });
-
-        SurfaceView surfaceView;
-        TextView textView;
-        CameraSource cameraSource;
-        BarcodeDetector barcodeDetector;
-
         getPermissionsCamera();
 
         surfaceView=(SurfaceView)findViewById(R.id.surfaceView);
-        textView=(TextView)findViewById(R.id.mytextview111);
+        textView=(TextView)findViewById(R.id.show);
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.ALL_FORMATS).build();
         cameraSource = new CameraSource.Builder(this,barcodeDetector)
@@ -60,6 +52,7 @@ public class BloodCollect1 extends AppCompatActivity {
                 .setAutoFocusEnabled(true)
                 .build();
         surfaceView.getHolder().addCallback(new SurfaceHolder.Callback(){
+            @SuppressLint("MissingPermission")
             @Override
             public void surfaceCreated(@NonNull SurfaceHolder holder) {
                 if(ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA)
@@ -67,6 +60,7 @@ public class BloodCollect1 extends AppCompatActivity {
                     return;
                 try{
                     cameraSource.start(holder);
+
                 }catch (IOException e){
                     e.printStackTrace();
                 }
@@ -102,13 +96,111 @@ public class BloodCollect1 extends AppCompatActivity {
                 }
             }
         });
-    }
 
+        TextView tv = (TextView)findViewById(R.id.titlee);
+        TextView tv1 = (TextView)findViewById(R.id.inputt);
+        TextView tv2 = (TextView)findViewById(R.id.showw);
+        bt1 = findViewById(R.id.nextbt);
+        bt22 = findViewById(R.id.frontbt);
+        bt1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                count++;
+                switch (count){
+                    case 1:
+                        tv.setText("採血/備血作業-檢體編號");
+                        tv1.setText("請掃描檢體編號");
+                        tv2.setText("檢體編號: ");
+                        sampleNumber = textView.getText().toString();
+                        intent.setClass(BloodCollect1.this, BloodCollect2.class);
+                        bundle.putString("sampleNumber", sampleNumber);
+                        intent.putExtras(bundle);
+                        break;
+                    case 2:
+                        tv.setText("採血/備血作業-採檢員");
+                        tv1.setText("請掃描採檢員編號");
+                        tv2.setText("採檢員編號: ");
+                        collectorNumber = textView.getText().toString();
+                        intent.setClass(BloodCollect1.this, BloodCollect2.class);
+                        bundle.putString("collectorNumber", collectorNumber);
+                        intent.putExtras(bundle);
+                        break;
+                    case 3:
+                        tv.setText("採血/備血作業-確認員");
+                        tv1.setText("請掃描確認員編號");
+                        tv2.setText("確認員編號: ");
+                        recheckNumber= textView.getText().toString();
+                        intent.setClass(BloodCollect1.this, BloodCollect2.class);
+                        bundle.putString("recheckNumber", recheckNumber);
+                        intent.putExtras(bundle);
+                        break;
+                    case 4:
+                        Intent intent = new Intent(BloodCollect1.this,BloodCollect2.class);
+                        startActivity(intent);
+                        break;
+                    default:
+                        tv.setText("採血/備血作業-病歷號");
+                        tv1.setText("請掃描手圈病歷號");
+                        tv2.setText("手圈病歷號:");
+                }
+            }
+        });
+
+        bt22.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                count--;
+                switch (count){
+                    case 1:
+                        tv.setText("採血/備血作業-檢體編號");
+                        tv1.setText("請掃描檢體編號");
+                        tv2.setText("檢體編號: ");
+                        break;
+                    case 2:
+                        tv.setText("採血/備血作業-採檢員");
+                        tv1.setText("請掃描採檢員編號");
+                        tv2.setText("採檢員編號: ");
+                        break;
+                    case 3:
+                        tv.setText("採血/備血作業-確認員");
+                        tv1.setText("請掃描確認員編號");
+                        tv2.setText("確認員編號: ");
+                        break;
+                    case -1:
+                        Intent intent = new Intent(BloodCollect1.this,examine_homePage.class);
+                        startActivity(intent);
+                        break;
+                    default:
+                        tv.setText("採血/備血作業-病歷號");
+                        tv1.setText("請掃描手圈病歷號");
+                        tv2.setText("手圈病歷號:");
+                }
+            }
+        });
+    }
     private void getPermissionsCamera() {
-        if(ActivityCompat.checkSelfPermission(this,Manifest.permission.CAMERA)
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA},1);
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -29,9 +29,9 @@
         >
 
         <TextView
-            android:layout_width="180dp"
+            android:layout_width="165dp"
             android:layout_height="60dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="25dp"
             android:layout_marginTop="12dp"
             android:text="應到血袋數量:"
             android:textColor="#504C4C"
@@ -77,9 +77,8 @@
         <TextView
             android:layout_width="85dp"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"
             android:text="血品:"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="25dp"
             android:textStyle="bold"
             android:textColor="#504C4C"
 
@@ -88,7 +87,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"
             android:text="減白之紅血球濃厚液"
             android:textSize="20sp" />
     </LinearLayout>

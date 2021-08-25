@@ -59,7 +59,6 @@
         <TextView
             android:layout_width="100dp"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"
             android:textStyle="bold"
             android:gravity="center"
             android:textColor="#504C4C"
@@ -76,13 +75,11 @@
             android:paddingRight="10dp"
             android:layout_marginLeft="5dp"
             android:background="@drawable/check_background"
-            android:layout_marginTop="10dp"
             android:textSize="15sp"/>
 
         <TextView
             android:layout_width="120dp"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="8dp"
             android:text="°C"
             android:textColor="#504C4C"
@@ -99,7 +96,6 @@
         <TextView
             android:layout_width="100dp"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"
             android:text="P:"
             android:textStyle="bold"
             android:gravity="center"
@@ -109,7 +105,6 @@
             android:id="@+id/input2"
             android:layout_width="120dp"
             android:layout_height="40dp"
-            android:paddingLeft="10dp"
             android:layout_marginLeft="5dp"
             android:background="@drawable/check_background"
             android:layout_marginTop="10dp"
@@ -119,7 +114,6 @@
         <TextView
             android:layout_width="120dp"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"
             android:text="次/min"
             android:textStyle="bold"
             android:textColor="#504C4C"
@@ -137,7 +131,6 @@
         <TextView
             android:layout_width="100dp"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"
             android:text="R:"
             android:textStyle="bold"
             android:gravity="center"
@@ -152,14 +145,12 @@
             android:paddingRight="10dp"
             android:layout_marginLeft="5dp"
             android:background="@drawable/check_background"
-            android:layout_marginTop="10dp"
             android:textSize="15sp"
             android:hint="請輸入R"
             />
         <TextView
             android:layout_width="120dp"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"
             android:text="次/min"
             android:textStyle="bold"
             android:textColor="#504C4C"
@@ -177,7 +168,6 @@
         <TextView
             android:layout_width="100dp"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"
             android:text="BP:"
             android:textStyle="bold"
             android:gravity="center"
@@ -192,14 +182,12 @@
             android:paddingRight="10dp"
             android:layout_marginLeft="5dp"
             android:background="@drawable/check_background"
-            android:layout_marginTop="10dp"
             android:textSize="15sp"
             android:hint="請輸入R"
             />
         <TextView
             android:layout_width="120dp"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"
             android:text="次/min"
             android:textStyle="bold"
             android:textColor="#504C4C"
@@ -218,7 +206,6 @@
         <TextView
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
             android:textStyle="bold"
             android:gravity="center"
             android:textColor="#504C4C"
@@ -229,7 +216,6 @@
             android:id="@+id/yes"
             android:layout_width="65dp"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"
             android:text="是"
             android:textStyle="bold"
             android:gravity="center"
@@ -241,7 +227,6 @@
             android:layout_width="65dp"
             android:layout_height="60dp"
             android:text="否"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
             android:checked="true"
             android:textStyle="bold"
@@ -259,7 +244,6 @@
         <TextView
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
             android:text="輸血容量:"
             android:textStyle="bold"
             android:gravity="center"
@@ -269,17 +253,14 @@
             android:id="@+id/input5"
             android:layout_width="120dp"
             android:layout_height="40dp"
-            android:paddingLeft="10dp"
             android:layout_marginLeft="5dp"
             android:background="@drawable/check_background"
-            android:layout_marginTop="10dp"
             android:textSize="15sp"
             android:hint="輸血容量"
             />
         <TextView
             android:layout_width="120dp"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"
             android:text="CC"
             android:textStyle="bold"
             android:textColor="#504C4C"

@@ -60,7 +60,6 @@
         <TextView
             android:layout_width="100dp"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"
             android:textStyle="bold"
             android:gravity="center"
             android:textColor="#504C4C"
@@ -77,13 +76,11 @@
             android:paddingRight="10dp"
             android:layout_marginLeft="5dp"
             android:background="@drawable/check_background"
-            android:layout_marginTop="10dp"
             android:textSize="15sp"/>
 
         <TextView
             android:layout_width="120dp"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="8dp"
             android:text="°C"
             android:textColor="#504C4C"
@@ -100,7 +97,6 @@
         <TextView
             android:layout_width="100dp"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"
             android:text="P:"
             android:textStyle="bold"
             android:gravity="center"
@@ -113,14 +109,12 @@
             android:paddingLeft="10dp"
             android:layout_marginLeft="5dp"
             android:background="@drawable/check_background"
-            android:layout_marginTop="10dp"
             android:textSize="15sp"
             android:hint="請輸入P"
             />
         <TextView
             android:layout_width="120dp"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"
             android:text="次/min"
             android:textStyle="bold"
             android:textColor="#504C4C"
@@ -138,7 +132,6 @@
         <TextView
             android:layout_width="100dp"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"
             android:text="R:"
             android:textStyle="bold"
             android:gravity="center"
@@ -153,14 +146,12 @@
             android:paddingRight="10dp"
             android:layout_marginLeft="5dp"
             android:background="@drawable/check_background"
-            android:layout_marginTop="10dp"
             android:textSize="15sp"
             android:hint="請輸入R"
             />
         <TextView
             android:layout_width="120dp"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"
             android:text="次/min"
             android:textStyle="bold"
             android:textColor="#504C4C"
@@ -178,7 +169,6 @@
         <TextView
             android:layout_width="100dp"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"
             android:text="BP:"
             android:textStyle="bold"
             android:gravity="center"
@@ -193,14 +183,12 @@
             android:paddingRight="10dp"
             android:layout_marginLeft="5dp"
             android:background="@drawable/check_background"
-            android:layout_marginTop="10dp"
             android:textSize="15sp"
             android:hint="請輸入R"
             />
         <TextView
             android:layout_width="120dp"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"
             android:text="次/min"
             android:textStyle="bold"
             android:textColor="#504C4C"
