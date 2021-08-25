@@ -200,6 +200,26 @@ public class Print_examineNumber1 extends AppCompatActivity {
                 show.setText("請掃描條碼");
             }
         });
+        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
+        Call<Paitent_Api> call = jsonPlaceHolderApi.postData(id); //A00010
+        call.enqueue(new Callback<Paitent_Api>() {
+            @Override
+            public void onResponse(Call<Paitent_Api> call, Response<Paitent_Api> response) {
+                if (!response.isSuccessful()) {
+                    show.setText("找不到這個id");
+                    return;
+                }
+                String name = response.body().getName();
+                show.setText(name);
+            }
+
+            @Override
+            public void onFailure(Call<Paitent_Api> call, Throwable t) {
+                show.setText("請掃描條碼");
+            }
+        });
+
+
     }
 
 }

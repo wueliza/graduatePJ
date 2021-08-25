@@ -45,7 +45,7 @@
 
             <TextView
                 android:id="@+id/inputt"
-                android:text="請掃描手圈病歷號"
+                android:text=""
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
