@@ -22,7 +22,7 @@ public interface RESTfulApi {
 
     @POST("patient")
     Call<Paitent_Api> postData(@Body Paitent_Api paitentApi);
-    
+
     @GET("eisai/{eisaiNum}")
     Call<Eisai_Api> get_eisai(@Path("eisaiNum")String eisaiNum);
 }
