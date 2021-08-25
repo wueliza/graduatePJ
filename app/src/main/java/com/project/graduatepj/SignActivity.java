@@ -130,7 +130,7 @@ public class SignActivity extends AppCompatActivity {
         TextView tv = (TextView)findViewById(R.id.title);
         TextView tv1 = (TextView)findViewById(R.id.input);
         TextView tv2 = (TextView)findViewById(R.id.show);
-        bt = findViewById(R.id.nextBt);
+        bt = findViewById(R.id.nextbt);
         //bt2 = findViewById(R.id.frontbt);
         Bundle bundle = new Bundle();
 
