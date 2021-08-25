@@ -46,12 +46,12 @@ public class BloodCollect2 extends AppCompatActivity {
         String collectorNumber = sampleNumberBloodCollect3.getString("collectorNumber");
         String recheckNumber = sampleNumberBloodCollect3.getString("recheckNumber");
 
-        EditText patientNumberBox = (EditText) findViewById(R.id.paitentNumber1);
+        EditText patientNumberBox = (EditText) findViewById(R.id.paitentNumber1Box);
         EditText sampleNumberBox = (EditText) findViewById(R.id.sampleNumberBox);
         EditText collectorNumberBox = (EditText) findViewById(R.id.collectorNumberBox);
         EditText recheckNumberBox = (EditText) findViewById(R.id.recheckNumberBox);
 
-        TextView tv = (TextView) findViewById(R.id.patientNumber1Box);
+        TextView tv = (TextView) findViewById(R.id.paitentNumber1Box);
         TextView tv2 = (TextView) findViewById(R.id.sampleNumberBox);
         TextView tv3 = (TextView) findViewById(R.id.collectorNumberBox);
         TextView tv4 = (TextView) findViewById(R.id.recheckNumberBox);
