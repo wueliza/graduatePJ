@@ -4,8 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     android:orientation="vertical"
     android:background="#D7F9FA"
+=======
+>>>>>>> 507e7ac434364fdd84eec8cd06800a0c89fd8765
     tools:context=".SignActivity">
     <FrameLayout
         android:layout_width="match_parent"
@@ -26,7 +29,11 @@
 
         <TextView
             android:id="@+id/textView6"
+<<<<<<< HEAD
             android:text="血袋簽收-醫護人員"
+=======
+            android:text="血袋簽收-護理人員"
+>>>>>>> 507e7ac434364fdd84eec8cd06800a0c89fd8765
             android:layout_width="match_parent"
             android:layout_height="78dp"
             android:background="#0ADDC9"
@@ -61,6 +68,7 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/dp_24" />
 
+<<<<<<< HEAD
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
@@ -110,6 +118,20 @@
 
 
 
+=======
+            <Button
+                android:id="@+id/nextBt"
+                android:layout_width="130dp"
+                android:layout_height="55dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="@dimen/dp_50"
+                android:layout_marginRight="@dimen/dp_20"
+                android:background="@drawable/nextbutton_general"
+                android:text="下一步"
+                android:textStyle="bold"
+                android:textColor="#FBFBFB"
+                android:textSize="@dimen/dp_21" />
+>>>>>>> 507e7ac434364fdd84eec8cd06800a0c89fd8765
 
         </LinearLayout>
 

@@ -27,7 +27,7 @@
 
         <TextView
             android:id="@+id/textView6"
-            android:text="Check In 病人辨識"
+            android:text="衛材檢查"
             android:layout_width="match_parent"
             android:layout_height="78dp"
             android:background="#0ADDC9"
@@ -63,6 +63,7 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/dp_24" />
 
+<<<<<<< HEAD
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
@@ -112,16 +113,18 @@
 
 
 
-
+=
         </LinearLayout>
 
     </LinearLayout>
-
 </merge>
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> 507e7ac434364fdd84eec8cd06800a0c89fd8765
 
 
 

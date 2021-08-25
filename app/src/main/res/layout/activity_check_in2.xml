@@ -43,6 +43,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
+<<<<<<< HEAD
             <TextView
                 android:id="@+id/patientNumberBox"
                 android:layout_width="0dp"
@@ -54,6 +55,31 @@
                 android:gravity="center"
                 android:textSize="18sp" />
         </LinearLayout>
+=======
+    <LinearLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="95dp">
+
+        <TextView
+            android:id="@+id/ManCheck"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:text="檢驗員"
+            android:layout_marginLeft="25dp"
+            android:textStyle="bold"
+            android:textColor="#504C4C"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/ManCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="number" />
+    </LinearLayout>
+>>>>>>> 507e7ac434364fdd84eec8cd06800a0c89fd8765
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -171,6 +197,7 @@
                 android:layout_weight="1"
                 />
             <TextView
+<<<<<<< HEAD
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -187,6 +214,19 @@
             android:layout_height="43dp"
             android:orientation="horizontal"
             android:layout_marginBottom="10dp">
+=======
+                android:id="@+id/Doctor"
+                android:layout_width="117dp"
+                android:layout_height="48dp"
+                android:text="主治醫師"
+                android:layout_marginLeft="25dp"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+>>>>>>> 507e7ac434364fdd84eec8cd06800a0c89fd8765
 
             <TextView
                 android:id="@+id/Doctor"

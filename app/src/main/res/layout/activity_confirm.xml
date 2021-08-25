@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     android:orientation="vertical"
     tools:context=".confirmActivity"
     android:background="#FCFCFC"
@@ -11,58 +12,46 @@
     <TextView
         android:id="@+id/title"
         android:text="核血作業-領血單號"
+=======
+    tools:context=".confirmActivity">
+    <FrameLayout
+>>>>>>> 507e7ac434364fdd84eec8cd06800a0c89fd8765
         android:layout_width="match_parent"
-        android:layout_height="78dp"
-        android:background="#0ADDC9"
-        android:gravity="center"
-        android:textColor="#ffffff"
-        android:textSize="@dimen/dp_24" />
+        android:layout_height="match_parent" >
 
-    <SurfaceView
-        android:id="@+id/surfaceView"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_margin="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/titleBar"
-        app:layout_constraintVertical_bias="0.815" />
+        <SurfaceView
+            android:id="@+id/surfaceView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center" />
+    </FrameLayout>
 
-    <EditText
-        android:id="@+id/input"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:textSize="15sp"
-        android:hint="請掃描領血單號:"
-        />
-    <TextView
-        android:id="@+id/show"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#FFFFFF"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:text="領血單號:"
-        android:paddingLeft="15dp"
-        android:gravity="center_vertical"
-        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:gravity="bottom"
+        android:orientation="vertical"
         >
+
+        <TextView
+            android:id="@+id/textView6"
+            android:text="核血作業-領血單號"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:background="#0ADDC9"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/dp_24"/>
+
+
         <LinearLayout
             android:layout_width="match_parent"
+<<<<<<< HEAD
             android:layout_height="130dp"
             android:orientation="horizontal"
+=======
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+>>>>>>> 507e7ac434364fdd84eec8cd06800a0c89fd8765
             android:gravity="bottom"
             >
             <LinearLayout
@@ -73,6 +62,7 @@
                 android:layout_weight = "1"
                 >
 
+<<<<<<< HEAD
                 <Button
                     android:id="@+id/frontbt"
                     android:text="上一步"
@@ -90,6 +80,40 @@
                 android:orientation="horizontal"
                 android:gravity="right"
                 android:layout_weight = "1">
+=======
+            <TextView
+                android:id="@+id/hint1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/dp_24" />
+
+            <TextView
+                android:id="@+id/hint2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/dp_24" />
+
+            <Button
+                android:id="@+id/nextBt"
+                android:layout_width="130dp"
+                android:layout_height="55dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="@dimen/dp_50"
+                android:layout_marginRight="@dimen/dp_20"
+                android:background="@drawable/nextbutton_general"
+                android:text="下一步"
+                android:textStyle="bold"
+                android:textColor="#FBFBFB"
+                android:textSize="@dimen/dp_21" />
+>>>>>>> 507e7ac434364fdd84eec8cd06800a0c89fd8765
 
                 <Button
                     android:id="@+id/nextbt"
@@ -102,6 +126,7 @@
             </LinearLayout>
         </LinearLayout>
 
+<<<<<<< HEAD
 
     </LinearLayout>
 
@@ -109,3 +134,9 @@
 
 
 
+=======
+    </LinearLayout>
+
+
+</merge>
+>>>>>>> 507e7ac434364fdd84eec8cd06800a0c89fd8765
