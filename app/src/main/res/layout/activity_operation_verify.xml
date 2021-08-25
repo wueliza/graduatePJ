@@ -85,7 +85,7 @@
                         android:layout_gravity="bottom"
                         android:textStyle="bold"
                         android:textColor="#FBFBFB"
-                        android:textSize="20dp"
+                        android:textSize="@dimen/dp_20"
                         android:background="@drawable/nextbutton_general"/>
 
                 </LinearLayout>
@@ -105,13 +105,10 @@
                         android:layout_gravity="bottom"
                         android:textStyle="bold"
                         android:textColor="#FBFBFB"
-                        android:textSize="20dp"
+                        android:textSize="@dimen/dp_20"
                         android:background="@drawable/nextbutton_general"/>
                 </LinearLayout>
             </LinearLayout>
-
-
-
 
         </LinearLayout>
 
