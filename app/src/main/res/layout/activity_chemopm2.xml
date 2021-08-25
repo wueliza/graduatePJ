@@ -25,11 +25,14 @@
 
         <TextView
             android:id="@+id/textView6"
-            android:text="藥品核對"
             android:layout_width="match_parent"
             android:layout_height="78dp"
             android:background="#0ADDC9"
             android:gravity="center"
+<<<<<<< HEAD
+            android:text="藥品簽收"
+=======
+>>>>>>> 507e7ac434364fdd84eec8cd06800a0c89fd8765
             android:textColor="#ffffff"
             android:textSize="@dimen/dp_24"/>
 
@@ -61,6 +64,57 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/dp_24" />
 
+<<<<<<< HEAD
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:orientation="horizontal"
+                android:gravity="bottom"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="bottom"
+                    android:layout_weight = "1"
+                    >
+
+                    <Button
+                        android:id="@+id/frontbt"
+                        android:text="上一步"
+                        android:layout_width="130dp"
+                        android:layout_height="55dp"
+                        android:layout_gravity="bottom"
+                        android:textStyle="bold"
+                        android:textColor="#FBFBFB"
+                        android:textSize="20dp"
+                        android:background="@drawable/nextbutton_general"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="right"
+                    android:layout_weight = "1">
+
+                    <Button
+                        android:id="@+id/nextbt"
+                        android:text="下一步"
+                        android:layout_width="130dp"
+                        android:layout_height="55dp"
+                        android:layout_gravity="bottom"
+                        android:textStyle="bold"
+                        android:textColor="#FBFBFB"
+                        android:textSize="20dp"
+                        android:background="@drawable/nextbutton_general"/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+=======
             <Button
                 android:id="@+id/nextBt"
                 android:layout_width="130dp"
@@ -73,8 +127,16 @@
                 android:textStyle="bold"
                 android:textColor="#FBFBFB"
                 android:textSize="@dimen/dp_21" />
+>>>>>>> 507e7ac434364fdd84eec8cd06800a0c89fd8765
 
         </LinearLayout>
 
     </LinearLayout>
+<<<<<<< HEAD
+
 </merge>
+
+
+=======
+</merge>
+>>>>>>> 507e7ac434364fdd84eec8cd06800a0c89fd8765

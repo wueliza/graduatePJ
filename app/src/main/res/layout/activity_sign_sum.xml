@@ -33,7 +33,7 @@
             <TextView
                 android:layout_width="10dp"
                 android:layout_height="45dp"
-                android:layout_marginLeft="4dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
                 android:text="護理人員 :"
@@ -61,7 +61,8 @@
             <TextView
                 android:layout_width="10dp"
                 android:layout_height="45dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="4dp"
                 android:layout_weight="1"
                 android:text="傳送人員 :"
                 android:textColor="#504C4C"
@@ -88,7 +89,7 @@
             <TextView
                 android:layout_width="10dp"
                 android:layout_height="45dp"
-                android:layout_marginLeft="4dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
                 android:text="領血單號 :"
@@ -114,7 +115,7 @@
     <View
         android:layout_width="fill_parent"
         android:layout_height="2dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:background="#5769F0AE" />
 
     <LinearLayout
@@ -138,7 +139,7 @@
                 android:layout_height="match_parent"
                 android:text="應到血袋數量 :"
                 android:layout_marginTop="4dp"
-                android:layout_marginLeft="4dp"
+                android:layout_marginLeft="8dp"
                 android:textColor="#504C4C"
                 android:textSize="18sp"
                 android:layout_weight="1"
@@ -166,7 +167,7 @@
                 android:layout_height="match_parent"
                 android:text="傳送人員 :"
                 android:layout_marginTop="4dp"
-                android:layout_marginLeft="4dp"
+                android:layout_marginLeft="8dp"
                 android:textColor="#504C4C"
                 android:textSize="18sp"
                 android:layout_weight="1"

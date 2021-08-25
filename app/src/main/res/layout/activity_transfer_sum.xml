@@ -5,8 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+<<<<<<< HEAD
+    tools:context=".Transfer_sumActivity"
+    android:background="#FCFCFC"
+    >
+=======
     android:background="#D7FAFA"
     tools:context=".Transfer_sumActivity">
+>>>>>>> 507e7ac434364fdd84eec8cd06800a0c89fd8765
 
     <TextView
         android:id="@+id/title"
@@ -239,7 +245,7 @@
                 />
         </LinearLayout>
         <View
-            android:background="#000000"
+            android:background="#48000000"
             android:layout_marginTop="20dp"
             android:layout_height="2dp"
             android:layout_width="fill_parent"
