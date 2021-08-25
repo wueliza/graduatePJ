@@ -44,7 +44,7 @@
             >
 
             <TextView
-                android:id="@+id/inputt"
+                android:id="@+id/input"
                 android:text=""
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
                 android:textSize="22dp" />
 
             <TextView
-                android:id="@+id/showw"
+                android:id="@+id/show"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
