@@ -49,8 +49,8 @@ public class OperationVerify extends AppCompatActivity {
         input = findViewById(R.id.textView);
         show = findViewById(R.id.hint2);
         //Button OperationBack = (Button) findViewById(R.id.OperationBack);         (上一頁)
-        Button NextButton = (Button) findViewById(R.id.NextButton);
-        txt = (TextView) findViewById(R.id.titleName);
+        Button NextButton = (Button) findViewById(R.id.nextbt);
+        txt = (TextView) findViewById(R.id.hint1);
 
         Retrofit retrofit = new Retrofit.Builder() //api連接
                 .baseUrl("http://106.105.167.136:8080/api/")

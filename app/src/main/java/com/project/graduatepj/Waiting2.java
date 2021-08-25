@@ -19,9 +19,9 @@ public class Waiting2 extends AppCompatActivity {
         Bundle wistNumbercheckin3 = this.getIntent().getExtras();
         String patientNumber = paitentNumbercheckin3.getString("paitentNumber");
         String wistNumber = wistNumbercheckin3.getString("wistNumber");
-        EditText patientNumberBox = (EditText)findViewById(R.id.patientNumberBox);
-        EditText wistNumberBox = (EditText)findViewById(R.id.wistNumberBox);
-        TextView tv = (TextView) findViewById(R.id.patientNumberBox);
+//        EditText patientNumberBox = (EditText)findViewById(R.id.patientNumberBox);
+//        EditText wistNumberBox = (EditText)findViewById(R.id.wistNumberBox);
+        TextView tv = (TextView) findViewById(R.id.PatientNumberBox);
         TextView tv2 = (TextView) findViewById(R.id.wistNumberBox);
         tv.setText(patientNumber);
         tv2.setText(wistNumber);

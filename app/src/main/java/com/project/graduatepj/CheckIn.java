@@ -50,8 +50,8 @@ public class CheckIn extends AppCompatActivity {
         input = findViewById(R.id.textView);
         show = findViewById(R.id.hint2);
         //Button CheckInBack = (Button) findViewById(R.id.CheckinBack);  (上一頁)
-        Button NextButton = (Button) findViewById(R.id.NextButton);
-        txt = (TextView) findViewById(R.id.titleName);
+        Button nextbt = (Button) findViewById(R.id.nextbt);
+        txt = (TextView) findViewById(R.id.hint1);
         getPermissionsCamera();
 
         //api連接
@@ -80,7 +80,7 @@ public class CheckIn extends AppCompatActivity {
         });
         //API結束 ， 下面還有
 
-        NextButton.setOnClickListener(new View.OnClickListener() {
+        nextbt.setOnClickListener(new View.OnClickListener() {
             @Override
 
             public void onClick(View v) {

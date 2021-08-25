@@ -25,11 +25,11 @@ public class CheckIn2 extends AppCompatActivity {
         String wistNumber = wistNumbercheck.getString("wistNumber");
         String ManCheckNumber = ManCheckBox.getString("ManCheckBox");
 
-        EditText patientNumberBox = (EditText) findViewById(R.id.patientNumberBox);
-        EditText wistNumberBox = (EditText) findViewById(R.id.wistNumberBox);
+//        EditText patientNumberBox = (EditText) findViewById(R.id.PatientNumberBox);
+//        EditText wistNumberBox = (EditText) findViewById(R.id.wistNumberBox);
 
 
-        TextView tv1 = (TextView) findViewById(R.id.patientNumberBox);
+        TextView tv1 = (TextView) findViewById(R.id.PatientNumberBox);
         TextView tv2 = (TextView) findViewById(R.id.wistNumberBox);
         TextView tv3 = (TextView) findViewById(R.id.ManCheckBox);
 
