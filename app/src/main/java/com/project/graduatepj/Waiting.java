@@ -50,8 +50,8 @@ public class Waiting extends AppCompatActivity {
         input = findViewById(R.id.textView);
         show = findViewById(R.id.hint2);
         // Button WaitingBack = (Button) findViewById(R.id.WaitingBack);
-        Button NextButton = (Button) findViewById(R.id.NextButton);
-        txt = (TextView) findViewById(R.id.titleName);
+        Button NextButton = (Button) findViewById(R.id.nextbt);
+        txt = (TextView) findViewById(R.id.hint1);
         getPermissionsCamera();
 
         Retrofit retrofit = new Retrofit.Builder() //api連接
