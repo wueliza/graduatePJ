@@ -25,7 +25,7 @@
         >
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/title"
             android:text="血袋簽收-醫護人員"
             android:layout_width="match_parent"
             android:layout_height="78dp"
@@ -43,7 +43,7 @@
             >
 
             <TextView
-                android:id="@+id/hint1"
+                android:id="@+id/input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -52,7 +52,7 @@
                 android:textSize="@dimen/dp_24" />
 
             <TextView
-                android:id="@+id/hint2"
+                android:id="@+id/show"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
