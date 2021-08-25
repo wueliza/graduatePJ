@@ -22,32 +22,32 @@
     <Button
         android:id="@+id/CheckInButton"
         android:text="Check in 病人辨識"
-        android:layout_width="170dp"
+        android:layout_width="@dimen/dp_250"
         android:layout_height="80dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/collectpagebutton"
         android:layout_gravity="center"
-        android:textSize="20sp"/>
+        android:textSize="@dimen/dp_20"/>
 
     <Button
         android:id="@+id/OperationButton"
-        android:text="進刀房病人辨識"
-        android:layout_width="170dp"
+        android:layout_width="@dimen/dp_250"
         android:layout_height="80dp"
-        android:layout_marginTop="37dp"
-        android:background="@drawable/collectpagebutton"
         android:layout_gravity="center"
-        android:textSize="20sp"/>
+        android:layout_marginTop="40dp"
+        android:background="@drawable/collectpagebutton"
+        android:text="進刀房病人辨識"
+        android:textSize="@dimen/dp_20" />
 
     <Button
         android:id="@+id/WaitingButton"
-        android:text="等候室病人辨識"
-        android:layout_width="170dp"
-        android:layout_height="80dp"
+        android:layout_width="@dimen/dp_250"
+        android:layout_height="78dp"
+        android:layout_gravity="center"
         android:layout_marginTop="37dp"
         android:background="@drawable/collectpagebutton"
-        android:layout_gravity="center"
-        android:textSize="20sp"/>
+        android:text="等候室病人辨識"
+        android:textSize="@dimen/dp_20" />
 
     <LinearLayout
         android:layout_width="match_parent"
