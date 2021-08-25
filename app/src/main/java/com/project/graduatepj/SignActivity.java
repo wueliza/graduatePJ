@@ -45,8 +45,8 @@ public class SignActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign);
 
-        input = findViewById(R.id.hint1);
-        show = findViewById(R.id.hint2);
+        input = findViewById(R.id.input);
+        show = findViewById(R.id.show);
         //相機製作
         getPermissionsCamera();
 
@@ -127,9 +127,9 @@ public class SignActivity extends AppCompatActivity {
             }
         });
 
-        TextView tv = (TextView)findViewById(R.id.textView6);
-        TextView tv1 = (TextView)findViewById(R.id.hint1);
-        TextView tv2 = (TextView)findViewById(R.id.hint2);
+        TextView tv = (TextView)findViewById(R.id.title);
+        TextView tv1 = (TextView)findViewById(R.id.input);
+        TextView tv2 = (TextView)findViewById(R.id.show);
         bt = findViewById(R.id.nextBt);
         //bt2 = findViewById(R.id.frontbt);
         Bundle bundle = new Bundle();
