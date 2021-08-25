@@ -40,10 +40,10 @@ public class Print_examineNumber2 extends AppCompatActivity {
             String paitentNumber1 = paitentNumber1BloodCollect3.getString("paitentNumber1");
             String checkPaperNumber = checkPaperNumberBloodCollect3.getString("checkPaperNumber");
 
-            EditText patientNumberBox = (EditText) findViewById(R.id.paitentNumber1Box);
+            EditText patientNumberBox = (EditText) findViewById(R.id.patientNumber1Box);
             EditText checkPaperNumberBox = (EditText) findViewById(R.id.checkPaperNumberBox);
 
-            TextView tv = (TextView) findViewById(R.id.paitentNumber1Box);
+            TextView tv = (TextView) findViewById(R.id.patientNumber1Box);
             TextView tv2 = (TextView) findViewById(R.id.checkPaperNumberBox);
 
             tv.setText(paitentNumber1);

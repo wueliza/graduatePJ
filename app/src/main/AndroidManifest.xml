@@ -28,8 +28,6 @@
         <activity android:name=".Chemocheck" />
         <activity android:name=".Print_examineNumber2" />
         <activity android:name=".Print_examineNumber1" />
-        <activity android:name=".BloodCollect4" />
-        <activity android:name=".BloodCollect3" />
         <activity android:name=".BloodCollect2" />
         <activity android:name=".BloodCollect1" />
         <activity android:name=".examine_homePage" />
