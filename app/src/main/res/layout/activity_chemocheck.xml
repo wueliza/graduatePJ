@@ -95,7 +95,7 @@
                     android:layout_weight = "1">
 
                     <Button
-                        android:id="@+id/chem2nextbt"
+                        android:id="@+id/nextbt"
                         android:text="下一步"
                         android:layout_width="130dp"
                         android:layout_height="55dp"

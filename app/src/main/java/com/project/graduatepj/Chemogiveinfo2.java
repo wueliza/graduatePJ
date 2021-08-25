@@ -9,14 +9,14 @@ import android.widget.Button;
 
 
 public class Chemogiveinfo2 extends AppCompatActivity {
-    private Button button4;
+    private Button sendbt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chemogiveinfo2);
-        button4 = (Button)findViewById(R.id.button4);
-        button4.setOnClickListener(new View.OnClickListener() {
+        sendbt = (Button)findViewById(R.id.sendbt);
+        sendbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

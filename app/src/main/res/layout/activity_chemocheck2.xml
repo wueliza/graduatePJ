@@ -362,7 +362,7 @@
                 android:gravity="right"
                 android:layout_weight = "1">
                 <Button
-                    android:id="@+id/button5"
+                    android:id="@+id/sendbt"
                     android:layout_width="130dp"
                     android:layout_height="55dp"
                     android:layout_gravity="bottom"

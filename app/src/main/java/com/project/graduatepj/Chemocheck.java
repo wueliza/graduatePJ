@@ -23,18 +23,16 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 import java.io.IOException;
 
 public class Chemocheck extends AppCompatActivity {
-    private Button button;
+    private Button nextbt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chemocheck);
 
-        button = (Button)findViewById(R.id.nextBt);
+        nextbt = (Button)findViewById(R.id.nextbt);
 
-        Button nextPageBtn = (Button)findViewById(R.id.chem2nextBt);
-
-        nextPageBtn.setOnClickListener(new View.OnClickListener() {
+        nextbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
