@@ -13,15 +13,6 @@ import retrofit2.http.Path;
 public interface RESTfulApi {
     @GET("patient")
     Call<List<Paitent_Api>> getPosts();
-<<<<<<< HEAD
-=======
-    @GET("patient/{patientNum}")
-    Call<Paitent_Api> getOne(@Path("patientNum")String patientNum);
-    @GET("staff/{emid}")
-    Call<Staff_Api> get_staff(@Path("emid")String emid);
-    Call<Paitent_Api> getOne(@Path("patientNum") String patientNum);
-////2021/8/18/////
->>>>>>> 880dc64bb1b4ac02da92c0d356b0fc3cd4c8b939
 
     @GET("patient/{patientNum}") //1 . 2 . 3 ...
     Call<Paitent_Api> getOne(@Path("patientNum")String patientNum);
@@ -31,5 +22,7 @@ public interface RESTfulApi {
 
     @POST("patient")
     Call<Paitent_Api> postData(@Body Paitent_Api paitentApi);
-
+    
+    @GET("eisai/{eisaiNum}")
+    Call<Eisai_Api> get_eisai(@Path("eisaiNum")String eisaiNum);
 }
