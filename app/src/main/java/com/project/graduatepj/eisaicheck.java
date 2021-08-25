@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
@@ -26,15 +28,23 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.IOException;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class eisaicheck extends AppCompatActivity {
 
     private SurfaceView surfaceView;
-    private TextView hint1 , hint2;
+    private TextView step , result , show;
     private CameraSource cameraSource;
     private BarcodeDetector barcodeDetector;
     private Button nextBt;
-    private eisaiData data; //store data
     int count = 0;
+    Bundle bundle = new Bundle();
+    Intent intent = new Intent();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,18 +53,16 @@ public class eisaicheck extends AppCompatActivity {
 
         DisplayMetrics metric = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metric);
-        int width = metric.widthPixels;     // 螢幕寬度（畫素）
-        int height = metric.heightPixels;   // 螢幕高度（畫素）
-        float density = metric.density;      // 螢幕密度（0.75 / 1.0 / 1.5）
-        int densityDpi = metric.densityDpi;  // 螢幕密度DPI（120 / 160 / 240）
-        System.out.println("w = " + width + "\nh = " + height);
         surfaceView=(SurfaceView)findViewById(R.id.surfaceView);
-        hint1=(TextView)findViewById(R.id.hint1);
-        hint2 = (TextView)findViewById(R.id.hint2);
-        nextBt = (Button)findViewById(R.id.nextBt);
-        nextBt.setOnClickListener(this::nextStep);
-        hint1.setText("請掃描檢驗員員工編號條碼");
+        step=(TextView)findViewById(R.id.hint1); //
+        result = (TextView)findViewById(R.id.hint2);
+        show = (TextView)findViewById(R.id.hint3);
+        nextBt = (Button)findViewById(R.id.nextbt);
 
+        nextBt.setOnClickListener(this::nextStep);
+        step.setText("請掃描檢驗員員工編號條碼");
+
+        //camera
         barcodeDetector = new BarcodeDetector.Builder(this).setBarcodeFormats(Barcode.ALL_FORMATS).build();
         cameraSource = new CameraSource.Builder(this,barcodeDetector)
                 .setRequestedPreviewSize(1920, 1080)
@@ -84,7 +92,6 @@ public class eisaicheck extends AppCompatActivity {
                 cameraSource.stop();
             }
         });
-
         barcodeDetector.setProcessor(new Detector.Processor<Barcode>(){
             @Override
             public void release() {
@@ -95,36 +102,62 @@ public class eisaicheck extends AppCompatActivity {
             public void receiveDetections(Detector.Detections<Barcode> detections) {
                 final SparseArray<Barcode> qrCodes=detections.getDetectedItems();
                 if(qrCodes.size()!=0){
-                    hint1.post(new Runnable() {
+                    result.post(new Runnable() {
                         @Override
                         public void run() {
-                            hint1.setText(qrCodes.valueAt(0).displayValue);
+                            result.setText(qrCodes.valueAt(0).displayValue); //qrcode result
                         }
                     });
                 }
             }
         });
 
+        //api連接
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://106.105.167.136:8080/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        //監視TextView是否有更變
+        result.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (result.getText().toString() != null) {
+                    Get_staff(retrofit, editable.toString());
+                }
+                result.setText(editable);
+            }
+        });
     }
 
     private void nextStep(View V){
-        if(count == 0){
-            //show & store the scan result from the inspector_num
-            data.setInspetors_num("1234");
-            hint2.setText("請掃描病歷號條碼");
+        if(count == 0 && result.getText() != ""){
+            intent.setClass(eisaicheck.this , eisairesult.class);
+            bundle.putString("staff_id", result.getText().toString());
+            intent.putExtras(bundle);
+            step.setText("請掃描病歷號條碼");
             count++;
         }
-        else if(count == 1){
-            //show & store the scan result from the inspector_num
-            data.setEquipment("4567");
-            hint2.setText("請掃描衛材條碼");
+        else if(count == 1 && result.getText() != ""){
+            intent.setClass(eisaicheck.this , eisairesult.class);
+            bundle.putString("patient_id", result.getText().toString());
+            intent.putExtras(bundle);
+            step.setText("請掃描衛材條碼");
             nextBt.setText("傳送");
             count++;
         }
-        else if(count == 2){
-            data.setEquipment("7890");
-            Intent intent = new Intent();
-            intent.setClass(eisaicheck.this , com.project.graduatepj.eisairesult.class);
+        else if(count == 3){
+            intent.setClass(eisaicheck.this , eisairesult.class);
+            bundle.putString("eisai_id", result.getText().toString());
+            intent.putExtras(bundle);
             startActivity(intent);
         }
     }
@@ -136,4 +169,26 @@ public class eisaicheck extends AppCompatActivity {
         }
     }
 
+    public void Get_staff(Retrofit retrofit, String id) {
+        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
+        Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id); //A00010
+        call.enqueue(new Callback<Staff_Api>() {
+            @Override
+            public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
+                if (!response.isSuccessful()) {
+                    step.setText("此id不存在，請重新掃描！");
+                    return;
+                }
+                else {
+                    String name = response.body().getName();
+                    show.setText(name);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Staff_Api> call, Throwable t) {
+                step.setText("請掃描條碼");
+            }
+        });
+    }
 }

@@ -10,6 +10,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -42,6 +44,32 @@ public class BloodCollect1 extends AppCompatActivity {
         setContentView(R.layout.activity_blood_collect1);
 
         getPermissionsCamera();
+
+        //api連接
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://106.105.167.136:8080/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        //監視TextView是否有更變
+        input.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (input.getText().toString() != null) {
+                    Get_staff(retrofit, editable.toString());
+                }
+                show.setText(editable);
+            }
+        });
+        //API結束 ， 下面還有
 
         surfaceView=(SurfaceView)findViewById(R.id.surfaceView);
         textView=(TextView)findViewById(R.id.show);
@@ -184,6 +212,55 @@ public class BloodCollect1 extends AppCompatActivity {
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA},1);
         }
     }
+
+    public void Get_staff(Retrofit retrofit, String id) {
+
+        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
+        Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id); //A00010
+        call.enqueue(new Callback<Staff_Api>() {
+            @Override
+            public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
+                if (!response.isSuccessful()) {
+                    show.setText("找不到這個id");
+                    return;
+                }
+                String name = response.body().getName();
+                show.setText(name);
+            }
+
+            @Override
+            public void onFailure(Call<Staff_Api> call, Throwable t) {
+                show.setText("請掃描條碼");
+            }
+        });
+
+        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
+        Call<Paitent_Api> call = jsonPlaceHolderApi.postData(id); //A00010
+        call.enqueue(new Callback<Paitent_Api>() {
+            @Override
+            public void onResponse(Call<Paitent_Api> call, Response<Paitent_Api> response) {
+                if (!response.isSuccessful()) {
+                    show.setText("找不到這個id");
+                    return;
+                }
+                String name = response.body().getName();
+                show.setText(name);
+            }
+
+            @Override
+            public void onFailure(Call<Paitent_Api> call, Throwable t) {
+                show.setText("請掃描條碼");
+            }
+        });
+
+
+
+
+    }
+
+
+
+
 }
 
 
