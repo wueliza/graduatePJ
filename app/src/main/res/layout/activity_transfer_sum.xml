@@ -8,6 +8,10 @@
     tools:context=".Transfer_sumActivity"
     android:background="#FCFCFC"
     >
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7bc295ba2cfc7578e1aa1f36da2e75d6cbc293d4
     <TextView
         android:id="@+id/title"
         android:text="輸血作業-總結"
