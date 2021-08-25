@@ -38,8 +38,6 @@
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginTop="4dp"
                     android:layout_gravity="center"
                     android:layout_weight="0.3"
                     android:text="檢驗員："
@@ -68,8 +66,6 @@
                     android:id="@+id/textView44"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_4"
-                    android:layout_marginTop="@dimen/dp_4"
                     android:layout_gravity="center"
                     android:layout_weight="0.3"
                     android:text="病歷號："
@@ -98,8 +94,7 @@
                     android:id="@+id/textView4444"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_4"
-                    android:layout_marginTop="@dimen/dp_4"
+
                     android:layout_gravity="center"
                     android:layout_weight="0.2"
                     android:text="衛材號碼："
@@ -123,7 +118,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:layout_marginTop="@dimen/dp_8"
                 android:layout_weight="1"
                 android:text=" 結果："
                 android:textColor="#504C4C"
@@ -162,12 +156,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="10"/>
             <Button
-                android:id="@+id/sendbt"
+                android:id="@+id/completebt"
                 android:layout_width="@dimen/dp_130"
                 android:layout_height="@dimen/dp_55"
                 android:layout_gravity="bottom|end"
                 android:background="@drawable/nextbutton_general"
-                android:text="傳送"
+                android:text="完成"
                 android:layout_weight="1"
                 android:textSize="18sp" />
 
