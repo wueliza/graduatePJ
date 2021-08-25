@@ -48,6 +48,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/staff_id"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -77,6 +78,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/patient_id"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -106,6 +108,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/eisai_id"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -127,9 +130,10 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/result_tv"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_grㄋavity="start"
+                android:layout_gravity="start"
                 android:layout_marginTop="8dp"
                 android:layout_weight="1"
                 android:textColor="#504C4C"
