@@ -26,9 +26,17 @@ import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
 import java.io.IOException;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class BloodCollect1 extends AppCompatActivity {
     private Button bt1;
     private Button bt22;
+    private TextView input;
+    private TextView show;
     SurfaceView surfaceView;
     TextView textView;
     CameraSource cameraSource;
@@ -43,6 +51,8 @@ public class BloodCollect1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blood_collect1);
 
+        input = findViewById(R.id.input);
+        show = findViewById(R.id.show);
         getPermissionsCamera();
 
         //api連接
@@ -126,8 +136,8 @@ public class BloodCollect1 extends AppCompatActivity {
         });
 
         TextView tv = (TextView)findViewById(R.id.titlee);
-        TextView tv1 = (TextView)findViewById(R.id.inputt);
-        TextView tv2 = (TextView)findViewById(R.id.showw);
+        TextView tv1 = (TextView)findViewById(R.id.input);
+        TextView tv2 = (TextView)findViewById(R.id.show);
         bt1 = findViewById(R.id.nextbt);
         bt22 = findViewById(R.id.frontbt);
         bt1.setOnClickListener(new View.OnClickListener() {
@@ -233,29 +243,6 @@ public class BloodCollect1 extends AppCompatActivity {
                 show.setText("請掃描條碼");
             }
         });
-
-        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-        Call<Paitent_Api> call = jsonPlaceHolderApi.postData(id); //A00010
-        call.enqueue(new Callback<Paitent_Api>() {
-            @Override
-            public void onResponse(Call<Paitent_Api> call, Response<Paitent_Api> response) {
-                if (!response.isSuccessful()) {
-                    show.setText("找不到這個id");
-                    return;
-                }
-                String name = response.body().getName();
-                show.setText(name);
-            }
-
-            @Override
-            public void onFailure(Call<Paitent_Api> call, Throwable t) {
-                show.setText("請掃描條碼");
-            }
-        });
-
-
-
-
     }
 
 }
