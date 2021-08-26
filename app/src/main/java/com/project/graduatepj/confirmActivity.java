@@ -35,13 +35,12 @@ public class confirmActivity extends AppCompatActivity {
     private Button bt;
     private Button bt2;
     private TextView show;
-    private EditText input;
+    private TextView input;
     SurfaceView surfaceView;
     TextView textView;
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
     int count = 0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -202,6 +201,7 @@ public class confirmActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA},1);
         }
     }
+
     public void Get_staff(Retrofit retrofit,String id){
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
         Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id);
