@@ -47,7 +47,7 @@ public class CheckIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_in);
-        input = findViewById(R.id.textView);
+        input = findViewById(R.id.hint1);
         show = findViewById(R.id.hint2);
         Button frontbt = (Button) findViewById(R.id.frontbt);
         Button nextbt = (Button) findViewById(R.id.nextbt);

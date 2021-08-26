@@ -47,7 +47,7 @@ public class Waiting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_waiting);
 
-        input = findViewById(R.id.textView);
+        input = findViewById(R.id.hint1);
         show = findViewById(R.id.hint2);
         // Button WaitingBack = (Button) findViewById(R.id.WaitingBack);
         Button NextButton = (Button) findViewById(R.id.nextbt);
