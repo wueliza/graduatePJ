@@ -49,7 +49,7 @@ public class CheckIn extends AppCompatActivity {
         setContentView(R.layout.activity_check_in);
         input = findViewById(R.id.textView);
         show = findViewById(R.id.hint2);
-        //Button CheckInBack = (Button) findViewById(R.id.CheckinBack);  (上一頁)
+        Button frontbt = (Button) findViewById(R.id.frontbt);
         Button nextbt = (Button) findViewById(R.id.nextbt);
         txt = (TextView) findViewById(R.id.hint1);
         getPermissionsCamera();
@@ -114,22 +114,22 @@ public class CheckIn extends AppCompatActivity {
                 }
             }
         });
-//        CheckInBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                cnt--;
-//                switch (cnt) {
-//                    case -1:
-//                        Intent intent = new Intent();
-//                        intent.setClass(CheckIn.this, OperationHome.class);
-//                        startActivity(intent);
-//                        break;
-//                    case 0:
-//                        txt.setText("總表病歷號");
-//                        break;
-//                }
-//            }
-//        });
+        frontbt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cnt--;
+                switch (cnt) {
+                    case -1:
+                        Intent intent = new Intent();
+                        intent.setClass(CheckIn.this, OperationHome.class);
+                        startActivity(intent);
+                        break;
+                    case 0:
+                        txt.setText("總表病歷號");
+                        break;
+                }
+            }
+        });
 
         surfaceView = (SurfaceView)
 

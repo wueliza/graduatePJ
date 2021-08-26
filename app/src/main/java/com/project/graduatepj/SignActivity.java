@@ -33,7 +33,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class SignActivity extends AppCompatActivity {
     private Button bt;
     private Button bt2;
-    private EditText input;
+    private TextView input;
     private TextView show;
     SurfaceView surfaceView;
     TextView textView;
@@ -129,7 +129,7 @@ public class SignActivity extends AppCompatActivity {
         });
 
         TextView tv = (TextView)findViewById(R.id.title);
-        EditText tv1 = (EditText)findViewById(R.id.input);
+        TextView tv1 = (TextView) findViewById(R.id.input);
         TextView tv2 = (TextView)findViewById(R.id.show);
         bt = findViewById(R.id.nextbt);
         bt2 = findViewById(R.id.frontbt);
