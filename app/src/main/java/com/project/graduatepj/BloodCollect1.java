@@ -244,7 +244,6 @@ public class BloodCollect1 extends AppCompatActivity {
             }
         });
     }
-
 }
 
 
