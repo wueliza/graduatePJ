@@ -19,11 +19,18 @@ public class OperationVerify2 extends AppCompatActivity {
         Bundle paitentNumbercheckin3 = this.getIntent().getExtras();
         Bundle wistNumbercheckin3 = this.getIntent().getExtras();
         String KnifeNumber = paitentNumbercheckin3.getString("KnifeNumber");
+<<<<<<< HEAD
+        String wistNumberBox = wistNumbercheckin3.getString("wistNumberBox");
+//        EditText KnifeNumberBox = (EditText)findViewById(R.id.KnifeNumberBox);
+//        EditText patientNumberBox = (EditText)findViewById(R.id.patientNumberBox);
+
+=======
         String paitentNumber = wistNumbercheckin3.getString("paitentNumber");
+>>>>>>> dfc7f596db394bf99690fb36d01af195e13af1ce
         TextView tv = (TextView) findViewById(R.id.KnifeNumberBox);
-        TextView tv2 = (TextView) findViewById(R.id.patientNumberBox);
+        TextView tv2 = (TextView) findViewById(R.id.wistNumberBox);
         tv.setText(KnifeNumber);
-        tv2.setText(paitentNumber);
+        tv2.setText(wistNumberBox);
         Button BackButton = (Button) findViewById(R.id.BackButton);
 
         BackButton.setOnClickListener(new View.OnClickListener() {
