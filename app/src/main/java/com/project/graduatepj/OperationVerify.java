@@ -46,7 +46,7 @@ public class OperationVerify extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_operation_verify);
 
-        input = findViewById(R.id.textView);
+        input = findViewById(R.id.hint1);
         show = findViewById(R.id.hint2);
         //Button OperationBack = (Button) findViewById(R.id.OperationBack);         (上一頁)
         Button NextButton = (Button) findViewById(R.id.nextbt);
