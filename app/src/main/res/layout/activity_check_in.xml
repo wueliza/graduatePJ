@@ -27,7 +27,7 @@
 
         <TextView
             android:id="@+id/textView6"
-            android:text="衛材檢查"
+            android:text="CheckIn 病人辨識"
             android:layout_width="match_parent"
             android:layout_height="78dp"
             android:background="#0ADDC9"
