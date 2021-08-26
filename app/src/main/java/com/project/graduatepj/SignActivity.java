@@ -15,6 +15,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.gms.vision.CameraSource;
@@ -32,7 +33,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class SignActivity extends AppCompatActivity {
     private Button bt;
     private Button bt2;
-    private TextView input;
+    private EditText input;
     private TextView show;
     SurfaceView surfaceView;
     TextView textView;
@@ -52,30 +53,6 @@ public class SignActivity extends AppCompatActivity {
 
         surfaceView=(SurfaceView)findViewById(R.id.surfaceView);
         textView=(TextView)findViewById(R.id.textView);
-
-        Retrofit retrofit = new Retrofit.Builder() //api連接
-                .baseUrl("http://106.105.167.136:8080/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        input.addTextChangedListener(new TextWatcher() { //監視editText是否有更變
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if(input.getText().toString() != null){
-                    Get_staff(retrofit,editable.toString());
-                }
-                show.setText(editable);
-            }
-        });
 
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.ALL_FORMATS).build();
@@ -127,11 +104,35 @@ public class SignActivity extends AppCompatActivity {
             }
         });
 
+        Retrofit retrofit = new Retrofit.Builder() //api連接
+                .baseUrl("http://106.105.167.136:8080/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        input.addTextChangedListener(new TextWatcher() { //監視editText是否有更變
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(input.getText().toString() != null){
+                    Get_staff(retrofit,editable.toString());
+                }
+                show.setText(editable);
+            }
+        });
+
         TextView tv = (TextView)findViewById(R.id.title);
-        TextView tv1 = (TextView)findViewById(R.id.input);
+        EditText tv1 = (EditText)findViewById(R.id.input);
         TextView tv2 = (TextView)findViewById(R.id.show);
         bt = findViewById(R.id.nextbt);
-        //bt2 = findViewById(R.id.frontbt);
+        bt2 = findViewById(R.id.frontbt);
         Bundle bundle = new Bundle();
 
         bt.setOnClickListener(new View.OnClickListener() {
@@ -217,7 +218,6 @@ public class SignActivity extends AppCompatActivity {
                 String name = response.body().getName();
                 show.setText(name);
             }
-
             @Override
             public void onFailure(Call<Staff_Api> call, Throwable t) {
                 show.setText("請掃描條碼");

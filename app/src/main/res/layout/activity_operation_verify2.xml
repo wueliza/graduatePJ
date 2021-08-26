@@ -145,6 +145,7 @@
                 android:textSize="@dimen/dp_18" />
 
             <TextView
+                android:id="@+id/patientNumberBox"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="4dp"
