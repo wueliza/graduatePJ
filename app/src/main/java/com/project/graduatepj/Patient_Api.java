@@ -1,6 +1,6 @@
 package com.project.graduatepj;
 
-public class Paitent_Api {
+public class Patient_Api {
     private int patientNum;
     private String sex;
     private String birth;
@@ -57,7 +57,7 @@ public class Paitent_Api {
         return bsno;
     }
 
-    public Paitent_Api(int patientNum, String sex, String birth, String bedNum, String bloodType, String name, String division, String height, String age, String weight, String bsno) {
+    public Patient_Api(int patientNum, String sex, String birth, String bedNum, String bloodType, String name, String division, String height, String age, String weight, String bsno) {
         this.patientNum = patientNum;
         this.sex = sex;
         this.birth = birth;

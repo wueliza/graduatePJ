@@ -24,7 +24,7 @@
 
         <TextView
             android:id="@+id/textView6"
-            android:text="藥品簽收"
+            android:text="藥品核對"
             android:layout_width="match_parent"
             android:layout_height="78dp"
             android:background="#0ADDC9"
@@ -95,7 +95,7 @@
                     android:layout_weight = "1">
 
                     <Button
-                        android:id="@+id/chem2nextbt"
+                        android:id="@+id/nextbt"
                         android:text="下一步"
                         android:layout_width="130dp"
                         android:layout_height="55dp"

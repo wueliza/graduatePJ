@@ -109,14 +109,8 @@
                         android:background="@drawable/nextbutton_general"/>
                 </LinearLayout>
             </LinearLayout>
-
-
-
-
         </LinearLayout>
-
     </LinearLayout>
-
 </merge>
 
 

@@ -8,11 +8,14 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.gms.vision.CameraSource;
@@ -22,18 +25,30 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.IOException;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class TransferActivity extends AppCompatActivity {
-    private Button bt;
-    private Button bt2;
+    Button bt;
+    Button bt2;
     SurfaceView surfaceView;
     TextView textView;
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
+    Bundle bundle = new Bundle();
+    private EditText input;
+    private TextView show;
     int count = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transfer);
+
+        input = findViewById(R.id.input);
+        show = findViewById(R.id.show);
 
         //相機製作
         getPermissionsCamera();
@@ -90,11 +105,36 @@ public class TransferActivity extends AppCompatActivity {
             }
         });
 
+        Retrofit retrofit = new Retrofit.Builder() //api連接
+                .baseUrl("http://106.105.167.136:8080/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        input.addTextChangedListener(new TextWatcher() { //監視editText是否有更變
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(input.getText().toString() != null){
+                    Get_staff(retrofit,editable.toString());
+                }
+                //show.setText(editable);
+            }
+        });
+
         TextView tv = (TextView)findViewById(R.id.title);
         TextView tv1 = (TextView)findViewById(R.id.input);
         TextView tv2 = (TextView)findViewById(R.id.show);
         bt = findViewById(R.id.nextbt);
         bt2 = findViewById(R.id.frontbt);
+
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,27 +142,32 @@ public class TransferActivity extends AppCompatActivity {
                 switch (count){
                     case 1:
                         tv.setText("輸血作業-核血人員");
-                        tv1.setText("核血人員編號");
-                        tv2.setText("核血人員:");
+                        tv1.setHint("核血人員編號");
+                        tv2.setHint("核血人員");
+                        //bundle.putString("confirm",show.getText().toString());
                         break;
                     case 2:
                         tv.setText("輸血作業-確認人員");
-                        tv1.setText("確認人員編號");
-                        tv2.setText("確認人員:");
+                        tv1.setHint("確認人員編號");
+                        tv2.setHint("確認人員");
+                        //bundle.putString("check",show.getText().toString());
                         break;
                     case 3:
                         tv.setText("輸血作業-掃描血袋");
-                        tv1.setText("掃描血袋");
-                        tv2.setText("掃描血袋:");
+                        tv1.setHint("掃描血袋");
+                        tv2.setHint("掃描血袋");
+                        //bundle.putString("scan",show.getText().toString());
                         break;
                     case 4:
                         Intent intent = new Intent(TransferActivity.this,Transfer_sumActivity.class);
+                        intent.putExtras(bundle);
                         startActivity(intent);
                         break;
                     default:
                         tv.setText("輸血作業-病歷號");
-                        tv1.setText("病歷號");
-                        tv2.setText("病歷號:");
+                        tv1.setHint("病歷號");
+                        tv2.setHint("病歷號");
+                        //bundle.putString("patient_num",show.getText().toString());
                 }
             }
         });
@@ -133,18 +178,21 @@ public class TransferActivity extends AppCompatActivity {
                 switch (count){
                     case 1:
                         tv.setText("輸血作業-核血人員");
-                        tv1.setText("核血人員編號");
-                        tv2.setText("核血人員:");
+                        tv1.setHint("核血人員編號");
+                        tv2.setHint("核血人員");
+                        //bundle.putString("confirm",show.getText().toString());
                         break;
                     case 2:
                         tv.setText("輸血作業-確認人員");
-                        tv1.setText("確認人員編號");
-                        tv2.setText("確認人員:");
+                        tv1.setHint("確認人員編號");
+                        tv2.setHint("確認人員");
+                        //bundle.putString("check",show.getText().toString());
                         break;
                     case 3:
                         tv.setText("輸血作業-掃描血袋");
-                        tv1.setText("掃描血袋");
-                        tv2.setText("掃描血袋:");
+                        tv1.setHint("掃描血袋");
+                        tv2.setHint("掃描血袋");
+                        //bundle.putString("scan",show.getText().toString());
                         break;
                     case -1:
                         Intent intent = new Intent(TransferActivity.this,blood_homeActivity.class);
@@ -152,8 +200,9 @@ public class TransferActivity extends AppCompatActivity {
                         break;
                     default:
                         tv.setText("輸血作業-病歷號");
-                        tv1.setText("病歷號");
-                        tv2.setText("病歷號:");
+                        tv1.setHint("病歷號");
+                        tv2.setHint("病歷號");
+                        //bundle.putString("patient_num",show.getText().toString());
                 }
             }
         });
@@ -162,6 +211,64 @@ public class TransferActivity extends AppCompatActivity {
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA},1);
+        }
+    }
+
+    public void Get_staff(Retrofit retrofit,String id){
+        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
+        Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id);
+        Call<Patient_Api> patient_apiCall = jsonPlaceHolderApi.getOne(id);
+
+        if(count == 0){
+            patient_apiCall.enqueue(new Callback<Patient_Api>() {
+                @Override
+                public void onResponse(Call<Patient_Api> patient_apiCall1, Response<Patient_Api> response) {
+                    if (!response.isSuccessful()) {
+                        show.setText("找不到這個id");
+                        return;
+                    }
+                    String name = response.body().getName();
+                    show.setText(name);
+                    bundle.putString("patient_num", id);
+                }
+                @Override
+                public void onFailure(Call<Patient_Api> patient_apiCall1, Throwable t) {
+                    show.setText("請掃描條碼");
+                }
+            });
+        }
+        else {
+            call.enqueue(new Callback<Staff_Api>() {
+                @Override
+                public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
+                    if (!response.isSuccessful()) {
+                        show.setText("找不到這個id");
+                        return;
+                    }
+                    String name = response.body().getName();
+                    show.setText(name);
+                    switch (count) {
+                        case 1:
+                            bundle.putString("confirm", show.getText().toString());
+                            break;
+                        case 2:
+                            bundle.putString("check", show.getText().toString());
+                            break;
+                        case 3:
+                            bundle.putString("scan", show.getText().toString());
+                            break;
+                        case -1:
+                            break;
+                        default:
+                            bundle.putString("patient_num", show.getText().toString());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Staff_Api> call, Throwable t) {
+                    show.setText("請掃描條碼");
+                }
+            });
         }
     }
 }

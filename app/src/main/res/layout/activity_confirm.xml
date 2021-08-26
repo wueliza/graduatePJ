@@ -8,7 +8,6 @@
     tools:context=".confirmActivity"
     android:background="#FCFCFC"
     >
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
@@ -34,24 +33,12 @@
         android:paddingRight="10dp"
         android:textSize="15sp" />
 
-    <TextView
-        android:id="@+id/show"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#FFFFFF"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:text="病歷號:"
-        android:paddingLeft="15dp"
-        android:gravity="center_vertical"
-        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
-
         <TextView
             android:id="@+id/title"
             android:text="核血作業-領血單號"
@@ -112,7 +99,7 @@
                         android:layout_gravity="bottom"
                         android:textStyle="bold"
                         android:textColor="#FBFBFB"
-                        android:textSize="20dp"
+                        android:textSize="@dimen/dp_20"
                         android:background="@drawable/nextbutton_general"/>
 
                 </LinearLayout>
@@ -132,18 +119,12 @@
                         android:background="@drawable/nextbutton_general"
                         android:text="下一步"
                         android:textColor="#FBFBFB"
-                        android:textSize="20dp"
+                        android:textSize="@dimen/dp_20"
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
-
-
-
-
         </LinearLayout>
-
     </LinearLayout>
-
 </merge>
 
 

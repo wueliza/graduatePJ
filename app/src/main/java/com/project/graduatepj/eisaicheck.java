@@ -130,8 +130,14 @@ public class eisaicheck extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (result.getText().toString() != null) {
+                if (result.getText() != null && count == 0) {
                     Get_staff(retrofit, editable.toString());
+                }
+                else if (result.getText() != null && count == 1) {
+                    Get_patient(retrofit, editable.toString());
+                }
+                else if (result.getText() != null && count == 2) {
+                    Get_eisai(retrofit, editable.toString());
                 }
                 result.setText(editable);
             }
@@ -187,6 +193,50 @@ public class eisaicheck extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Staff_Api> call, Throwable t) {
+                step.setText("請掃描條碼");
+            }
+        });
+    }
+    public void Get_patient(Retrofit retrofit, String id) {
+        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
+        Call<Patient_Api> call = jsonPlaceHolderApi.getOne(id); //A00010
+        call.enqueue(new Callback<Patient_Api>() {
+            @Override
+            public void onResponse(Call<Patient_Api> call, Response<Patient_Api> response) {
+                if (!response.isSuccessful()) {
+                    step.setText("此id不存在，請重新掃描！");
+                    return;
+                }
+                else {
+                    String name = response.body().getName();
+                    show.setText(name);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Patient_Api> call, Throwable t) {
+                step.setText("請掃描條碼");
+            }
+        });
+    }
+    public void Get_eisai(Retrofit retrofit, String id) {
+        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
+        Call<Eisai_Api> call = jsonPlaceHolderApi.get_eisai(id); //A00010
+        call.enqueue(new Callback<Eisai_Api>() {
+            @Override
+            public void onResponse(Call<Eisai_Api> call, Response<Eisai_Api> response) {
+                if (!response.isSuccessful()) {
+                    step.setText("此id不存在，請重新掃描！");
+                    return;
+                }
+                else {
+                    String name = response.body().getName();
+                    show.setText(name);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Eisai_Api> call, Throwable t) {
                 step.setText("請掃描條碼");
             }
         });

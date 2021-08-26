@@ -21,7 +21,7 @@ public class gotofunction extends AppCompatActivity {
         surgeryBt = findViewById(R.id.surgeryBt);
         bloodTransBt = findViewById(R.id.bloodTransBt);
         chemBt = findViewById(R.id.chemBt);
-        loginBBt = findViewById(R.id.loginBBt);
+        loginBBt = findViewById(R.id.loginBt);
 
         eisaiBt.setOnClickListener(this::go_eisai);
         chemBt.setOnClickListener(this::go_chem);
