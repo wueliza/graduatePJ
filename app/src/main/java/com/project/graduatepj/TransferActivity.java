@@ -39,7 +39,6 @@ public class TransferActivity extends AppCompatActivity {
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
     Bundle bundle = new Bundle();
-    private EditText input;
     private TextView show;
     int count = 0;
     @Override
@@ -47,14 +46,14 @@ public class TransferActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transfer);
 
-        input = findViewById(R.id.input);
         show = findViewById(R.id.show);
 
         //相機製作
         getPermissionsCamera();
 
         surfaceView=(SurfaceView)findViewById(R.id.surfaceView);
-        textView=(TextView)findViewById(R.id.textView);
+        textView=(TextView)findViewById(R.id.input);
+
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.ALL_FORMATS).build();
         cameraSource = new CameraSource.Builder(this,barcodeDetector)
@@ -110,7 +109,7 @@ public class TransferActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        input.addTextChangedListener(new TextWatcher() { //監視editText是否有更變
+        textView.addTextChangedListener(new TextWatcher() { //監視editText是否有更變
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
@@ -122,7 +121,7 @@ public class TransferActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(input.getText().toString() != null){
+                if(textView.getText().toString() != null){
                     Get_staff(retrofit,editable.toString());
                 }
                 //show.setText(editable);

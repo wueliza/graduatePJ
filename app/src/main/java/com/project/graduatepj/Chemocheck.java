@@ -22,7 +22,7 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.IOException;
 
-public class Chemocheck extends AppCompatActivity {
+public class    Chemocheck extends AppCompatActivity {
     private Button nextbt;
 
     @Override
