@@ -33,7 +33,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class SignActivity extends AppCompatActivity {
     private Button bt;
     private Button bt2;
-    private TextView input;
     private TextView show;
     SurfaceView surfaceView;
     TextView textView;
@@ -46,13 +45,12 @@ public class SignActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign);
 
-        input = findViewById(R.id.input);
         show = findViewById(R.id.show);
         //相機製作
         getPermissionsCamera();
 
         surfaceView=(SurfaceView)findViewById(R.id.surfaceView);
-        textView=(TextView)findViewById(R.id.textView);
+        textView=(TextView)findViewById(R.id.input);
 
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.ALL_FORMATS).build();
@@ -109,7 +107,7 @@ public class SignActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        input.addTextChangedListener(new TextWatcher() { //監視editText是否有更變
+        textView.addTextChangedListener(new TextWatcher() { //監視editText是否有更變
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
@@ -121,7 +119,7 @@ public class SignActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(input.getText().toString() != null){
+                if(textView.getText().toString() != null){
                     Get_staff(retrofit,editable.toString());
                 }
                 show.setText(editable);
