@@ -21,12 +21,10 @@ public class CheckIn2 extends AppCompatActivity {
         Bundle wistNumbercheck= this.getIntent().getExtras();
         Bundle ManCheckBox = this.getIntent().getExtras();
 
+
         String patientNumber = paitentNumbercheck.getString("paitentNumber");
         String wistNumber = wistNumbercheck.getString("wistNumber");
         String ManCheckNumber = ManCheckBox.getString("ManCheckBox");
-
-//        EditText patientNumberBox = (EditText) findViewById(R.id.PatientNumberBox);
-//        EditText wistNumberBox = (EditText) findViewById(R.id.wistNumberBox);
 
 
         TextView tv1 = (TextView) findViewById(R.id.PatientNumberBox);
@@ -37,8 +35,9 @@ public class CheckIn2 extends AppCompatActivity {
         tv2.setText(wistNumber);
         tv3.setText(ManCheckNumber);
 
-        Button BackButton = (Button) findViewById(R.id.BackButton);
-        BackButton.setOnClickListener(new View.OnClickListener() {
+
+        Button frontbt = (Button) findViewById(R.id.frontbt);
+        frontbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
