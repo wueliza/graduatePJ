@@ -31,27 +31,27 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Waiting extends AppCompatActivity {
+    Button bt;
+    Button bt2;
     SurfaceView surfaceView;
-    TextView textView, txt;
-    private TextView show;
-    private TextView input;
+    TextView textView;
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
-    String paitentNumber, wistNumber;
-    int cnt = 0;
     Bundle bundle = new Bundle();
-    Intent intent = new Intent();
+    private TextView show;
+    int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_waiting);
 
-        input = findViewById(R.id.hint1);
-        show = findViewById(R.id.hint2);
+//        input = findViewById(R.id.hint1);
+        show = findViewById(R.id.show);
+        textView = (TextView) findViewById(R.id.input);
         // Button WaitingBack = (Button) findViewById(R.id.WaitingBack);
         Button NextButton = (Button) findViewById(R.id.nextbt);
-        txt = (TextView) findViewById(R.id.hint1);
+//        txt = (TextView) findViewById(R.id.hint1);
         getPermissionsCamera();
 
         Retrofit retrofit = new Retrofit.Builder() //api連接
@@ -59,7 +59,7 @@ public class Waiting extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        input.addTextChangedListener(new TextWatcher() { //監視TextView是否有更變
+        textView.addTextChangedListener(new TextWatcher() { //監視TextView是否有更變
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
@@ -71,40 +71,49 @@ public class Waiting extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(input.getText().toString() != null){
+                if(textView.getText().toString() != null){
                     Get_staff(retrofit,editable.toString());
                 }
-                show.setText(editable);
+//                show.setText(editable);
             }
         });
 
-        NextButton.setOnClickListener(new View.OnClickListener() {
+
+        TextView tv = (TextView) findViewById(R.id.title);
+        TextView tv1 = (TextView) findViewById(R.id.input);
+        TextView tv2 = (TextView) findViewById(R.id.show);
+        bt = findViewById(R.id.nextbt);             //下一頁
+        bt2 = findViewById(R.id.frontbt);           //上一頁
+        bt.setOnClickListener(new View.OnClickListener() {
             @Override
 
             public void onClick(View v) {
-                cnt++;
-                switch (cnt) {
+                count++;
+                switch (count) {
                     case 1:
-                        txt.setText("手圈病歷號");
-                        paitentNumber = textView.getText().toString();
-                        intent.setClass(Waiting.this, Waiting2.class);
-                        bundle.putString("paitentNumber", paitentNumber);
-                        intent.putExtras(bundle);
-                        break;
-                    case 2:
-                        wistNumber = textView.getText().toString();
-                        intent.setClass(Waiting.this, Waiting2.class);
-                        bundle.putString("wistNumber", wistNumber);
-                        intent.putExtras(bundle);
-                        startActivity(intent);
-                        break;
-                }
+                        tv.setText("手圈病歷號");
+                        tv1.setHint("手圈病歷號");
+                        tv2.setHint("號碼");
+//                        paitentNumber = textView.getText().toString();
+//                        intent.setClass(Waiting.this, Waiting2.class);
+//                        bundle.putString("paitentNumber", paitentNumber);
+//                        intent.putExtras(bundle);
+//
+//                        break;
+//                    case 2:
+//                        wistNumber = textView.getText().toString();
+//                        intent.setClass(Waiting.this, Waiting2.class);
+//                        bundle.putString("wistNumber", wistNumber);
+//                        intent.putExtras(bundle);
+//                        startActivity(intent);
+//                        break;
+//                }
+//
+//            }
+//
+//        });
 
-            }
-
-        });
-
-//        WaitingBack.setOnClickListener(new View.OnClickListener() {
+//        bt2.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
 //                cnt--;
