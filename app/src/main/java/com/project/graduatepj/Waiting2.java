@@ -11,22 +11,30 @@ import android.widget.TextView;
 
 public class Waiting2 extends AppCompatActivity {
     Intent intent = new Intent();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_waiting2);
-        Bundle paitentNumbercheckin3 = this.getIntent().getExtras();
-        Bundle wistNumbercheckin3 = this.getIntent().getExtras();
-        String patientNumber = paitentNumbercheckin3.getString("paitentNumber");
-        String wistNumber = wistNumbercheckin3.getString("wistNumber");
-//        EditText patientNumberBox = (EditText)findViewById(R.id.patientNumberBox);
-//        EditText wistNumberBox = (EditText)findViewById(R.id.wistNumberBox);
+
+        Bundle paitentNumbercheck = this.getIntent().getExtras();
+        Bundle wistNumbercheck= this.getIntent().getExtras();
+        Bundle ManCheckBox = this.getIntent().getExtras();
+
+        String patientNumber = paitentNumbercheck.getString("paitentNumber");
+        String wistNumber = wistNumbercheck.getString("wistNumber");
+        String ManCheckNumber = ManCheckBox.getString("ManCheckBox");
+
         TextView tv = (TextView) findViewById(R.id.PatientNumberBox);
         TextView tv2 = (TextView) findViewById(R.id.wistNumberBox);
+        TextView tv3 = (TextView) findViewById(R.id.ManCheckBox);
+
         tv.setText(patientNumber);
         tv2.setText(wistNumber);
+        tv3.setText(ManCheckNumber);
 
-        Button BackButton = (Button) findViewById(R.id.BackButton);
+        Button BackButton = (Button) findViewById(R.id.frontbt);
+
         BackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
