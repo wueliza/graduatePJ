@@ -31,33 +31,33 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class OperationVerify extends AppCompatActivity {
+    Button bt;
+    Button bt2;
     SurfaceView surfaceView;
-    TextView textView, txt;
-    private TextView show;
-    private TextView input;
+    TextView textView;
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
-    String KnifeNumber, paitentNumber;
-    int cnt = 0;
     Bundle bundle = new Bundle();
-    Intent intent = new Intent();
+    private TextView show;
+    int count = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_operation_verify);
 
-        input = findViewById(R.id.hint1);
-        show = findViewById(R.id.hint2);
-        //Button OperationBack = (Button) findViewById(R.id.OperationBack);         (上一頁)
-        Button NextButton = (Button) findViewById(R.id.nextbt);
-        txt = (TextView) findViewById(R.id.hint1);
+        show = findViewById(R.id.show);
+        textView = (TextView) findViewById(R.id.input);
+        getPermissionsCamera();
 
+        //api連接
         Retrofit retrofit = new Retrofit.Builder() //api連接
                 .baseUrl("http://106.105.167.136:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        input.addTextChangedListener(new TextWatcher() { //監視TextView是否有更變
+        //監視TextView是否有更變
+        textView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
@@ -69,54 +69,81 @@ public class OperationVerify extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(input.getText().toString() != null){
-                    Get_staff(retrofit,editable.toString());
+                if (textView.getText().toString() != null) {
+                    Get_staff(retrofit, editable.toString());
                 }
-                show.setText(editable);
+//                show.setText(editable);
             }
         });
 
-        NextButton.setOnClickListener(new View.OnClickListener() {
+        //API結束 ， 下面還有
+        TextView tv = (TextView) findViewById(R.id.title);
+        TextView tv1 = (TextView) findViewById(R.id.input);
+        TextView tv2 = (TextView) findViewById(R.id.show);
+
+        bt = findViewById(R.id.nextbt);             //下一頁
+        bt2 = findViewById(R.id.frontbt);           //上一頁
+        bt.setOnClickListener(new View.OnClickListener() {
             @Override
 
             public void onClick(View v) {
-                cnt++;
-                switch (cnt) {
+                count++;
+                switch (count) {
                     case 1:
-                        txt.setText("總表病歷號");
-                        KnifeNumber = textView.getText().toString();
-                        intent.setClass(OperationVerify.this, OperationVerify2.class);
-                        bundle.putString("KnifeNumber", KnifeNumber);
-                        intent.putExtras(bundle);
+                        tv.setText("總表病歷號");
+                        tv1.setHint("總表病歷號");
+                        tv2.setHint("號碼");
                         break;
                     case 2:
-                        paitentNumber = textView.getText().toString();
-                        intent.setClass(OperationVerify.this, OperationVerify2.class);
-                        bundle.putString("paitentNumber", paitentNumber);
+                        tv.setText("備刀單");
+                        tv1.setHint("備刀單");
+                        tv2.setHint("號碼");
+
+                        break;
+                    case 3:
+                        tv.setText("檢驗員");
+                        tv1.setHint("檢驗員");
+                        tv2.setHint("號碼");
+
+                        break;
+                    case 4:
+                        Intent intent = new Intent(OperationVerify.this, OperationVerify2.class);
                         intent.putExtras(bundle);
                         startActivity(intent);
-                        break;
                 }
 
             }
 
         });
-//        OperationBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                cnt--;
-//                switch (cnt) {
-//                    case -1:
-//                        Intent intent = new Intent();
-//                        intent.setClass(OperationVerify.this, OperationHome.class);
-//                        startActivity(intent);
-//                        break;
-//                    case 0:
-//                        txt.setText("備刀單");
-//                        break;
-//                }
-//            }
-//        });
+        bt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                count--;
+                switch (count) {
+                    case 1:
+                        tv.setText("總表病歷號");
+                        tv1.setHint("總表病歷號");
+                        tv2.setHint("號碼");
+                        break;
+                    case 2:
+                        tv.setText("備刀單");
+                        tv1.setHint("備刀單");
+                        tv2.setHint("號碼");
+
+                        break;
+                    case 3:
+                        tv.setText("檢驗員");
+                        tv1.setHint("檢驗員");
+                        tv2.setHint("號碼");
+
+                        break;
+                    case 4:
+                        Intent intent = new Intent(OperationVerify.this, OperationVerify2.class);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                }
+            }
+        });
         surfaceView = (SurfaceView)
 
                 findViewById(R.id.surfaceView);
@@ -191,13 +218,14 @@ public class OperationVerify extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
         }
     }
-    public void Get_staff(Retrofit retrofit,String id){
+
+    public void Get_staff(Retrofit retrofit, String id) {
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
         Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id);
         call.enqueue(new Callback<Staff_Api>() {
             @Override
             public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
-                if(!response.isSuccessful()){
+                if (!response.isSuccessful()) {
                     show.setText("找不到這個id");
                     return;
                 }
