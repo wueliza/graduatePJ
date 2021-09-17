@@ -234,7 +234,27 @@ public class CheckIn extends AppCompatActivity {
 
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
         Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id); //A00010
-        if (count == 0) {
+        Call<Patient_Api> patient_apiCall = jsonPlaceHolderApi.getOne(id);
+
+        if (count == 1 || count == 2) {
+            patient_apiCall.enqueue(new Callback<Patient_Api>() {
+                @Override
+                public void onResponse(Call<Patient_Api> patient_apiCall, Response<Patient_Api> response) {
+                    if (!response.isSuccessful()) {
+                        show.setText("找不到這個id");
+                        return;
+                    }
+                    String name = response.body().getName();
+                    show.setText(name);
+                    bundle.putString("paitentNumbercheck", id);
+                }
+
+                @Override
+                public void onFailure(Call<Patient_Api> call, Throwable t) {
+                    show.setText("請掃描條碼");
+                }
+            });
+        } else {
             call.enqueue(new Callback<Staff_Api>() {
                 @Override
                 public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
@@ -244,6 +264,8 @@ public class CheckIn extends AppCompatActivity {
                     }
                     String name = response.body().getName();
                     show.setText(name);
+
+                    bundle.putString("ManCheckBox", show.getText().toString());
                 }
 
                 @Override
@@ -252,33 +274,6 @@ public class CheckIn extends AppCompatActivity {
                 }
             });
         }
-//        else {
-//            call.enqueue(new Callback<Staff_Api>() {
-//                @Override
-//                public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
-//                    if (!response.isSuccessful()) {
-//                        show.setText("找不到這個id");
-//                        return;
-//                    }
-//                    String name = response.body().getName();
-//                    show.setText(name);
-//                    switch (count) {
-//                        case 1:
-//                            bundle.putString("confirm", show.getText().toString());
-//                            break;
-//                        case 2:
-//                            bundle.putString("check", show.getText().toString());
-//                            break;
-//                        case 3:
-//                            bundle.putString("scan", show.getText().toString());
-//                            break;
-//                        case -1:
-//                            break;
-//                        default:
-//                            bundle.putString("patient_num", show.getText().toString());
-//                    }
-//                }
-//    }
 
     }
 }
