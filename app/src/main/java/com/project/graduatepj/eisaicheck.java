@@ -40,7 +40,7 @@ public class eisaicheck extends AppCompatActivity {
     private TextView step , result , show;
     private CameraSource cameraSource;
     private BarcodeDetector barcodeDetector;
-    private Button nextBt;
+    private Button nextBt , upstepbt;
     int count = 0;
     Bundle bundle = new Bundle();
     Intent intent = new Intent();
@@ -58,9 +58,12 @@ public class eisaicheck extends AppCompatActivity {
         result = (TextView)findViewById(R.id.hint2);
         show = (TextView)findViewById(R.id.hint3);
         nextBt = (Button)findViewById(R.id.nextbt);
+        upstepbt = (Button)findViewById(R.id.upStep_bt);
 
         nextBt.setOnClickListener(this::nextStep);
+        upstepbt.setOnClickListener(this::upStep);
         step.setText("請掃描檢驗員員工編號條碼");
+        intent.setClass(eisaicheck.this , eisairesult.class);
 
         //camera
         barcodeDetector = new BarcodeDetector.Builder(this).setBarcodeFormats(Barcode.ALL_FORMATS).build();
@@ -144,24 +147,37 @@ public class eisaicheck extends AppCompatActivity {
         });
     }
 
+    private void upStep(View view) {
+        if(count == 0){
+            Intent uintent = new Intent();
+            uintent.setClass(eisaicheck.this , gotofunction.class);
+            startActivity(uintent);
+        }
+        else if(count == 1){
+            step.setText("請掃描檢驗員員工編號條碼");
+            count--;
+        }
+        else if(count == 2){
+            step.setText("請掃描病歷號條碼");
+            count--;
+        }
+    }
+
     private void nextStep(View V){
         if(count == 0 && result.getText() != ""){
-            intent.setClass(eisaicheck.this , eisairesult.class);
             bundle.putString("staff_id", result.getText().toString());
             intent.putExtras(bundle);
             step.setText("請掃描病歷號條碼");
             count++;
         }
         else if(count == 1 && result.getText() != ""){
-            intent.setClass(eisaicheck.this , eisairesult.class);
             bundle.putString("patient_id", result.getText().toString());
             intent.putExtras(bundle);
             step.setText("請掃描衛材條碼");
             nextBt.setText("傳送");
             count++;
         }
-        else if(count == 3){
-            intent.setClass(eisaicheck.this , eisairesult.class);
+        else if(count == 2){
             bundle.putString("eisai_id", result.getText().toString());
             intent.putExtras(bundle);
             startActivity(intent);
