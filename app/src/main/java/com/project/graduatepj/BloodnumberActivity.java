@@ -7,10 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 public class BloodnumberActivity extends AppCompatActivity {
     private Button bt;
     private Button bt2;
+    TextView bloodnum,bloodtype;
+    Bundle bundleget = getIntent().getExtras();
+    Bundle bundle = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,13 +23,20 @@ public class BloodnumberActivity extends AppCompatActivity {
 
         bt = findViewById(R.id.nextbt);
         bt2 = findViewById(R.id.frontbt);
+        bloodnum = findViewById(R.id.bloodnum);
+        bloodtype = findViewById(R.id.bloodtype);
+
+        String transfer = bundleget.getString("transfer");
+        String nurse = bundleget.getString("nurse");
+        String bloodnum = bundleget.getString("bloodnum");
+        bundle.putString("transfer", transfer);
+        bundle.putString("nurse", nurse);
 
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(BloodnumberActivity.this,Sign_sumActivity.class);
-                /*Bundle bundle = getIntent().getExtras();
-                intent.putExtras(bundle);*/
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });

@@ -141,13 +141,11 @@ public class confirmActivity extends AppCompatActivity {
                 switch (count){
                     case 1:
                         tv.setText("核血作業-核血人員");
-                        tv1.setText(null);
                         tv1.setHint("核血人員編號");
                         tv2.setText("核血人員:");
                         break;
                     case 2:
                         tv.setText("核血作業-確認人員");
-                        tv1.setText(null);
                         tv1.setHint("確認人員編號");
                         tv2.setText("確認人員:");
                         break;
@@ -157,7 +155,6 @@ public class confirmActivity extends AppCompatActivity {
                         break;
                     default:
                         tv.setText("核血作業-領血單號");
-                        tv1.setText(null);
                         tv1.setHint("領血單號");
                         tv2.setText("領血單號:");
                 }
@@ -170,13 +167,11 @@ public class confirmActivity extends AppCompatActivity {
                 switch (count){
                     case 1:
                         tv.setText("核血作業-核血人員");
-                        tv1.setText(null);
                         tv1.setHint("核血人員編號");
                         tv2.setText("核血人員:");
                         break;
                     case 2:
                         tv.setText("核血作業-確認人員");
-                        tv1.setText(null);
                         tv1.setHint("確認人員編號");
                         tv2.setText("確認人員:");
                         break;
@@ -186,7 +181,6 @@ public class confirmActivity extends AppCompatActivity {
                         break;
                     default:
                         tv.setText("核血作業-領血單號");
-                        tv1.setText(null);
                         tv1.setHint("領血單號");
                         tv2.setText("領血單號:");
                 }
