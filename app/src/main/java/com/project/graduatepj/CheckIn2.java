@@ -22,8 +22,8 @@ public class CheckIn2 extends AppCompatActivity {
         Bundle ManCheckBox = this.getIntent().getExtras();
 
 
-        String patientNumber = paitentNumbercheck.getString("paitentNumber");
-        String wistNumber = wistNumbercheck.getString("wistNumber");
+        String patientNumber = paitentNumbercheck.getString("paitentNumbercheck");
+        String wistNumber = wistNumbercheck.getString("paitentNumbercheck");
         String ManCheckNumber = ManCheckBox.getString("ManCheckBox");
 
 
