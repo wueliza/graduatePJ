@@ -34,6 +34,7 @@ public class SignActivity extends AppCompatActivity {
     private Button bt;
     private Button bt2;
     private TextView show;
+    Bundle bundle = new Bundle();
     SurfaceView surfaceView;
     TextView textView;
     CameraSource cameraSource;
@@ -131,7 +132,6 @@ public class SignActivity extends AppCompatActivity {
         TextView tv2 = (TextView)findViewById(R.id.show);
         bt = findViewById(R.id.nextbt);
         bt2 = findViewById(R.id.frontbt);
-        Bundle bundle = new Bundle();
 
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,14 +140,12 @@ public class SignActivity extends AppCompatActivity {
                 switch (count){
                     case 1:
                         tv.setText("血袋簽收-傳送人員");
-                        tv1.setText(null);
                         tv1.setHint("傳送人員編號");
                         tv2.setHint("傳送人員:");
                         bundle.putString("transport",tv1.getText().toString());
                         break;
                     case 2:
                         tv.setText("血袋簽收-領血單號");
-                        tv1.setText(null);
                         tv1.setHint("領血單號");
                         tv2.setHint("領血單號:");
                         bundle.putString("take",tv1.getText().toString());
@@ -159,7 +157,6 @@ public class SignActivity extends AppCompatActivity {
                         break;
                     default:
                         tv.setText("血袋簽收-護理人員");
-                        tv1.setText(null);
                         tv1.setHint("護理人員編號");
                         tv2.setHint("護理人員:");
                         bundle.putString("nurse",tv1.getText().toString());
@@ -173,13 +170,11 @@ public class SignActivity extends AppCompatActivity {
                 switch (count){
                     case 1:
                         tv.setText("血袋簽收-傳送人員");
-                        tv1.setText(null);
                         tv1.setHint("傳送人員編號");
                         tv2.setHint("傳送人員:");
                         break;
                     case 2:
                         tv.setText("血袋簽收-領血單號");
-                        tv1.setText(null);
                         tv1.setHint("領血單號");
                         tv2.setHint("領血單號:");
                         break;
@@ -189,7 +184,6 @@ public class SignActivity extends AppCompatActivity {
                         break;
                     default:
                         tv.setText("血袋簽收-護理人員");
-                        tv1.setText(null);
                         tv1.setHint("護理人員編號");
                         tv2.setHint("護理人員:");
                 }
@@ -206,20 +200,50 @@ public class SignActivity extends AppCompatActivity {
     public void Get_staff(Retrofit retrofit,String id){
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
         Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id); //A00010
-        call.enqueue(new Callback<Staff_Api>() {
-            @Override
-            public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
-                if(!response.isSuccessful()){
-                    show.setText("找不到這個id");
-                    return;
+        
+        if(count != 2) {
+            call.enqueue(new Callback<Staff_Api>() {
+                @Override
+                public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
+                    if (!response.isSuccessful()) {
+                        show.setText("找不到這個id");
+                        return;
+                    }
+                    String name = response.body().getName();
+                    show.setText(name);
+                    switch (count) {
+                        case 1:
+                            bundle.putString("transfer", show.getText().toString());
+                            break;
+                        default:
+                            bundle.putString("nurse", show.getText().toString());
+                    }
                 }
-                String name = response.body().getName();
-                show.setText(name);
-            }
-            @Override
-            public void onFailure(Call<Staff_Api> call, Throwable t) {
-                show.setText("請掃描條碼");
-            }
-        });
+
+                @Override
+                public void onFailure(Call<Staff_Api> call, Throwable t) {
+                    show.setText("請掃描條碼");
+                }
+            });
+        }
+        else{
+            call.enqueue(new Callback<Staff_Api>() {
+                @Override
+                public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
+                    if (!response.isSuccessful()) {
+                        show.setText("找不到這個id");
+                        return;
+                    }
+                    String name = response.body().getName();
+                    show.setText(name);
+                    bundle.putString("bloodnum", show.getText().toString());
+                }
+
+                @Override
+                public void onFailure(Call<Staff_Api> call, Throwable t) {
+                    show.setText("請掃描條碼");
+                }
+            });
+        }
     }
 }

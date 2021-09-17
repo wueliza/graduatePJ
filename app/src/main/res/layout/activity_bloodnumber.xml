@@ -39,10 +39,10 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/bloodnum"
             android:layout_width="70dp"
             android:layout_height="60dp"
             android:layout_marginTop="12dp"
-            android:text="2U"
             android:textSize="20sp" />
 
         <RadioGroup
@@ -85,6 +85,7 @@
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/bloodtype"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="減白之紅血球濃厚液"

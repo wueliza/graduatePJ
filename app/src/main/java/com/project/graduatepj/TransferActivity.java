@@ -143,19 +143,16 @@ public class TransferActivity extends AppCompatActivity {
                         tv.setText("輸血作業-核血人員");
                         tv1.setHint("核血人員編號");
                         tv2.setHint("核血人員");
-                        //bundle.putString("confirm",show.getText().toString());
                         break;
                     case 2:
                         tv.setText("輸血作業-確認人員");
                         tv1.setHint("確認人員編號");
                         tv2.setHint("確認人員");
-                        //bundle.putString("check",show.getText().toString());
                         break;
                     case 3:
                         tv.setText("輸血作業-掃描血袋");
                         tv1.setHint("掃描血袋");
                         tv2.setHint("掃描血袋");
-                        //bundle.putString("scan",show.getText().toString());
                         break;
                     case 4:
                         Intent intent = new Intent(TransferActivity.this,Transfer_sumActivity.class);
@@ -166,7 +163,6 @@ public class TransferActivity extends AppCompatActivity {
                         tv.setText("輸血作業-病歷號");
                         tv1.setHint("病歷號");
                         tv2.setHint("病歷號");
-                        //bundle.putString("patient_num",show.getText().toString());
                 }
             }
         });
@@ -179,19 +175,16 @@ public class TransferActivity extends AppCompatActivity {
                         tv.setText("輸血作業-核血人員");
                         tv1.setHint("核血人員編號");
                         tv2.setHint("核血人員");
-                        //bundle.putString("confirm",show.getText().toString());
                         break;
                     case 2:
                         tv.setText("輸血作業-確認人員");
                         tv1.setHint("確認人員編號");
                         tv2.setHint("確認人員");
-                        //bundle.putString("check",show.getText().toString());
                         break;
                     case 3:
                         tv.setText("輸血作業-掃描血袋");
                         tv1.setHint("掃描血袋");
                         tv2.setHint("掃描血袋");
-                        //bundle.putString("scan",show.getText().toString());
                         break;
                     case -1:
                         Intent intent = new Intent(TransferActivity.this,blood_homeActivity.class);
@@ -201,7 +194,6 @@ public class TransferActivity extends AppCompatActivity {
                         tv.setText("輸血作業-病歷號");
                         tv1.setHint("病歷號");
                         tv2.setHint("病歷號");
-                        //bundle.putString("patient_num",show.getText().toString());
                 }
             }
         });
