@@ -109,8 +109,6 @@
                 android:background="@drawable/check_background"
                 android:gravity="center"
                 android:textSize="18sp" />
-
-
         </LinearLayout>
     </LinearLayout>
 
