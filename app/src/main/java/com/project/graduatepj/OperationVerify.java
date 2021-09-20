@@ -125,21 +125,21 @@ public class OperationVerify extends AppCompatActivity {
                         tv1.setHint("總表病歷號");
                         tv2.setHint("號碼");
                         break;
+
                     case 2:
                         tv.setText("備刀單");
                         tv1.setHint("備刀單");
                         tv2.setHint("號碼");
-
                         break;
+
                     case 3:
                         tv.setText("檢驗員");
                         tv1.setHint("檢驗員");
                         tv2.setHint("號碼");
-
                         break;
-                    case 4:
-                        Intent intent = new Intent(OperationVerify.this, OperationVerify2.class);
-                        intent.putExtras(bundle);
+
+                    default:
+                        Intent intent = new Intent(OperationVerify.this, OperationHome.class);
                         startActivity(intent);
                 }
             }
