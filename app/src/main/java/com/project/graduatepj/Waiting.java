@@ -90,31 +90,26 @@ public class Waiting extends AppCompatActivity {
                         tv.setText("總表病歷號");
                         tv1.setHint("總表病歷號");
                         tv2.setHint("號碼");
-//                        paitentNumber = textView.getText().toString();
-//                        intent.setClass(Waiting.this, Waiting2.class);
-//                        bundle.putString("paitentNumber", paitentNumber);
-//                        intent.putExtras(bundle);
-//
                         break;
+
                     case 2:
                         tv.setText("手圈病歷號");
                         tv1.setHint("手圈病歷號");
                         tv2.setHint("號碼");
-//                        wistNumber = textView.getText().toString();
-//                        intent.setClass(Waiting.this, Waiting2.class);
-//                        bundle.putString("wistNumber", wistNumber);
-//                        intent.putExtras(bundle);
-//                        startActivity(intent);
                         break;
 
                     case 3:
+                        tv.setText("檢驗員");
+                        tv1.setHint("檢驗員");
+                        tv2.setHint("號碼");
+                        break;
+
+                    case 4:
                         Intent intent = new Intent(Waiting.this, Waiting2.class);
                         intent.putExtras(bundle);
                         startActivity(intent);
                 }
-
             }
-
         });
 
         bt2.setOnClickListener(new View.OnClickListener() {
@@ -132,6 +127,16 @@ public class Waiting extends AppCompatActivity {
                         tv1.setHint("手圈病歷號");
                         tv2.setHint("號碼");
                         break;
+                    case 3:
+                        tv.setText("檢驗員");
+                        tv1.setHint("檢驗員");
+                        tv2.setHint("號碼");
+                        break;
+
+                    default:
+                        Intent intent = new Intent(Waiting.this, OperationHome.class);
+                        startActivity(intent);
+
                 }
             }
         });

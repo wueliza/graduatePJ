@@ -88,10 +88,8 @@ public class CheckIn extends AppCompatActivity {
             public void onClick(View v) {
                 count++;
                 switch (count) {
-
                     case 1:
                         tv.setText("總表病歷號");
-//                        paitentNumber = textView.getText().toString();
                         tv1.setHint("總表病歷號");
                         tv2.setHint("號碼");
                         break;
@@ -100,26 +98,17 @@ public class CheckIn extends AppCompatActivity {
                         tv.setText("手圈病歷號");
                         tv1.setHint("手圈病歷號");
                         tv2.setHint("號碼");
-//                        wistNumber = textView.getText().toString();
-//                        intent.setClass(CheckIn.this, CheckIn2.class);
-//                        bundle.putString("wistNumber", wistNumber);
-//                        intent.putExtras(bundle);
                         break;
 
                     case 3:
                         tv.setText("檢驗員");
                         tv1.setHint("檢驗員");
                         tv2.setHint("號碼");
-//                        ManCheckBox = textView.getText().toString();
-//                        intent.setClass(CheckIn.this, CheckIn2.class);
-//                        bundle.putString("ManCheckBox", ManCheckBox);
-//                        intent.putExtras(bundle);
                         break;
                     case 4:
                         Intent intent = new Intent(CheckIn.this, CheckIn2.class);
                         intent.putExtras(bundle);
                         startActivity(intent);
-
                 }
             }
         });
@@ -128,6 +117,7 @@ public class CheckIn extends AppCompatActivity {
             public void onClick(View v) {
                 count--;
                 switch (count) {
+
                     case 1:
                         tv.setText("總表病歷號");
                         tv1.setHint("總表病歷號");
@@ -146,10 +136,13 @@ public class CheckIn extends AppCompatActivity {
                         tv2.setHint("號碼");
                         break;
 
-                    case 4:
+//                    case 4:
+
+                    default:
                         Intent intent = new Intent(CheckIn.this, OperationHome.class);
                         startActivity(intent);
                         break;
+
                 }
             }
         });
