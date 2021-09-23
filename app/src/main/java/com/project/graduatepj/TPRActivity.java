@@ -102,13 +102,13 @@ public class TPRActivity extends AppCompatActivity {
                 switch (count){
                     case 1:
                         tv.setText("輸血TPR-血袋號碼");
-                        tv1.setText("血袋號碼");
-                        tv2.setText("血袋號碼:");
+                        tv1.setHint("血袋號碼");
+                        tv2.setHint("血袋號碼:");
                         break;
                     case 2:
                         tv.setText("輸血TPR-紀錄者");
-                        tv1.setText("紀錄者");
-                        tv2.setText("紀錄者:");
+                        tv1.setHint("紀錄者");
+                        tv2.setHint("紀錄者:");
                         break;
                     case 3:
                         Intent intent = new Intent(TPRActivity.this,PagerActivity.class);
@@ -116,8 +116,8 @@ public class TPRActivity extends AppCompatActivity {
                         break;
                     default:
                         tv.setText("輸血TPR-病歷號");
-                        tv1.setText("病歷號");
-                        tv2.setText("病歷號:");
+                        tv1.setHint("病歷號");
+                        tv2.setHint("病歷號:");
                 }
             }
         });
@@ -128,13 +128,13 @@ public class TPRActivity extends AppCompatActivity {
                 switch (count){
                     case 1:
                         tv.setText("輸血TPR-血袋號碼");
-                        tv1.setText("血袋號碼");
-                        tv2.setText("血袋號碼:");
+                        tv1.setHint("血袋號碼");
+                        tv2.setHint("血袋號碼:");
                         break;
                     case 2:
                         tv.setText("輸血TPR-紀錄者");
-                        tv1.setText("紀錄者");
-                        tv2.setText("紀錄者:");
+                        tv1.setHint("紀錄者");
+                        tv2.setHint("紀錄者:");
                         break;
                     case -1:
                         Intent intent = new Intent(TPRActivity.this,blood_homeActivity.class);
@@ -142,8 +142,8 @@ public class TPRActivity extends AppCompatActivity {
                         break;
                     default:
                         tv.setText("輸血TPR-病歷號");
-                        tv1.setText("病歷號");
-                        tv2.setText("病歷號:");
+                        tv1.setHint("病歷號");
+                        tv2.setHint("病歷號:");
                 }
             }
         });

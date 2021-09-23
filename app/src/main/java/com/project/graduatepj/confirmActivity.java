@@ -142,12 +142,12 @@ public class confirmActivity extends AppCompatActivity {
                     case 1:
                         tv.setText("核血作業-核血人員");
                         tv1.setHint("核血人員編號");
-                        tv2.setText("核血人員:");
+                        tv2.setHint("核血人員:");
                         break;
                     case 2:
                         tv.setText("核血作業-確認人員");
                         tv1.setHint("確認人員編號");
-                        tv2.setText("確認人員:");
+                        tv2.setHint("確認人員:");
                         break;
                     case 3:
                         Intent intent = new Intent(confirmActivity.this,Check_sumActivity.class);
@@ -156,7 +156,7 @@ public class confirmActivity extends AppCompatActivity {
                     default:
                         tv.setText("核血作業-領血單號");
                         tv1.setHint("領血單號");
-                        tv2.setText("領血單號:");
+                        tv2.setHint("領血單號:");
                 }
             }
         });
@@ -168,12 +168,12 @@ public class confirmActivity extends AppCompatActivity {
                     case 1:
                         tv.setText("核血作業-核血人員");
                         tv1.setHint("核血人員編號");
-                        tv2.setText("核血人員:");
+                        tv2.setHint("核血人員:");
                         break;
                     case 2:
                         tv.setText("核血作業-確認人員");
                         tv1.setHint("確認人員編號");
-                        tv2.setText("確認人員:");
+                        tv2.setHint("確認人員:");
                         break;
                     case -1:
                         Intent intent = new Intent(confirmActivity.this,blood_homeActivity.class);
@@ -182,7 +182,7 @@ public class confirmActivity extends AppCompatActivity {
                     default:
                         tv.setText("核血作業-領血單號");
                         tv1.setHint("領血單號");
-                        tv2.setText("領血單號:");
+                        tv2.setHint("領血單號:");
                 }
             }
         });

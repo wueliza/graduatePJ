@@ -49,7 +49,6 @@
                 android:layout_weight="1"
                 android:background="@drawable/check_background"
                 android:gravity="center"
-                android:text="A4549849"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -76,7 +75,6 @@
                 android:layout_marginTop="4dp"
                 android:background="@drawable/check_background"
                 android:gravity="center"
-                android:text="張家銘"
                 android:textSize="18sp" />
 
             <TextView
@@ -96,7 +94,6 @@
                 android:layout_marginLeft="0dp"
                 android:background="@drawable/check_background"
                 android:gravity="center"
-                android:text="A"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -123,7 +120,6 @@
                 android:layout_marginRight="10dp"
                 android:background="@drawable/check_background"
                 android:gravity="center"
-                android:text="55110"
                 android:textSize="18sp" />
 
             <TextView
@@ -142,7 +138,6 @@
                 android:layout_marginRight="10dp"
                 android:background="@drawable/check_background"
                 android:gravity="center"
-                android:text="50"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -169,7 +164,6 @@
                 android:layout_marginTop="4dp"
                 android:background="@drawable/check_background"
                 android:gravity="center"
-                android:text="55110"
                 android:textSize="18sp" />
         </LinearLayout>
     </LinearLayout>
@@ -201,7 +195,6 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="張家銘"
                 android:gravity="center"
                 android:background="@drawable/check_background"
                 android:layout_marginRight="90dp"
@@ -229,7 +222,6 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="張家銘"
                 android:gravity="center"
                 android:background="@drawable/check_background"
                 android:layout_marginRight="90dp"
