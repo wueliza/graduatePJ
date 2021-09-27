@@ -54,9 +54,9 @@ public class eisaicheck extends AppCompatActivity {
         DisplayMetrics metric = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metric);
         surfaceView=(SurfaceView)findViewById(R.id.surfaceView);
-        step=(TextView)findViewById(R.id.hint1); //
-        result = (TextView)findViewById(R.id.hint2);
-        show = (TextView)findViewById(R.id.hint3);
+        step=(TextView)findViewById(R.id.ehint1); //
+        result = (TextView)findViewById(R.id.ehint2);
+        show = (TextView)findViewById(R.id.ehint3);
         nextBt = (Button)findViewById(R.id.nextbt);
         upstepbt = (Button)findViewById(R.id.upStep_bt);
 
@@ -95,6 +95,7 @@ public class eisaicheck extends AppCompatActivity {
                 cameraSource.stop();
             }
         });
+
         barcodeDetector.setProcessor(new Detector.Processor<Barcode>(){
             @Override
             public void release() {
@@ -133,16 +134,16 @@ public class eisaicheck extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (result.getText() != null && count == 0) {
+                if (result.getText().toString() != null && count == 0) {
                     Get_staff(retrofit, editable.toString());
                 }
-                else if (result.getText() != null && count == 1) {
+                else if (result.getText().toString() != null && count == 1) {
                     Get_patient(retrofit, editable.toString());
                 }
-                else if (result.getText() != null && count == 2) {
+                else if (result.getText().toString() != null && count == 2) {
                     Get_eisai(retrofit, editable.toString());
                 }
-                result.setText(editable);
+                //result.setText(editable);
             }
         });
     }
@@ -164,21 +165,23 @@ public class eisaicheck extends AppCompatActivity {
     }
 
     private void nextStep(View V){
-        if(count == 0 && result.getText() != ""){
-            bundle.putString("staff_id", result.getText().toString());
+        if(count == 0 ){
+            bundle.putString("staff_id", show.getText().toString());
             intent.putExtras(bundle);
+            show.setText("");
             step.setText("請掃描病歷號條碼");
             count++;
         }
-        else if(count == 1 && result.getText() != ""){
-            bundle.putString("patient_id", result.getText().toString());
+        else if(count == 1){
+            bundle.putString("patient_id", show.getText().toString());
             intent.putExtras(bundle);
+            show.setText("");
             step.setText("請掃描衛材條碼");
             nextBt.setText("傳送");
             count++;
         }
         else if(count == 2){
-            bundle.putString("eisai_id", result.getText().toString());
+            bundle.putString("eisai_id", show.getText().toString());
             intent.putExtras(bundle);
             startActivity(intent);
         }
@@ -198,18 +201,19 @@ public class eisaicheck extends AppCompatActivity {
             @Override
             public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
                 if (!response.isSuccessful()) {
-                    step.setText("此id不存在，請重新掃描！");
+                    step.setText("此id不存在，請重新掃描員工編號！");
                     return;
                 }
                 else {
                     String name = response.body().getName();
                     show.setText(name);
+                    step.setText("掃描成功，請按下一步");
                 }
             }
 
             @Override
             public void onFailure(Call<Staff_Api> call, Throwable t) {
-                step.setText("請掃描條碼");
+                step.setText("API連線錯誤！");
             }
         });
     }
@@ -220,40 +224,42 @@ public class eisaicheck extends AppCompatActivity {
             @Override
             public void onResponse(Call<Patient_Api> call, Response<Patient_Api> response) {
                 if (!response.isSuccessful()) {
-                    step.setText("此id不存在，請重新掃描！");
+                    step.setText("此id不存在，請重新掃描病歷號！");
                     return;
                 }
                 else {
                     String name = response.body().getName();
                     show.setText(name);
+                    step.setText("掃描成功，請按下一步");
                 }
             }
 
             @Override
             public void onFailure(Call<Patient_Api> call, Throwable t) {
-                step.setText("請掃描條碼");
+                step.setText("API連線錯誤！");
             }
         });
     }
     public void Get_eisai(Retrofit retrofit, String id) {
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-        Call<Eisai_Api> call = jsonPlaceHolderApi.get_eisai(id); //A00010
+        Call<Eisai_Api> call = jsonPlaceHolderApi.get_eisai(id);
         call.enqueue(new Callback<Eisai_Api>() {
             @Override
             public void onResponse(Call<Eisai_Api> call, Response<Eisai_Api> response) {
                 if (!response.isSuccessful()) {
-                    step.setText("此id不存在，請重新掃描！");
+                    step.setText("此id不存在，請重新掃描衛材號碼！");
                     return;
                 }
                 else {
                     String name = response.body().getName();
                     show.setText(name);
+                    step.setText("掃描成功，請按傳送");
                 }
             }
 
             @Override
             public void onFailure(Call<Eisai_Api> call, Throwable t) {
-                step.setText("請掃描條碼");
+                step.setText("API連線錯誤！");
             }
         });
     }

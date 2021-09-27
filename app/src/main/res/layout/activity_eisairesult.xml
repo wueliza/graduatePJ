@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".eisairesult">
+    tools:context=".eisairesult"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,7 +54,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/check_background"
                     android:gravity="center"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:textColor="#504C4C"/>
             </LinearLayout>
 
             <LinearLayout
@@ -81,7 +83,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/check_background"
                     android:gravity="center"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:textColor="#504C4C"/>
             </LinearLayout>
 
             <LinearLayout
@@ -110,7 +113,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/check_background"
                     android:gravity="center"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:textColor="#504C4C"/>
             </LinearLayout>
 
             <TextView

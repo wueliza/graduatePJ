@@ -41,7 +41,7 @@
             >
 
             <TextView
-                android:id="@+id/hint1"
+                android:id="@+id/ehint1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -51,7 +51,7 @@
                 android:textSize="@dimen/dp_24" />
 
             <TextView
-                android:id="@+id/hint2"
+                android:id="@+id/ehint2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -60,7 +60,7 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/dp_24" />
             <TextView
-                android:id="@+id/hint3"
+                android:id="@+id/ehint3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
