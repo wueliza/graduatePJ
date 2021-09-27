@@ -169,6 +169,7 @@ public class eisaicheck extends AppCompatActivity {
             bundle.putString("staff_id", show.getText().toString());
             intent.putExtras(bundle);
             show.setText("");
+            result.setText("");
             step.setText("請掃描病歷號條碼");
             count++;
         }
@@ -176,12 +177,13 @@ public class eisaicheck extends AppCompatActivity {
             bundle.putString("patient_id", show.getText().toString());
             intent.putExtras(bundle);
             show.setText("");
+            result.setText("");
             step.setText("請掃描衛材條碼");
             nextBt.setText("傳送");
             count++;
         }
         else if(count == 2){
-            bundle.putString("eisai_id", result.getText().toString());
+            bundle.putString("eisai_id", show.getText().toString());
             intent.putExtras(bundle);
             startActivity(intent);
         }
@@ -213,7 +215,7 @@ public class eisaicheck extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Staff_Api> call, Throwable t) {
-                step.setText("API連線錯誤！");
+                step.setText("請重新掃描員工編號！");
             }
         });
     }
@@ -236,7 +238,7 @@ public class eisaicheck extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Patient_Api> call, Throwable t) {
-                step.setText("API連線錯誤！");
+                step.setText("請重新掃描病歷號！");
             }
         });
     }
@@ -247,10 +249,11 @@ public class eisaicheck extends AppCompatActivity {
             @Override
             public void onResponse(Call<Eisai_Api> call, Response<Eisai_Api> response) {
                 if (!response.isSuccessful()) {
-                    step.setText("此id不存在，請重新掃描衛材號碼！");
+                    step.setText("此id不存在，請重新掃描衛材條碼！");
                     return;
                 }
                 else {
+                    assert response.body() != null;
                     String name = response.body().getName();
                     show.setText(name);
                     step.setText("掃描成功，請按傳送");
@@ -259,7 +262,7 @@ public class eisaicheck extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Eisai_Api> call, Throwable t) {
-                step.setText("API連線錯誤！");
+                step.setText("請重新掃描衛材條碼！");
             }
         });
     }

@@ -58,7 +58,7 @@ public class eisairesult extends AppCompatActivity {
 
     public void Get_eisai(Retrofit retrofit, String id) {
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-        Call<Eisai_Api> call = jsonPlaceHolderApi.get_eisai(id); //A00010
+        Call<Eisai_Api> call = jsonPlaceHolderApi.get_eisai(id);
         call.enqueue(new Callback<Eisai_Api>() {
             @Override
             public void onResponse(Call<Eisai_Api> call, Response<Eisai_Api> response) {
