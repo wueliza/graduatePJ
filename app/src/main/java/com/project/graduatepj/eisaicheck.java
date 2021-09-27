@@ -181,7 +181,7 @@ public class eisaicheck extends AppCompatActivity {
             count++;
         }
         else if(count == 2){
-            bundle.putString("eisai_id", show.getText().toString());
+            bundle.putString("eisai_id", result.getText().toString());
             intent.putExtras(bundle);
             startActivity(intent);
         }
