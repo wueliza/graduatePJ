@@ -33,12 +33,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Print_examineNumber1 extends AppCompatActivity {
     private Button bt;
     private Button bt2;
+
+
+    Bundle bundle = new Bundle();
+    private TextView show;
     SurfaceView surfaceView;
     TextView textView;
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
-    Bundle bundle = new Bundle();
-    private TextView show;
     int count = 0;
 
 
@@ -179,7 +181,6 @@ public class Print_examineNumber1 extends AppCompatActivity {
                     default:
                         Intent intent = new Intent(Print_examineNumber1.this, examine_homePage.class);
                         startActivity(intent);
-                        break;
                 }
             }
         });

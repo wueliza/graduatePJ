@@ -159,7 +159,6 @@ public class BloodCollect1 extends AppCompatActivity {
                         Intent intent = new Intent(BloodCollect1.this,BloodCollect2.class);
                         startActivity(intent);
                         intent.putExtras(bundle);
-                        break;
                 }
             }
         });
@@ -187,6 +186,7 @@ public class BloodCollect1 extends AppCompatActivity {
                     default:
                         Intent intent = new Intent(BloodCollect1.this,examine_homePage.class);
                         startActivity(intent);
+
 
 
                 }
