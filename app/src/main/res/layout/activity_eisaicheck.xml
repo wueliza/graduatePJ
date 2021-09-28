@@ -83,27 +83,28 @@
                     >
                     <Button
                         android:id="@+id/upStep_bt"
-                        android:layout_width="@dimen/dp_130"
-                        android:layout_height="@dimen/dp_55"
-                        android:text="上一步"
-                        android:textSize="20sp"
-                        android:background="@drawable/nextbutton_general"
-                        android:layout_weight="1"
-                        />
+                        android:text="返回"
+                        android:layout_width="140dp"
+                        android:layout_height="65dp"
+                        android:layout_gravity="bottom"
+                        android:textStyle="bold"
+                        android:textColor="#FBFBFB"
+                        android:textSize="@dimen/dp_18"
+                        android:background="@drawable/returnbutton"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="10"/>
                     <Button
                         android:id="@+id/nextbt"
-                        android:layout_width="@dimen/dp_130"
-                        android:layout_height="@dimen/dp_55"
-                        android:layout_gravity="bottom|end"
-                        android:background="@drawable/nextbutton_general"
                         android:text="下一步"
-                        android:layout_weight="1"
-                        android:textSize="20sp" />
-
+                        android:layout_width="140dp"
+                        android:layout_height="65dp"
+                        android:layout_gravity="bottom"
+                        android:textStyle="bold"
+                        android:textColor="#FBFBFB"
+                        android:textSize="@dimen/dp_18"
+                        android:background="@drawable/nextbutton_general"/>
                 </LinearLayout>
             </LinearLayout>
 

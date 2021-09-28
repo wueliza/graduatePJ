@@ -46,8 +46,8 @@
         <Button
             android:id="@+id/home"
             android:text="上一步"
-            android:layout_width="@dimen/dp_130"
-            android:layout_height="@dimen/dp_55"
+            android:layout_width="130dp"
+            android:layout_height="55dp"
             android:background="@drawable/functionbutton_2"
             android:layout_gravity="bottom"
             android:textSize="20dp"

@@ -33,7 +33,7 @@
             <TextView
                 android:layout_width="10dp"
                 android:layout_height="45dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="12dp"
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
                 android:text="護理人員 :"
@@ -62,7 +62,7 @@
             <TextView
                 android:layout_width="10dp"
                 android:layout_height="45dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="12dp"
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
                 android:text="傳送人員 :"
@@ -91,7 +91,7 @@
             <TextView
                 android:layout_width="10dp"
                 android:layout_height="45dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="12dp"
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
                 android:text="領血單號 :"

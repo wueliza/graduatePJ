@@ -35,7 +35,7 @@
                 android:id="@+id/textView4"
                 android:layout_width="10dp"
                 android:layout_height="45dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="12dp"
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
                 android:text="護理人員 :"
@@ -64,7 +64,7 @@
             <TextView
                 android:layout_width="10dp"
                 android:layout_height="45dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="12dp"
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
                 android:text="傳送人員 :"
@@ -93,7 +93,7 @@
             <TextView
                 android:layout_width="10dp"
                 android:layout_height="45dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="12dp"
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
                 android:text="成品單號:"
@@ -158,7 +158,7 @@
                 android:layout_marginRight="90dp"
                 android:hint="應到藥品數量"
                 android:layout_marginTop="8dp"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 android:layout_weight="1"
                 />
         </LinearLayout>
@@ -181,12 +181,12 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="藥品名稱"
                 android:gravity="center"
                 android:background="@drawable/check_background"
                 android:layout_marginRight="90dp"
-                android:textSize="15sp"
+                android:hint="藥品名稱"
                 android:layout_marginTop="8dp"
+                android:textSize="15sp"
                 android:layout_weight="1"
                 />
         </LinearLayout>

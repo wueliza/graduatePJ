@@ -77,14 +77,14 @@
 
                     <Button
                         android:id="@+id/frontbt"
-                        android:text="上一步"
-                        android:layout_width="130dp"
-                        android:layout_height="55dp"
+                        android:text="返回"
+                        android:layout_width="140dp"
+                        android:layout_height="65dp"
                         android:layout_gravity="bottom"
                         android:textStyle="bold"
                         android:textColor="#FBFBFB"
-                        android:textSize="20dp"
-                        android:background="@drawable/nextbutton_general"/>
+                        android:textSize="@dimen/dp_18"
+                        android:background="@drawable/returnbutton"/>
 
                 </LinearLayout>
 
@@ -98,12 +98,12 @@
                     <Button
                         android:id="@+id/nextbt"
                         android:text="下一步"
-                        android:layout_width="130dp"
-                        android:layout_height="55dp"
+                        android:layout_width="140dp"
+                        android:layout_height="65dp"
                         android:layout_gravity="bottom"
                         android:textStyle="bold"
                         android:textColor="#FBFBFB"
-                        android:textSize="20dp"
+                        android:textSize="@dimen/dp_18"
                         android:background="@drawable/nextbutton_general"/>
                 </LinearLayout>
             </LinearLayout>
