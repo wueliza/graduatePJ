@@ -33,7 +33,6 @@ public class BloodCollect2 extends AppCompatActivity {
         String recheckNumber = recheckNumberCheck.getString("recheckNumberCheck");
 
 
-
         TextView tv = (TextView) findViewById(R.id.patientNumber1Box);
         TextView tv2 = (TextView) findViewById(R.id.sampleNumberBox);
         TextView tv3 = (TextView) findViewById(R.id.collectorNumberBox);

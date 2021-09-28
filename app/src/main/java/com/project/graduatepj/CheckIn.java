@@ -48,119 +48,15 @@ public class CheckIn extends AppCompatActivity {
         setContentView(R.layout.activity_check_in);
         show = findViewById(R.id.show);
         textView = (TextView) findViewById(R.id.input);
+
         getPermissionsCamera();
+        surfaceView = (SurfaceView)findViewById(R.id.surfaceView);
 
-        //api連接
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://106.105.167.136:8080/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        //監視TextView是否有更變
-        textView.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (textView.getText().toString() != null) {
-                    Get_staff(retrofit, editable.toString());
-                }
-                //show.setText(editable);
-            }
-        });
-        //API結束 ， 下面還有
-        TextView tv = (TextView) findViewById(R.id.title);
-        TextView tv1 = (TextView) findViewById(R.id.input);
-        TextView tv2 = (TextView) findViewById(R.id.show);
-
-        bt = findViewById(R.id.nextbt);             //下一頁
-        bt2 = findViewById(R.id.frontbt);           //上一頁
-
-        bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-
-            public void onClick(View v) {
-                count++;
-                switch (count) {
-                    case 1:
-                        tv.setText("總表病歷號");
-                        tv1.setHint("總表病歷號");
-                        tv2.setHint("號碼");
-                        break;
-
-                    case 2:
-                        tv.setText("手圈病歷號");
-                        tv1.setHint("手圈病歷號");
-                        tv2.setHint("號碼");
-                        break;
-
-                    case 3:
-                        tv.setText("檢驗員");
-                        tv1.setHint("檢驗員");
-                        tv2.setHint("號碼");
-                        break;
-                    case 4:
-                        Intent intent = new Intent(CheckIn.this, CheckIn2.class);
-                        intent.putExtras(bundle);
-                        startActivity(intent);
-                }
-            }
-        });
-        bt2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                count--;
-                switch (count) {
-
-                    case 1:
-                        tv.setText("總表病歷號");
-                        tv1.setHint("總表病歷號");
-                        tv2.setHint("號碼");
-                        break;
-
-                    case 2:
-                        tv.setText("手圈病歷號");
-                        tv1.setHint("手圈病歷號");
-                        tv2.setHint("號碼");
-                        break;
-
-                    case 3:
-                        tv.setText("檢驗員");
-                        tv1.setHint("檢驗員");
-                        tv2.setHint("號碼");
-                        break;
-
-//                    case 4:
-
-                    default:
-                        Intent intent = new Intent(CheckIn.this, OperationHome.class);
-                        startActivity(intent);
-                        break;
-
-                }
-            }
-        });
-////相機
-        surfaceView = (SurfaceView)
-
-                findViewById(R.id.surfaceView);
-
-        textView = (TextView)
-
-                findViewById(R.id.input);
+        textView = (TextView)findViewById(R.id.input);
 
         barcodeDetector = new BarcodeDetector.Builder(this)
-                .
-
-                        setBarcodeFormats(Barcode.ALL_FORMATS).
-
-                        build();
+                .setBarcodeFormats(Barcode.ALL_FORMATS)
+                .build();
 
         cameraSource = new CameraSource.Builder(this, barcodeDetector)
                 .setRequestedPreviewSize(1920, 1080)
@@ -212,6 +108,99 @@ public class CheckIn extends AppCompatActivity {
                 }
             }
         });
+        //api連接
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://106.105.167.136:8080/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        //監視TextView是否有更變
+        textView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (textView.getText().toString() != null) {
+                    Get_staff(retrofit, editable.toString());
+                }
+                //show.setText(editable);
+            }
+        });
+        //API結束 ， 下面還有
+        TextView tv = (TextView) findViewById(R.id.title);
+        TextView tv1 = (TextView) findViewById(R.id.input);
+        TextView tv2 = (TextView) findViewById(R.id.show);
+
+        bt = findViewById(R.id.nextbt);             //下一頁
+        bt2 = findViewById(R.id.frontbt);           //上一頁
+
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                count++;
+                switch (count) {
+                    case 1:
+                        tv.setText("手圈病歷號");
+                        tv1.setHint("手圈病歷號");
+                        tv2.setHint("號碼");
+                        break;
+                    case 2:
+                        tv.setText("檢驗員");
+                        tv1.setHint("檢驗員");
+                        tv2.setHint("號碼");
+                        break;
+                    case 3:
+                        Intent intent = new Intent(CheckIn.this, CheckIn2.class);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                        break;
+
+                    default:
+                        tv.setText("總表病歷號");
+                        tv1.setHint("總表病歷號");
+                        tv2.setHint("號碼");
+
+                }
+            }
+        });
+        bt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                count--;
+                switch (count) {
+
+                    case 1:
+                        tv.setText("手圈病歷號");
+                        tv1.setHint("手圈病歷號");
+                        tv2.setHint("號碼");
+                        break;
+
+                    case 2:
+                        tv.setText("檢驗員");
+                        tv1.setHint("檢驗員");
+                        tv2.setHint("號碼");
+                        break;
+                    case -1:
+                        Intent intent = new Intent(CheckIn.this, OperationHome.class);
+                        startActivity(intent);
+                        break;
+
+                    default:
+                        tv.setText("總表病歷號");
+                        tv1.setHint("總表病歷號");
+                        tv2.setHint("號碼");
+
+                }
+            }
+        });
+////相機
+
     }
 
     private void getPermissionsCamera() {
