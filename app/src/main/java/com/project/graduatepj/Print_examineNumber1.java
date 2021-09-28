@@ -31,25 +31,23 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Print_examineNumber1 extends AppCompatActivity {
-    private Button bt1;
-    private Button bt22;
-    private TextView input;
-    private TextView show;
+    private Button bt;
+    private Button bt2;
     SurfaceView surfaceView;
     TextView textView;
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
-    String paitentNumber1,checkPaperNumber;
-    int count=0;
     Bundle bundle = new Bundle();
-    Intent intent = new Intent();
+    private TextView show;
+    int count = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_print_examine_number1);
 
-        input = findViewById(R.id.input);
+        textView = (TextView) findViewById(R.id.input);
         show = findViewById(R.id.show);
         getPermissionsCamera();
 
@@ -59,25 +57,28 @@ public class Print_examineNumber1 extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         //監視TextView是否有更變
-        input.addTextChangedListener(new TextWatcher() {
+        textView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
+
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
             }
+
             @Override
             public void afterTextChanged(Editable editable) {
-                if (input.getText().toString() != null) {
+                if (textView.getText().toString() != null) {
                     Get_staff(retrofit, editable.toString());
                 }
-                show.setText(editable);
+                //show.setText(editable);
             }
         });
         //API結束 ， 下面還有
 
         surfaceView=(SurfaceView)findViewById(R.id.surfaceView);
-        textView=(TextView)findViewById(R.id.show);
+        textView=(TextView)findViewById(R.id.input);
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.ALL_FORMATS).build();
         cameraSource = new CameraSource.Builder(this,barcodeDetector)
@@ -133,55 +134,52 @@ public class Print_examineNumber1 extends AppCompatActivity {
         TextView tv = (TextView)findViewById(R.id.titlee);
         TextView tv1 = (TextView)findViewById(R.id.input);
         TextView tv2 = (TextView)findViewById(R.id.show);
-        bt1 = findViewById(R.id.nextbt);
-        bt22 = findViewById(R.id.frontbt);
-        bt1.setOnClickListener(new View.OnClickListener() {
+        bt = findViewById(R.id.nextbt);
+        bt2 = findViewById(R.id.frontbt);
+        bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 count++;
                 switch (count){
                     case 1:
                         tv.setText("列印檢體編號-檢驗單");
-                        tv1.setText("請掃描檢驗單編號");
-                        tv2.setText("檢驗單編號: ");
-                        checkPaperNumber = textView.getText().toString();
-                        intent.setClass(Print_examineNumber1.this, Print_examineNumber2.class);
-                        bundle.putString("checkPaperNumber", checkPaperNumber);
-                        intent.putExtras(bundle);
+                        tv1.setHint("請掃描檢驗單編號");
+                        tv2.setHint("檢驗單編號: ");
                         break;
                     case 2:
                         tv.setText("列印檢體編號-病歷號");
-                        tv1.setText("請掃描手圈病歷號");
-                        tv2.setText("手圈病歷號:");
-                        paitentNumber1 = textView.getText().toString();
-                        intent.setClass(Print_examineNumber1.this, Print_examineNumber2.class);
-                        bundle.putString("paitentNumber1", paitentNumber1);
-                        intent.putExtras(bundle);
+                        tv1.setHint("請掃描手圈病歷號");
+                        tv2.setHint("手圈病歷號:");
                         break;
+                    case 3:
+                        Intent intent = new Intent(Print_examineNumber1.this, Print_examineNumber2.class);
+                        startActivity(intent);
+                        intent.putExtras(bundle);
                 }
             }
         });
 
-        bt22.setOnClickListener(new View.OnClickListener() {
+        bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 count--;
                 switch (count){
-                    case -1:
+                    case 1:
                         tv.setText("列印檢體編號-檢驗單");
-                        tv1.setText("請掃描檢驗單編號");
-                        tv2.setText("檢驗單編號: ");
-                        intent.setClass(Print_examineNumber1.this, examine_homePage.class);
-
+                        tv1.setHint("請掃描檢驗單編號");
+                        tv2.setHint("檢驗單編號: ");
                         break;
-                    case 0:
-                        Intent intent = new Intent();
+
+                    case 2:
                         tv.setText("列印檢體編號-病歷號");
-                        tv1.setText("請掃描手圈病歷號");
-                        tv2.setText("手圈病歷號:");
+                        tv1.setHint("請掃描手圈病歷號");
+                        tv2.setHint("手圈病歷號:");
+                        break;
+
+                    default:
+                        Intent intent = new Intent(Print_examineNumber1.this, examine_homePage.class);
                         startActivity(intent);
                         break;
-
                 }
             }
         });
