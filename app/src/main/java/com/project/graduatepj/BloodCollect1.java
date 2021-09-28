@@ -159,7 +159,7 @@ public class BloodCollect1 extends AppCompatActivity {
                         Intent intent = new Intent(BloodCollect1.this,BloodCollect2.class);
                         startActivity(intent);
                         intent.putExtras(bundle);
-                        break;
+//                        break;
                 }
             }
         });
@@ -213,6 +213,7 @@ public class BloodCollect1 extends AppCompatActivity {
                 }
                 String name = response.body().getName();
                 show.setText(name);
+
             }
 
             @Override
