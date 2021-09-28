@@ -41,10 +41,10 @@ public class BloodCollect2 extends AppCompatActivity {
         Bundle collectorNumberBloodCollect3 = this.getIntent().getExtras();
         Bundle recheckNumberBloodCollect3 = this.getIntent().getExtras();
 
-        String patientNumber1 = patientNumber1BloodCollect3.getString("patientNumber1");
-        String sampleNumber = sampleNumberBloodCollect3.getString("sampleNumber");
-        String collectorNumber = sampleNumberBloodCollect3.getString("collectorNumber");
-        String recheckNumber = sampleNumberBloodCollect3.getString("recheckNumber");
+        String patientNumber1 = patientNumber1BloodCollect3.getString("patientNumber1BloodCollect3");
+        String sampleNumber = sampleNumberBloodCollect3.getString("sampleNumberBloodCollect3");
+        String collectorNumber = collectorNumberBloodCollect3.getString("collectorNumberBloodCollect3");
+        String recheckNumber = recheckNumberBloodCollect3.getString("recheckNumberBloodCollect3");
 
    //     EditText patientNumberBox = (EditText) findViewById(R.id.patientNumber1Box);
    //     EditText sampleNumberBox = (EditText) findViewById(R.id.sampleNumberBox);
@@ -58,8 +58,8 @@ public class BloodCollect2 extends AppCompatActivity {
 
         tv.setText(patientNumber1);
         tv2.setText(sampleNumber);
-        tv3.setText(sampleNumber);
-        tv4.setText(sampleNumber);
+        tv3.setText(collectorNumber);
+        tv4.setText(recheckNumber);
 
 
 
