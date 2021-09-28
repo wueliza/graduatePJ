@@ -72,7 +72,7 @@ public class Print_examineNumber1 extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 if (textView.getText().toString() != null) {
-                    Get_staff(retrofit, editable.toString());
+                    Get_patient(retrofit, editable.toString());
                 }
                 //show.setText(editable);
             }
@@ -191,27 +191,37 @@ public class Print_examineNumber1 extends AppCompatActivity {
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA},1);
         }
     }
-    public void Get_staff(Retrofit retrofit, String id) {
 
+    public void Get_patient(Retrofit retrofit, String id) {
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-        Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id); //A00010
-        call.enqueue(new Callback<Staff_Api>() {
+        Call<Patient_Api> call = jsonPlaceHolderApi.getOne(id); //A00010
+        call.enqueue(new Callback<Patient_Api>() {
             @Override
-            public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
+            public void onResponse(Call<Patient_Api> call, Response<Patient_Api> response) {
                 if (!response.isSuccessful()) {
-                    show.setText("找不到這個id");
+                    show.setText("此id不存在，請重新掃描病歷號！");
                     return;
                 }
-                String name = response.body().getName();
-                show.setText(name);
+                else {
+                    String name = response.body().getName();
+                    show.setText(name);
+                    show.setText("掃描成功，請按下一步");
+                    bundle.putString("patientNumber1Check", id);
+
+                }
             }
 
             @Override
-            public void onFailure(Call<Staff_Api> call, Throwable t) {
-                show.setText("請掃描條碼");
+            public void onFailure(Call<Patient_Api> call, Throwable t) {
+                show.setText("請重新掃描病歷號！");
             }
         });
     }
+
+
+
+
+
 }
 
 

@@ -200,29 +200,64 @@ public class BloodCollect1 extends AppCompatActivity {
         }
     }
 
+
     public void Get_staff(Retrofit retrofit, String id) {
 
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
         Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id); //A00010
-        call.enqueue(new Callback<Staff_Api>() {
-            @Override
-            public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
-                if (!response.isSuccessful()) {
-                    show.setText("找不到這個id");
-                    return;
+        Call<Patient_Api> patient_apiCall = jsonPlaceHolderApi.getOne(id);
+
+        if (count == 1 || count == 2) {
+            patient_apiCall.enqueue(new Callback<Patient_Api>() {
+                @Override
+                public void onResponse(Call<Patient_Api> patient_apiCall, Response<Patient_Api> response) {
+                    if (!response.isSuccessful()) {
+                        show.setText("找不到這個id");
+                        return;
+                    }
+                    String name = response.body().getName();
+                    show.setText(name);
+                    show.setText("掃描成功，請按下一步");
+                    bundle.putString("patientNumber1Check", id);
                 }
-                String name = response.body().getName();
-                show.setText(name);
-            }
 
-            @Override
-            public void onFailure(Call<Staff_Api> call, Throwable t) {
-                show.setText("請掃描條碼");
-            }
-        });
+                @Override
+                public void onFailure(Call<Patient_Api> call, Throwable t) {
+                    show.setText("請掃描條碼");
+                }
+            });
+        } else {
+            call.enqueue(new Callback<Staff_Api>() {
+                @Override
+                public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
+                    if (!response.isSuccessful()) {
+                        show.setText("找不到這個id");
+                        return;
+                    }
+                    String name = response.body().getName();
+                    show.setText(name);
+                    show.setText("掃描成功，請按下一步");
+                    bundle.putString("collectorNumberCheck", show.getText().toString());
+                }
+
+                @Override
+                public void onFailure(Call<Staff_Api> call, Throwable t) {
+                    show.setText("請掃描條碼");
+                }
+            });
+        }
+
     }
-
 }
+
+
+
+
+
+
+
+
+
 
 
 
