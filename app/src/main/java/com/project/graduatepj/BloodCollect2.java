@@ -27,10 +27,10 @@ public class BloodCollect2 extends AppCompatActivity {
 
 
 
-        String patientNumber1 = patientNumber1Check.getString("patientNumber1");
-        String sampleNumber = sampleNumberCheck.getString("sampleNumber");
-        String collectorNumber = collectorNumberCheck.getString("collectorNumber");
-        String recheckNumber = recheckNumberCheck.getString("recheckNumber");
+        String patientNumber1 = patientNumber1Check.getString("patientNumber1Check");
+        String sampleNumber = sampleNumberCheck.getString("sampleNumberCheck");
+        String collectorNumber = collectorNumberCheck.getString("collectorNumberCheck");
+        String recheckNumber = recheckNumberCheck.getString("recheckNumberCheck");
 
 
 

@@ -23,8 +23,8 @@ public class Print_examineNumber2 extends AppCompatActivity {
             Bundle checkPaperNumberCheck = this.getIntent().getExtras();
 
 
-            String patientNumber1 = patientNumber1Check.getString("patientNumber1");
-            String checkPaperNumber = checkPaperNumberCheck.getString("checkPaperNumber");
+            String patientNumber1 = patientNumber1Check.getString("patientNumber1Check");
+            String checkPaperNumber = checkPaperNumberCheck.getString("checkPaperNumberCheck");
 
 
 
