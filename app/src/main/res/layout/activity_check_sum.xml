@@ -19,7 +19,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="220dp"
         android:layout_margin="15dp"
         android:background="@color/white"
         android:orientation="vertical">
@@ -34,7 +34,7 @@
                 android:layout_width="10dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginLeft="4dp"
+                android:layout_marginLeft="12dp"
                 android:layout_weight="1"
                 android:text="領血單號 :"
                 android:textColor="#504C4C"
@@ -62,7 +62,7 @@
                 android:layout_width="80dp"
                 android:layout_height="match_parent"
                 android:text="姓名 :"
-                android:layout_marginLeft="4dp"
+                android:layout_marginLeft="12dp"
                 android:layout_marginTop="4dp"
                 android:textColor="#504C4C"
                 android:textSize="18sp"
@@ -107,7 +107,7 @@
                 android:layout_width="80dp"
                 android:layout_height="match_parent"
                 android:text="床號 :"
-                android:layout_marginLeft="4dp"
+                android:layout_marginLeft="12dp"
                 android:textColor="#504C4C"
                 android:layout_marginTop="4dp"
                 android:textSize="18sp"
@@ -143,7 +143,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="43dp"
+            android:layout_height="50dp"
             android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
@@ -152,7 +152,7 @@
                 android:layout_height="match_parent"
                 android:text="病歷號 :"
                 android:textColor="#504C4C"
-                android:layout_marginLeft="4dp"
+                android:layout_marginLeft="12dp"
                 android:textSize="18sp"
                 android:layout_marginTop="4dp"
                 android:textStyle="bold" />
@@ -187,7 +187,7 @@
                 android:layout_height="match_parent"
                 android:text="核血人員 :"
                 android:layout_marginTop="4dp"
-                android:layout_marginLeft="4dp"
+                android:layout_marginLeft="8dp"
                 android:textColor="#504C4C"
                 android:textSize="18sp"
                 android:layout_weight="1"
@@ -214,7 +214,7 @@
                 android:layout_height="match_parent"
                 android:text="確認人員 :"
                 android:layout_marginTop="4dp"
-                android:layout_marginLeft="4dp"
+                android:layout_marginLeft="8dp"
                 android:textColor="#504C4C"
                 android:textSize="18sp"
                 android:layout_weight="1"
@@ -242,10 +242,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="4dp"
                 android:text="內容"
                 android:textSize="18sp"
-                android:layout_marginLeft="4dp"
+                android:layout_marginLeft="8dp"
                 />
         </LinearLayout>
     </LinearLayout>

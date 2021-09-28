@@ -75,14 +75,14 @@
 
                     <Button
                         android:id="@+id/frontbt"
-                        android:layout_width="130dp"
-                        android:layout_height="55dp"
+                        android:text="返回"
+                        android:layout_width="140dp"
+                        android:layout_height="65dp"
                         android:layout_gravity="bottom"
-                        android:background="@drawable/nextbutton_general"
-                        android:text="上一步"
+                        android:textStyle="bold"
                         android:textColor="#FBFBFB"
-                        android:textSize="@dimen/dp_20"
-                        android:textStyle="bold" />
+                        android:textSize="@dimen/dp_18"
+                        android:background="@drawable/returnbutton"/>
 
                 </LinearLayout>
 
