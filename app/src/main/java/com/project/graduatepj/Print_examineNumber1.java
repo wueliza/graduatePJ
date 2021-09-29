@@ -205,6 +205,8 @@ public class Print_examineNumber1 extends AppCompatActivity {
                     String name = response.body().getName();
                     show.setText(name);
                     show.setText("掃描成功，請按下一步");
+                    bundle.putString("patientNumber1Check", show.getText().toString());
+
                 }
             }
 
