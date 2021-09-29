@@ -218,7 +218,7 @@ public class CheckIn extends AppCompatActivity {
         Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id); //A00010
         Call<Patient_Api> patient_apiCall = jsonPlaceHolderApi.getOne(id);
 
-        if (count == 1 || count == 2) {
+        if (count == 0 || count == 1)  {
             patient_apiCall.enqueue(new Callback<Patient_Api>() {
                 @Override
                 public void onResponse(Call<Patient_Api> patient_apiCall, Response<Patient_Api> response) {
@@ -229,6 +229,8 @@ public class CheckIn extends AppCompatActivity {
                     String name = response.body().getName();
                     show.setText(name);
                     bundle.putString("paitentNumbercheck", id);
+                    bundle.putString("NameBox", show.getText().toString());
+
                 }
 
                 @Override
