@@ -53,6 +53,7 @@ public class BloodCollect2 extends AppCompatActivity {
         bt2 = (Button) findViewById(R.id.frontbt);
 
 
+
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
