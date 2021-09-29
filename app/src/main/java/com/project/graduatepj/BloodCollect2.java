@@ -1,19 +1,28 @@
 package com.project.graduatepj;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class BloodCollect2 extends AppCompatActivity {
-    Intent intent;
+    private Button bt;
+    private Button bt2;
+    Intent intent;{
+        intent = new Intent(); }
+    TextView tv1, tv2, tv3, tv4 ;
 
-    {
-        intent = new Intent();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,31 +34,24 @@ public class BloodCollect2 extends AppCompatActivity {
         Bundle collectorNumberCheck = this.getIntent().getExtras();
         Bundle recheckNumberCheck= this.getIntent().getExtras();
 
-
-
         String patientNumber1 = patientNumber1Check.getString("patientNumber1Check");
         String sampleNumber = sampleNumberCheck.getString("sampleNumberCheck");
         String collectorNumber = collectorNumberCheck.getString("collectorNumberCheck");
         String recheckNumber = recheckNumberCheck.getString("recheckNumberCheck");
 
+        tv1 = (TextView) findViewById(R.id.patientNumber1Box);
+        tv2 = (TextView) findViewById(R.id.sampleNumberBox);
+        tv3 = (TextView) findViewById(R.id.collectorNumberBox);
+        tv4 = (TextView) findViewById(R.id.recheckNumberBox);
 
-        TextView tv = (TextView) findViewById(R.id.patientNumber1Box);
-        TextView tv2 = (TextView) findViewById(R.id.sampleNumberBox);
-        TextView tv3 = (TextView) findViewById(R.id.collectorNumberBox);
-        TextView tv4 = (TextView) findViewById(R.id.recheckNumberBox);
-
-
-        tv.setText(patientNumber1);
+        tv1.setText(patientNumber1);
         tv2.setText(sampleNumber);
         tv3.setText(collectorNumber);
         tv4.setText(recheckNumber);
 
+        bt = (Button) findViewById(R.id.nextbt);
+        bt2 = (Button) findViewById(R.id.frontbt);
 
-
-
-
-        Button bt = (Button) findViewById(R.id.nextbt);
-        Button bt2 = (Button) findViewById(R.id.frontbt);
 
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,4 +68,5 @@ public class BloodCollect2 extends AppCompatActivity {
             }
         });
     }
+
 }

@@ -19,7 +19,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_280"
+        android:layout_height="@dimen/dp_290"
         android:layout_margin="@dimen/dp_15"
         android:background="@color/white"
         android:orientation="vertical">
@@ -97,7 +97,7 @@
                 android:layout_marginLeft="@dimen/dp_12"
                 android:layout_marginTop="@dimen/dp_4"
                 android:layout_weight="1"
-                android:text="檢測員 :"
+                android:text="採檢員 :"
                 android:textColor="#504C4C"
                 android:textSize="18sp"
                 android:textStyle="bold" />

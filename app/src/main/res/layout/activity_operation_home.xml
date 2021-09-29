@@ -24,7 +24,7 @@
         android:text="Check in 病人辨識"
         android:layout_width="@dimen/dp_250"
         android:layout_height="80dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="45dp"
         android:background="@drawable/collectpagebutton"
         android:layout_gravity="center"
         android:textSize="@dimen/dp_20"/>
