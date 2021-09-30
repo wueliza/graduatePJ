@@ -39,16 +39,24 @@
             android:orientation="vertical"
             android:gravity="bottom"
             >
-
+            <TextView
+                android:id="@+id/ehint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@android:color/primary_text_dark_nodisable"
+                android:textSize="@dimen/dp_24"
+                />
             <TextView
                 android:id="@+id/ehint1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text=""
-                android:textColor="@color/black"
-                android:textSize="@dimen/dp_24" />
+                android:textColor="@android:color/primary_text_dark_nodisable"
+                android:textSize="@dimen/dp_24"
+                />
 
             <TextView
                 android:id="@+id/ehint2"
@@ -57,7 +65,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text=""
-                android:textColor="@color/black"
+                android:textColor="@android:color/primary_text_dark_nodisable"
                 android:textSize="@dimen/dp_24" />
             <TextView
                 android:id="@+id/ehint3"
@@ -66,7 +74,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text=""
-                android:textColor="@color/black"
+                android:textColor="@android:color/primary_text_dark_nodisable"
                 android:textSize="@dimen/dp_24" />
 
             <LinearLayout

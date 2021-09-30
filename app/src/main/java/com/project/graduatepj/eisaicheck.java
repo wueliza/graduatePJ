@@ -37,7 +37,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class eisaicheck extends AppCompatActivity {
 
     private SurfaceView surfaceView;
-    private TextView step , result , show;
+    private TextView step , result , show , hint;
     private CameraSource cameraSource;
     private BarcodeDetector barcodeDetector;
     private Button nextBt , upstepbt;
@@ -59,6 +59,8 @@ public class eisaicheck extends AppCompatActivity {
         show = (TextView)findViewById(R.id.ehint3);
         nextBt = (Button)findViewById(R.id.nextbt);
         upstepbt = (Button)findViewById(R.id.upStep_bt);
+
+        hint  = findViewById(R.id.ehint);
 
         nextBt.setOnClickListener(this::nextStep);
         upstepbt.setOnClickListener(this::upStep);
@@ -134,16 +136,15 @@ public class eisaicheck extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (result.getText().toString() != null && count == 0) {
+                if (count == 0) {
                     Get_staff(retrofit, editable.toString());
                 }
-                else if (result.getText().toString() != null && count == 1) {
+                else if (count == 1) {
                     Get_patient(retrofit, editable.toString());
                 }
-                else if (result.getText().toString() != null && count == 2) {
+                else if (count == 2) {
                     Get_eisai(retrofit, editable.toString());
                 }
-                //result.setText(editable);
             }
         });
     }
@@ -156,10 +157,14 @@ public class eisaicheck extends AppCompatActivity {
         }
         else if(count == 1){
             step.setText("請掃描檢驗員員工編號條碼");
+            show.setText("");
+            result.setText("");
             count--;
         }
         else if(count == 2){
             step.setText("請掃描病歷號條碼");
+            show.setText("");
+            result.setText("");
             count--;
         }
     }
@@ -168,16 +173,16 @@ public class eisaicheck extends AppCompatActivity {
         if(count == 0 ){
             bundle.putString("staff_id", show.getText().toString());
             intent.putExtras(bundle);
-            show.setText("");
-            result.setText("");
-            step.setText("請掃描病歷號條碼");
+            show.setText(" ");
+            result.setText(" ");
             count++;
+            step.setText("請掃描病歷號條碼");
         }
         else if(count == 1){
             bundle.putString("patient_id", show.getText().toString());
             intent.putExtras(bundle);
-            show.setText("");
-            result.setText("");
+            show.setText(" ");
+            result.setText(" ");
             step.setText("請掃描衛材條碼");
             nextBt.setText("傳送");
             count++;

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".eisairesult"
-    android:background="@color/white">
+    android:background="#FCFCFC">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -164,7 +164,7 @@
                 android:layout_width="130dp"
                 android:layout_height="55dp"
                 android:layout_gravity="bottom|end"
-                android:background="@drawable/nextbutton_general"
+                android:background="@drawable/functionbutton_2"
                 android:text="完成"
                 android:layout_weight="1"
                 android:textSize="18sp" />
