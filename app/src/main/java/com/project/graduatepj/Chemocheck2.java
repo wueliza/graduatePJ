@@ -1,12 +1,12 @@
 package com.project.graduatepj;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,13 +23,8 @@ public class Chemocheck2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = getIntent();
-        Bundle scan_result = intent.getExtras();
-        String staff = scan_result.getString("staff_id");
-        String check = scan_result.getString("check_id");
-        String chemo = scan_result.getString("chemo_id");
         setContentView(R.layout.activity_chemogiveinfo2);
-
+        Intent intent = this.getIntent();
         pa_id = findViewById(R.id.pa_id);
         pa_name = findViewById(R.id.pa_name);
         pa_gender = findViewById(R.id.pa_gender);
@@ -42,8 +37,14 @@ public class Chemocheck2 extends AppCompatActivity {
         staffTv = findViewById(R.id.sTv);
         checkTv = findViewById(R.id.checkTV);
         chemoTv = findViewById(R.id.chemoTv);
+
+        Bundle scan_result = intent.getExtras();
+        String staff = scan_result.getString("chemostaff_id");
+        String check = scan_result.getString("chemocheck_id");
+        String chemo = scan_result.getString("chemo_id");
+
         staffTv.setText(staff);
-        chemoTv.setText(check);
+        checkTv.setText(check);
         chemoTv.setText(chemo);
 
         sentbt = (Button)findViewById(R.id.sendbt);

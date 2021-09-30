@@ -3,24 +3,28 @@ package com.project.graduatepj;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.hardware.Camera;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.DisplayMetrics;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.widget.TextView;
-import android.widget.Button;
 import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
-
-
 
 import java.io.IOException;
 
@@ -30,7 +34,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class    Chemocheck extends AppCompatActivity {
+public class Chemocheck extends AppCompatActivity {
     private Button nextbt , upbt;
     private TextView hint1 , hint2 , hint3;
     Bundle bundle = new Bundle();
@@ -48,27 +52,29 @@ public class    Chemocheck extends AppCompatActivity {
         hint2 = findViewById(R.id.chint2);
         hint3 = findViewById(R.id.chint3);
         hint1.setText("請掃描成品單號");
+        hint3.setText(" ");
         intent.setClass(Chemocheck.this , Chemocheck2.class);
+
         nextbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(count == 0){
-                    bundle.putString("chemo_id", hint2.getText().toString());
+                    bundle.putString("chemo_id", hint3.getText().toString());
                     intent.putExtras(bundle);
                     hint1.setText("請掃描核藥員編號");
-                    hint3.setText("");
+                    hint3.setText(" ");
                     count++;
                 }
                 else if(count == 1){
-                    bundle.putString("staff_id", hint2.getText().toString());
+                    bundle.putString("chemostaff_id", hint3.getText().toString());
                     intent.putExtras(bundle);
                     hint1.setText("請掃描確認員編號");
-                    hint3.setText("");
+                    hint3.setText(" ");
                     nextbt.setText("傳送");
                     count++;
                 }
                 else if (count == 2){
-                    bundle.putString("check_id", hint2.getText().toString());
+                    bundle.putString("chemocheck_id", hint3.getText().toString());
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }

@@ -21,7 +21,7 @@ public class eisairesult extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eisairesult);
-        Intent intent = getIntent();
+        Intent intent = this.getIntent();
         staff_id = findViewById(R.id.staff_id);
         patient_id = findViewById(R.id.patient_id);
         eisai_id = findViewById(R.id.eisai_id);

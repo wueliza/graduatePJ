@@ -37,7 +37,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class eisaicheck extends AppCompatActivity {
 
     private SurfaceView surfaceView;
-    private TextView step , result , show , hint;
+    private TextView step , result , show;
     private CameraSource cameraSource;
     private BarcodeDetector barcodeDetector;
     private Button nextBt , upstepbt;
@@ -59,8 +59,6 @@ public class eisaicheck extends AppCompatActivity {
         show = (TextView)findViewById(R.id.ehint3);
         nextBt = (Button)findViewById(R.id.nextbt);
         upstepbt = (Button)findViewById(R.id.upStep_bt);
-
-        hint  = findViewById(R.id.ehint);
 
         nextBt.setOnClickListener(this::nextStep);
         upstepbt.setOnClickListener(this::upStep);
