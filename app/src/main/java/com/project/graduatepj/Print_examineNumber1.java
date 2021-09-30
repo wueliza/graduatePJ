@@ -35,7 +35,6 @@ public class Print_examineNumber1 extends AppCompatActivity {
     Button bt;
     Button bt2;
 
-
     Bundle bundle = new Bundle();
     private TextView show;
     SurfaceView surfaceView;
@@ -106,6 +105,7 @@ public class Print_examineNumber1 extends AppCompatActivity {
         });
 
 
+
         //api連接
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://106.105.167.136:8080/api/")
@@ -122,15 +122,15 @@ public class Print_examineNumber1 extends AppCompatActivity {
 
             }
 
+
             @Override
             public void afterTextChanged(Editable editable) {
                 if (textView.getText().toString() != null) {
-                    Get_patient(retrofit, editable.toString());
+                    Get_staff(retrofit, editable.toString());
                 }
                 //show.setText(editable);
             }
         });
-        //API結束 ， 下面還有
 
 
         TextView tv = (TextView)findViewById(R.id.title);
@@ -191,31 +191,54 @@ public class Print_examineNumber1 extends AppCompatActivity {
         }
     }
 
-    public void Get_patient(Retrofit retrofit, String id) {
+    public void Get_staff(Retrofit retrofit, String id) {
+
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-        Call<Patient_Api> call = jsonPlaceHolderApi.getOne(id); //A00010
-        call.enqueue(new Callback<Patient_Api>() {
-            @Override
-            public void onResponse(Call<Patient_Api> call, Response<Patient_Api> response) {
-                if (!response.isSuccessful()) {
-                    show.setText("此id不存在，請重新掃描病歷號！");
-                    return;
-                }
-                else {
+        Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id); //A00010
+        Call<Patient_Api> patient_apiCall = jsonPlaceHolderApi.getOne(id);
+
+        if (count == 0 || count == 1) {
+            patient_apiCall.enqueue(new Callback<Patient_Api>() {
+                @Override
+                public void onResponse(Call<Patient_Api> patient_apiCall, Response<Patient_Api> response) {
+                    if (!response.isSuccessful()) {
+                        show.setText("找不到這個id");
+                        return;
+                    }
                     String name = response.body().getName();
                     show.setText(name);
-                    show.setText("掃描成功，請按下一步");
                     bundle.putString("patientNumber1Check", show.getText().toString());
 
                 }
-            }
 
-            @Override
-            public void onFailure(Call<Patient_Api> call, Throwable t) {
-                show.setText("請重新掃描病歷號！");
-            }
-        });
+                @Override
+                public void onFailure(Call<Patient_Api> call, Throwable t) {
+                    show.setText("請掃描條碼");
+                }
+            });
+        } else {
+            call.enqueue(new Callback<Staff_Api>() {
+                @Override
+                public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
+                    if (!response.isSuccessful()) {
+                        show.setText("找不到這個id");
+                        return;
+                    }
+                    String name = response.body().getName();
+                    show.setText(name);
+
+                    bundle.putString("collectorNumberCheck", show.getText().toString());
+                }
+
+                @Override
+                public void onFailure(Call<Staff_Api> call, Throwable t) {
+                    show.setText("請掃描條碼");
+                }
+            });
+        }
+
     }
+
 
 
 
