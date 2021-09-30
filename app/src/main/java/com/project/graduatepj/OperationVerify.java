@@ -90,26 +90,27 @@ public class OperationVerify extends AppCompatActivity {
                 count++;
                 switch (count) {
                     case 1:
-                        tv.setText("總表病歷號");
-                        tv1.setHint("總表病歷號");
-                        tv2.setHint("號碼");
-                        break;
-                    case 2:
                         tv.setText("備刀單");
                         tv1.setHint("備刀單");
                         tv2.setHint("號碼");
-
                         break;
-                    case 3:
+
+                    case 2:
                         tv.setText("檢驗員");
                         tv1.setHint("檢驗員");
                         tv2.setHint("號碼");
 
                         break;
-                    case 4:
+                    case 3:
                         Intent intent = new Intent(OperationVerify.this, OperationVerify2.class);
                         intent.putExtras(bundle);
                         startActivity(intent);
+                        break;
+
+                    default:
+                        tv.setText("總表病歷號");
+                        tv1.setHint("總表病歷號");
+                        tv2.setHint("號碼");
                 }
 
             }
@@ -121,74 +122,66 @@ public class OperationVerify extends AppCompatActivity {
                 count--;
                 switch (count) {
                     case 1:
-                        tv.setText("總表病歷號");
-                        tv1.setHint("總表病歷號");
-                        tv2.setHint("號碼");
-                        break;
 
-                    case 2:
                         tv.setText("備刀單");
                         tv1.setHint("備刀單");
                         tv2.setHint("號碼");
                         break;
 
-                    case 3:
+                    case 2:
                         tv.setText("檢驗員");
                         tv1.setHint("檢驗員");
                         tv2.setHint("號碼");
                         break;
-
-                    default:
+                    case -1:
                         Intent intent = new Intent(OperationVerify.this, OperationHome.class);
                         startActivity(intent);
+                        break;
+
+                    default:
+                        tv.setText("總表病歷號");
+                        tv1.setHint("總表病歷號");
+                        tv2.setHint("號碼");
                 }
             }
         });
-        surfaceView = (SurfaceView)
+        surfaceView = (SurfaceView) findViewById(R.id.surfaceView);
 
-                findViewById(R.id.surfaceView);
+        textView = (TextView) findViewById(R.id.input);
 
-        textView = (TextView)
+        barcodeDetector = new BarcodeDetector
+                .Builder(this)
+                .setBarcodeFormats(Barcode.ALL_FORMATS)
+                .build();
 
-                findViewById(R.id.input);
+        cameraSource = new CameraSource
+                .Builder(this, barcodeDetector)
+                .setAutoFocusEnabled(true)
+                .build();
 
-        barcodeDetector = new BarcodeDetector.Builder(this)
-                .
+        surfaceView.getHolder().addCallback(new SurfaceHolder.Callback() {
+            @Override
+            public void surfaceCreated(@NonNull SurfaceHolder holder) {
+                if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED)
+                    return;
+                try {
+                    cameraSource.start(holder);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
 
-                        setBarcodeFormats(Barcode.ALL_FORMATS).
+            @Override
+            public void surfaceChanged(@NonNull SurfaceHolder holder, int format, int width, int height) {
 
-                        build();
+            }
 
-        cameraSource = new CameraSource.Builder(this, barcodeDetector).
-
-                setAutoFocusEnabled(true).
-
-                build();
-        surfaceView.getHolder().
-
-                addCallback(new SurfaceHolder.Callback() {
-                    @Override
-                    public void surfaceCreated(@NonNull SurfaceHolder holder) {
-                        if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA)
-                                != PackageManager.PERMISSION_GRANTED)
-                            return;
-                        try {
-                            cameraSource.start(holder);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-                    @Override
-                    public void surfaceChanged(@NonNull SurfaceHolder holder, int format, int width, int height) {
-
-                    }
-
-                    @Override
-                    public void surfaceDestroyed(@NonNull SurfaceHolder holder) {
-                        cameraSource.stop();
-                    }
-                });
+            @Override
+            public void surfaceDestroyed(@NonNull SurfaceHolder holder) {
+                cameraSource.stop();
+            }
+        });
         barcodeDetector.setProcessor(new Detector.Processor<Barcode>() {
 
             @Override
@@ -222,21 +215,33 @@ public class OperationVerify extends AppCompatActivity {
     public void Get_staff(Retrofit retrofit, String id) {
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
         Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id);
-        call.enqueue(new Callback<Staff_Api>() {
-            @Override
-            public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
-                if (!response.isSuccessful()) {
-                    show.setText("找不到這個id");
-                    return;
+        Call<Operation_Api> operation_call  = jsonPlaceHolderApi.get_operation(id);
+        if(count == 0)
+        {
+            call.enqueue(new Callback<Staff_Api>() {
+                @Override
+                public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
+                    if (!response.isSuccessful()) {
+                        show.setText("找不到這個id");
+                        return;
+                    }
+                    String name = response.body().getName();
+                    show.setText(name);
                 }
-                String name = response.body().getName();
-                show.setText(name);
-            }
 
-            @Override
-            public void onFailure(Call<Staff_Api> call, Throwable t) {
-                show.setText("請掃描條碼");
-            }
-        });
+                @Override
+                public void onFailure(Call<Staff_Api> call, Throwable t) {
+                    show.setText("請掃描條碼");
+                }
+            });
+        }
+        else
+        {
+
+        }
+
+
+
     }
+
 }
