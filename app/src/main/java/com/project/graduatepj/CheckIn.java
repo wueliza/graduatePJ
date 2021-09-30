@@ -50,9 +50,9 @@ public class CheckIn extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.input);
 
         getPermissionsCamera();
-        surfaceView = (SurfaceView)findViewById(R.id.surfaceView);
+        surfaceView = (SurfaceView) findViewById(R.id.surfaceView);
 
-        textView = (TextView)findViewById(R.id.input);
+        textView = (TextView) findViewById(R.id.input);
 
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.ALL_FORMATS)
@@ -218,7 +218,7 @@ public class CheckIn extends AppCompatActivity {
         Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id); //A00010
         Call<Patient_Api> patient_apiCall = jsonPlaceHolderApi.getOne(id);
 
-        if (count == 0 || count == 1)  {
+        if (count == 0 || count == 1) {
             patient_apiCall.enqueue(new Callback<Patient_Api>() {
                 @Override
                 public void onResponse(Call<Patient_Api> patient_apiCall, Response<Patient_Api> response) {
