@@ -19,9 +19,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class BloodCollect2 extends AppCompatActivity {
     private Button bt;
     private Button bt2;
-    Intent intent;{
-        intent = new Intent(); }
-    TextView tv1, tv2, tv3, tv4 ;
+    Intent intent;
+
+    {
+        intent = new Intent();
+    }
+
+    TextView tv1, tv2, tv3, tv4;
 
 
     @Override
@@ -32,7 +36,7 @@ public class BloodCollect2 extends AppCompatActivity {
         Bundle patientNumber1Check = this.getIntent().getExtras();
         Bundle sampleNumberCheck = this.getIntent().getExtras();
         Bundle collectorNumberCheck = this.getIntent().getExtras();
-        Bundle recheckNumberCheck= this.getIntent().getExtras();
+        Bundle recheckNumberCheck = this.getIntent().getExtras();
 
         String patientNumber1 = patientNumber1Check.getString("patientNumber1Check");
         String sampleNumber = sampleNumberCheck.getString("sampleNumberCheck");
@@ -49,25 +53,25 @@ public class BloodCollect2 extends AppCompatActivity {
         tv3.setText(collectorNumber);
         tv4.setText(recheckNumber);
 
-        bt = (Button) findViewById(R.id.nextbt);
-        bt2 = (Button) findViewById(R.id.frontbt);
-
+        Button bt = (Button) findViewById(R.id.nextbt);
+        Button bt2 = (Button) findViewById(R.id.frontbt);
 
 
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BloodCollect2.this,examine_homePage.class);
+                Intent intent = new Intent(BloodCollect2.this, examine_homePage.class);
                 startActivity(intent);
             }
         });
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BloodCollect2.this,BloodCollect1.class);
+                Intent intent = new Intent(BloodCollect2.this, BloodCollect1.class);
                 startActivity(intent);
             }
         });
-    }
 
+
+    }
 }

@@ -126,18 +126,14 @@ public class BloodCollect1 extends AppCompatActivity {
 
             }
 
-            @Override
 
+            @Override
             public void afterTextChanged(Editable editable) {
-                if (textView.getText().toString() != null ) {
+                if (textView.getText().toString() != null) {
                     Get_staff(retrofit, editable.toString());
-                }
-                else  {
-                    Get_patient(retrofit, editable.toString());
                 }
                 //show.setText(editable);
             }
-
         });
         //API結束 ， 下面還有
 
@@ -227,57 +223,59 @@ public class BloodCollect1 extends AppCompatActivity {
 
 
     public void Get_staff(Retrofit retrofit, String id) {
+
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
         Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id); //A00010
-        call.enqueue(new Callback<Staff_Api>() {
-            @Override
-            public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
-                if (!response.isSuccessful()) {
-                    show.setText("此id不存在，請重新掃描員工編號！");
-                    return;
-                } else {
+        Call<Patient_Api> patient_apiCall = jsonPlaceHolderApi.getOne(id);
+
+        if (count == 0 || count == 1) {
+            patient_apiCall.enqueue(new Callback<Patient_Api>() {
+                @Override
+                public void onResponse(Call<Patient_Api> patient_apiCall, Response<Patient_Api> response) {
+                    if (!response.isSuccessful()) {
+                        show.setText("找不到這個id");
+                        return;
+                    }
                     String name = response.body().getName();
                     show.setText(name);
-                    show.setText("掃描成功，請按下一步");
-                    bundle.putString("collectorNumberCheck", show.getText().toString());
-
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Staff_Api> call, Throwable t) {
-                show.setText("請重新掃描員工編號！");
-            }
-        });
-    }
-
-    public void Get_patient(Retrofit retrofit, String id) {
-        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-        Call<Patient_Api> call = jsonPlaceHolderApi.getOne(id); //A00010
-        call.enqueue(new Callback<Patient_Api>() {
-            @Override
-            public void onResponse(Call<Patient_Api> call, Response<Patient_Api> response) {
-                if (!response.isSuccessful()) {
-                    show.setText("此id不存在，請重新掃描病歷號！");
-                    return;
-                } else {
-                    String name = response.body().getName();
-                    show.setText(name);
-                    show.setText("掃描成功，請按下一步");
                     bundle.putString("patientNumber1Check", show.getText().toString());
 
+                }
+
+                @Override
+                public void onFailure(Call<Patient_Api> call, Throwable t) {
+                    show.setText("請掃描條碼");
+                }
+            });
+        } else {
+            call.enqueue(new Callback<Staff_Api>() {
+                @Override
+                public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
+                    if (!response.isSuccessful()) {
+                        show.setText("找不到這個id");
+                        return;
+                    }
+                    String name = response.body().getName();
+                    show.setText(name);
+                    bundle.putString("collectorNumberCheck", show.getText().toString());
+                    bundle.putString("recheckNumberCheck", show.getText().toString());
+                    bundle.putString("sampleNumberCheck", show.getText().toString());
 
                 }
-            }
 
-            @Override
-            public void onFailure(Call<Patient_Api> call, Throwable t) {
-                show.setText("請重新掃描病歷號！");
-            }
-        });
+                @Override
+                public void onFailure(Call<Staff_Api> call, Throwable t) {
+                    show.setText("請掃描條碼");
+                }
+            });
+        }
 
     }
+
+
+
+
+
 }
 
 

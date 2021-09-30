@@ -41,8 +41,11 @@ public class Print_examineNumber2 extends AppCompatActivity {
             tv1.setText(patientNumber1);
             tv2.setText(checkPaperNumber);
 
-            bt = findViewById(R.id.nextbt);
-            bt2 = findViewById(R.id.frontbt);
+            Button bt = (Button) findViewById(R.id.nextbt);
+            Button bt2 = (Button) findViewById(R.id.frontbt);
+
+
+
 
 
             bt.setOnClickListener(v -> {
