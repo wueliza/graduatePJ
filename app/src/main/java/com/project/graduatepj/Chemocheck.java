@@ -48,7 +48,7 @@ public class    Chemocheck extends AppCompatActivity {
         hint2 = findViewById(R.id.chint2);
         hint3 = findViewById(R.id.chint3);
         hint1.setText("請掃描成品單號");
-        intent.setClass(Chemocheck.this , eisairesult.class);
+        intent.setClass(Chemocheck.this , Chemocheck2.class);
         nextbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

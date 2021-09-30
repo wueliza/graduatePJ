@@ -159,13 +159,13 @@ public class eisaicheck extends AppCompatActivity {
             step.setText("請掃描檢驗員員工編號條碼");
             show.setText("");
             result.setText("");
-            count--;
+            count = 0;
         }
         else if(count == 2){
             step.setText("請掃描病歷號條碼");
             show.setText("");
             result.setText("");
-            count--;
+            count = 1;
         }
     }
 
@@ -175,7 +175,7 @@ public class eisaicheck extends AppCompatActivity {
             intent.putExtras(bundle);
             show.setText(" ");
             result.setText(" ");
-            count++;
+            count = 1;
             step.setText("請掃描病歷號條碼");
         }
         else if(count == 1){
@@ -185,7 +185,7 @@ public class eisaicheck extends AppCompatActivity {
             result.setText(" ");
             step.setText("請掃描衛材條碼");
             nextBt.setText("傳送");
-            count++;
+            count = 2;
         }
         else if(count == 2){
             bundle.putString("eisai_id", show.getText().toString());
