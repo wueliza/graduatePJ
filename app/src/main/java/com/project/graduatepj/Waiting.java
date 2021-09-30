@@ -45,13 +45,10 @@ public class Waiting extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_waiting);
-
         show = findViewById(R.id.show);
         textView = (TextView) findViewById(R.id.input);
 
-        Button NextButton = (Button) findViewById(R.id.nextbt);
         getPermissionsCamera();
-
         Retrofit retrofit = new Retrofit.Builder() //api連接
                 .baseUrl("http://106.105.167.136:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -87,27 +84,30 @@ public class Waiting extends AppCompatActivity {
                 count++;
                 switch (count) {
                     case 1:
-                        tv.setText("總表病歷號");
-                        tv1.setHint("總表病歷號");
-                        tv2.setHint("號碼");
-                        break;
 
-                    case 2:
                         tv.setText("手圈病歷號");
                         tv1.setHint("手圈病歷號");
                         tv2.setHint("號碼");
                         break;
 
-                    case 3:
+                    case 2:
                         tv.setText("檢驗員");
                         tv1.setHint("檢驗員");
                         tv2.setHint("號碼");
                         break;
 
-                    case 4:
+                    case 3:
+
                         Intent intent = new Intent(Waiting.this, Waiting2.class);
                         intent.putExtras(bundle);
                         startActivity(intent);
+                        break;
+
+                    default:
+                        tv.setText("總表病歷號");
+                        tv1.setHint("總表病歷號");
+                        tv2.setHint("號碼");
+                        break;
                 }
             }
         });
@@ -117,36 +117,36 @@ public class Waiting extends AppCompatActivity {
             public void onClick(View v) {
                 count--;
                 switch (count) {
+
                     case 1:
-                        tv.setText("總表病歷號");
-                        tv1.setHint("總表病歷號");
-                        tv2.setHint("號碼");
-                        break;
-                    case 2:
                         tv.setText("手圈病歷號");
                         tv1.setHint("手圈病歷號");
                         tv2.setHint("號碼");
                         break;
-                    case 3:
+
+                    case 2:
                         tv.setText("檢驗員");
                         tv1.setHint("檢驗員");
                         tv2.setHint("號碼");
                         break;
-
-                    default:
+                    case -1:
                         Intent intent = new Intent(Waiting.this, OperationHome.class);
                         startActivity(intent);
+                        break;
+
+                    default:
+                        tv.setText("總表病歷號");
+                        tv1.setHint("總表病歷號");
+                        tv2.setHint("號碼");
 
                 }
             }
         });
         surfaceView = (SurfaceView) findViewById(R.id.surfaceView);
-
-        textView = (TextView) findViewById(R.id.textView);
-
+        textView = (TextView) findViewById(R.id.input);
         barcodeDetector = new BarcodeDetector.Builder(this)
-                .setBarcodeFormats(Barcode.ALL_FORMATS).build();
-
+                .setBarcodeFormats(Barcode.ALL_FORMATS)
+                .build();
         cameraSource = new CameraSource.Builder(this, barcodeDetector)
                 .setRequestedPreviewSize(1920, 1080)
                 .setAutoFocusEnabled(true)
@@ -207,23 +207,52 @@ public class Waiting extends AppCompatActivity {
     }
 
     public void Get_staff(Retrofit retrofit, String id) {
-        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-        Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id);
-        call.enqueue(new Callback<Staff_Api>() {
-            @Override
-            public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
-                if (!response.isSuccessful()) {
-                    show.setText("找不到這個id");
-                    return;
-                }
-                String name = response.body().getName();
-                show.setText(name);
-            }
 
-            @Override
-            public void onFailure(Call<Staff_Api> call, Throwable t) {
-                show.setText("請掃描條碼");
-            }
-        });
+        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
+        Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id); //A00010
+        Call<Patient_Api> patient_apiCall = jsonPlaceHolderApi.getOne(id);
+
+        if (count == 0 || count == 1) {
+            patient_apiCall.enqueue(new Callback<Patient_Api>() {
+                @Override
+                public void onResponse(Call<Patient_Api> patient_apiCall, Response<Patient_Api> response) {
+                    if (!response.isSuccessful()) {
+                        show.setText("找不到這個id");
+                        return;
+                    }
+                    String name = response.body().getName();
+
+                    show.setText(name);
+                    bundle.putString("paitentNumbercheck", id);
+                    bundle.putString("NameBox", show.getText().toString());
+
+                }
+
+                @Override
+                public void onFailure(Call<Patient_Api> call, Throwable t) {
+                    show.setText("請掃描條碼");
+                }
+            });
+        } else {
+            call.enqueue(new Callback<Staff_Api>() {
+                @Override
+                public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
+                    if (!response.isSuccessful()) {
+                        show.setText("找不到這個id");
+                        return;
+                    }
+                    String name = response.body().getName();
+                    show.setText(name);
+
+                    bundle.putString("ManCheckBox", show.getText().toString());
+                }
+
+                @Override
+                public void onFailure(Call<Staff_Api> call, Throwable t) {
+                    show.setText("請掃描條碼");
+                }
+            });
+        }
+
     }
 }

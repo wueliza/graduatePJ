@@ -150,7 +150,7 @@ public class OperationVerify extends AppCompatActivity {
 
         textView = (TextView)
 
-                findViewById(R.id.textView);
+                findViewById(R.id.input);
 
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .

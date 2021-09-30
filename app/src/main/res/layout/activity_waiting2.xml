@@ -151,6 +151,7 @@
                 android:textSize="18sp" />
 
             <TextView
+                android:id="@+id/NameBox"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -179,6 +180,7 @@
                 android:layout_weight="1"
                 />
             <TextView
+                android:id="@+id/BirthdayBox"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -208,6 +210,7 @@
                 android:layout_weight="1"
                 />
             <TextView
+                android:id="@+id/DoctorBox"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
