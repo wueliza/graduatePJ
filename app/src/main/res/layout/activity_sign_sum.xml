@@ -50,6 +50,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/check_background"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -79,6 +80,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/check_background"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -108,6 +110,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/check_background"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
         </LinearLayout>
     </LinearLayout>
@@ -153,6 +156,7 @@
                 android:layout_marginTop="4dp"
                 android:textSize="18sp"
                 android:layout_weight="1"
+                android:textColor="@color/black"
                 />
         </LinearLayout>
 

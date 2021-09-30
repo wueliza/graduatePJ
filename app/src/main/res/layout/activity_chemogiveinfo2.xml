@@ -57,6 +57,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/check_background"
                         android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -84,6 +85,7 @@
                         android:layout_marginTop="4dp"
                         android:background="@drawable/check_background"
                         android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
 
                     <TextView
@@ -104,6 +106,7 @@
                         android:layout_marginLeft="0dp"
                         android:background="@drawable/check_background"
                         android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -131,6 +134,7 @@
                         android:layout_marginRight="10dp"
                         android:background="@drawable/check_background"
                         android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
 
                     <TextView
@@ -150,6 +154,7 @@
                         android:layout_marginRight="10dp"
                         android:background="@drawable/check_background"
                         android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -177,6 +182,7 @@
                         android:layout_marginRight="10dp"
                         android:background="@drawable/check_background"
                         android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
 
                     <TextView
@@ -196,6 +202,7 @@
                         android:layout_marginRight="10dp"
                         android:background="@drawable/check_background"
                         android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
                 </LinearLayout>
                 <LinearLayout
@@ -222,6 +229,7 @@
                         android:layout_marginRight="10dp"
                         android:background="@drawable/check_background"
                         android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -268,6 +276,7 @@
                         android:layout_marginRight="90dp"
                         android:layout_marginTop="4dp"
                         android:textSize="18sp"
+                        android:textColor="@color/black"
                         android:layout_weight="1"
                         />
                 </LinearLayout>
@@ -297,6 +306,7 @@
                         android:textSize="18sp"
                         android:layout_marginTop="4dp"
                         android:layout_weight="1"
+                        android:textColor="@color/black"
                         />
                 </LinearLayout>
                 <LinearLayout
@@ -325,6 +335,7 @@
                         android:layout_marginTop="4dp"
                         android:textSize="18sp"
                         android:layout_weight="1"
+                        android:textColor="@color/black"
                         />
                 </LinearLayout>
 
