@@ -50,6 +50,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/pa_id"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="6dp"
@@ -78,6 +79,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/pa_name"
                     android:layout_width="120dp"
                     android:layout_height="match_parent"
                     android:layout_marginRight="10dp"
@@ -98,6 +100,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/pa_gender"
                     android:layout_width="70dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="4dp"
@@ -125,6 +128,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/pa_bed"
                     android:layout_width="120dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="4dp"
@@ -144,6 +148,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/pa_bsa"
                     android:layout_width="70dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="4dp"
@@ -171,6 +176,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/pa_height"
                     android:layout_width="120dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="4dp"
@@ -190,6 +196,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/pa_weight"
                     android:layout_width="70dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="4dp"
@@ -216,6 +223,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/pa_age"
                     android:layout_width="120dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="4dp"
@@ -260,16 +268,19 @@
                     android:textSize="18sp"
                     android:layout_weight="1"
                     />
+
                 <TextView
+                    android:id="@+id/sTv"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:background="@drawable/check_background"
-                    android:layout_marginRight="90dp"
+                    android:layout_marginEnd="90dp"
                     android:layout_marginTop="4dp"
                     android:textSize="18sp"
                     android:layout_weight="1"
                     />
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -289,6 +300,7 @@
                     android:layout_weight="1"
                     />
                 <TextView
+                    android:id="@+id/checkTV"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -317,6 +329,7 @@
                     android:layout_weight="1"
                     />
                 <TextView
+                    android:id="@+id/chemoTv"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
