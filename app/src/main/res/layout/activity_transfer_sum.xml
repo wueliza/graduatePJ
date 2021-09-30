@@ -51,6 +51,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/check_background"
                 android:gravity="center"
+
                 android:textSize="18sp" />
         </LinearLayout>
 
