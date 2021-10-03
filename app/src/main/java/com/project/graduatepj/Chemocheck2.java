@@ -23,7 +23,7 @@ public class Chemocheck2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chemogiveinfo2);
+        setContentView(R.layout.activity_chemocheck2);
         Intent intent = this.getIntent();
         pa_id = findViewById(R.id.pa_id);
         pa_name = findViewById(R.id.pa_name);

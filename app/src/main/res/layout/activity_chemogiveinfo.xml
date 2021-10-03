@@ -40,25 +40,33 @@
             android:orientation="vertical"
             android:gravity="bottom"
             >
-
             <TextView
-                android:id="@+id/hint1"
+                android:id="@+id/ghint1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text=" "
+                android:textColor="@color/white"
+                android:textSize="@dimen/dp_24" />
+            <TextView
+                android:id="@+id/ghint2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text=""
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="@dimen/dp_24" />
 
             <TextView
-                android:id="@+id/hint2"
+                android:id="@+id/ghint3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text=""
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="@dimen/dp_24" />
 
             <LinearLayout
