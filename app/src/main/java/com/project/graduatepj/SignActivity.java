@@ -15,6 +15,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.gms.vision.CameraSource;
@@ -32,8 +33,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class SignActivity extends AppCompatActivity {
     private Button bt;
     private Button bt2;
-    private TextView input;
     private TextView show;
+    Bundle bundle = new Bundle();
     SurfaceView surfaceView;
     TextView textView;
     CameraSource cameraSource;
@@ -45,37 +46,12 @@ public class SignActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign);
 
-        input = findViewById(R.id.input);
         show = findViewById(R.id.show);
         //相機製作
         getPermissionsCamera();
 
         surfaceView=(SurfaceView)findViewById(R.id.surfaceView);
-        textView=(TextView)findViewById(R.id.textView);
-
-        Retrofit retrofit = new Retrofit.Builder() //api連接
-                .baseUrl("http://106.105.167.136:8080/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        input.addTextChangedListener(new TextWatcher() { //監視editText是否有更變
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if(input.getText().toString() != null){
-                    Get_staff(retrofit,editable.toString());
-                }
-                show.setText(editable);
-            }
-        });
+        textView=(TextView)findViewById(R.id.input);
 
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.ALL_FORMATS).build();
@@ -127,12 +103,35 @@ public class SignActivity extends AppCompatActivity {
             }
         });
 
+        Retrofit retrofit = new Retrofit.Builder() //api連接
+                .baseUrl("http://106.105.167.136:8080/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        textView.addTextChangedListener(new TextWatcher() { //監視editText是否有更變
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(textView.getText().toString() != null){
+                    Get_staff(retrofit,editable.toString());
+                }
+                show.setText(editable);
+            }
+        });
+
         TextView tv = (TextView)findViewById(R.id.title);
-        TextView tv1 = (TextView)findViewById(R.id.input);
+        TextView tv1 = (TextView) findViewById(R.id.input);
         TextView tv2 = (TextView)findViewById(R.id.show);
         bt = findViewById(R.id.nextbt);
-        //bt2 = findViewById(R.id.frontbt);
-        Bundle bundle = new Bundle();
+        bt2 = findViewById(R.id.frontbt);
 
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,14 +140,12 @@ public class SignActivity extends AppCompatActivity {
                 switch (count){
                     case 1:
                         tv.setText("血袋簽收-傳送人員");
-                        tv1.setText(null);
                         tv1.setHint("傳送人員編號");
                         tv2.setHint("傳送人員:");
                         bundle.putString("transport",tv1.getText().toString());
                         break;
                     case 2:
                         tv.setText("血袋簽收-領血單號");
-                        tv1.setText(null);
                         tv1.setHint("領血單號");
                         tv2.setHint("領血單號:");
                         bundle.putString("take",tv1.getText().toString());
@@ -160,7 +157,6 @@ public class SignActivity extends AppCompatActivity {
                         break;
                     default:
                         tv.setText("血袋簽收-護理人員");
-                        tv1.setText(null);
                         tv1.setHint("護理人員編號");
                         tv2.setHint("護理人員:");
                         bundle.putString("nurse",tv1.getText().toString());
@@ -174,13 +170,11 @@ public class SignActivity extends AppCompatActivity {
                 switch (count){
                     case 1:
                         tv.setText("血袋簽收-傳送人員");
-                        tv1.setText(null);
                         tv1.setHint("傳送人員編號");
                         tv2.setHint("傳送人員:");
                         break;
                     case 2:
                         tv.setText("血袋簽收-領血單號");
-                        tv1.setText(null);
                         tv1.setHint("領血單號");
                         tv2.setHint("領血單號:");
                         break;
@@ -190,7 +184,6 @@ public class SignActivity extends AppCompatActivity {
                         break;
                     default:
                         tv.setText("血袋簽收-護理人員");
-                        tv1.setText(null);
                         tv1.setHint("護理人員編號");
                         tv2.setHint("護理人員:");
                 }
@@ -207,21 +200,50 @@ public class SignActivity extends AppCompatActivity {
     public void Get_staff(Retrofit retrofit,String id){
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
         Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id); //A00010
-        call.enqueue(new Callback<Staff_Api>() {
-            @Override
-            public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
-                if(!response.isSuccessful()){
-                    show.setText("找不到這個id");
-                    return;
+        
+        if(count != 2) {
+            call.enqueue(new Callback<Staff_Api>() {
+                @Override
+                public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
+                    if (!response.isSuccessful()) {
+                        show.setText("找不到這個id");
+                        return;
+                    }
+                    String name = response.body().getName();
+                    show.setText(name);
+                    switch (count) {
+                        case 1:
+                            bundle.putString("transfer", show.getText().toString());
+                            break;
+                        default:
+                            bundle.putString("nurse", show.getText().toString());
+                    }
                 }
-                String name = response.body().getName();
-                show.setText(name);
-            }
 
-            @Override
-            public void onFailure(Call<Staff_Api> call, Throwable t) {
-                show.setText("請掃描條碼");
-            }
-        });
+                @Override
+                public void onFailure(Call<Staff_Api> call, Throwable t) {
+                    show.setText("請掃描條碼");
+                }
+            });
+        }
+        else{
+            call.enqueue(new Callback<Staff_Api>() {
+                @Override
+                public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
+                    if (!response.isSuccessful()) {
+                        show.setText("找不到這個id");
+                        return;
+                    }
+                    String name = response.body().getName();
+                    show.setText(name);
+                    bundle.putString("bloodnum", show.getText().toString());
+                }
+
+                @Override
+                public void onFailure(Call<Staff_Api> call, Throwable t) {
+                    show.setText("請掃描條碼");
+                }
+            });
+        }
     }
 }

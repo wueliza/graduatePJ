@@ -41,7 +41,7 @@
                         android:id="@+id/textView11"
                         android:layout_width="10dp"
                         android:layout_height="45dp"
-                        android:layout_marginLeft="4dp"
+                        android:layout_marginLeft="12dp"
                         android:layout_marginTop="4dp"
                         android:layout_weight="1"
                         android:text="病歷號："
@@ -57,6 +57,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/check_background"
                         android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -71,7 +72,7 @@
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:text="姓名 :"
-                        android:layout_marginLeft="4dp"
+                        android:layout_marginLeft="12dp"
                         android:layout_marginTop="4dp"
                         android:textColor="#504C4C"
                         android:textSize="18sp"
@@ -84,6 +85,7 @@
                         android:layout_marginTop="4dp"
                         android:background="@drawable/check_background"
                         android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
 
                     <TextView
@@ -104,6 +106,7 @@
                         android:layout_marginLeft="0dp"
                         android:background="@drawable/check_background"
                         android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -118,7 +121,7 @@
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:text="床號 :"
-                        android:layout_marginLeft="4dp"
+                        android:layout_marginLeft="12dp"
                         android:textColor="#504C4C"
                         android:layout_marginTop="4dp"
                         android:textSize="18sp"
@@ -131,6 +134,7 @@
                         android:layout_marginRight="10dp"
                         android:background="@drawable/check_background"
                         android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
 
                     <TextView
@@ -150,6 +154,7 @@
                         android:layout_marginRight="10dp"
                         android:background="@drawable/check_background"
                         android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -164,7 +169,7 @@
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:text="身高 :"
-                        android:layout_marginLeft="4dp"
+                        android:layout_marginLeft="12dp"
                         android:textColor="#504C4C"
                         android:layout_marginTop="4dp"
                         android:textSize="18sp"
@@ -177,6 +182,7 @@
                         android:layout_marginRight="10dp"
                         android:background="@drawable/check_background"
                         android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
 
                     <TextView
@@ -196,6 +202,7 @@
                         android:layout_marginRight="10dp"
                         android:background="@drawable/check_background"
                         android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
                 </LinearLayout>
                 <LinearLayout
@@ -209,7 +216,7 @@
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:text="年齡 :"
-                        android:layout_marginLeft="4dp"
+                        android:layout_marginLeft="12dp"
                         android:textColor="#504C4C"
                         android:layout_marginTop="4dp"
                         android:textSize="18sp"
@@ -222,6 +229,7 @@
                         android:layout_marginRight="10dp"
                         android:background="@drawable/check_background"
                         android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -255,7 +263,7 @@
                         android:layout_height="match_parent"
                         android:text="核藥人員 :"
                         android:layout_marginTop="4dp"
-                        android:layout_marginLeft="4dp"
+                        android:layout_marginLeft="8dp"
                         android:textColor="#504C4C"
                         android:textSize="18sp"
                         android:layout_weight="1"
@@ -268,6 +276,7 @@
                         android:layout_marginRight="90dp"
                         android:layout_marginTop="4dp"
                         android:textSize="18sp"
+                        android:textColor="@color/black"
                         android:layout_weight="1"
                         />
                 </LinearLayout>
@@ -283,7 +292,7 @@
                         android:layout_height="match_parent"
                         android:text="確認人員 :"
                         android:layout_marginTop="4dp"
-                        android:layout_marginLeft="4dp"
+                        android:layout_marginLeft="8dp"
                         android:textColor="#504C4C"
                         android:textSize="18sp"
                         android:layout_weight="1"
@@ -297,6 +306,7 @@
                         android:textSize="18sp"
                         android:layout_marginTop="4dp"
                         android:layout_weight="1"
+                        android:textColor="@color/black"
                         />
                 </LinearLayout>
                 <LinearLayout
@@ -311,7 +321,7 @@
                         android:layout_height="match_parent"
                         android:text="成品單號 :"
                         android:layout_marginTop="4dp"
-                        android:layout_marginLeft="4dp"
+                        android:layout_marginLeft="8dp"
                         android:textColor="#504C4C"
                         android:textSize="18sp"
                         android:layout_weight="1"
@@ -325,6 +335,7 @@
                         android:layout_marginTop="4dp"
                         android:textSize="18sp"
                         android:layout_weight="1"
+                        android:textColor="@color/black"
                         />
                 </LinearLayout>
 

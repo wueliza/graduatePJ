@@ -28,13 +28,14 @@ public class gotofunction extends AppCompatActivity {
         surgeryBt.setOnClickListener(this::go_surgery);
         bloodTransBt.setOnClickListener(this::go_bloodTrans);
         checkWorkBt.setOnClickListener(this::go_checkWork);
-        loginBBt.setOnClickListener(this::go_login);
+        loginBBt.setVisibility(View.INVISIBLE);
+//        loginBBt.setOnClickListener(this::go_login);
     }
-    public void go_login(View v){
-        Intent intent = new Intent();
-        intent.setClass(gotofunction.this , login.class);
-        startActivity(intent);
-    }
+//    public void go_login(View v){
+//        Intent intent = new Intent();
+//        intent.setClass(gotofunction.this , login.class);
+//        startActivity(intent);
+//    }
     public void go_eisai(View v){
         Intent intent = new Intent();
         intent.setClass(gotofunction.this , eisaicheck.class);

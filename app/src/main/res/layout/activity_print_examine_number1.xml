@@ -25,10 +25,10 @@
         >
 
         <TextView
-            android:id="@+id/titlee"
+            android:id="@+id/title"
             android:text="列印檢體編號-病例號"
             android:layout_width="match_parent"
-            android:layout_height="78dp"
+            android:layout_height="@dimen/dp_78"
             android:background="#0ADDC9"
             android:gravity="center"
             android:textColor="#ffffff"
@@ -50,7 +50,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:textColor="@color/white"
-                android:textSize="22dp"/>
+                android:textSize="@dimen/dp_22"/>
 
             <TextView
                 android:id="@+id/show"
@@ -64,7 +64,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="@dimen/dp_130"
                 android:orientation="horizontal"
                 android:gravity="bottom"
                 >
@@ -78,14 +78,14 @@
 
                     <Button
                         android:id="@+id/frontbt"
-                        android:text="上一步"
-                        android:layout_width="130dp"
-                        android:layout_height="55dp"
+                        android:text="返回"
+                        android:layout_width="140dp"
+                        android:layout_height="65dp"
                         android:layout_gravity="bottom"
                         android:textStyle="bold"
                         android:textColor="#FBFBFB"
-                        android:textSize="20dp"
-                        android:background="@drawable/nextbutton_general"/>
+                        android:textSize="@dimen/dp_18"
+                        android:background="@drawable/returnbutton"/>
 
                 </LinearLayout>
 
@@ -99,12 +99,12 @@
                     <Button
                         android:id="@+id/nextbt"
                         android:text="下一步"
-                        android:layout_width="130dp"
-                        android:layout_height="55dp"
+                        android:layout_width="140dp"
+                        android:layout_height="65dp"
                         android:layout_gravity="bottom"
                         android:textStyle="bold"
                         android:textColor="#FBFBFB"
-                        android:textSize="20dp"
+                        android:textSize="@dimen/dp_18"
                         android:background="@drawable/nextbutton_general"/>
                 </LinearLayout>
             </LinearLayout>

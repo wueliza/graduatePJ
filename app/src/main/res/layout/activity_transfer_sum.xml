@@ -21,7 +21,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="220dp"
         android:layout_margin="15dp"
         android:background="@color/white"
         android:orientation="vertical">
@@ -36,7 +36,7 @@
                 android:layout_width="10dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginLeft="4dp"
+                android:layout_marginLeft="12dp"
                 android:layout_weight="1"
                 android:text="領血單號 :"
                 android:textColor="#504C4C"
@@ -51,7 +51,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/check_background"
                 android:gravity="center"
-                android:text="A4549849"
+
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -62,23 +62,23 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="70dp"
                 android:layout_height="match_parent"
                 android:text="姓名 :"
-                android:layout_marginLeft="4dp"
+                android:layout_marginLeft="12dp"
                 android:layout_marginTop="4dp"
                 android:textColor="#504C4C"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/paitent_name"
                 android:layout_width="120dp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="6dp"
                 android:background="@drawable/check_background"
                 android:gravity="center"
-                android:text="張家銘"
                 android:textSize="18sp" />
 
             <TextView
@@ -92,13 +92,13 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/bloodtype"
                 android:layout_width="70dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="6dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/check_background"
                 android:gravity="center"
-                android:text="A"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -109,23 +109,23 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="70dp"
                 android:layout_height="match_parent"
                 android:text="床號 :"
-                android:layout_marginLeft="4dp"
+                android:layout_marginLeft="12dp"
                 android:textColor="#504C4C"
                 android:layout_marginTop="4dp"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/bednum"
                 android:layout_width="120dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="6dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/check_background"
                 android:gravity="center"
-                android:text="55110"
                 android:textSize="18sp" />
 
             <TextView
@@ -138,12 +138,12 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/age"
                 android:layout_width="70dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="6dp"
                 android:background="@drawable/check_background"
                 android:gravity="center"
-                android:text="50"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -154,23 +154,23 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="120dp"
                 android:layout_height="match_parent"
                 android:text="病歷號 :"
                 android:textColor="#504C4C"
-                android:layout_marginLeft="4dp"
+                android:layout_marginLeft="12dp"
                 android:textSize="18sp"
                 android:layout_marginTop="4dp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/paitentNumber"
                 android:layout_width="120dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="6dp"
                 android:background="@drawable/check_background"
                 android:gravity="center"
-                android:text="55110"
                 android:textSize="18sp" />
         </LinearLayout>
     </LinearLayout>
@@ -194,15 +194,15 @@
                 android:layout_height="match_parent"
                 android:text="核血人員 :"
                 android:layout_marginTop="4dp"
-                android:layout_marginLeft="4dp"
+                android:layout_marginLeft="8dp"
                 android:textColor="#504C4C"
                 android:textSize="18sp"
                 android:layout_weight="1"
                 />
             <TextView
+                android:id="@+id/confirm"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="張家銘"
                 android:gravity="center"
                 android:background="@drawable/check_background"
                 android:layout_marginRight="90dp"
@@ -222,15 +222,15 @@
                 android:layout_height="match_parent"
                 android:text="確認人員 :"
                 android:layout_marginTop="4dp"
-                android:layout_marginLeft="4dp"
+                android:layout_marginLeft="8dp"
                 android:textColor="#504C4C"
                 android:textSize="18sp"
                 android:layout_weight="1"
                 />
             <TextView
+                android:id="@+id/check"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="張家銘"
                 android:gravity="center"
                 android:background="@drawable/check_background"
                 android:layout_marginRight="90dp"

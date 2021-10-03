@@ -16,19 +16,27 @@ public class OperationVerify2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_operation_verify2);
 
-        Bundle paitentNumbercheckin3 = this.getIntent().getExtras();
-        Bundle wistNumbercheckin3 = this.getIntent().getExtras();
-        String KnifeNumber = paitentNumbercheckin3.getString("KnifeNumber");
-        String paitentNumber = wistNumbercheckin3.getString("paitentNumber");
-        EditText KnifeNumberBox = (EditText)findViewById(R.id.KnifeNumberBox);
-        EditText patientNumberBox = (EditText)findViewById(R.id.patientNumberBox);
-        TextView tv = (TextView) findViewById(R.id.KnifeNumberBox);
-        TextView tv2 = (TextView) findViewById(R.id.patientNumberBox);
-        tv.setText(KnifeNumber);
-        tv2.setText(paitentNumber);
-        Button BackButton = (Button) findViewById(R.id.BackButton);
+        Bundle paitentNumbercheck = this.getIntent().getExtras();
+        Bundle wistNumbercheck= this.getIntent().getExtras();
+        Bundle ManCheckBox = this.getIntent().getExtras();
 
-        BackButton.setOnClickListener(new View.OnClickListener() {
+
+        String patientNumber = paitentNumbercheck.getString("KnifeNumberBox");
+        String wistNumber = wistNumbercheck.getString("wistNumber");
+        String ManCheckNumber = ManCheckBox.getString("ManCheckBox");
+
+
+        TextView tv1 = (TextView) findViewById(R.id.KnifeNumberBox);
+        TextView tv2 = (TextView) findViewById(R.id.wistNumberBox);
+        TextView tv3 = (TextView) findViewById(R.id.ManCheckBox);
+
+        tv1.setText(patientNumber);
+        tv2.setText(wistNumber);
+        tv3.setText(ManCheckNumber);
+
+        Button frontbt = (Button) findViewById(R.id.frontbt);
+
+        frontbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

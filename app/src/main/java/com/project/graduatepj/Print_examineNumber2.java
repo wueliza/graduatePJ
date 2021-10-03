@@ -1,75 +1,60 @@
 package com.project.graduatepj;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.SparseArray;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.android.gms.vision.CameraSource;
-import com.google.android.gms.vision.Detector;
-import com.google.android.gms.vision.barcode.Barcode;
-import com.google.android.gms.vision.barcode.BarcodeDetector;
-
-import java.io.IOException;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Print_examineNumber2 extends AppCompatActivity {
+    private Button bt;
+    private Button bt2;
+    Intent intent;{
+        intent = new Intent(); }
+    TextView tv1, tv2 ;
 
-        private Button bt1;
-        private Button bt22;
-
-        @Override
+    @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_print_examine_number2);
 
-            Bundle paitentNumber1BloodCollect3 = this.getIntent().getExtras();
-            Bundle checkPaperNumberBloodCollect3 = this.getIntent().getExtras();
 
-            String paitentNumber1 = paitentNumber1BloodCollect3.getString("paitentNumber1");
-            String checkPaperNumber = checkPaperNumberBloodCollect3.getString("checkPaperNumber");
+            Bundle patientNumber1Check = this.getIntent().getExtras();
+            Bundle checkPaperNumberCheck = this.getIntent().getExtras();
 
-     //       EditText patientNumberBox = (EditText) findViewById(R.id.patientNumber1Box);
-     //       EditText checkPaperNumberBox = (EditText) findViewById(R.id.checkPaperNumberBox);
+            String patientNumber1 = patientNumber1Check.getString("patientNumber1Check");
+            String checkPaperNumber = checkPaperNumberCheck.getString("checkPaperNumberCheck");
 
-            TextView tv = (TextView) findViewById(R.id.patientNumber1Box);
-            TextView tv2 = (TextView) findViewById(R.id.checkPaperNumberBox);
+            tv1 = (TextView) findViewById(R.id.patientNumber1Box);
+            tv2 = (TextView) findViewById(R.id.checkPaperNumberBox);
 
-            tv.setText(paitentNumber1);
+            tv1.setText(patientNumber1);
             tv2.setText(checkPaperNumber);
 
+            Button bt = (Button) findViewById(R.id.nextbt);
+            Button bt2 = (Button) findViewById(R.id.frontbt);
 
 
 
 
 
-            bt1 = findViewById(R.id.nextbt);
-            bt22 = findViewById(R.id.frontbt);
-
-            bt1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(com.project.graduatepj.Print_examineNumber2.this,examine_homePage.class);
-                    startActivity(intent);
-                }
+            bt.setOnClickListener(v -> {
+                Intent intent = new Intent(Print_examineNumber2.this,examine_homePage.class);
+                startActivity(intent);
             });
-            bt22.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(com.project.graduatepj.Print_examineNumber2.this,Print_examineNumber1.class);
-                    startActivity(intent);
-                }
+            bt2.setOnClickListener(v -> {
+                Intent intent = new Intent(Print_examineNumber2.this,Print_examineNumber1.class);
+                startActivity(intent);
             });
         }
     }

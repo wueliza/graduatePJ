@@ -39,24 +39,32 @@
             android:orientation="vertical"
             android:gravity="bottom"
             >
-
             <TextView
-                android:id="@+id/chem2hint1"
+                android:id="@+id/chint1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text=""
+                android:text=" "
+                android:textColor="@color/black"
+                android:textSize="@dimen/dp_24" />
+            <TextView
+                android:id="@+id/chint2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text=" "
                 android:textColor="@color/black"
                 android:textSize="@dimen/dp_24" />
 
             <TextView
-                android:id="@+id/chem2hint2"
+                android:id="@+id/chint3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text=""
+                android:text=" "
                 android:textColor="@color/black"
                 android:textSize="@dimen/dp_24" />
 
@@ -76,14 +84,14 @@
 
                     <Button
                         android:id="@+id/frontbt"
-                        android:text="上一步"
-                        android:layout_width="130dp"
-                        android:layout_height="55dp"
+                        android:text="返回"
+                        android:layout_width="140dp"
+                        android:layout_height="65dp"
                         android:layout_gravity="bottom"
                         android:textStyle="bold"
                         android:textColor="#FBFBFB"
-                        android:textSize="20dp"
-                        android:background="@drawable/nextbutton_general"/>
+                        android:textSize="@dimen/dp_18"
+                        android:background="@drawable/returnbutton"/>
 
                 </LinearLayout>
 
@@ -97,12 +105,12 @@
                     <Button
                         android:id="@+id/nextbt"
                         android:text="下一步"
-                        android:layout_width="130dp"
-                        android:layout_height="55dp"
+                        android:layout_width="140dp"
+                        android:layout_height="65dp"
                         android:layout_gravity="bottom"
                         android:textStyle="bold"
                         android:textColor="#FBFBFB"
-                        android:textSize="20dp"
+                        android:textSize="@dimen/dp_18"
                         android:background="@drawable/nextbutton_general"/>
                 </LinearLayout>
             </LinearLayout>

@@ -33,7 +33,7 @@
                 <Button
                     android:id="@+id/eisaiBt"
                     android:layout_width="@dimen/dp_200"
-                    android:layout_height="@dimen/dp_50"
+                    android:layout_height="@dimen/dp_52"
                     android:layout_marginTop="@dimen/dp_30"
                     android:background="@drawable/functionbutton_1"
                     android:text="衛材檢查"
@@ -45,7 +45,7 @@
                 <Button
                     android:id="@+id/surgeryBt"
                     android:layout_width="@dimen/dp_200"
-                    android:layout_height="@dimen/dp_50"
+                    android:layout_height="@dimen/dp_52"
                     android:layout_marginTop="@dimen/dp_30"
                     android:background="@drawable/functionbutton_1"
                     android:text="手術作業"
@@ -57,7 +57,7 @@
                 <Button
                     android:id="@+id/chemBt"
                     android:layout_width="@dimen/dp_200"
-                    android:layout_height="@dimen/dp_50"
+                    android:layout_height="@dimen/dp_52"
                     android:layout_marginTop="@dimen/dp_30"
                     android:background="@drawable/functionbutton_1"
                     android:text="化療作業"
@@ -71,7 +71,7 @@
                 <Button
                     android:id="@+id/checkWorkBt"
                     android:layout_width="@dimen/dp_200"
-                    android:layout_height="@dimen/dp_50"
+                    android:layout_height="@dimen/dp_52"
                     android:layout_marginTop="@dimen/dp_30"
                     android:background="@drawable/functionbutton_1"
                     android:text="檢驗作業"
@@ -83,7 +83,7 @@
                 <Button
                     android:id="@+id/bloodTransBt"
                     android:layout_width="@dimen/dp_200"
-                    android:layout_height="@dimen/dp_50"
+                    android:layout_height="@dimen/dp_52"
                     android:layout_marginTop="@dimen/dp_30"
                     android:background="@drawable/functionbutton_1"
                     android:text="輸血作業"

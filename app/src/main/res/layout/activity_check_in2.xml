@@ -10,7 +10,7 @@
 
     <TextView
         android:id="@+id/title"
-        android:text="等候病人辨識"
+        android:text="總結"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="#0ADDC9"
@@ -35,7 +35,7 @@
                 android:id="@+id/PatientNumber"
                 android:layout_width="10dp"
                 android:layout_height="45dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="12dp"
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
                 android:text="總表病歷號 :"
@@ -52,7 +52,9 @@
                 android:layout_weight="1"
                 android:background="@drawable/check_background"
                 android:gravity="center"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -65,7 +67,7 @@
                 android:id="@+id/wistNumber"
                 android:layout_width="10dp"
                 android:layout_height="45dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="12dp"
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
                 android:text="手圈病歷號 :"
@@ -82,7 +84,9 @@
                 android:layout_weight="1"
                 android:background="@drawable/check_background"
                 android:gravity="center"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -95,7 +99,7 @@
                 android:id="@+id/ManCheck"
                 android:layout_width="10dp"
                 android:layout_height="45dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="12dp"
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
                 android:text="檢驗員 :"
@@ -112,7 +116,9 @@
                 android:layout_weight="1"
                 android:background="@drawable/check_background"
                 android:gravity="center"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                />
 
 
         </LinearLayout>
@@ -143,7 +149,7 @@
                 android:id="@+id/Name"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="4dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
                 android:text="姓名 :"
@@ -151,6 +157,7 @@
                 android:textSize="18sp" />
 
             <TextView
+                android:id="@+id/NameBox"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -159,6 +166,7 @@
                 android:layout_marginTop="4dp"
                 android:textSize="18sp"
                 android:layout_weight="1"
+                android:textColor="@color/black"
                 />
         </LinearLayout>
         <LinearLayout
@@ -173,12 +181,13 @@
                 android:layout_height="match_parent"
                 android:text="生日 :"
                 android:layout_marginTop="4dp"
-                android:layout_marginLeft="4dp"
+                android:layout_marginLeft="8dp"
                 android:textColor="#504C4C"
                 android:textSize="18sp"
                 android:layout_weight="1"
                 />
             <TextView
+                android:id="@+id/BirthdayBox"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -187,6 +196,7 @@
                 android:textSize="18sp"
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
+                android:textColor="@color/black"
                 />
 
         </LinearLayout>
@@ -202,12 +212,13 @@
                 android:layout_height="match_parent"
                 android:text="主治醫師 :"
                 android:layout_marginTop="4dp"
-                android:layout_marginLeft="4dp"
+                android:layout_marginLeft="8dp"
                 android:textColor="#504C4C"
                 android:textSize="18sp"
                 android:layout_weight="1"
                 />
             <TextView
+                android:id="@+id/DoctorBox"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -216,6 +227,7 @@
                 android:layout_marginTop="4dp"
                 android:textSize="18sp"
                 android:layout_weight="1"
+                android:textColor="@color/black"
                 />
         </LinearLayout>
 

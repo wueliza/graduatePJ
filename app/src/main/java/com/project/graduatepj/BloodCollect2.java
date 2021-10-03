@@ -1,87 +1,77 @@
 package com.project.graduatepj;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import android.Manifest;
+
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.SparseArray;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import com.google.android.gms.vision.CameraSource;
-import com.google.android.gms.vision.Detector;
-import com.google.android.gms.vision.barcode.Barcode;
-import com.google.android.gms.vision.barcode.BarcodeDetector;
-import java.io.IOException;
 
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class BloodCollect2 extends AppCompatActivity {
-    private Button bt1;
-    private Button bt22;
+    private Button bt;
+    private Button bt2;
+    Intent intent;
+
+    {
+        intent = new Intent();
+    }
+
+    TextView tv1, tv2, tv3, tv4;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blood_collect2);
 
-        Bundle paitentNumber1BloodCollect3 = this.getIntent().getExtras();
-        Bundle sampleNumberBloodCollect3 = this.getIntent().getExtras();
-        Bundle collectorNumberBloodCollect3 = this.getIntent().getExtras();
-        Bundle recheckNumberBloodCollect3 = this.getIntent().getExtras();
+        Bundle patientNumber1Check = this.getIntent().getExtras();
+        Bundle sampleNumberCheck = this.getIntent().getExtras();
+        Bundle collectorNumberCheck = this.getIntent().getExtras();
+        Bundle recheckNumberCheck = this.getIntent().getExtras();
 
-        String paitentNumber1 = paitentNumber1BloodCollect3.getString("paitentNumber1");
-        String sampleNumber = sampleNumberBloodCollect3.getString("sampleNumber");
-        String collectorNumber = sampleNumberBloodCollect3.getString("collectorNumber");
-        String recheckNumber = sampleNumberBloodCollect3.getString("recheckNumber");
+        String patientNumber1 = patientNumber1Check.getString("patientNumber1Check");
+        String sampleNumber = sampleNumberCheck.getString("sampleNumberCheck");
+        String collectorNumber = collectorNumberCheck.getString("collectorNumberCheck");
+        String recheckNumber = recheckNumberCheck.getString("recheckNumberCheck");
 
-   //     EditText patientNumberBox = (EditText) findViewById(R.id.paitentNumber1Box);
-   //     EditText sampleNumberBox = (EditText) findViewById(R.id.sampleNumberBox);
-   //     EditText collectorNumberBox = (EditText) findViewById(R.id.collectorNumberBox);
-   //     EditText recheckNumberBox = (EditText) findViewById(R.id.recheckNumberBox);
+        tv1 = (TextView) findViewById(R.id.patientNumber1Box);
+        tv2 = (TextView) findViewById(R.id.sampleNumberBox);
+        tv3 = (TextView) findViewById(R.id.collectorNumberBox);
+        tv4 = (TextView) findViewById(R.id.recheckNumberBox);
 
-        TextView tv = (TextView) findViewById(R.id.paitentNumber1Box);
-        TextView tv2 = (TextView) findViewById(R.id.sampleNumberBox);
-        TextView tv3 = (TextView) findViewById(R.id.collectorNumberBox);
-        TextView tv4 = (TextView) findViewById(R.id.recheckNumberBox);
-
-        tv.setText(paitentNumber1);
+        tv1.setText(patientNumber1);
         tv2.setText(sampleNumber);
-        tv3.setText(sampleNumber);
-        tv4.setText(sampleNumber);
+        tv3.setText(collectorNumber);
+        tv4.setText(recheckNumber);
+
+        Button bt = (Button) findViewById(R.id.nextbt);
+        Button bt2 = (Button) findViewById(R.id.frontbt);
 
 
-
-
-
-
-        bt1 = findViewById(R.id.nextbt);
-        bt22 = findViewById(R.id.frontbt);
-
-        bt1.setOnClickListener(new View.OnClickListener() {
+        bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BloodCollect2.this,examine_homePage.class);
+                Intent intent = new Intent(BloodCollect2.this, examine_homePage.class);
                 startActivity(intent);
             }
         });
-        bt22.setOnClickListener(new View.OnClickListener() {
+        bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BloodCollect2.this,BloodCollect1.class);
+                Intent intent = new Intent(BloodCollect2.this, BloodCollect1.class);
                 startActivity(intent);
             }
         });
+
+
     }
 }

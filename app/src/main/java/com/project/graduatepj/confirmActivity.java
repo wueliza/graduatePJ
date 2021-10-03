@@ -35,34 +35,31 @@ public class confirmActivity extends AppCompatActivity {
     private Button bt;
     private Button bt2;
     private TextView show;
-    private EditText input;
     SurfaceView surfaceView;
     TextView textView;
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
     int count = 0;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm);
 
-        input = findViewById(R.id.input);
         show = findViewById(R.id.show);
 
         //相機製作
         getPermissionsCamera();
 
         surfaceView=(SurfaceView)findViewById(R.id.surfaceView);
-        textView=(TextView)findViewById(R.id.textView);
+        textView=(TextView)findViewById(R.id.input);
 
         Retrofit retrofit = new Retrofit.Builder() //api連接
                 .baseUrl("http://106.105.167.136:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        input.addTextChangedListener(new TextWatcher() { //監視editText是否有更變
+        textView.addTextChangedListener(new TextWatcher() { //監視editText是否有更變
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
@@ -74,7 +71,7 @@ public class confirmActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(input.getText().toString() != null){
+                if(textView.getText().toString() != null){
                     Get_staff(retrofit,editable.toString());
                 }
                 show.setText(editable);
@@ -144,15 +141,13 @@ public class confirmActivity extends AppCompatActivity {
                 switch (count){
                     case 1:
                         tv.setText("核血作業-核血人員");
-                        tv1.setText(null);
                         tv1.setHint("核血人員編號");
-                        tv2.setText("核血人員:");
+                        tv2.setHint("核血人員:");
                         break;
                     case 2:
                         tv.setText("核血作業-確認人員");
-                        tv1.setText(null);
                         tv1.setHint("確認人員編號");
-                        tv2.setText("確認人員:");
+                        tv2.setHint("確認人員:");
                         break;
                     case 3:
                         Intent intent = new Intent(confirmActivity.this,Check_sumActivity.class);
@@ -160,9 +155,8 @@ public class confirmActivity extends AppCompatActivity {
                         break;
                     default:
                         tv.setText("核血作業-領血單號");
-                        tv1.setText(null);
                         tv1.setHint("領血單號");
-                        tv2.setText("領血單號:");
+                        tv2.setHint("領血單號:");
                 }
             }
         });
@@ -173,15 +167,13 @@ public class confirmActivity extends AppCompatActivity {
                 switch (count){
                     case 1:
                         tv.setText("核血作業-核血人員");
-                        tv1.setText(null);
                         tv1.setHint("核血人員編號");
-                        tv2.setText("核血人員:");
+                        tv2.setHint("核血人員:");
                         break;
                     case 2:
                         tv.setText("核血作業-確認人員");
-                        tv1.setText(null);
                         tv1.setHint("確認人員編號");
-                        tv2.setText("確認人員:");
+                        tv2.setHint("確認人員:");
                         break;
                     case -1:
                         Intent intent = new Intent(confirmActivity.this,blood_homeActivity.class);
@@ -189,9 +181,8 @@ public class confirmActivity extends AppCompatActivity {
                         break;
                     default:
                         tv.setText("核血作業-領血單號");
-                        tv1.setText(null);
                         tv1.setHint("領血單號");
-                        tv2.setText("領血單號:");
+                        tv2.setHint("領血單號:");
                 }
             }
         });
@@ -202,6 +193,7 @@ public class confirmActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA},1);
         }
     }
+
     public void Get_staff(Retrofit retrofit,String id){
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
         Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id);

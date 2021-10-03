@@ -33,7 +33,7 @@
             <TextView
                 android:layout_width="10dp"
                 android:layout_height="45dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="12dp"
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
                 android:text="護理人員 :"
@@ -42,6 +42,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/nurse"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="8dp"
@@ -49,6 +50,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/check_background"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -61,7 +63,7 @@
             <TextView
                 android:layout_width="10dp"
                 android:layout_height="45dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="12dp"
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
                 android:text="傳送人員 :"
@@ -70,6 +72,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/transfer"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="4dp"
@@ -77,6 +80,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/check_background"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -89,7 +93,7 @@
             <TextView
                 android:layout_width="10dp"
                 android:layout_height="45dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="12dp"
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
                 android:text="領血單號 :"
@@ -98,7 +102,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/bloodnum"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="8dp"
@@ -106,9 +110,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/check_background"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
-
-
         </LinearLayout>
     </LinearLayout>
 
@@ -147,41 +150,13 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="2U"
                 android:gravity="center"
                 android:background="@drawable/check_background"
                 android:layout_marginRight="90dp"
                 android:layout_marginTop="4dp"
                 android:textSize="18sp"
                 android:layout_weight="1"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:orientation="horizontal"
-            android:layout_marginBottom="10dp">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="傳送人員 :"
-                android:layout_marginTop="4dp"
-                android:layout_marginLeft="8dp"
-                android:textColor="#504C4C"
-                android:textSize="18sp"
-                android:layout_weight="1"
-                />
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="張家銘"
-                android:gravity="center"
-                android:background="@drawable/check_background"
-                android:layout_marginRight="90dp"
-                android:textSize="18sp"
-                android:layout_marginTop="4dp"
-                android:layout_weight="1"
+                android:textColor="@color/black"
                 />
         </LinearLayout>
 

@@ -53,6 +53,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/check_background"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:textSize="@dimen/dp_18" />
         </LinearLayout>
 
@@ -83,6 +84,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/check_background"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:textSize="@dimen/dp_18" />
         </LinearLayout>
 
@@ -113,6 +115,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/check_background"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:textSize="@dimen/dp_18" />
         </LinearLayout>
 
@@ -145,6 +148,7 @@
                 android:textSize="@dimen/dp_18" />
 
             <TextView
+                android:id="@+id/patientNumberBox"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="4dp"
@@ -152,6 +156,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/check_background"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:textSize="@dimen/dp_18" />
         </LinearLayout>
 
@@ -180,6 +185,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/check_background"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:textSize="@dimen/dp_18" />
 
         </LinearLayout>
@@ -209,6 +215,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/check_background"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:textSize="@dimen/dp_18" />
         </LinearLayout>
 
@@ -228,6 +235,7 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginTop="10dp"
                 android:text="內容"
+                android:textColor="@color/black"
                 android:textSize="@dimen/dp_18" />
         </LinearLayout>
     </LinearLayout>
