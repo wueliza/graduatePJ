@@ -7,6 +7,8 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -22,25 +24,85 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.IOException;
 
-public class Chemogiveinfo extends AppCompatActivity {
-    private Button nextbt;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
+public class Chemogiveinfo extends AppCompatActivity {
+    private Button nextbt , upbt;
+    private TextView hint1 , hint2 , hint3;
+    Bundle bundle = new Bundle();
+    Intent intent = new Intent();
+    int count = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chemogiveinfo);
+        getPermissionsCamera();
 
         nextbt = (Button)findViewById(R.id.nextbt);
+        upbt = (Button)findViewById(R.id.frontbt) ;
+        hint1 = findViewById(R.id.ghint1);
+        hint2 = findViewById(R.id.ghint2);
+        hint3 = findViewById(R.id.ghint3);
+        hint1.setText("請掃描病歷號");
+        intent.setClass(Chemogiveinfo.this , Chemogiveinfo2.class);
 
         nextbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(count == 0){
+                    bundle.putString("givepatient_id", hint3.getText().toString());
+                    intent.putExtras(bundle);
+                    hint1.setText("請掃描成品單號");
+                    hint3.setText(" ");
+                    count = 1;
+                }
+                else if(count == 1){
+                    bundle.putString("givechemo_id", hint3.getText().toString());
+                    intent.putExtras(bundle);
+                    hint1.setText("請掃描核藥員編號");
+                    hint3.setText(" ");
+                    count = 2;
+                }
+                else if(count == 2){
+                    bundle.putString("givestaff_id", hint3.getText().toString());
+                    intent.putExtras(bundle);
+                    hint1.setText("請掃描確認員編號");
+                    hint3.setText(" ");
+                    nextbt.setText("傳送");
+                    count = 3;
+                }
+                else if (count == 3){
+                    bundle.putString("givecheck_id", hint3.getText().toString());
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+            }
+        });
 
-                Intent intent = new Intent();
-
-                intent.setClass(Chemogiveinfo.this , Chemogiveinfo2.class);
-
-                startActivity(intent);
+        upbt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(count == 0){
+                    Intent uintent = new Intent();
+                    uintent.setClass(Chemogiveinfo.this , gotofunction.class);
+                    startActivity(uintent);
+                }
+                else if(count == 1){
+                    hint1.setText("請掃描病歷號");
+                    count = 0;
+                }
+                else if(count == 2){
+                    hint1.setText("請掃描成品單號");
+                    count = 1;
+                }
+                else if(count == 3){
+                    hint1.setText("請掃描核藥員編號");
+                    count = 2;
+                }
             }
         });
 
@@ -49,10 +111,7 @@ public class Chemogiveinfo extends AppCompatActivity {
         CameraSource cameraSource;
         BarcodeDetector barcodeDetector;
 
-        getPermissionsCamera();
-
         surfaceView=(SurfaceView)findViewById(R.id.surfaceView);
-        textView=(TextView)findViewById(R.id.hint1);
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.ALL_FORMATS).build();
         cameraSource = new CameraSource.Builder(this,barcodeDetector)
@@ -93,12 +152,41 @@ public class Chemogiveinfo extends AppCompatActivity {
             public void receiveDetections(Detector.Detections<Barcode> detections) {
                 final SparseArray<Barcode> qrCodes=detections.getDetectedItems();
                 if(qrCodes.size()!=0){
-                    textView.post(new Runnable() {
+                    hint2.post(new Runnable() {
                         @Override
                         public void run() {
-                            textView.setText(qrCodes.valueAt(0).displayValue);
+                            hint2.setText(qrCodes.valueAt(0).displayValue);
                         }
                     });
+                }
+            }
+        });
+        //api連接
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://106.105.167.136:8080/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        //監視TextView是否有更變
+        hint2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (count == 0) {
+                    Get_patient(retrofit, editable.toString());
+                }
+                else if (count == 1) {
+                    //化療API
+                }
+                else if (count == 2) {
+                    Get_staff(retrofit, editable.toString());
+                }
+                else if (count == 3) {
+                    Get_staff(retrofit, editable.toString());
                 }
             }
         });
@@ -109,5 +197,50 @@ public class Chemogiveinfo extends AppCompatActivity {
                 != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA},1);
         }
+    }
+    public void Get_staff(Retrofit retrofit, String id) {
+        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
+        Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id); //A00010
+        call.enqueue(new Callback<Staff_Api>() {
+            @Override
+            public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
+                if (!response.isSuccessful()) {
+                    hint1.setText("此id不存在，請重新掃描員工編號！");
+                    return;
+                }
+                else {
+                    String name = response.body().getName();
+                    hint3.setText(name);
+                    hint1.setText("掃描成功，請按下一步");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Staff_Api> call, Throwable t) {
+                hint1.setText("請重新掃描員工編號！");
+            }
+        });
+    }
+    public void Get_patient(Retrofit retrofit, String id) {
+        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
+        Call<Patient_Api> call = jsonPlaceHolderApi.getOne(id); //A00010
+        call.enqueue(new Callback<Patient_Api>() {
+            @Override
+            public void onResponse(Call<Patient_Api> call, Response<Patient_Api> response) {
+                if (!response.isSuccessful()) {
+                    hint1.setText("此id不存在，請重新掃描病歷號！");
+                    return;
+                }
+                else {
+                    String name = response.body().getName();
+                    hint3.setText(name);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Patient_Api> call, Throwable t) {
+                hint1.setText("請重新掃描病歷號！");
+            }
+        });
     }
 }

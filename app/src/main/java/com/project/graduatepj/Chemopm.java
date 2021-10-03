@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class Chemopm extends AppCompatActivity {
-    private Button button1 , button2 , button3;
+    private Button button1 , button2 , button3 , home;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,6 +17,7 @@ public class Chemopm extends AppCompatActivity {
         button1 = (Button)findViewById(R.id.button1);
         button2 = (Button)findViewById(R.id.button2);
         button3 = (Button)findViewById(R.id.button3);
+        home = findViewById(R.id.home);
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +48,17 @@ public class Chemopm extends AppCompatActivity {
                 Intent intent = new Intent();
 
                 intent.setClass(Chemopm.this , Chemogiveinfo.class);
+
+                startActivity(intent);
+            }
+        });
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+
+                intent.setClass(Chemopm.this , gotofunction.class);
 
                 startActivity(intent);
             }

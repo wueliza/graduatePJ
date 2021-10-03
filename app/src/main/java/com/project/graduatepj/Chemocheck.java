@@ -63,7 +63,7 @@ public class Chemocheck extends AppCompatActivity {
                     intent.putExtras(bundle);
                     hint1.setText("請掃描核藥員編號");
                     hint3.setText(" ");
-                    count++;
+                    count = 1;
                 }
                 else if(count == 1){
                     bundle.putString("chemostaff_id", hint3.getText().toString());
@@ -71,7 +71,7 @@ public class Chemocheck extends AppCompatActivity {
                     hint1.setText("請掃描確認員編號");
                     hint3.setText(" ");
                     nextbt.setText("傳送");
-                    count++;
+                    count = 2;
                 }
                 else if (count == 2){
                     bundle.putString("chemocheck_id", hint3.getText().toString());
@@ -92,11 +92,11 @@ public class Chemocheck extends AppCompatActivity {
                 }
                 else if(count == 1){
                     hint1.setText("請掃描成品單號");
-                    count--;
+                    count = 0;
                 }
                 else if(count == 2){
                     hint1.setText("請掃描核藥員編號");
-                    count--;
+                    count = 1;
                 }
             }
         });
