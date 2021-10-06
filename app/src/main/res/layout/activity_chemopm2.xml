@@ -40,9 +40,17 @@
             android:orientation="vertical"
             android:gravity="bottom"
             >
-
             <TextView
-                android:id="@+id/hint1"
+                android:id="@+id/cphint1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text=" "
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/dp_24" />
+            <TextView
+                android:id="@+id/cphint2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -52,7 +60,7 @@
                 android:textSize="@dimen/dp_24" />
 
             <TextView
-                android:id="@+id/hint2"
+                android:id="@+id/cphint3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -76,7 +84,7 @@
                     >
 
                     <Button
-                        android:id="@+id/frontbt"
+                        android:id="@+id/cpfrontbt"
                         android:text="返回"
                         android:layout_width="140dp"
                         android:layout_height="65dp"
@@ -96,7 +104,7 @@
                     android:layout_weight = "1">
 
                     <Button
-                        android:id="@+id/nextBt"
+                        android:id="@+id/cpnextBt"
                         android:text="下一步"
                         android:layout_width="140dp"
                         android:layout_height="65dp"

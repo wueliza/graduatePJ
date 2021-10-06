@@ -52,7 +52,6 @@ public class Chemocheck extends AppCompatActivity {
         hint2 = findViewById(R.id.chint2);
         hint3 = findViewById(R.id.chint3);
         hint1.setText("請掃描成品單號");
-        hint3.setText(" ");
         intent.setClass(Chemocheck.this , Chemocheck2.class);
 
         nextbt.setOnClickListener(new View.OnClickListener() {
@@ -102,7 +101,6 @@ public class Chemocheck extends AppCompatActivity {
         });
 
         SurfaceView surfaceView;
-        TextView textView;
         CameraSource cameraSource;
         BarcodeDetector barcodeDetector;
 
