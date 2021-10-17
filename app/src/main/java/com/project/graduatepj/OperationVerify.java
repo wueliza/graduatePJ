@@ -52,7 +52,7 @@ public class OperationVerify extends AppCompatActivity {
 
         //api連接
         Retrofit retrofit = new Retrofit.Builder() //api連接
-                .baseUrl("http://106.105.167.136:8080/api/")
+                .baseUrl("http://140.136.151.75:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -239,8 +239,6 @@ public class OperationVerify extends AppCompatActivity {
         {
 
         }
-
-
 
     }
 
