@@ -11,7 +11,7 @@ import android.widget.TextView;
 public class Sign_sumActivity extends AppCompatActivity {
     private Button bt;
     private Button bt2;
-    Bundle bundleget = getIntent().getExtras();
+    //Bundle bundleget = getIntent().getExtras();
     /*TextView tv = (TextView)findViewById(R.id.nurse);
     TextView tv1 = (TextView)findViewById(R.id.transport);
     TextView tv2 = (TextView)findViewById(R.id.take);*/
