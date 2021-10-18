@@ -31,6 +31,17 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+
+import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
+
 public class Print_examineNumber1 extends AppCompatActivity {
     Button bt;
     Button bt2;
@@ -55,7 +66,8 @@ public class Print_examineNumber1 extends AppCompatActivity {
         surfaceView=(SurfaceView)findViewById(R.id.surfaceView);
         textView=(TextView)findViewById(R.id.input);
         barcodeDetector = new BarcodeDetector.Builder(this)
-                .setBarcodeFormats(Barcode.ALL_FORMATS).build();
+                .setBarcodeFormats(Barcode.ALL_FORMATS)
+                .build();
         cameraSource = new CameraSource.Builder(this,barcodeDetector)
                 .setRequestedPreviewSize(1920, 1080)
                 .setAutoFocusEnabled(true)
@@ -108,7 +120,7 @@ public class Print_examineNumber1 extends AppCompatActivity {
 
         //api連接
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://106.105.167.136:8080/api/")
+                .baseUrl("http://140.136.151.75:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         //監視TextView是否有更變
@@ -122,7 +134,6 @@ public class Print_examineNumber1 extends AppCompatActivity {
 
             }
 
-
             @Override
             public void afterTextChanged(Editable editable) {
                 if (textView.getText().toString() != null) {
@@ -131,6 +142,7 @@ public class Print_examineNumber1 extends AppCompatActivity {
                 //show.setText(editable);
             }
         });
+        //API結束 ， 下面還有
 
 
         TextView tv = (TextView)findViewById(R.id.title);
