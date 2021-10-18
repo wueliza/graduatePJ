@@ -17,7 +17,6 @@ public class Print_examineNumber2 extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_print_examine_number2);
 
-
             Bundle patientNumber1Check = this.getIntent().getExtras();
             Bundle checkPaperNumberCheck = this.getIntent().getExtras();
 
@@ -32,9 +31,6 @@ public class Print_examineNumber2 extends AppCompatActivity {
 
             Button bt = (Button) findViewById(R.id.nextbt);
             Button bt2 = (Button) findViewById(R.id.frontbt);
-
-
-
 
 
             bt.setOnClickListener(v -> {

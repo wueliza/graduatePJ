@@ -163,8 +163,8 @@ public class Print_examineNumber1 extends AppCompatActivity {
                         break;
                     case 2:
                         Intent intent = new Intent(Print_examineNumber1.this, Print_examineNumber2.class);
-                        startActivity(intent);
                         intent.putExtras(bundle);
+                        startActivity(intent);
                         break;
                     default:
                         tv.setText("列印檢體編號-病歷號");
@@ -209,7 +209,7 @@ public class Print_examineNumber1 extends AppCompatActivity {
         Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id); //A00010
         Call<Patient_Api> patient_apiCall = jsonPlaceHolderApi.getOne(id);
 
-        if (count == 0 || count == 1) {
+        if (count == 1) {
             patient_apiCall.enqueue(new Callback<Patient_Api>() {
                 @Override
                 public void onResponse(Call<Patient_Api> patient_apiCall, Response<Patient_Api> response) {
@@ -228,7 +228,8 @@ public class Print_examineNumber1 extends AppCompatActivity {
                     show.setText("請掃描條碼");
                 }
             });
-        } else {
+        }
+        else {
             call.enqueue(new Callback<Staff_Api>() {
                 @Override
                 public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
@@ -248,14 +249,7 @@ public class Print_examineNumber1 extends AppCompatActivity {
                 }
             });
         }
-
     }
-
-
-
-
-
-
 }
 
 
