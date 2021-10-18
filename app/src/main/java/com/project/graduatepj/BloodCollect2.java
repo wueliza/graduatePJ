@@ -11,7 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class BloodCollect2 extends AppCompatActivity {
 
-    Intent intent = new Intent();
+    Intent intent;
+
+    public BloodCollect2() {
+        intent = new Intent();
+    }
+
     TextView tv1, tv2, tv3, tv4;
 
 

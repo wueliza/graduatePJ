@@ -21,8 +21,12 @@
         android:targetSandboxVersion="2"
         android:theme="@style/Theme.GraduatePJ"
         android:usesCleartextTraffic="true">
+<<<<<<< HEAD
+        <activity android:name=".ThisIsTest"></activity>
+=======
         <activity android:name=".BloodCollect2"></activity>
         <activity android:name=".BloodCollect1" />
+>>>>>>> 10eb8ededc5ac5c33cba57620f8893dee2ef7994
         <activity android:name=".confirmActivity" />
         <activity android:name=".Chemogiveinfo2" />
         <activity android:name=".Chemogiveinfo" />

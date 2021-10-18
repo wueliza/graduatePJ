@@ -1,5 +1,9 @@
 package com.project.graduatepj;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -12,10 +16,6 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
@@ -30,37 +30,37 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class BloodCollect1 extends AppCompatActivity {
+public class ThisIsTest extends AppCompatActivity {
     Button bt;
     Button bt2;
-
-    Bundle bundle = new Bundle();
-    private TextView show;
     SurfaceView surfaceView;
     TextView textView;
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
+    Bundle bundle = new Bundle();
+    private TextView show;
     int count = 0;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_blood_collect1);
-
+        setContentView(R.layout.activity_this_is_test);
         show = findViewById(R.id.show);
-        getPermissionsCamera();
+        textView = (TextView) findViewById(R.id.input);
 
+        getPermissionsCamera();
         surfaceView = (SurfaceView) findViewById(R.id.surfaceView);
+
         textView = (TextView) findViewById(R.id.input);
 
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.ALL_FORMATS)
                 .build();
+
         cameraSource = new CameraSource.Builder(this, barcodeDetector)
                 .setRequestedPreviewSize(1920, 1080)
                 .setAutoFocusEnabled(true)
                 .build();
+
         surfaceView.getHolder().addCallback(new SurfaceHolder.Callback() {
             @Override
             public void surfaceCreated(@NonNull SurfaceHolder holder) {
@@ -73,6 +73,7 @@ public class BloodCollect1 extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
+
 
             @Override
             public void surfaceChanged(@NonNull SurfaceHolder holder, int format, int width, int height) {
@@ -99,13 +100,12 @@ public class BloodCollect1 extends AppCompatActivity {
                         @Override
                         public void run() {
                             textView.setText(qrCodes.valueAt(0).displayValue);
+
                         }
                     });
                 }
             }
         });
-
-
         //api連接
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://140.136.151.75:8080/api/")
@@ -131,14 +131,12 @@ public class BloodCollect1 extends AppCompatActivity {
             }
         });
         //API結束 ， 下面還有
-
-
         TextView tv = (TextView) findViewById(R.id.title);
         TextView tv1 = (TextView) findViewById(R.id.input);
         TextView tv2 = (TextView) findViewById(R.id.show);
-        bt = findViewById(R.id.nextbt);
-        bt2 = findViewById(R.id.frontbt);
 
+        bt = findViewById(R.id.nextbt);             //下一頁
+        bt2 = findViewById(R.id.frontbt);           //上一頁
 
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,68 +144,62 @@ public class BloodCollect1 extends AppCompatActivity {
                 count++;
                 switch (count) {
                     case 1:
-                        tv.setText("採血/備血作業-檢體編號");
-                        tv1.setHint("請掃描檢體編號");
-                        tv2.setHint("檢體編號: ");
+                        tv.setText("手圈病歷號");
+                        tv1.setHint("手圈病歷號");
+                        tv2.setHint("號碼");
                         break;
                     case 2:
-                        tv.setText("採血/備血作業-採檢員");
-                        tv1.setHint("請掃描採檢員編號");
-                        tv2.setHint("採檢員編號: ");
+                        tv.setText("檢驗員");
+                        tv1.setHint("檢驗員");
+                        tv2.setHint("號碼");
                         break;
                     case 3:
-                        tv.setText("採血/備血作業-確認員");
-                        tv1.setHint("請掃描確認員編號");
-                        tv2.setHint("確認員編號: ");
-                        break;
-                    case 4:
-                        Intent intent = new Intent(BloodCollect1.this, BloodCollect2.class);
-                        startActivity(intent);
+                        Intent intent = new Intent(ThisIsTest.this, CheckIn2.class);
                         intent.putExtras(bundle);
+                        startActivity(intent);
                         break;
+
                     default:
-                        tv.setText("採血/備血作業-病歷號");
-                        tv1.setHint("請掃描病歷號");
-                        tv2.setHint("病歷號： ");
+                        tv.setText("總表病歷號");
+                        tv1.setHint("總表病歷號");
+                        tv2.setHint("號碼");
+
                 }
             }
         });
-
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 count--;
                 switch (count) {
+
                     case 1:
-                        tv.setText("採血/備血作業-檢體編號");
-                        tv1.setHint("請掃描檢體編號");
-                        tv2.setHint("檢體編號: ");
+                        tv.setText("手圈病歷號");
+                        tv1.setHint("手圈病歷號");
+                        tv2.setHint("號碼");
                         break;
+
                     case 2:
-                        tv.setText("採血/備血作業-採檢員");
-                        tv1.setHint("請掃描採檢員編號");
-                        tv2.setHint("採檢員編號: ");
-                        break;
-                    case 3:
-                        tv.setText("採血/備血作業-確認員");
-                        tv1.setHint("請掃描確認員編號");
-                        tv2.setHint("確認員編號: ");
+                        tv.setText("檢驗員");
+                        tv1.setHint("檢驗員");
+                        tv2.setHint("號碼");
                         break;
                     case -1:
-                        Intent intent = new Intent(BloodCollect1.this, examine_homePage.class);
+                        Intent intent = new Intent(ThisIsTest.this, blood_homeActivity.class);
                         startActivity(intent);
                         break;
-                    default:
-                        tv.setText("採血/備血作業-病歷號");
-                        tv1.setHint("請掃描病歷號");
-                        tv2.setHint("病歷號： ");
 
+                    default:
+                        tv.setText("總表病歷號");
+                        tv1.setHint("總表病歷號");
+                        tv2.setHint("號碼");
 
                 }
             }
         });
-    }
+////相機
 
+    }
 
     private void getPermissionsCamera() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
@@ -215,6 +207,7 @@ public class BloodCollect1 extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
         }
     }
+///相機結束
 
 
     public void Get_staff(Retrofit retrofit, String id) {
@@ -232,13 +225,11 @@ public class BloodCollect1 extends AppCompatActivity {
                         return;
                     }
                     String name = response.body().getName();
+                    String Birthday = response.body().getBirth();
                     show.setText(name);
-<<<<<<< HEAD
-                    bundle.putString("patientNumber1Check", id/*, show.getText().toString()*/);
-=======
-                    bundle.putString("patientNumber1Check", id);
+                    bundle.putString("paitentNumbercheck", id);
+                    bundle.putString("NameBox", show.getText().toString());
 
->>>>>>> 10eb8ededc5ac5c33cba57620f8893dee2ef7994
                 }
 
                 @Override
@@ -256,11 +247,10 @@ public class BloodCollect1 extends AppCompatActivity {
                     }
                     String emid = response.body().getName();
                     show.setText(emid);
-                    bundle.putString("collectorNumberCheck", id);
-                    bundle.putString("recheckNumberCheck", id);
-                    bundle.putString("sampleNumberCheck", id);
 
+                    bundle.putString("ManCheckBox", show.getText().toString());
                 }
+
                 @Override
                 public void onFailure(Call<Staff_Api> call, Throwable t) {
                     show.setText("請掃描條碼");
@@ -269,43 +259,4 @@ public class BloodCollect1 extends AppCompatActivity {
         }
 
     }
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
