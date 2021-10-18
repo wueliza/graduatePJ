@@ -20,11 +20,10 @@ public interface RESTfulApi {
     @POST("patient")
     Call<Patient_Api> postData(@Body Patient_Api patientApi);
 
-    @GET("eisai/{eisaiNum}")
-    Call<Eisai_Api> get_eisai(@Path("eisaiNum")String eisaiNum);
+    @GET("eisai/{EisaiNum}")
+    Call<Eisai_Api> get_eisai(@Path("EisaiNum")String EisaiNum);
 
     @GET("operation/{ora4Chart}")
     Call<Operation_Api> get_operation(@Path("ora4Chart")String ora4Chart);
-
-
+    
 }
