@@ -21,7 +21,8 @@
         android:targetSandboxVersion="2"
         android:theme="@style/Theme.GraduatePJ"
         android:usesCleartextTraffic="true">
-        <activity android:name=".confirmActivity"></activity>
+        <activity android:name=".ThisIsTest"></activity>
+        <activity android:name=".confirmActivity" />
         <activity android:name=".Chemogiveinfo2" />
         <activity android:name=".Chemogiveinfo" />
         <activity android:name=".Chemocheck2" />

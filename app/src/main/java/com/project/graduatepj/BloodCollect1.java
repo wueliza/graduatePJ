@@ -238,8 +238,7 @@ public class BloodCollect1 extends AppCompatActivity {
                     }
                     String name = response.body().getName();
                     show.setText(name);
-                    bundle.putString("patientNumber1Check", show.getText().toString());
-
+                    bundle.putString("patientNumber1Check", id/*, show.getText().toString()*/);
                 }
 
                 @Override

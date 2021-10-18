@@ -17,13 +17,11 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class BloodCollect2 extends AppCompatActivity {
-    private Button bt;
-    private Button bt2;
-    Intent intent;
-
-    {
-        intent = new Intent();
-    }
+    Intent intent = new Intent();
+//
+//    {
+//        intent = new Intent();
+//    }
 
     TextView tv1, tv2, tv3, tv4;
 
