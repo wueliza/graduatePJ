@@ -60,6 +60,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:hint="手圈病歷號"
+                android:text="病歷號碼"
                 android:textColor="@color/black"
                 android:textSize="@dimen/dp_24" />
 
