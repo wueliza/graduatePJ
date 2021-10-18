@@ -162,8 +162,8 @@ public class BloodCollect1 extends AppCompatActivity {
                         break;
                     case 4:
                         Intent intent = new Intent(BloodCollect1.this, BloodCollect2.class);
-                        startActivity(intent);
                         intent.putExtras(bundle);
+                        startActivity(intent);
                         break;
                     default:
                         tv.setText("採血/備血作業-病歷號");
