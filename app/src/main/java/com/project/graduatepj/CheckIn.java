@@ -247,8 +247,8 @@ public class CheckIn extends AppCompatActivity {
                         show.setText("找不到這個id");
                         return;
                     }
-                    String name = response.body().getName();
-                    show.setText(name);
+                    String emid = response.body().getName();
+                    show.setText(emid);
 
                     bundle.putString("ManCheckBox", show.getText().toString());
                 }
