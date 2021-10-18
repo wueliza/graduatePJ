@@ -1,27 +1,15 @@
 package com.project.graduatepj;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Print_examineNumber2 extends AppCompatActivity {
 
-    Intent intent;
-    public Print_examineNumber2() {
-        intent = new Intent();
-    }
-
+    Intent intent = new Intent();
     TextView tv1, tv2 ;
 
     @Override
