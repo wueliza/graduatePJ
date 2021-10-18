@@ -233,12 +233,12 @@ public class BloodCollect1 extends AppCompatActivity {
                     }
                     String name = response.body().getName();
                     show.setText(name);
-<<<<<<< HEAD
+
                     bundle.putString("patientNumber1Check", id/*, show.getText().toString()*/);
-=======
+
                     bundle.putString("patientNumber1Check", id);
 
->>>>>>> 10eb8ededc5ac5c33cba57620f8893dee2ef7994
+
                 }
 
                 @Override
