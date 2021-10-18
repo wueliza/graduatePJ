@@ -1,9 +1,13 @@
 package com.project.graduatepj;
 
+import net.sourceforge.jtds.jdbc.DateTime;
+
 public class Eisai_Api {
+
     private String EisaiNum;
     private String Name;
     private String Expire;
+    private DateTime Expiration ;
 
     public String getEisaiNum() {
         return EisaiNum;
@@ -15,5 +19,9 @@ public class Eisai_Api {
 
     public String getExpire() {
         return Expire;
+    }
+
+    public DateTime getExpiration() {
+        return Expiration;
     }
 }
