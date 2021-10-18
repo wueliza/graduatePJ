@@ -4,10 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import retrofit2.Call;
@@ -17,10 +16,12 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Print_examineNumber2 extends AppCompatActivity {
-    private Button bt;
-    private Button bt2;
-    Intent intent;{
-        intent = new Intent(); }
+
+    Intent intent;
+    public Print_examineNumber2() {
+        intent = new Intent();
+    }
+
     TextView tv1, tv2 ;
 
     @Override

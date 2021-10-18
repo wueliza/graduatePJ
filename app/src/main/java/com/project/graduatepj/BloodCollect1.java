@@ -1,9 +1,5 @@
 package com.project.graduatepj;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -15,15 +11,16 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
-
-
 
 import java.io.IOException;
 
@@ -32,8 +29,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 
 public class BloodCollect1 extends AppCompatActivity {
     Button bt;
@@ -60,7 +55,8 @@ public class BloodCollect1 extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.input);
 
         barcodeDetector = new BarcodeDetector.Builder(this)
-                .setBarcodeFormats(Barcode.ALL_FORMATS).build();
+                .setBarcodeFormats(Barcode.ALL_FORMATS)
+                .build();
         cameraSource = new CameraSource.Builder(this, barcodeDetector)
                 .setRequestedPreviewSize(1920, 1080)
                 .setAutoFocusEnabled(true)
@@ -112,7 +108,7 @@ public class BloodCollect1 extends AppCompatActivity {
 
         //api連接
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://106.105.167.136:8080/api/")
+                .baseUrl("http://140.136.151.75:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         //監視TextView是否有更變
@@ -125,7 +121,6 @@ public class BloodCollect1 extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
-
 
             @Override
             public void afterTextChanged(Editable editable) {
@@ -238,7 +233,12 @@ public class BloodCollect1 extends AppCompatActivity {
                     }
                     String name = response.body().getName();
                     show.setText(name);
+<<<<<<< HEAD
                     bundle.putString("patientNumber1Check", id/*, show.getText().toString()*/);
+=======
+                    bundle.putString("patientNumber1Check", id);
+
+>>>>>>> 10eb8ededc5ac5c33cba57620f8893dee2ef7994
                 }
 
                 @Override
@@ -254,14 +254,13 @@ public class BloodCollect1 extends AppCompatActivity {
                         show.setText("找不到這個id");
                         return;
                     }
-                    String name = response.body().getName();
-                    show.setText(name);
-                    bundle.putString("collectorNumberCheck", show.getText().toString());
-                    bundle.putString("recheckNumberCheck", show.getText().toString());
-                    bundle.putString("sampleNumberCheck", show.getText().toString());
+                    String emid = response.body().getName();
+                    show.setText(emid);
+                    bundle.putString("collectorNumberCheck", id);
+                    bundle.putString("recheckNumberCheck", id);
+                    bundle.putString("sampleNumberCheck", id);
 
                 }
-
                 @Override
                 public void onFailure(Call<Staff_Api> call, Throwable t) {
                     show.setText("請掃描條碼");
@@ -276,6 +275,7 @@ public class BloodCollect1 extends AppCompatActivity {
 
 
 }
+
 
 
 
