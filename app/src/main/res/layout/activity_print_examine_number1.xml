@@ -26,7 +26,7 @@
 
         <TextView
             android:id="@+id/title"
-            android:text="列印檢體編號-病例號"
+            android:text="列印檢體編號-病歷號"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_78"
             android:background="#0ADDC9"

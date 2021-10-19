@@ -16,7 +16,7 @@
 
         <TextView
             android:id="@+id/title"
-            android:text="給藥作業"
+            android:text="藥品核對"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_80"
             android:background="#0ADDC9"

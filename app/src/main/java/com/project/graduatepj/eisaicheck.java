@@ -206,7 +206,15 @@ public class eisaicheck extends AppCompatActivity {
             @Override
             public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
                 if (!response.isSuccessful()) {
-                    step.setText("此id不存在，請重新掃描員工編號！");
+                    if(count == 0) {
+                        step.setText("此id不存在，請重新掃描員工編號！");
+                    }
+                    else if(count == 1) {
+                        step.setText("此id不存在，請重新掃描病歷號！");
+                    }
+                    if(count == 2) {
+                        step.setText("此id不存在，請重新掃描衛材號碼！");
+                    }
                     return;
                 }
                 else {
@@ -229,7 +237,15 @@ public class eisaicheck extends AppCompatActivity {
             @Override
             public void onResponse(Call<Patient_Api> call, Response<Patient_Api> response) {
                 if (!response.isSuccessful()) {
-                    step.setText("此id不存在，請重新掃描病歷號！");
+                    if(count == 0) {
+                        step.setText("此id不存在，請重新掃描員工編號！");
+                    }
+                    else if(count == 1) {
+                        step.setText("此id不存在，請重新掃描病歷號！");
+                    }
+                    if(count == 2) {
+                        step.setText("此id不存在，請重新掃描衛材號碼！");
+                    }
                     return;
                 }
                 else {
@@ -252,7 +268,15 @@ public class eisaicheck extends AppCompatActivity {
             @Override
             public void onResponse(Call<Eisai_Api> call, Response<Eisai_Api> response) {
                 if (!response.isSuccessful()) {
-                    step.setText("此id不存在，請重新掃描衛材條碼！");
+                    if(count == 0) {
+                        step.setText("此id不存在，請重新掃描員工編號！");
+                    }
+                    else if(count == 1) {
+                        step.setText("此id不存在，請重新掃描病歷號！");
+                    }
+                    if(count == 2) {
+                        step.setText("此id不存在，請重新掃描衛材號碼！");
+                    }
                     return;
                 }
                 else {

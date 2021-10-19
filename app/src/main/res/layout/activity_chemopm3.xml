@@ -100,7 +100,7 @@
                 android:layout_marginLeft="@dimen/dp_12"
                 android:layout_marginTop="@dimen/dp_4"
                 android:layout_weight="1"
-                android:text="成品單號:"
+                android:text="外袋編號:"
                 android:textColor="#504C4C"
                 android:textSize="18sp"
                 android:textStyle="bold" />
