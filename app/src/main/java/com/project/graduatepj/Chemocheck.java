@@ -153,7 +153,7 @@ public class Chemocheck extends AppCompatActivity {
         });
         //api連接
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://106.105.167.136:8080/api/")
+                .baseUrl("http://140.136.151.75/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         //監視TextView是否有更變
