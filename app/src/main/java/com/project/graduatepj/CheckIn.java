@@ -136,6 +136,7 @@ public class CheckIn extends AppCompatActivity {
         TextView tv = (TextView) findViewById(R.id.title);
         TextView tv1 = (TextView) findViewById(R.id.input);
         TextView tv2 = (TextView) findViewById(R.id.show);
+        TextView hint = (TextView) findViewById(R.id.hint);
 
         bt = findViewById(R.id.nextbt);             //下一頁
         bt2 = findViewById(R.id.frontbt);           //上一頁
@@ -146,11 +147,13 @@ public class CheckIn extends AppCompatActivity {
                 count++;
                 switch (count) {
                     case 1:
+                        hint.setText("請掃描手圈病歷號");
                         tv.setText("手圈病歷號");
                         tv1.setHint("手圈病歷號");
                         tv2.setHint("號碼");
                         break;
                     case 2:
+                        hint.setText("請掃描檢驗員號碼");
                         tv.setText("檢驗員");
                         tv1.setHint("檢驗員");
                         tv2.setHint("號碼");
@@ -162,8 +165,9 @@ public class CheckIn extends AppCompatActivity {
                         break;
 
                     default:
-                        tv.setText("總表病歷號");
-                        tv1.setHint("總表病歷號");
+                        hint.setText("請掃描病歷號號碼");
+                        tv.setText("病歷號");
+                        tv1.setHint("病歷號");
                         tv2.setHint("號碼");
 
                 }
@@ -176,12 +180,14 @@ public class CheckIn extends AppCompatActivity {
                 switch (count) {
 
                     case 1:
+                        hint.setText("請掃描手圈病歷號");
                         tv.setText("手圈病歷號");
                         tv1.setHint("手圈病歷號");
                         tv2.setHint("號碼");
                         break;
 
                     case 2:
+                        hint.setText("請掃描檢驗員號碼");
                         tv.setText("檢驗員");
                         tv1.setHint("檢驗員");
                         tv2.setHint("號碼");
@@ -192,8 +198,9 @@ public class CheckIn extends AppCompatActivity {
                         break;
 
                     default:
-                        tv.setText("總表病歷號");
-                        tv1.setHint("總表病歷號");
+                        hint.setText("請掃描病歷號號碼");
+                        tv.setText("病歷號");
+                        tv1.setHint("病歷號");
                         tv2.setHint("號碼");
 
                 }
