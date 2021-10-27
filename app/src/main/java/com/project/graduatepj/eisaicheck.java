@@ -35,12 +35,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class eisaicheck extends AppCompatActivity {
-<<<<<<< HEAD
     private SurfaceView surfaceView;
-=======
-
-    private SurfaceView surfaceView ;
->>>>>>> ff6c32d2f33d31bdd9d7c1493d1d597954c526ee
     private TextView step , result , show;
     private CameraSource cameraSource;
     private BarcodeDetector barcodeDetector;
