@@ -44,13 +44,22 @@
             >
 
             <TextView
+                android:id="@+id/ehint1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@android:color/primary_text_dark_nodisable"
+                android:textSize="@dimen/dp_24"
+                />
+            <TextView
                 android:id="@+id/input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:hint="病歷號"
-                android:textColor="@color/black"
+                android:text=""
+                android:textColor="@android:color/primary_text_dark_nodisable"
                 android:textSize="@dimen/dp_24" />
 
             <TextView
@@ -59,9 +68,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:hint="病歷號"
-                android:textColor="@color/black"
-                android:textSize="@dimen/dp_24" />
+                android:text=""
+                android:textColor="@android:color/primary_text_dark_nodisable"
+                android:textSize="@dimen/dp_24"  />
 
             <LinearLayout
                 android:layout_width="match_parent"
