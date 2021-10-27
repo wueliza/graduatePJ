@@ -35,7 +35,12 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class eisaicheck extends AppCompatActivity {
+<<<<<<< HEAD
     private SurfaceView surfaceView;
+=======
+
+    private SurfaceView surfaceView ;
+>>>>>>> ff6c32d2f33d31bdd9d7c1493d1d597954c526ee
     private TextView step , result , show;
     private CameraSource cameraSource;
     private BarcodeDetector barcodeDetector;
@@ -117,7 +122,7 @@ public class eisaicheck extends AppCompatActivity {
 
         //api連接
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://106.105.167.136:8080/api/")
+                .baseUrl("http://140.136.151.75/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         //監視TextView是否有更變
@@ -185,7 +190,7 @@ public class eisaicheck extends AppCompatActivity {
             count = 2;
         }
         else if(count == 2){
-            bundle.putString("eisai_id", show.getText().toString());
+            bundle.putString("eisai_id", result.getText().toString());
             intent.putExtras(bundle);
             startActivity(intent);
         }
@@ -205,7 +210,15 @@ public class eisaicheck extends AppCompatActivity {
             @Override
             public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
                 if (!response.isSuccessful()) {
-                    step.setText("此id不存在，請重新掃描員工編號！");
+                    if(count == 0) {
+                        step.setText("此id不存在，請重新掃描員工編號！");
+                    }
+                    else if(count == 1) {
+                        step.setText("此id不存在，請重新掃描病歷號！");
+                    }
+                    if(count == 2) {
+                        step.setText("此id不存在，請重新掃描衛材號碼！");
+                    }
                     return;
                 }
                 else {
@@ -228,7 +241,15 @@ public class eisaicheck extends AppCompatActivity {
             @Override
             public void onResponse(Call<Patient_Api> call, Response<Patient_Api> response) {
                 if (!response.isSuccessful()) {
-                    step.setText("此id不存在，請重新掃描病歷號！");
+                    if(count == 0) {
+                        step.setText("此id不存在，請重新掃描員工編號！");
+                    }
+                    else if(count == 1) {
+                        step.setText("此id不存在，請重新掃描病歷號！");
+                    }
+                    if(count == 2) {
+                        step.setText("此id不存在，請重新掃描衛材號碼！");
+                    }
                     return;
                 }
                 else {
@@ -251,12 +272,20 @@ public class eisaicheck extends AppCompatActivity {
             @Override
             public void onResponse(Call<Eisai_Api> call, Response<Eisai_Api> response) {
                 if (!response.isSuccessful()) {
-                    step.setText("此id不存在，請重新掃描衛材條碼！");
+                    if(count == 0) {
+                        step.setText("此id不存在，請重新掃描員工編號！");
+                    }
+                    else if(count == 1) {
+                        step.setText("此id不存在，請重新掃描病歷號！");
+                    }
+                    if(count == 2) {
+                        step.setText("此id不存在，請重新掃描衛材號碼！");
+                    }
                     return;
                 }
                 else {
                     assert response.body() != null;
-                    String name = response.body().getName();
+                    String name = response.body().getEisaiNum();
                     show.setText(name);
                     step.setText("掃描成功，請按傳送");
                 }

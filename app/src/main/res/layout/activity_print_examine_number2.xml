@@ -9,7 +9,7 @@
     android:background="#FCFCFC"
     >
     <TextView
-        android:text="列印檢體編號"
+        android:text="列印檢體貼紙"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="#0ADDC9"

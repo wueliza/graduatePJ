@@ -9,7 +9,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:text="檢測作業"
+        android:text="檢驗作業"
         android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_80"

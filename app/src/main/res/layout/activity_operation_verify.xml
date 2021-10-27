@@ -42,6 +42,15 @@
             android:orientation="vertical"
             android:gravity="bottom"
             >
+            <TextView
+                android:id="@+id/hint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="請掃描病歷號"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dp_24" />
 
             <TextView
                 android:id="@+id/input"
@@ -49,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:hint="總表病歷號"
+                android:hint="病歷號"
                 android:textColor="@color/black"
                 android:textSize="@dimen/dp_24" />
 
