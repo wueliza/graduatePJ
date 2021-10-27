@@ -6,23 +6,11 @@
     android:orientation="vertical"
     android:background="#FCFCFC"
     tools:context=".tpr3Fragment">
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="#0ADDC9"
-        android:gravity="center"
-        android:text="輸血TPR"
-        android:textColor="#ffffff"
-        android:textSize="@dimen/dp_24" />
-
     <LinearLayout
         android:layout_width="380dp"
         android:background="@color/white"
         android:layout_gravity="center"
         android:layout_height="80dp"
-        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         >
 
@@ -219,27 +207,33 @@
             android:textSize = "20sp"
             android:text="輸血反應:"
             />
-        <RadioButton
-            android:id="@+id/yes"
-            android:layout_width="65dp"
-            android:layout_height="60dp"
-            android:text="是"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textColor="#504C4C"
-            android:textSize = "20sp"
-            />
-        <RadioButton
-            android:id="@+id/no"
-            android:layout_width="65dp"
-            android:layout_height="60dp"
-            android:text="否"
-            android:layout_marginLeft="15dp"
-            android:checked="true"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textColor="#504C4C"
-            android:textSize = "20sp"            />
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+            <RadioButton
+                android:id="@+id/yes"
+                android:layout_width="65dp"
+                android:layout_height="60dp"
+                android:text="是"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="#504C4C"
+                android:textSize = "20sp"
+                />
+            <RadioButton
+                android:id="@+id/no"
+                android:layout_width="65dp"
+                android:layout_height="60dp"
+                android:text="否"
+                android:layout_marginLeft="15dp"
+                android:checked="true"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="#504C4C"
+                android:textSize = "20sp"/>
+        </RadioGroup>
     </LinearLayout>
     <LinearLayout
         android:layout_height="70dp"

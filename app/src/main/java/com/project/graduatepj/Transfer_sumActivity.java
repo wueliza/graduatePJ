@@ -55,7 +55,7 @@ public class Transfer_sumActivity extends AppCompatActivity {
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Transfer_sumActivity.this,blood_homeActivity.class);
+                Intent intent = new Intent(Transfer_sumActivity.this,PagerActivity.class);
                 startActivity(intent);
             }
         });

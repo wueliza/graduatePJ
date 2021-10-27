@@ -41,16 +41,17 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <Button
             android:id="@+id/frontbt"
             android:layout_width="110dp"
             android:layout_height="50dp"
             android:text="上一步"
-            android:background="#6646628A"
+            android:background="#3F51B5"
             android:textSize="16dp" />
     </androidx.viewpager.widget.ViewPager>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -67,8 +68,8 @@
 
         </LinearLayout>
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="right"
             android:layout_weight = "1">
@@ -80,7 +81,7 @@
                 android:layout_gravity="bottom"
                 android:textSize="18dp"
                 android:background="@drawable/nextbutton_general"
-                android:text="下一步"
+                android:text="上傳"
                 />
         </LinearLayout>
     </LinearLayout>

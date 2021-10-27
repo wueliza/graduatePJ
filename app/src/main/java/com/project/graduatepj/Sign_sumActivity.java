@@ -11,24 +11,29 @@ import android.widget.TextView;
 public class Sign_sumActivity extends AppCompatActivity {
     private Button bt;
     private Button bt2;
-    //Bundle bundleget = getIntent().getExtras();
-    /*TextView tv = (TextView)findViewById(R.id.nurse);
-    TextView tv1 = (TextView)findViewById(R.id.transport);
-    TextView tv2 = (TextView)findViewById(R.id.take);*/
+
+    TextView nurse,transfer,bloodnum;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_sum);
 
-        //Bundle bundle = getIntent().getExtras();
+        Bundle bundle = getIntent().getExtras();
         bt = findViewById(R.id.nextbt);
         bt2 = findViewById(R.id.frontbt);
-        /*String nurse = bundle.getString("nurse");
-        String transport = bundle.getString("transport");
-        String take = bundle.getString("take");
-        tv.setText(nurse);
-        tv1.setText(transport);
-        tv2.setText(take);*/
+        nurse = findViewById(R.id.nurse);
+        transfer = findViewById(R.id.transfer);
+        bloodnum = findViewById(R.id.bloodnum);
+
+
+        String nurseman = bundle.getString("nurse");
+        String transferman = bundle.getString("transfer");
+        String bloodnumcount = bundle.getString("bloodnum");
+
+        nurse.setText(nurseman);
+        transfer.setText(transferman);
+        bloodnum.setText(bloodnumcount);
 
         bt.setOnClickListener(new View.OnClickListener() {
             @Override

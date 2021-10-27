@@ -65,7 +65,7 @@
         >
         <Button
             android:id="@+id/home"
-            android:text="上一步"
+            android:text="回主選單"
             android:layout_width="130dp"
             android:layout_height="55dp"
             android:background="@drawable/functionbutton_2"

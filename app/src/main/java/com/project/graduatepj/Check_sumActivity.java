@@ -19,8 +19,24 @@ public class Check_sumActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_sum);
 
+        /*Bundle bundle = getIntent().getExtras();
         bt = findViewById(R.id.nextbt);
         bt2 = findViewById(R.id.frontbt);
+        confirmman = findViewById(R.id.confirm);
+        checkman = findViewById(R.id.check);
+        paitent_Num = findViewById(R.id.paitentNumber);
+        paitent_name = findViewById(R.id.paitent_name);
+        bloodtype = findViewById(R.id.bloodtype);
+        age = findViewById(R.id.age);
+        bednum = findViewById(R.id.bednum);
+
+        String confirm = bundle.getString("confirm");
+        String check = bundle.getString("check");
+        String paitent_num = bundle.getString("patient_num");
+
+        confirmman.setText(confirm);
+        checkman.setText(check);
+        paitent_Num.setText(paitent_num);*/
 
         bt.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -36,7 +36,7 @@ public class SignActivity extends AppCompatActivity {
     private TextView show;
     Bundle bundle = new Bundle();
     SurfaceView surfaceView;
-    TextView textView;
+    TextView textView,step;
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
     int count = 0;
@@ -52,6 +52,7 @@ public class SignActivity extends AppCompatActivity {
 
         surfaceView=(SurfaceView)findViewById(R.id.surfaceView);
         textView=(TextView)findViewById(R.id.input);
+        step=(TextView)findViewById(R.id.ehint1);
 
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.ALL_FORMATS).build();
@@ -140,25 +141,23 @@ public class SignActivity extends AppCompatActivity {
                 switch (count){
                     case 1:
                         tv.setText("血袋簽收-傳送人員");
-                        tv1.setHint("傳送人員編號");
-                        tv2.setHint("傳送人員:");
-                        bundle.putString("transport",tv1.getText().toString());
+                        tv1.setText("傳送人員編號");
+                        tv2.setText("傳送人員:");
                         break;
                     case 2:
                         tv.setText("血袋簽收-領血單號");
-                        tv1.setHint("領血單號");
-                        tv2.setHint("領血單號:");
-                        bundle.putString("take",tv1.getText().toString());
+                        tv1.setText("領血單號");
+                        tv2.setText("領血單號:");
                         break;
                     case 3:
-                        Intent intent = new Intent(SignActivity.this,BloodnumberActivity.class);
+                        Intent intent = new Intent(SignActivity.this,Sign_sumActivity.class);
                         intent.putExtras(bundle);   // 記得put進去，不然資料不會帶過去哦
                         startActivity(intent);
                         break;
                     default:
                         tv.setText("血袋簽收-護理人員");
-                        tv1.setHint("護理人員編號");
-                        tv2.setHint("護理人員:");
+                        tv1.setText("護理人員編號");
+                        tv2.setText("護理人員:");
                         bundle.putString("nurse",tv1.getText().toString());
                 }
             }
@@ -170,13 +169,13 @@ public class SignActivity extends AppCompatActivity {
                 switch (count){
                     case 1:
                         tv.setText("血袋簽收-傳送人員");
-                        tv1.setHint("傳送人員編號");
-                        tv2.setHint("傳送人員:");
+                        tv1.setText("傳送人員編號");
+                        tv2.setText("傳送人員:");
                         break;
                     case 2:
                         tv.setText("血袋簽收-領血單號");
-                        tv1.setHint("領血單號");
-                        tv2.setHint("領血單號:");
+                        tv1.setText("領血單號");
+                        tv2.setText("領血單號:");
                         break;
                     case -1:
                         Intent intent = new Intent(SignActivity.this,blood_homeActivity.class);
@@ -184,12 +183,13 @@ public class SignActivity extends AppCompatActivity {
                         break;
                     default:
                         tv.setText("血袋簽收-護理人員");
-                        tv1.setHint("護理人員編號");
-                        tv2.setHint("護理人員:");
+                        tv1.setText("護理人員編號");
+                        tv2.setText("護理人員:");
                 }
             }
         });
     }
+
     private void getPermissionsCamera() {
         if(ActivityCompat.checkSelfPermission(this,Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED){
@@ -206,7 +206,7 @@ public class SignActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
                     if (!response.isSuccessful()) {
-                        show.setText("找不到這個id");
+                        step.setText("此id不存在，請重新掃描員工！");
                         return;
                     }
                     String name = response.body().getName();
@@ -231,7 +231,7 @@ public class SignActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
                     if (!response.isSuccessful()) {
-                        show.setText("找不到這個id");
+                        step.setText("此id不存在，請重新掃描領血單號！");
                         return;
                     }
                     String name = response.body().getName();

@@ -7,6 +7,7 @@
     android:orientation="vertical"
     android:background="#FCFCFC"
     tools:context=".Sign_sumActivity">
+
     <TextView
         android:id="@+id/title"
         android:text="血袋簽收-總結"
@@ -16,6 +17,70 @@
         android:gravity="center"
         android:textColor="#ffffff"
         android:textSize="@dimen/dp_24"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="165dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="12dp"
+            android:text="應到血袋數量:"
+            android:textColor="#504C4C"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            >
+            <RadioButton
+                android:id="@+id/yes"
+                android:layout_width="65dp"
+                android:layout_height="60dp"
+                android:text="是"
+                android:textSize="18sp"
+                />
+            <RadioButton
+                android:id="@+id/no"
+                android:layout_width="65dp"
+                android:layout_height="60dp"
+                android:text="否"
+                android:checked="true"
+                android:textSize="18sp"
+                />
+        </RadioGroup>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="99dp"
+            android:layout_height="60dp"
+            android:text="血品:"
+            android:layout_marginLeft="25dp"
+            android:textStyle="bold"
+            android:textColor="#504C4C"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/bloodtype"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="1dp"
+            android:text=""
+            android:textSize="20sp" />
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="379dp"
@@ -123,7 +188,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:orientation="vertical"
         android:layout_margin="10dp"
         android:layout_marginTop="10dp"
