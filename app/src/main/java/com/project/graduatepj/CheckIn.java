@@ -236,6 +236,7 @@ public class CheckIn extends AppCompatActivity {
                     String ora4Chart = response.body().getora4Chart();
                     show.setText(ora4Chart);
                     bundle.putString("ora4chart", id);
+
                 }
 
                 @Override
