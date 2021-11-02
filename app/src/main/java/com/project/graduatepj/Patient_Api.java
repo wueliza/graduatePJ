@@ -3,57 +3,57 @@ package com.project.graduatepj;
 import net.sourceforge.jtds.jdbc.DateTime;
 
 public class Patient_Api {
-    public String QrChart ;
-    public String Sex;
-    public String Name ;
-    public String Division ;
-    public String Height ;
-    public String Age ;
-    public String Weight ;
-    public String Bsnos ;
-    public DateTime BirthDate ;
-    public String Ora4Chart ;
-    public String Emid ;
-    public String BedNum ;
+    private String qrChart ;
+    private String sex;
+    private String name ;
+    private String division ;
+    private String height ;
+    private String age ;
+    private String weight ;
+    private String bsnos ;
+    private DateTime birthDate ;
+    private String ora4Chart ;
+    private String Emid ;
+    private String BedNum ;
 
     public String getQrChart() {
-        return QrChart;
+        return qrChart;
     }
 
     public String getSex() {
-        return Sex;
+        return sex;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public String getDivision() {
-        return Division;
+        return division;
     }
 
     public String getHeight() {
-        return Height;
+        return height;
     }
 
     public String getAge() {
-        return Age;
+        return age;
     }
 
     public String getWeight() {
-        return Weight;
+        return weight;
     }
 
     public String getBsnos() {
-        return Bsnos;
+        return bsnos;
     }
 
     public DateTime getBirthDate() {
-        return BirthDate;
+        return birthDate;
     }
 
     public String getOra4Chart() {
-        return Ora4Chart;
+        return ora4Chart;
     }
 
     public String getEmid() {

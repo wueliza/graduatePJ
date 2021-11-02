@@ -11,8 +11,8 @@ public interface RESTfulApi {
     @GET("patient")
     Call<List<Patient_Api>> getPosts();
 
-    @GET("patient/{patientNum}") //1 . 2 . 3 ...
-    Call<Patient_Api> getOne(@Path("patientNum")String patientNum);
+    @GET("patient/{qrChart}") //1 . 2 . 3 ...
+    Call<Patient_Api> getOne(@Path("qrChart")String qrChart);
 
     @GET("staff/{emid}") //A00001 ...
     Call<Staff_Api> get_staff(@Path("emid")String emid);

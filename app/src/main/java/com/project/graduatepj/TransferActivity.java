@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -35,7 +36,10 @@ public class TransferActivity extends AppCompatActivity {
     Button bt;
     Button bt2;
     SurfaceView surfaceView;
-    TextView textView;
+
+    EditText textView;
+    //TextView textView;
+
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
     Bundle bundle = new Bundle();
@@ -53,7 +57,9 @@ public class TransferActivity extends AppCompatActivity {
         getPermissionsCamera();
 
         surfaceView=(SurfaceView)findViewById(R.id.surfaceView);
-        textView=(TextView)findViewById(R.id.input);
+
+        textView=(EditText) findViewById(R.id.input);
+        //textView=(TextView)findViewById(R.id.input);
 
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.ALL_FORMATS).build();
@@ -214,17 +220,19 @@ public class TransferActivity extends AppCompatActivity {
         if(count == 0){
             patient_apiCall.enqueue(new Callback<Patient_Api>() {
                 @Override
-                public void onResponse(Call<Patient_Api> patient_apiCall1, Response<Patient_Api> response) {
+                public void onResponse(Call<Patient_Api> patient_apiCall, Response<Patient_Api> response) {
                     if (!response.isSuccessful()) {
                         show.setText("找不到這個id");
                         return;
                     }
-                    String name = response.body().getName();
-                    show.setText(name);
-                    bundle.putString("patient_num", id);
+                    else {
+                        String name = response.body().getName();
+                        show.setText(name);
+                        bundle.putString("patient_num", id);
+                    }
                 }
                 @Override
-                public void onFailure(Call<Patient_Api> patient_apiCall1, Throwable t) {
+                public void onFailure(Call<Patient_Api> patient_apiCall, Throwable t) {
                     show.setText("請掃描條碼");
                 }
             });
@@ -237,8 +245,8 @@ public class TransferActivity extends AppCompatActivity {
                         show.setText("找不到這個id");
                         return;
                     }
-                    String name = response.body().getName();
-                    show.setText(name);
+                    //String name = response.body().getName();
+                    //show.setText(name);
                     switch (count) {
                         case 1:
                             bundle.putString("confirm", show.getText().toString());
