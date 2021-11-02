@@ -222,7 +222,7 @@ public class OperationVerify extends AppCompatActivity {
     public void Get_staff(Retrofit retrofit, String id) {
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
         Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id);
-        Call<Operation_Api> operation_call  = jsonPlaceHolderApi.get_operation(id);
+        Call<ORA4_CHART_API> ora4_chart_apiCall  = jsonPlaceHolderApi.get_ora4Chart(id);
         if(count == 0)
         {
             call.enqueue(new Callback<Staff_Api>() {
