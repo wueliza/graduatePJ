@@ -78,7 +78,7 @@ public class Chemocheck2 extends AppCompatActivity {
                     return;
                 }
                 else {
-                    int id = response.body().getPatientNum();
+                    //int id = response.body().getPatientNum();
                     String name = response.body().getName();
                     String gender = response.body().getSex();
                     String bed = response.body().getBedNum();
