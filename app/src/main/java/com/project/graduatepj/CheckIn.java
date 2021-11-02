@@ -1,9 +1,5 @@
 package com.project.graduatepj;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -15,8 +11,11 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
@@ -223,9 +222,30 @@ public class CheckIn extends AppCompatActivity {
 
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
         Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id); //A00010
-        Call<Patient_Api> patient_apiCall = jsonPlaceHolderApi.getOne(id);
+        Call<Patient_Api> patient_apiCall = jsonPlaceHolderApi.getOne(id);//手圈病歷號
+        Call<ORA4_CHART_API>ora4_chart_apiCall = jsonPlaceHolderApi.get_ora4Chart(id);  //病歷號
 
-        if (count == 0 || count == 1) {
+        if(count == 0){
+            ora4_chart_apiCall.enqueue(new Callback<ORA4_CHART_API>() {
+                @Override
+                public void onResponse(Call<ORA4_CHART_API> ora4_chart_apiCall, Response<ORA4_CHART_API> response) {
+                    if(!response.isSuccessful()){
+                        show.setText("找不到這個id");
+                        return;
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<ORA4_CHART_API> call, Throwable t) {
+
+                }
+            });
+
+
+
+        }
+        else if ( count == 1) {
             patient_apiCall.enqueue(new Callback<Patient_Api>() {
                 @Override
                 public void onResponse(Call<Patient_Api> patient_apiCall, Response<Patient_Api> response) {

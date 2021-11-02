@@ -23,7 +23,8 @@ public interface RESTfulApi {
     @GET("eisai/{EisaiNum}")
     Call<Eisai_Api> get_eisai(@Path("EisaiNum")String EisaiNum);
 
-    @GET("operation/{ora4Chart}")
-    Call<Operation_Api> get_operation(@Path("ora4Chart")String ora4Chart);
+
+    @GET("ora4chart/{ora4Chart}")
+    Call<ORA4_CHART_API> get_ora4Chart(@Path("ora4Chart")String ora4Chart);
     
 }
