@@ -31,7 +31,7 @@ public class CheckIn2 extends AppCompatActivity {
         Bundle NameBox = this.getIntent().getExtras();
         Bundle BirthBox = this.getIntent().getExtras();
 
-        String patientNumber = paitentNumbercheck.getString("paitentNumbercheck");
+        String patientNumber = paitentNumbercheck.getString("ora4chart");
         String wistNumber = wistNumbercheck.getString("paitentNumbercheck");
         String ManCheckNumber = ManCheckBox.getString("ManCheckBox");
         String patientname = NameBox.getString("NameBox");
@@ -55,7 +55,7 @@ public class CheckIn2 extends AppCompatActivity {
         Button Upload = (Button) findViewById(R.id.Upload);
 
         Retrofit retrofit = new Retrofit.Builder() //api連接
-                .baseUrl("http://106.105.167.136:8080/api/")
+                .baseUrl("http://140.136.151.75:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         if(tv1.getText()!=null)

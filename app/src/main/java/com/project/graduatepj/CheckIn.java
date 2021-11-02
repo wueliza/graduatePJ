@@ -233,12 +233,14 @@ public class CheckIn extends AppCompatActivity {
                         show.setText("找不到這個id");
                         return;
                     }
-
+                    String ora4Chart = response.body().getora4Chart();
+                    show.setText(ora4Chart);
+                    bundle.putString("ora4chart", id);
                 }
 
                 @Override
                 public void onFailure(Call<ORA4_CHART_API> call, Throwable t) {
-
+                    show.setText("請掃描條碼");
                 }
             });
 
