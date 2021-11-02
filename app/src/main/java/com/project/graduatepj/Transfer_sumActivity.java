@@ -46,7 +46,7 @@ public class Transfer_sumActivity extends AppCompatActivity {
         paitent_Num.setText(paitent_num);
 
         Retrofit retrofit = new Retrofit.Builder() //api連接
-                .baseUrl("http://106.105.167.136:8080/api/")
+                .baseUrl("http://140.136.151.75:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         if(paitent_Num.getText() != null)
@@ -82,12 +82,12 @@ public class Transfer_sumActivity extends AppCompatActivity {
                     String getname = response.body().getName();
                     String getage = response.body().getAge();
                     String getbednum = response.body().getBedNum();
-                    String getbloodtype = response.body().getBloodType();
+                    //String getbloodtype = response.body().getBloodType();
 
                     paitent_name.setText(getname);
                     age.setText(getage);
                     bednum.setText(getbednum);
-                    bloodtype.setText(getbloodtype);
+                    //bloodtype.setText(getbloodtype);
                 }
             }
             @Override

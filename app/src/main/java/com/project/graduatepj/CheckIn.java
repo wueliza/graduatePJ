@@ -257,7 +257,7 @@ public class CheckIn extends AppCompatActivity {
                         return;
                     }
                     String name = response.body().getName();
-                    String Birthday = response.body().getBirth();
+                    //String Birthday = response.body().getBirth();
                     show.setText(name);
                     bundle.putString("paitentNumbercheck", id);
                     bundle.putString("NameBox", show.getText().toString());

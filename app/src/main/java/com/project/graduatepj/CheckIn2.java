@@ -92,10 +92,10 @@ public class CheckIn2 extends AppCompatActivity {
                     BirthdayBox.setText("無此資料");
                     return;
                 } else {
-                    String getBirthday = response.body().getBirth();
+                    //String getBirthday = response.body().getBirth();
 
 
-                    BirthdayBox.setText(getBirthday);
+                    //BirthdayBox.setText(getBirthday);
 
                 }
             }

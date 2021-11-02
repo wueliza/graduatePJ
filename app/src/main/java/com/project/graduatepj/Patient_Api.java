@@ -1,7 +1,79 @@
 package com.project.graduatepj;
 
+import net.sourceforge.jtds.jdbc.DateTime;
+
 public class Patient_Api {
-    private int patientNum;
+    private String qrChart ;
+    private String sex;
+    private String name ;
+    private String division ;
+    private String height ;
+    private String age ;
+    private String weight ;
+    private String bsnos ;
+    private DateTime birthDate ;
+    private String ora4Chart ;
+    private String Emid ;
+    private String BedNum ;
+
+    public String getQrChart() {
+        return qrChart;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDivision() {
+        return division;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public String getWeight() {
+        return weight;
+    }
+
+    public String getBsnos() {
+        return bsnos;
+    }
+
+    public DateTime getBirthDate() {
+        return birthDate;
+    }
+
+    public String getOra4Chart() {
+        return ora4Chart;
+    }
+
+    public String getEmid() {
+        return Emid;
+    }
+
+    public String getBedNum() {
+        return BedNum;
+    }
+
+    /*public virtual staff Em { get; set; }
+    public virtual Ora4Chart Ora4ChartNavigation { get; set; }
+    public virtual ICollection<BloodBank> BloodBanks { get; set; }
+    public virtual ICollection<Medicine> Medicines { get; set; }
+    public virtual ICollection<Tpr> Tprs { get; set; }
+    public virtual ICollection<TransOperation> TransOperations { get; set; }*/
+
+
+
+    /*private int patientNum;
     private String sex;
     private String birth;
     private String bedNum;
@@ -69,5 +141,5 @@ public class Patient_Api {
         this.age = age;
         this.weight = weight;
         this.bsno = bsno;
-    }
+    }*/
 }
