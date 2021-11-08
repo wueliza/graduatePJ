@@ -246,7 +246,6 @@ public class CheckIn extends AppCompatActivity {
             });
 
 
-
         }
         else if ( count == 1) {
             patient_apiCall.enqueue(new Callback<Patient_Api>() {
