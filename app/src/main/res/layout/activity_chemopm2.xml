@@ -48,7 +48,8 @@
                 android:gravity="center"
                 android:text=" "
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/dp_24" />
+                android:textSize="@dimen/dp_24"
+                android:background="@color/cardview_shadow_start_color"/>
             <TextView
                 android:id="@+id/cphint2"
                 android:layout_width="match_parent"
@@ -57,7 +58,8 @@
                 android:gravity="center"
                 android:text=""
                 android:textColor="@color/black"
-                android:textSize="@dimen/dp_24" />
+                android:textSize="@dimen/dp_24"
+                android:background="@color/cardview_shadow_start_color"/>
 
             <TextView
                 android:id="@+id/cphint3"
@@ -67,7 +69,8 @@
                 android:gravity="center"
                 android:text=""
                 android:textColor="@color/black"
-                android:textSize="@dimen/dp_24" />
+                android:textSize="@dimen/dp_24"
+                android:background="@color/cardview_shadow_start_color"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

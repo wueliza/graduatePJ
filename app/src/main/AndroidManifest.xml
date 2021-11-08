@@ -55,7 +55,6 @@
         <activity android:name=".Chemopm" />
         <activity android:name=".eisairesult" />
         <activity android:name=".eisaicheck" />
-        <activity android:name=".login" />
         <activity android:name=".gotofunction">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

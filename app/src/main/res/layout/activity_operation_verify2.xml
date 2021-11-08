@@ -11,7 +11,7 @@
     <TextView
         android:id="@+id/PatientNumber"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="@dimen/dp_80"
         android:background="#0ADDC9"
         android:gravity="center"
         android:text="進刀房病人辨識"
@@ -21,23 +21,23 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_margin="15dp"
+        android:layout_height="@dimen/dp_200"
+        android:layout_margin="@dimen/dp_15"
         android:background="@color/white"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:layout_marginBottom="10dp"
+            android:layout_height="@dimen/dp_43"
+            android:layout_marginBottom="@dimen/dp_10"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/KnifeNumber"
-                android:layout_width="10dp"
-                android:layout_height="45dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginTop="4dp"
+                android:layout_width="@dimen/dp_10"
+                android:layout_height="@dimen/dp_45"
+                android:layout_marginLeft="@dimen/dp_4"
+                android:layout_marginTop="@dimen/dp_4"
                 android:layout_weight="1"
                 android:text="備刀單 :"
                 android:textColor="#504C4C"
@@ -48,8 +48,8 @@
                 android:id="@+id/KnifeNumberBox"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="6dp"
-                android:layout_marginRight="90dp"
+                android:layout_marginTop="@dimen/dp_6"
+                android:layout_marginRight="@dimen/dp_90"
                 android:layout_weight="1"
                 android:background="@drawable/check_background"
                 android:gravity="center"
@@ -59,16 +59,16 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:layout_marginBottom="10dp"
+            android:layout_height="@dimen/dp_43"
+            android:layout_marginBottom="@dimen/dp_10"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/wistNumber"
-                android:layout_width="10dp"
-                android:layout_height="45dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginTop="4dp"
+                android:layout_width="@dimen/dp_10"
+                android:layout_height="@dimen/dp_45"
+                android:layout_marginLeft="@dimen/dp_4"
+                android:layout_marginTop="@dimen/dp_4"
                 android:layout_weight="1"
                 android:text="手圈病歷號 :"
                 android:textColor="#504C4C"
@@ -79,8 +79,8 @@
                 android:id="@+id/wistNumberBox"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="6dp"
-                android:layout_marginRight="90dp"
+                android:layout_marginTop="@dimen/dp_6"
+                android:layout_marginRight="@dimen/dp_90"
                 android:layout_weight="1"
                 android:background="@drawable/check_background"
                 android:gravity="center"
@@ -90,16 +90,16 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="43dp"
+            android:layout_height="@dimen/dp_43"
             android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/ManCheck"
-                android:layout_width="10dp"
-                android:layout_height="45dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginTop="4dp"
+                android:layout_width="@dimen/dp_10"
+                android:layout_height="@dimen/dp_45"
+                android:layout_marginLeft="@dimen/dp_4"
+                android:layout_marginTop="@dimen/dp_4"
                 android:layout_weight="1"
                 android:text="檢驗員 :"
                 android:textColor="#504C4C"
@@ -110,8 +110,8 @@
                 android:id="@+id/ManCheckBox"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="6dp"
-                android:layout_marginRight="90dp"
+                android:layout_marginTop="@dimen/dp_6"
+                android:layout_marginRight="@dimen/dp_90"
                 android:layout_weight="1"
                 android:background="@drawable/check_background"
                 android:gravity="center"
@@ -124,24 +124,24 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_margin="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="@dimen/dp_250"
+        android:layout_margin="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
         android:background="@color/white"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:layout_marginBottom="10dp"
+            android:layout_height="@dimen/dp_43"
+            android:layout_marginBottom="@dimen/dp_10"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/Name"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="4dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginLeft="@dimen/dp_4"
+                android:layout_marginTop="@dimen/dp_4"
                 android:layout_weight="1"
                 android:text="姓名 :"
                 android:textColor="#504C4C"
@@ -151,8 +151,8 @@
                 android:id="@+id/patientNumberBox"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="4dp"
-                android:layout_marginRight="90dp"
+                android:layout_marginTop="@dimen/dp_4"
+                android:layout_marginRight="@dimen/dp_90"
                 android:layout_weight="1"
                 android:background="@drawable/check_background"
                 android:gravity="center"
@@ -162,16 +162,16 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:layout_marginBottom="10dp"
+            android:layout_height="@dimen/dp_43"
+            android:layout_marginBottom="@dimen/dp_10"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/Birthday"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="4dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginLeft="@dimen/dp_4"
+                android:layout_marginTop="@dimen/dp_4"
                 android:layout_weight="1"
                 android:text="生日 :"
                 android:textColor="#504C4C"
@@ -180,8 +180,8 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="4dp"
-                android:layout_marginRight="90dp"
+                android:layout_marginTop="@dimen/dp_4"
+                android:layout_marginRight="@dimen/dp_90"
                 android:layout_weight="1"
                 android:background="@drawable/check_background"
                 android:gravity="center"
@@ -192,16 +192,16 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:layout_marginBottom="10dp"
+            android:layout_height="@dimen/dp_43"
+            android:layout_marginBottom="@dimen/dp_10"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/Doctor"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="4dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginLeft="@dimen/dp_4"
+                android:layout_marginTop="@dimen/dp_10"
                 android:layout_weight="1"
                 android:text="主治醫師 :"
                 android:textColor="#504C4C"
@@ -210,8 +210,8 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="4dp"
-                android:layout_marginRight="90dp"
+                android:layout_marginTop="@dimen/dp_4"
+                android:layout_marginRight="@dimen/dp_90"
                 android:layout_weight="1"
                 android:background="@drawable/check_background"
                 android:gravity="center"
@@ -221,19 +221,19 @@
 
         <View
             android:layout_width="fill_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="@dimen/dp_2"
+            android:layout_marginTop="@dimen/dp_20"
             android:background="#48000000" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp">
+            android:layout_height="@dimen/dp_150">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="4dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginLeft="@dimen/dp_4"
+                android:layout_marginTop="@dimen/dp_10"
                 android:text="內容"
                 android:textColor="@color/black"
                 android:textSize="@dimen/dp_18" />
@@ -255,8 +255,8 @@
 
             <Button
                 android:id="@+id/frontbt"
-                android:layout_width="110dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/dp_110"
+                android:layout_height="@dimen/dp_50"
                 android:background="#6646628A"
                 android:text="上一步"
                 android:textSize="@dimen/dp_16" />
@@ -271,8 +271,8 @@
 
             <Button
                 android:id="@+id/Upload"
-                android:layout_width="130dp"
-                android:layout_height="55dp"
+                android:layout_width="@dimen/dp_130"
+                android:layout_height="@dimen/dp_55"
                 android:layout_gravity="bottom"
                 android:background="@drawable/nextbutton_general"
                 android:text="傳送"

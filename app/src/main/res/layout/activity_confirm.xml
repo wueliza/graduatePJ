@@ -65,6 +65,7 @@
                 android:gravity="center"
                 android:textColor="@android:color/primary_text_dark_nodisable"
                 android:textSize="@dimen/dp_24"
+                android:background="@color/cardview_shadow_start_color"
                 />
             <TextView
                 android:id="@+id/input"
@@ -74,7 +75,8 @@
                 android:gravity="center"
                 android:text=""
                 android:textColor="@android:color/primary_text_dark_nodisable"
-                android:textSize="@dimen/dp_24" />
+                android:textSize="@dimen/dp_24"
+                android:background="@color/cardview_shadow_start_color"/>
 
             <TextView
                 android:id="@+id/show"
@@ -84,7 +86,8 @@
                 android:gravity="center"
                 android:text=""
                 android:textColor="@android:color/primary_text_dark_nodisable"
-                android:textSize="@dimen/dp_24"  />
+                android:textSize="@dimen/dp_24"
+                android:background="@color/cardview_shadow_start_color"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

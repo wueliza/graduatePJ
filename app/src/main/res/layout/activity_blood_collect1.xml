@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BloodCollect1">
+    tools:context=".BloodCollect1"
     android:background="#FAF9F7">
 
     <FrameLayout
@@ -44,30 +44,39 @@
 
             <TextView
                 android:id="@+id/input"
-                android:layout_width="@dimen/dp_240"
-                android:layout_height="@dimen/dp_55"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/cardview_shadow_start_color"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:hint=" 請掃描手圈病歷號 "
-                android:background="@drawable/hint_color"
                 android:textColorHint="@color/white"
                 android:textSize="@dimen/dp_24" />
 
             <TextView
                 android:id="@+id/show"
-                android:layout_width="@dimen/dp_250"
-                android:layout_height="@dimen/dp_50"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/cardview_shadow_start_color"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:hint="手圈病歷號"
-                android:background="@drawable/hint_color"
                 android:textColor="@color/black"
-                android:layout_marginTop="@dimen/dp_4"
+                android:textSize="@dimen/dp_24" />
+            <TextView
+                android:id="@+id/show1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/cardview_shadow_start_color"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:hint="手圈病歷號"
+                android:textColor="@color/black"
                 android:textSize="@dimen/dp_24" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="@dimen/dp_130"
                 android:orientation="horizontal"
                 android:gravity="bottom"
                 >
@@ -82,8 +91,8 @@
                     <Button
                         android:id="@+id/frontbt"
                         android:text="返回"
-                        android:layout_width="140dp"
-                        android:layout_height="65dp"
+                        android:layout_width="@dimen/dp_140"
+                        android:layout_height="@dimen/dp_65"
                         android:layout_gravity="bottom"
                         android:textStyle="bold"
                         android:textColor="#FBFBFB"
@@ -101,8 +110,8 @@
 
                     <Button
                         android:id="@+id/nextbt"
-                        android:layout_width="140dp"
-                        android:layout_height="65dp"
+                        android:layout_width="@dimen/dp_140"
+                        android:layout_height="@dimen/dp_65"
                         android:layout_gravity="bottom"
                         android:background="@drawable/nextbutton_general"
                         android:text="下一步"

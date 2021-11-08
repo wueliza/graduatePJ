@@ -48,7 +48,8 @@
                 android:gravity="center"
                 android:text="請掃描病歷號"
                 android:textColor="@color/white"
-                android:textSize="@dimen/dp_24" />
+                android:textSize="@dimen/dp_24"
+                android:background="@color/cardview_shadow_start_color"/>
 
             <TextView
                 android:id="@+id/input"
@@ -58,7 +59,8 @@
                 android:gravity="center"
                 android:hint="病歷號"
                 android:textColor="@color/black"
-                android:textSize="@dimen/dp_24" />
+                android:textSize="@dimen/dp_24"
+                android:background="@color/cardview_shadow_start_color"/>
 
             <TextView
                 android:id="@+id/show"
@@ -68,26 +70,28 @@
                 android:gravity="center"
                 android:hint="病歷號"
                 android:textColor="@color/black"
-                android:textSize="@dimen/dp_24" />
+                android:textSize="@dimen/dp_24"
+                android:background="@color/cardview_shadow_start_color"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="@dimen/dp_130"
+                android:orientation="horizontal"
                 android:gravity="bottom"
-                android:orientation="horizontal">
-
+                >
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:orientation="horizontal"
                     android:gravity="bottom"
-                    android:orientation="horizontal">
+                    android:layout_weight = "1"
+                    >
 
                     <Button
                         android:id="@+id/frontbt"
                         android:text="返回"
-                        android:layout_width="140dp"
-                        android:layout_height="65dp"
+                        android:layout_width="@dimen/dp_140"
+                        android:layout_height="@dimen/dp_65"
                         android:layout_gravity="bottom"
                         android:textStyle="bold"
                         android:textColor="#FBFBFB"
@@ -99,20 +103,20 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:orientation="horizontal"
                     android:gravity="right"
-                    android:orientation="horizontal">
+                    android:layout_weight = "1">
 
                     <Button
                         android:id="@+id/nextbt"
-                        android:layout_width="130dp"
-                        android:layout_height="55dp"
-                        android:layout_gravity="bottom"
-                        android:background="@drawable/nextbutton_general"
                         android:text="下一步"
+                        android:layout_width="@dimen/dp_140"
+                        android:layout_height="@dimen/dp_65"
+                        android:layout_gravity="bottom"
+                        android:textStyle="bold"
                         android:textColor="#FBFBFB"
-                        android:textSize="@dimen/dp_20"
-                        android:textStyle="bold" />
+                        android:textSize="@dimen/dp_18"
+                        android:background="@drawable/nextbutton_general"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

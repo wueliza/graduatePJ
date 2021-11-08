@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class gotofunction extends AppCompatActivity {
 
-    private Button eisaiBt , checkWorkBt , surgeryBt , bloodTransBt , chemBt ,loginBBt;
+    private Button eisaiBt , checkWorkBt , surgeryBt , bloodTransBt , chemBt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,21 +21,16 @@ public class gotofunction extends AppCompatActivity {
         surgeryBt = findViewById(R.id.surgeryBt);
         bloodTransBt = findViewById(R.id.bloodTransBt);
         chemBt = findViewById(R.id.chemBt);
-        loginBBt = findViewById(R.id.loginBt);
+
 
         eisaiBt.setOnClickListener(this::go_eisai);
         chemBt.setOnClickListener(this::go_chem);
         surgeryBt.setOnClickListener(this::go_surgery);
         bloodTransBt.setOnClickListener(this::go_bloodTrans);
         checkWorkBt.setOnClickListener(this::go_checkWork);
-        loginBBt.setVisibility(View.INVISIBLE);
-//        loginBBt.setOnClickListener(this::go_login);
+
     }
-//    public void go_login(View v){
-//        Intent intent = new Intent();
-//        intent.setClass(gotofunction.this , login.class);
-//        startActivity(intent);
-//    }
+
     public void go_eisai(View v){
         Intent intent = new Intent();
         intent.setClass(gotofunction.this , eisaicheck.class);

@@ -96,18 +96,6 @@
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/loginBt"
-            android:layout_width="@dimen/dp_200"
-            android:layout_height="@dimen/dp_40"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/dp_10"
-            android:background="@drawable/functionbutton_2"
-            android:text="登入"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 
