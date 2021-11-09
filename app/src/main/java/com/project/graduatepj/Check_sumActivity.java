@@ -18,10 +18,10 @@ public class Check_sumActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_sum);
-
-        /*Bundle bundle = getIntent().getExtras();
         bt = findViewById(R.id.nextbt);
         bt2 = findViewById(R.id.frontbt);
+        /*Bundle bundle = getIntent().getExtras();
+
         confirmman = findViewById(R.id.confirm);
         checkman = findViewById(R.id.check);
         paitent_Num = findViewById(R.id.paitentNumber);
