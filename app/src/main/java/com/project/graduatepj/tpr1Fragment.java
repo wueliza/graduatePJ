@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,7 +19,7 @@ import android.widget.Button;
 public class tpr1Fragment extends Fragment {
     private Button bt;
     private Button bt2;
-
+    LinearLayout soildetext;                        //使用LinearLayout來代替button去實踐頁面轉換
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -58,14 +59,14 @@ public class tpr1Fragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        Button fronbt = (Button) getView().findViewById(R.id.frontbt);
-        fronbt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+//        Button fronbt = (Button) getView().findViewById(R.id.frontbt);
+//        fronbt.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
 //                Intent intent = new Intent(tpr1Fragment.this,TransferActivity.class);
 //                startActivity(intent);
-            }
-        });
+//            }
+//        });
 
     }
 
@@ -73,7 +74,19 @@ public class tpr1Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tpr1, container, false);
+//        return inflater.inflate(R.layout.fragment_tpr1, container, false);
+        View view = inflater.inflate(R.layout.fragment_tpr1, null);
+        soildetext = (LinearLayout) view.findViewById(R.id.soilclick);
+        soildetext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), TPRActivity.class);              //getActivity,後的為想要跳轉的頁面
+                startActivity(intent);
+            }
+        });
+        return view;
     }
+
 
 }
