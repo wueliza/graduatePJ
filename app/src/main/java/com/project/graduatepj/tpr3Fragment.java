@@ -8,7 +8,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,7 +30,7 @@ public class tpr3Fragment extends Fragment {
     private String mParam1;
     private String mParam2;
     LinearLayout soildetext;                        //使用LinearLayout來代替button去實踐頁面轉換
-
+    EditText input;
     public tpr3Fragment() {
         // Required empty public constructor
     }
@@ -73,6 +77,11 @@ public class tpr3Fragment extends Fragment {
                 startActivity(intent);
             }
         });
+        input = view.findViewById(R.id.input);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日HH:mm:ss"); //自動抓時間
+        Date curDate = new Date(System.currentTimeMillis()) ;
+        String str = formatter.format(curDate);
+        input.setText(str);
         return view;
     }
 }

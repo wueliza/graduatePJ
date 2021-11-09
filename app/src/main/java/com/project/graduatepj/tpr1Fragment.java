@@ -9,7 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +23,7 @@ import android.widget.LinearLayout;
 public class tpr1Fragment extends Fragment {
     private Button bt;
     private Button bt2;
+    EditText input;
     LinearLayout soildetext;                        //使用LinearLayout來代替button去實踐頁面轉換
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -85,6 +90,11 @@ public class tpr1Fragment extends Fragment {
                 startActivity(intent);
             }
         });
+        input = view.findViewById(R.id.input);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日HH:mm:ss"); //自動抓時間
+        Date curDate = new Date(System.currentTimeMillis()) ;
+        String str = formatter.format(curDate);
+        input.setText(str);
         return view;
     }
 
