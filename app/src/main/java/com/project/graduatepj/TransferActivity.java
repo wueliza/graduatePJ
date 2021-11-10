@@ -36,8 +36,8 @@ public class TransferActivity extends AppCompatActivity {
     Button bt;
     Button bt2;
     SurfaceView surfaceView;
-
-    EditText textView;
+    private RESTfulApi resTfulApi;
+    TextView textView;
     //TextView textView;
 
     CameraSource cameraSource;
@@ -58,8 +58,7 @@ public class TransferActivity extends AppCompatActivity {
 
         surfaceView=(SurfaceView)findViewById(R.id.surfaceView);
 
-        textView=(EditText) findViewById(R.id.input);
-        //textView=(TextView)findViewById(R.id.input);
+        textView=(TextView) findViewById(R.id.input);
 
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.ALL_FORMATS).build();
@@ -111,21 +110,19 @@ public class TransferActivity extends AppCompatActivity {
             }
         });
 
-        Retrofit retrofit = new Retrofit.Builder() //api連接
+        Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://140.136.151.75:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+        resTfulApi = retrofit.create(RESTfulApi.class);
 
         textView.addTextChangedListener(new TextWatcher() { //監視editText是否有更變
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
-
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
-
             @Override
             public void afterTextChanged(Editable editable) {
                 if(textView.getText().toString() != null){
@@ -211,42 +208,38 @@ public class TransferActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA},1);
         }
     }
+    private void Get_staff(Retrofit retrofit,String id) {
+        Call<Patient_Api> patient = resTfulApi.getOne(id);
+        Call<Staff_Api> staff = resTfulApi.get_staff(id);
 
-    public void Get_staff(Retrofit retrofit,String id){
-        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-        Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id);
-        Call<Patient_Api> patient_apiCall = jsonPlaceHolderApi.getOne(id);
-
-        if(count == 0){
-            patient_apiCall.enqueue(new Callback<Patient_Api>() {
+        if(count == 0) {
+            patient.enqueue(new Callback<Patient_Api>() {
                 @Override
-                public void onResponse(Call<Patient_Api> patient_apiCall, Response<Patient_Api> response) {
-                    if (!response.isSuccessful()) {
-                        show.setText("找不到這個id");
-                        return;
+                public void onResponse(Call<Patient_Api> patient, Response<Patient_Api> response) {
+                    if (response.body()==null) {
+                        show.setText("Code: " + response.code());
+                        return ;
                     }
-                    else {
-                        String name = response.body().getName();
-                        show.setText(name);
-                        bundle.putString("patient_num", id);
-                    }
+                    String name = response.body().getName();
+                    show.setText(name);
                 }
+
                 @Override
-                public void onFailure(Call<Patient_Api> patient_apiCall, Throwable t) {
-                    show.setText("請掃描條碼");
+                public void onFailure(Call<Patient_Api> patient, Throwable t) {
+                    show.setText(t.getMessage());
                 }
             });
         }
         else {
-            call.enqueue(new Callback<Staff_Api>() {
+            staff.enqueue(new Callback<Staff_Api>() {
                 @Override
-                public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
-                    if (!response.isSuccessful()) {
+                public void onResponse(Call<Staff_Api> staff, Response<Staff_Api> response) {
+                    if (response.body()==null) {
                         show.setText("找不到這個id");
                         return;
                     }
-                    //String name = response.body().getName();
-                    //show.setText(name);
+                    String name = response.body().getName();
+                    show.setText(name);
                     switch (count) {
                         case 1:
                             bundle.putString("confirm", show.getText().toString());
@@ -265,10 +258,68 @@ public class TransferActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<Staff_Api> call, Throwable t) {
+                public void onFailure(Call<Staff_Api> staff, Throwable t) {
                     show.setText("請掃描條碼");
                 }
             });
         }
     }
+
+//    public void Get_staff(Retrofit retrofit,String id){
+//        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
+//        Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id);
+//        Call<Patient_Api> patient_apiCall = jsonPlaceHolderApi.getOne(id);
+//
+//        if(count == 0){
+//            patient_apiCall.enqueue(new Callback<Patient_Api>() {
+//                @Override
+//                public void onResponse(Call<Patient_Api> patient_apiCall, Response<Patient_Api> response) {
+//                    if (!response.isSuccessful()) {
+//                        show.setText("找不到這個id");
+//                        return;
+//                    }
+//                    String name = response.body().getName();
+//                    show.setText(name);
+//                    bundle.putString("patient_num", id);
+//                }
+//                @Override
+//                public void onFailure(Call<Patient_Api> patient_apiCall, Throwable t) {
+//                    show.setText("請掃描條碼");
+//                }
+//            });
+//        }
+//        else {
+//            call.enqueue(new Callback<Staff_Api>() {
+//                @Override
+//                public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
+//                    if (!response.isSuccessful()) {
+//                        show.setText("找不到這個id");
+//                        return;
+//                    }
+//                    //String name = response.body().getName();
+//                    //show.setText(name);
+//                    switch (count) {
+//                        case 1:
+//                            bundle.putString("confirm", show.getText().toString());
+//                            break;
+//                        case 2:
+//                            bundle.putString("check", show.getText().toString());
+//                            break;
+//                        case 3:
+//                            bundle.putString("scan", show.getText().toString());
+//                            break;
+//                        case -1:
+//                            break;
+//                        default:
+//                            bundle.putString("patient_num", show.getText().toString());
+//                    }
+//                }
+//
+//                @Override
+//                public void onFailure(Call<Staff_Api> call, Throwable t) {
+//                    show.setText("請掃描條碼");
+//                }
+//            });
+//        }
+//    }
 }
