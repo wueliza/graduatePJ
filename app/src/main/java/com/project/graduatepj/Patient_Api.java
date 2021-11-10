@@ -11,7 +11,7 @@ public class Patient_Api {
     private String age ;
     private String weight ;
     private String bsnos ;
-    private DateTime birthDate ;
+    private String birthDate ;
     private String ora4Chart ;
     private String Emid ;
     private String BedNum ;
@@ -48,7 +48,7 @@ public class Patient_Api {
         return bsnos;
     }
 
-    public DateTime getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
