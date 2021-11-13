@@ -67,8 +67,8 @@ public class eisairesult extends AppCompatActivity {
                     return;
                 }
                 else {
-                    String expire = response.body().getExpire();
-                    result_tv.setText(expire);
+                    //String expire = response.body().getExpire();
+                    //result_tv.setText(expire);
                 }
             }
 
