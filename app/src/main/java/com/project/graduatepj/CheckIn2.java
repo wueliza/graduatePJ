@@ -88,7 +88,7 @@ public class CheckIn2 extends AppCompatActivity {
         call.enqueue(new Callback<Patient_Api>() {
             @Override
             public void onResponse(Call<Patient_Api> call, Response<Patient_Api> response) {
-                if (!response.isSuccessful()) {
+                if (response.body() == null) {
                     BirthdayBox.setText("無此資料");
                     return;
                 } else {
