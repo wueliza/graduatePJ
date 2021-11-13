@@ -39,6 +39,7 @@ public class CheckIn extends AppCompatActivity {
     BarcodeDetector barcodeDetector;
     Bundle bundle = new Bundle();
     private TextView show;
+    private RESTfulApi resTfulApi;
     int count = 0;
 
     @Override
@@ -112,6 +113,7 @@ public class CheckIn extends AppCompatActivity {
                 .baseUrl("http://140.136.151.75:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+        resTfulApi = retrofit.create(RESTfulApi.class);
         //監視TextView是否有更變
         textView.addTextChangedListener(new TextWatcher() {
             @Override
@@ -218,12 +220,11 @@ public class CheckIn extends AppCompatActivity {
 ///相機結束
 
 
-    public void Get_staff(Retrofit retrofit, String id) {
+    private void Get_staff(Retrofit retrofit, String id) {
 
-        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-        Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id); //A00010
-        Call<Patient_Api> patient_apiCall = jsonPlaceHolderApi.getOne(id);//手圈病歷號
-        Call<ORA4_CHART_API> ora4_chart_apiCall = jsonPlaceHolderApi.get_ora4Chart(id);  //病歷號
+        Call<Staff_Api> call = resTfulApi.get_staff(id); //A00010
+        Call<Patient_Api> patient_apiCall = resTfulApi.getOne(id);//手圈病歷號
+        Call<ORA4_CHART_API> ora4_chart_apiCall = resTfulApi.get_ora4Chart(id);  //病歷號
 
         if (count == 0) {
             ora4_chart_apiCall.enqueue(new Callback<ORA4_CHART_API>() {
@@ -234,7 +235,7 @@ public class CheckIn extends AppCompatActivity {
                         return;
                     }
                     String ora4Chart = response.body().getora4Chart();
-                    show.setText(ora4Chart);
+                    show.setText("掃描成功 請按下一步");
                     bundle.putString("ora4chart", id);
 
                 }
@@ -255,10 +256,12 @@ public class CheckIn extends AppCompatActivity {
                         return;
                     }
                     String name = response.body().getName();
-                    //String Birthday = response.body().getBirth();
+                    String birth = response.body().getBirthDate();
                     show.setText(name);
                     bundle.putString("paitentNumbercheck", id);
                     bundle.putString("NameBox", show.getText().toString());
+                    bundle.putString("birth", birth);
+
 
                 }
 

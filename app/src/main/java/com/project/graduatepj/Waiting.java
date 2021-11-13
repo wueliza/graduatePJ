@@ -39,6 +39,7 @@ public class Waiting extends AppCompatActivity {
     BarcodeDetector barcodeDetector;
     Bundle bundle = new Bundle();
     private TextView show;
+    private RESTfulApi resTfulApi;
     int count = 0;
 
     @Override
@@ -53,7 +54,7 @@ public class Waiting extends AppCompatActivity {
                 .baseUrl("http://140.136.151.75:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
+        resTfulApi = retrofit.create(RESTfulApi.class);
         textView.addTextChangedListener(new TextWatcher() { //監視TextView是否有更變
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -72,12 +73,15 @@ public class Waiting extends AppCompatActivity {
 //                show.setText(editable);
             }
         });
-        TextView hint = (TextView) findViewById(R.id.hint);
+
         TextView tv = (TextView) findViewById(R.id.title);
         TextView tv1 = (TextView) findViewById(R.id.input);
         TextView tv2 = (TextView) findViewById(R.id.show);
+        TextView hint = (TextView) findViewById(R.id.hint);
+
         bt = findViewById(R.id.nextbt);             //下一頁
         bt2 = findViewById(R.id.frontbt);           //上一頁
+
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -211,25 +215,48 @@ public class Waiting extends AppCompatActivity {
         }
     }
 
-    public void Get_staff(Retrofit retrofit, String id) {
+    private void Get_staff(Retrofit retrofit, String id) {
 
-        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-        Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id); //A00010
-        Call<Patient_Api> patient_apiCall = jsonPlaceHolderApi.getOne(id);
+        Call<Staff_Api> call = resTfulApi.get_staff(id); //A00010
+        Call<Patient_Api> patient_apiCall = resTfulApi.getOne(id);//手圈病歷號
+        Call<ORA4_CHART_API> ora4_chart_apiCall = resTfulApi.get_ora4Chart(id);  //病歷號
 
-        if (count == 0 || count == 1) {
+        if (count == 0) {
+            ora4_chart_apiCall.enqueue(new Callback<ORA4_CHART_API>() {
+                @Override
+                public void onResponse(Call<ORA4_CHART_API> ora4_chart_apiCall, Response<ORA4_CHART_API> response) {
+                    if (response.body() == null) {
+                        show.setText("找不到這個id");
+                        return;
+                    }
+                    String ora4Chart = response.body().getora4Chart();
+                    show.setText("掃描成功 請按下一步");
+                    bundle.putString("ora4chart", id);
+
+                }
+
+                @Override
+                public void onFailure(Call<ORA4_CHART_API> call, Throwable t) {
+                    show.setText("請掃描條碼");
+                }
+            });
+
+
+        } else if (count == 1) {
             patient_apiCall.enqueue(new Callback<Patient_Api>() {
                 @Override
                 public void onResponse(Call<Patient_Api> patient_apiCall, Response<Patient_Api> response) {
-                    if (!response.isSuccessful()) {
+                    if (response.body() == null) {
                         show.setText("找不到這個id");
                         return;
                     }
                     String name = response.body().getName();
-
+                    String birth = response.body().getBirthDate();
                     show.setText(name);
                     bundle.putString("paitentNumbercheck", id);
                     bundle.putString("NameBox", show.getText().toString());
+                    bundle.putString("birth", birth);
+
 
                 }
 
@@ -242,12 +269,12 @@ public class Waiting extends AppCompatActivity {
             call.enqueue(new Callback<Staff_Api>() {
                 @Override
                 public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
-                    if (!response.isSuccessful()) {
+                    if (response.body() == null) {
                         show.setText("找不到這個id");
                         return;
                     }
-                    String name = response.body().getName();
-                    show.setText(name);
+                    String emid = response.body().getName();
+                    show.setText(emid);
 
                     bundle.putString("ManCheckBox", show.getText().toString());
                 }
