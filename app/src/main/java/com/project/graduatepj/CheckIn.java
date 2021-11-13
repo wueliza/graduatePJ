@@ -223,13 +223,13 @@ public class CheckIn extends AppCompatActivity {
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
         Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id); //A00010
         Call<Patient_Api> patient_apiCall = jsonPlaceHolderApi.getOne(id);//手圈病歷號
-        Call<ORA4_CHART_API>ora4_chart_apiCall = jsonPlaceHolderApi.get_ora4Chart(id);  //病歷號
+        Call<ORA4_CHART_API> ora4_chart_apiCall = jsonPlaceHolderApi.get_ora4Chart(id);  //病歷號
 
-        if(count == 0){
+        if (count == 0) {
             ora4_chart_apiCall.enqueue(new Callback<ORA4_CHART_API>() {
                 @Override
                 public void onResponse(Call<ORA4_CHART_API> ora4_chart_apiCall, Response<ORA4_CHART_API> response) {
-                    if(!response.isSuccessful()){
+                    if (response.body() == null) {
                         show.setText("找不到這個id");
                         return;
                     }
@@ -246,12 +246,11 @@ public class CheckIn extends AppCompatActivity {
             });
 
 
-        }
-        else if ( count == 1) {
+        } else if (count == 1) {
             patient_apiCall.enqueue(new Callback<Patient_Api>() {
                 @Override
                 public void onResponse(Call<Patient_Api> patient_apiCall, Response<Patient_Api> response) {
-                    if (!response.isSuccessful()) {
+                    if (response.body() == null) {
                         show.setText("找不到這個id");
                         return;
                     }
@@ -272,7 +271,7 @@ public class CheckIn extends AppCompatActivity {
             call.enqueue(new Callback<Staff_Api>() {
                 @Override
                 public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
-                    if (!response.isSuccessful()) {
+                    if (response.body() == null) {
                         show.setText("找不到這個id");
                         return;
                     }
