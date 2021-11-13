@@ -222,6 +222,7 @@ public class TransferActivity extends AppCompatActivity {
                     }
                     String name = response.body().getName();
                     show.setText(name);
+                    bundle.putString("patient_num", id);
                 }
 
                 @Override
@@ -264,62 +265,4 @@ public class TransferActivity extends AppCompatActivity {
             });
         }
     }
-
-//    public void Get_staff(Retrofit retrofit,String id){
-//        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-//        Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id);
-//        Call<Patient_Api> patient_apiCall = jsonPlaceHolderApi.getOne(id);
-//
-//        if(count == 0){
-//            patient_apiCall.enqueue(new Callback<Patient_Api>() {
-//                @Override
-//                public void onResponse(Call<Patient_Api> patient_apiCall, Response<Patient_Api> response) {
-//                    if (!response.isSuccessful()) {
-//                        show.setText("找不到這個id");
-//                        return;
-//                    }
-//                    String name = response.body().getName();
-//                    show.setText(name);
-//                    bundle.putString("patient_num", id);
-//                }
-//                @Override
-//                public void onFailure(Call<Patient_Api> patient_apiCall, Throwable t) {
-//                    show.setText("請掃描條碼");
-//                }
-//            });
-//        }
-//        else {
-//            call.enqueue(new Callback<Staff_Api>() {
-//                @Override
-//                public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
-//                    if (!response.isSuccessful()) {
-//                        show.setText("找不到這個id");
-//                        return;
-//                    }
-//                    //String name = response.body().getName();
-//                    //show.setText(name);
-//                    switch (count) {
-//                        case 1:
-//                            bundle.putString("confirm", show.getText().toString());
-//                            break;
-//                        case 2:
-//                            bundle.putString("check", show.getText().toString());
-//                            break;
-//                        case 3:
-//                            bundle.putString("scan", show.getText().toString());
-//                            break;
-//                        case -1:
-//                            break;
-//                        default:
-//                            bundle.putString("patient_num", show.getText().toString());
-//                    }
-//                }
-//
-//                @Override
-//                public void onFailure(Call<Staff_Api> call, Throwable t) {
-//                    show.setText("請掃描條碼");
-//                }
-//            });
-//        }
-//    }
 }

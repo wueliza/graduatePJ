@@ -4,24 +4,19 @@ import net.sourceforge.jtds.jdbc.DateTime;
 
 public class Eisai_Api {
 
-    private String EisaiNum;
-    private String Name;
-    private String Expire;
-    private DateTime Expiration ;
+    private String eisaiNum;
+    private String name;
+    private String expiration ;
 
     public String getEisaiNum() {
-        return EisaiNum;
+        return eisaiNum;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
-    public String getExpire() {
-        return Expire;
-    }
-
-    public DateTime getExpiration() {
-        return Expiration;
+    public String getExpiration() {
+        return expiration;
     }
 }

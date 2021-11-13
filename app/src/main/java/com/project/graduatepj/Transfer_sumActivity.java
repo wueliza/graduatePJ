@@ -82,7 +82,7 @@ public class Transfer_sumActivity extends AppCompatActivity {
                     String getname = response.body().getName();
                     String getage = response.body().getAge();
                     String getbednum = response.body().getBedNum();
-                    //String getbloodtype = response.body().getBloodType();
+//                    String getbloodtype = response.body().getBloodType();
 
                     paitent_name.setText(getname);
                     age.setText(getage);
