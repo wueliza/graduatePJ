@@ -36,7 +36,7 @@ public class Chemopm2 extends AppCompatActivity {
     Bundle bundle = new Bundle();
     Intent intent = new Intent();
     int count = 0;
-
+    private RESTfulApi resTfulApi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -157,6 +157,7 @@ public class Chemopm2 extends AppCompatActivity {
                 .baseUrl("http://140.136.151.75/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+        resTfulApi = retrofit.create(RESTfulApi.class);
         //監視TextView是否有更變
         hint2.addTextChangedListener(new TextWatcher() {
             @Override
@@ -182,11 +183,11 @@ public class Chemopm2 extends AppCompatActivity {
     }
     public void Get_staff(Retrofit retrofit, String id) {
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-        Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id); //A00010
+        Call<Staff_Api> call = resTfulApi.get_staff(id); //A00010
         call.enqueue(new Callback<Staff_Api>() {
             @Override
             public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
-                if (!response.isSuccessful()) {
+                if (response.body()==null) {
                     hint1.setText("此id不存在，請重新掃描員工編號！");
                     return;
                 }

@@ -39,6 +39,7 @@ public class Chemocheck extends AppCompatActivity {
     private TextView hint1 , hint2 , hint3;
     Bundle bundle = new Bundle();
     Intent intent = new Intent();
+    private RESTfulApi resTfulApi;
     int count = 0;
 
     @Override
@@ -153,9 +154,10 @@ public class Chemocheck extends AppCompatActivity {
         });
         //api連接
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://140.136.151.75/api/")
+                .baseUrl("http://140.136.151.75:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+        resTfulApi = retrofit.create(RESTfulApi.class);
         //監視TextView是否有更變
         hint2.addTextChangedListener(new TextWatcher() {
             @Override
@@ -175,7 +177,6 @@ public class Chemocheck extends AppCompatActivity {
                 else if (count == 2) {
                     Get_staff(retrofit, editable.toString());
                 }
-                //result.setText(editable);
             }
         });
     }
@@ -189,11 +190,11 @@ public class Chemocheck extends AppCompatActivity {
 
     public void Get_staff(Retrofit retrofit, String id) {
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-        Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id); //A00010
+        Call<Staff_Api> call = resTfulApi.get_staff(id); //A00010
         call.enqueue(new Callback<Staff_Api>() {
             @Override
             public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
-                if (!response.isSuccessful()) {
+                if (response.body()==null) {
                     hint1.setText("此id不存在，請重新掃描員工編號！");
                     return;
                 }
@@ -211,12 +212,11 @@ public class Chemocheck extends AppCompatActivity {
         });
     }
     public void Get_patient(Retrofit retrofit, String id) {
-        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-        Call<Patient_Api> call = jsonPlaceHolderApi.getOne(id); //A00010
+        Call<Patient_Api> call = resTfulApi.getOne(id); //A00010
         call.enqueue(new Callback<Patient_Api>() {
             @Override
             public void onResponse(Call<Patient_Api> call, Response<Patient_Api> response) {
-                if (!response.isSuccessful()) {
+                if (response.body()==null) {
                     hint1.setText("此id不存在，請重新掃描病歷號！");
                     return;
                 }

@@ -16,10 +16,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class Chemocheck2 extends AppCompatActivity {
-    private Button sentbt;
+    private Button sentbt , backbt;
     private TextView staffTv , checkTv , chemoTv;
     private TextView pa_id ,pa_name , pa_gender , pa_bed , pa_bsa ,pa_height , pa_weight , pa_age;
-
+    private RESTfulApi resTfulApi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,21 +59,33 @@ public class Chemocheck2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        backbt = (Button)findViewById(R.id.BackButtoni);
+        backbt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent();
+
+                intent.setClass(Chemocheck2.this , Chemocheck.class);
+
+                startActivity(intent);
+            }
+        });
         //api連接
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://140.136.151.75/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
+        resTfulApi = retrofit.create(RESTfulApi.class);
         Get_patient(retrofit, "12");
     }
     public void Get_patient(Retrofit retrofit, String id) {
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-        Call<Patient_Api> call = jsonPlaceHolderApi.getOne(id); //A00010
+        Call<Patient_Api> call = resTfulApi.getOne(id); //A00010
         call.enqueue(new Callback<Patient_Api>() {
             @Override
             public void onResponse(Call<Patient_Api> call, Response<Patient_Api> response) {
-                if (!response.isSuccessful()) {
+                if (response.body()==null) {
                     pa_id.setText("此id不存在");
                     return;
                 }

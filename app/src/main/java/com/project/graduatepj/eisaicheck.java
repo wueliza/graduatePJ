@@ -43,6 +43,7 @@ public class eisaicheck extends AppCompatActivity {
     int count = 0;
     Bundle bundle = new Bundle();
     Intent intent = new Intent();
+    private RESTfulApi resTfulApi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,9 +118,10 @@ public class eisaicheck extends AppCompatActivity {
 
         //api連接
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://140.136.151.75/api/")
+                .baseUrl("http://140.136.151.75:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+        resTfulApi = retrofit.create(RESTfulApi.class);
         //監視TextView是否有更變
         result.addTextChangedListener(new TextWatcher() {
             @Override
@@ -200,11 +202,11 @@ public class eisaicheck extends AppCompatActivity {
 
     public void Get_staff(Retrofit retrofit, String id) {
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-        Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id); //A00010
+        Call<Staff_Api> call = resTfulApi.get_staff(id); //A00010
         call.enqueue(new Callback<Staff_Api>() {
             @Override
             public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
-                if (!response.isSuccessful()) {
+                if (response.body()==null) {
                     if(count == 0) {
                         step.setText("此id不存在，請重新掃描員工編號！");
                     }
@@ -231,11 +233,11 @@ public class eisaicheck extends AppCompatActivity {
     }
     public void Get_patient(Retrofit retrofit, String id) {
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-        Call<Patient_Api> call = jsonPlaceHolderApi.getOne(id); //A00010
+        Call<Patient_Api> call = resTfulApi.getOne(id); //A00010
         call.enqueue(new Callback<Patient_Api>() {
             @Override
             public void onResponse(Call<Patient_Api> call, Response<Patient_Api> response) {
-                if (!response.isSuccessful()) {
+                if (response.body()==null) {
                     if(count == 0) {
                         step.setText("此id不存在，請重新掃描員工編號！");
                     }
@@ -262,11 +264,11 @@ public class eisaicheck extends AppCompatActivity {
     }
     public void Get_eisai(Retrofit retrofit, String id) {
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-        Call<Eisai_Api> call = jsonPlaceHolderApi.get_eisai(id);
+        Call<Eisai_Api> call = resTfulApi.get_eisai(id);
         call.enqueue(new Callback<Eisai_Api>() {
             @Override
             public void onResponse(Call<Eisai_Api> call, Response<Eisai_Api> response) {
-                if (!response.isSuccessful()) {
+                if (response.body()==null) {
                     if(count == 0) {
                         step.setText("此id不存在，請重新掃描員工編號！");
                     }
@@ -280,7 +282,7 @@ public class eisaicheck extends AppCompatActivity {
                 }
                 else {
                     assert response.body() != null;
-                    String name = response.body().getEisaiNum();
+                    String name = response.body().getName();
                     show.setText(name);
                     step.setText("掃描成功，請按傳送");
                 }

@@ -8,6 +8,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -17,11 +20,17 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class eisairesult extends AppCompatActivity {
     private TextView staff_id , patient_id , eisai_id , result_tv;
     private Button completebt , upStepbt;
+    private RESTfulApi resTfulApi;
+    String expire;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eisairesult);
         Intent intent = this.getIntent();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日HH:mm:ss");//自動抓時間
+        Date curDate = new Date(System.currentTimeMillis()) ;
+        String str = formatter.format(curDate);
+
         staff_id = findViewById(R.id.staff_id);
         patient_id = findViewById(R.id.patient_id);
         eisai_id = findViewById(R.id.eisai_id);
@@ -40,10 +49,10 @@ public class eisairesult extends AppCompatActivity {
 
         //api連接
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://140.136.151.75/api/")
+                .baseUrl("http://140.136.151.75:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
+        resTfulApi = retrofit.create(RESTfulApi.class);
         Get_eisai(retrofit , eisai);
 
         completebt.setOnClickListener(this::complete);
@@ -58,7 +67,7 @@ public class eisairesult extends AppCompatActivity {
 
     public void Get_eisai(Retrofit retrofit, String id) {
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-        Call<Eisai_Api> call = jsonPlaceHolderApi.get_eisai(id);
+        Call<Eisai_Api> call = resTfulApi.get_eisai(id);
         call.enqueue(new Callback<Eisai_Api>() {
             @Override
             public void onResponse(Call<Eisai_Api> call, Response<Eisai_Api> response) {
@@ -67,8 +76,8 @@ public class eisairesult extends AppCompatActivity {
                     return;
                 }
                 else {
-                    //String expire = response.body().getExpire();
-                    //result_tv.setText(expire);
+                    expire = response.body().getExpiration();
+                    result_tv.setText(expire);
                 }
             }
 
