@@ -37,8 +37,7 @@ public class TransferActivity extends AppCompatActivity {
     Button bt2;
     SurfaceView surfaceView;
     private RESTfulApi resTfulApi;
-    TextView textView;
-    //TextView textView;
+    TextView textView , step;
 
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
@@ -59,6 +58,7 @@ public class TransferActivity extends AppCompatActivity {
         surfaceView=(SurfaceView)findViewById(R.id.surfaceView);
 
         textView=(TextView) findViewById(R.id.input);
+        step = (TextView) findViewById(R.id.step);
 
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.ALL_FORMATS).build();
@@ -217,11 +217,12 @@ public class TransferActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<Patient_Api> patient, Response<Patient_Api> response) {
                     if (response.body()==null) {
-                        show.setText("Code: " + response.code());
+                        step.setText("此id不存在，請重新掃描病歷號！");
                         return ;
                     }
                     String name = response.body().getName();
                     show.setText(name);
+                    step.setText("掃描成功，請按下一步");
                     bundle.putString("patient_num", id);
                 }
 
@@ -236,7 +237,21 @@ public class TransferActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<Staff_Api> staff, Response<Staff_Api> response) {
                     if (response.body()==null) {
-                        show.setText("找不到這個id");
+                        switch (count) {
+                            case 1:
+                                step.setText("此id不存在，請重新掃描核血人員編號！");
+                                break;
+                            case 2:
+                                step.setText("此id不存在，請重新掃描確認人員！");
+                                break;
+                            case 3:
+                                step.setText("此id不存在，請重新掃描血袋編號！");
+                                break;
+                            case -1:
+                                break;
+                            default:
+                                bundle.putString("patient_num", show.getText().toString());
+                        }
                         return;
                     }
                     String name = response.body().getName();
@@ -244,12 +259,15 @@ public class TransferActivity extends AppCompatActivity {
                     switch (count) {
                         case 1:
                             bundle.putString("confirm", show.getText().toString());
+                            step.setText("掃描成功，請按下一步");
                             break;
                         case 2:
                             bundle.putString("check", show.getText().toString());
+                            step.setText("掃描成功，請按下一步");
                             break;
                         case 3:
                             bundle.putString("scan", show.getText().toString());
+                            step.setText("掃描成功，請按下一步");
                             break;
                         case -1:
                             break;

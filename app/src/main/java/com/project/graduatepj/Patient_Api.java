@@ -15,6 +15,7 @@ public class Patient_Api {
     private String ora4Chart ;
     private String Emid ;
     private String BedNum ;
+    private String BloodType;
 
     public String getQrChart() {
         return qrChart;
@@ -64,6 +65,9 @@ public class Patient_Api {
         return BedNum;
     }
 
+    public String getBloodType() {
+        return BloodType;
+    }
     /*public virtual staff Em { get; set; }
     public virtual Ora4Chart Ora4ChartNavigation { get; set; }
     public virtual ICollection<BloodBank> BloodBanks { get; set; }

@@ -37,6 +37,7 @@ public class confirmActivity extends AppCompatActivity {
     private TextView show;
     SurfaceView surfaceView;
     TextView textView;
+    private RESTfulApi resTfulApi;
     Bundle bundle = new Bundle();
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
@@ -59,6 +60,7 @@ public class confirmActivity extends AppCompatActivity {
                 .baseUrl("http://106.105.167.136:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+        resTfulApi = retrofit.create(RESTfulApi.class);
 
         textView.addTextChangedListener(new TextWatcher() { //監視editText是否有更變
             @Override
@@ -197,14 +199,14 @@ public class confirmActivity extends AppCompatActivity {
 
     public void Get_staff(Retrofit retrofit,String id){
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-        Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id);
-        Call<Patient_Api> patient_apiCall = jsonPlaceHolderApi.getOne(id);
+        Call<Staff_Api> call = resTfulApi.get_staff(id);
+        Call<Patient_Api> patient_apiCall = resTfulApi.getOne(id);
 
         if(count == 0){
             patient_apiCall.enqueue(new Callback<Patient_Api>() {
                 @Override
                 public void onResponse(Call<Patient_Api> patient_apiCall1, Response<Patient_Api> response) {
-                    if (!response.isSuccessful()) {
+                    if (response.body()==null) {
                         show.setText("找不到這個id");
                         return;
                     }
@@ -222,7 +224,7 @@ public class confirmActivity extends AppCompatActivity {
             call.enqueue(new Callback<Staff_Api>() {
                 @Override
                 public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
-                    if (!response.isSuccessful()) {
+                    if (response.body()==null) {
                         show.setText("找不到這個id");
                         return;
                     }
