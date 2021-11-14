@@ -35,6 +35,7 @@ public class SignActivity extends AppCompatActivity {
     private Button bt2;
     private TextView show;
     Bundle bundle = new Bundle();
+    private RESTfulApi resTfulApi;
     SurfaceView surfaceView;
     TextView textView,step;
     CameraSource cameraSource;
@@ -108,6 +109,7 @@ public class SignActivity extends AppCompatActivity {
                 .baseUrl("http://106.105.167.136:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+        resTfulApi = retrofit.create(RESTfulApi.class);
 
         textView.addTextChangedListener(new TextWatcher() { //監視editText是否有更變
             @Override
@@ -199,13 +201,14 @@ public class SignActivity extends AppCompatActivity {
 
     public void Get_staff(Retrofit retrofit,String id){
         RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-        Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id); //A00010
+        Call<Staff_Api> call = resTfulApi.get_staff(id); //A00010
+
         
         if(count != 2) {
             call.enqueue(new Callback<Staff_Api>() {
                 @Override
                 public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
-                    if (!response.isSuccessful()) {
+                    if (response.body()==null) {
                         step.setText("此id不存在，請重新掃描員工！");
                         return;
                     }
@@ -230,7 +233,7 @@ public class SignActivity extends AppCompatActivity {
             call.enqueue(new Callback<Staff_Api>() {
                 @Override
                 public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
-                    if (!response.isSuccessful()) {
+                    if (response.body()==null) {
                         step.setText("此id不存在，請重新掃描領血單號！");
                         return;
                     }
