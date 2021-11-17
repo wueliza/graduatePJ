@@ -41,6 +41,8 @@ public class BloodCollect1 extends AppCompatActivity {
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
     int count = 0;
+    private RESTfulApi resTfulApi;
+
 
 
     @Override
@@ -111,7 +113,10 @@ public class BloodCollect1 extends AppCompatActivity {
                 .baseUrl("http://140.136.151.75:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+        resTfulApi = retrofit.create(RESTfulApi.class);
         //監視TextView是否有更變
+
+
         textView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -219,26 +224,43 @@ public class BloodCollect1 extends AppCompatActivity {
 
     public void Get_staff(Retrofit retrofit, String id) {
 
-        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-        Call<Staff_Api> call = jsonPlaceHolderApi.get_staff(id); //A00010
-        Call<Patient_Api> patient_apiCall = jsonPlaceHolderApi.getOne(id);
+        //RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
+        Call<Staff_Api> call = resTfulApi.get_staff(id); //A00010
+        Call<Patient_Api> patient_apiCall = resTfulApi.getOne(id);//手圈病歷號
+        Call<CheckOperation_Api> checkOperation_apiCall = resTfulApi.get_checkoperation(id);
 
-        if (count == 0 || count == 1) {
+
+        if (count == 0) {
+            checkOperation_apiCall .enqueue(new Callback<CheckOperation_Api>() {
+                @Override
+                public void onResponse(Call<CheckOperation_Api> checkOperation_apiCall1, Response<CheckOperation_Api> response) {
+                    if (response.body() == null) {
+                        show.setText("找不到這個id");
+                        return;
+                    }
+                    String checkOperation = response.body().getBsnos();
+                    show.setText("掃描成功 請按下一步");
+                    bundle.putString("ora4chart", id);
+
+                }
+                @Override
+                public void onFailure(Call<CheckOperation_Api> call, Throwable t) {
+                    show.setText("請掃描條碼");
+                }
+            });
+
+        } else if (count == 1) {
             patient_apiCall.enqueue(new Callback<Patient_Api>() {
                 @Override
                 public void onResponse(Call<Patient_Api> patient_apiCall, Response<Patient_Api> response) {
-                    if (!response.isSuccessful()) {
+                    if (response.body() == null) {
                         show.setText("找不到這個id");
                         return;
                     }
                     String name = response.body().getName();
                     show.setText(name);
-
-                    bundle.putString("patientNumber1Check", id/*, show.getText().toString()*/);
-
                     bundle.putString("patientNumber1Check", id);
-
-
+                    /*, show.getText().toString()*/
                 }
 
                 @Override
@@ -246,11 +268,12 @@ public class BloodCollect1 extends AppCompatActivity {
                     show.setText("請掃描條碼");
                 }
             });
+
         } else {
             call.enqueue(new Callback<Staff_Api>() {
                 @Override
                 public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
-                    if (!response.isSuccessful()) {
+                    if (response.body() == null) {
                         show.setText("找不到這個id");
                         return;
                     }
