@@ -6,6 +6,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface RESTfulApi {
     @GET("patient")
@@ -41,6 +42,6 @@ public interface RESTfulApi {
     @GET("tpr/{tprnum}")
     Call<Tprtime_Api> get_tprtime(@Path("tprnum")String tprnum);
 
-    @GET("tpr/{rqno}")
+    @GET("transoperation/{rqno}")
     Call<TransOperation_Api> get_transoperation(@Path("rqno")String rqno);
 }

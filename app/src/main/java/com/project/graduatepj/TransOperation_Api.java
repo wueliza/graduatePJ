@@ -4,7 +4,6 @@ public class TransOperation_Api {
     private String rqno;
     private String qrChart;
     private String emid;
-    private String blnos;
     private String bloodBagAmount;
 
     public String getRqno() {
@@ -17,10 +16,6 @@ public class TransOperation_Api {
 
     public String getEmid() {
         return emid;
-    }
-
-    public String getBlnos() {
-        return blnos;
     }
 
     public String getBloodBagAmount() {

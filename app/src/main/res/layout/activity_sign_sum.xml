@@ -167,7 +167,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/bloodnum"
+                android:id="@+id/transop"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="8dp"
@@ -213,6 +213,7 @@
                 android:layout_weight="1"
                 />
             <TextView
+                android:id="@+id/bloodnum"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
