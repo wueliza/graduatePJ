@@ -1,6 +1,8 @@
 package com.project.graduatepj;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -21,15 +25,15 @@ public class eisairesult extends AppCompatActivity {
     private TextView staff_id , patient_id , eisai_id , result_tv;
     private Button completebt , upStepbt;
     private RESTfulApi resTfulApi;
-    String expire;
+    String expireSt , year , month , day;
+    Date curDate , expire;
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eisairesult);
         Intent intent = this.getIntent();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日HH:mm:ss");//自動抓時間
-        Date curDate = new Date(System.currentTimeMillis()) ;
-        String str = formatter.format(curDate);
+        curDate = new Date(System.currentTimeMillis()) ;
 
         staff_id = findViewById(R.id.staff_id);
         patient_id = findViewById(R.id.patient_id);
@@ -57,6 +61,9 @@ public class eisairesult extends AppCompatActivity {
 
         completebt.setOnClickListener(this::complete);
         upStepbt.setOnClickListener(this::upStep);
+
+        //result_tv.setText("已過期\n到期日：" + expire.toString());
+
     }
 
     private void upStep(View view) {
@@ -66,18 +73,35 @@ public class eisairesult extends AppCompatActivity {
     }
 
     public void Get_eisai(Retrofit retrofit, String id) {
-        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
         Call<Eisai_Api> call = resTfulApi.get_eisai(id);
         call.enqueue(new Callback<Eisai_Api>() {
             @Override
             public void onResponse(Call<Eisai_Api> call, Response<Eisai_Api> response) {
-                if (!response.isSuccessful()) {
+                if (response.body()==null) {
                     result_tv.setText("此id不存在，請重新掃描！");
                     return;
                 }
                 else {
-                    expire = response.body().getExpiration();
-                    result_tv.setText(expire);
+                    expireSt = response.body().getExpiration();
+                    result_tv.setText(expireSt);
+
+                    year = expireSt.substring(0,4);
+                    month = expireSt.substring(5,7);
+                    day = expireSt.substring(8,10);
+                    int y = Integer.parseInt(year);
+                    int m = Integer.parseInt(month);
+                    int d = Integer.parseInt(day);
+                    expire = new Date(y-1900 , m-1 , d);
+                    String str = formatter.format(expire);
+                    if(curDate.after(expire)){
+                        result_tv.setTextColor(Color.parseColor("#ff0000"));
+                        result_tv.setText("已過期\n到期日：" + str);
+                    }
+                    else if(curDate.before(expire)){
+                        result_tv.setTextColor(Color.parseColor("#000000"));
+                        result_tv.setText("未過期\n到期日：" + str);
+                    }
+
                 }
             }
 
