@@ -48,8 +48,8 @@ public class CheckIn extends AppCompatActivity {
         setContentView(R.layout.activity_check_in);
         show = findViewById(R.id.show);
         textView = (TextView) findViewById(R.id.input);
-
         getPermissionsCamera();
+
         surfaceView = (SurfaceView) findViewById(R.id.surfaceView);
 
         textView = (TextView) findViewById(R.id.input);
@@ -150,14 +150,14 @@ public class CheckIn extends AppCompatActivity {
                     case 1:
                         hint.setText("請掃描手圈病歷號");
                         tv.setText("手圈病歷號");
-                        tv1.setHint("手圈病歷號");
-                        tv2.setHint("號碼");
+                        tv1.setText("手圈病歷號");
+                        tv2.setText("號碼");
                         break;
                     case 2:
-                        hint.setText("請掃描檢驗員號碼");
-                        tv.setText("檢驗員");
-                        tv1.setHint("檢驗員");
-                        tv2.setHint("號碼");
+                        hint.setText("請掃描確認員號碼");
+                        tv.setText("確認員號碼");
+                        tv1.setText("確認員號碼");
+                        tv2.setText("號碼");
                         break;
                     case 3:
                         Intent intent = new Intent(CheckIn.this, CheckIn2.class);
@@ -166,10 +166,9 @@ public class CheckIn extends AppCompatActivity {
                         break;
 
                     default:
-                        hint.setText("請掃描病歷號號碼");
                         tv.setText("病歷號");
-                        tv1.setHint("病歷號");
-                        tv2.setHint("號碼");
+                        tv1.setText("病歷號");
+                        tv2.setText("號碼");
 
                 }
             }
@@ -183,15 +182,15 @@ public class CheckIn extends AppCompatActivity {
                     case 1:
                         hint.setText("請掃描手圈病歷號");
                         tv.setText("手圈病歷號");
-                        tv1.setHint("手圈病歷號");
-                        tv2.setHint("號碼");
+                        tv1.setText("手圈病歷號");
+                        tv2.setText("號碼");
                         break;
 
                     case 2:
                         hint.setText("請掃描檢驗員號碼");
                         tv.setText("檢驗員");
-                        tv1.setHint("檢驗員");
-                        tv2.setHint("號碼");
+                        tv1.setText("檢驗員");
+                        tv2.setText("號碼");
                         break;
                     case -1:
                         Intent intent = new Intent(CheckIn.this, OperationHome.class);
@@ -201,8 +200,8 @@ public class CheckIn extends AppCompatActivity {
                     default:
                         hint.setText("請掃描病歷號號碼");
                         tv.setText("病歷號");
-                        tv1.setHint("病歷號");
-                        tv2.setHint("號碼");
+                        tv1.setText("病歷號");
+                        tv2.setText("號碼");
 
                 }
             }
