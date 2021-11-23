@@ -232,12 +232,13 @@ public class SignActivity extends AppCompatActivity {
                         step.setText("此id不存在，請重新掃描領血單號！");
                         return;
                     }
+                    step.setText("掃描成功，請按下一步");
                     String num = response.body().getBloodBagAmount();
                     String patient = response.body().getQrChart();
                     show.setText(num);
+                    bundle.putString("patient",patient);
                     bundle.putString("transop",id);
                     bundle.putString("bloodnum", show.getText().toString());
-                    bundle.putString("patient",patient);
                 }
 
                 @Override

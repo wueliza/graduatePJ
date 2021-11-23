@@ -38,12 +38,12 @@ public class Sign_sumActivity extends AppCompatActivity {
         String nurseman = bundle.getString("nurse");
         String transferman = bundle.getString("transfer");
         String bloodnumcount = bundle.getString("bloodnum");
-        String patient = bundle.getString("patient");
+        String patients = bundle.getString("patient");
         String transoper = bundle.getString("transop");
 
         nurse.setText(nurseman);
         transfer.setText(transferman);
-        bloodnum.setText(bloodnumcount);
+        bloodnum.setText(bloodnumcount+"袋");
         transop.setText(transoper);
 
 
@@ -53,7 +53,7 @@ public class Sign_sumActivity extends AppCompatActivity {
                 .build();
         resTfulApi = retrofit.create(RESTfulApi.class);
 
-        Get_staff(retrofit,patient);
+        Get_staff(retrofit,patients);
 
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +73,6 @@ public class Sign_sumActivity extends AppCompatActivity {
 
     public void Get_staff(Retrofit retrofit,String id){
         Call<Patient_Api> call = resTfulApi.getOne(id); //A00010
-
         call.enqueue(new Callback<Patient_Api>() {
             @Override
             public void onResponse(Call<Patient_Api> call, Response<Patient_Api> response) {

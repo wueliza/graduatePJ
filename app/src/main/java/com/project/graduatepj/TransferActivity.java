@@ -36,7 +36,7 @@ public class TransferActivity extends AppCompatActivity {
     Button bt;
     Button bt2;
     SurfaceView surfaceView;
-    private RESTfulApi resTfulApi;
+        private RESTfulApi resTfulApi;
     TextView textView , step;
 
     CameraSource cameraSource;
