@@ -146,13 +146,13 @@ public class confirmActivity extends AppCompatActivity {
                 switch (count){
                     case 1:
                         tv.setText("核血作業-核血人員");
-                        tv1.setHint("核血人員編號");
-                        tv2.setHint("核血人員:");
+                        tv1.setText("核血人員編號");
+                        step.setText("請掃核血人員！");
                         break;
                     case 2:
                         tv.setText("核血作業-確認人員");
-                        tv1.setHint("確認人員編號");
-                        tv2.setHint("確認人員:");
+                        tv1.setText("確認人員編號");
+                        step.setText("請掃確認人員！");
                         break;
                     case 3:
                         Intent intent = new Intent(confirmActivity.this,Check_sumActivity.class);
@@ -161,8 +161,8 @@ public class confirmActivity extends AppCompatActivity {
                         break;
                     default:
                         tv.setText("核血作業-領血單號");
-                        tv1.setHint("領血單號");
-                        tv2.setHint("領血單號:");
+                        tv1.setText("領血單號");
+                        step.setText("請掃領血單號！");
                 }
             }
         });
@@ -173,13 +173,13 @@ public class confirmActivity extends AppCompatActivity {
                 switch (count){
                     case 1:
                         tv.setText("核血作業-核血人員");
-                        tv1.setHint("核血人員編號");
-                        tv2.setHint("核血人員:");
+                        tv1.setText("核血人員編號");
+                        step.setText("請掃核血人員！");
                         break;
                     case 2:
                         tv.setText("核血作業-確認人員");
-                        tv1.setHint("確認人員編號");
-                        tv2.setHint("確認人員:");
+                        tv1.setText("確認人員編號");
+                        step.setText("請掃確認人員！");
                         break;
                     case -1:
                         Intent intent = new Intent(confirmActivity.this,blood_homeActivity.class);
@@ -187,8 +187,8 @@ public class confirmActivity extends AppCompatActivity {
                         break;
                     default:
                         tv.setText("核血作業-領血單號");
-                        tv1.setHint("領血單號");
-                        tv2.setHint("領血單號:");
+                        step.setText("請掃領血單號！");
+                        tv1.setText("領血單號");
                 }
             }
         });
