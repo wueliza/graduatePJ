@@ -169,7 +169,7 @@ public class Chemocheck extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 if (count == 0) {
-                    //化療API
+                    Get_Medicine(retrofit, editable.toString());//化療API
                 }
                 else if (count == 1) {
                     Get_staff(retrofit, editable.toString());
@@ -229,6 +229,27 @@ public class Chemocheck extends AppCompatActivity {
             @Override
             public void onFailure(Call<Patient_Api> call, Throwable t) {
                 hint1.setText("請重新掃描病歷號！");
+            }
+        });
+    }
+    public void Get_Medicine(Retrofit retrofit, String id) {
+        Call<Medicine_Api> call = resTfulApi.get_medicine(id); //A00010
+        call.enqueue(new Callback<Medicine_Api>() {
+            @Override
+            public void onResponse(Call<Medicine_Api> call, Response<Medicine_Api> response) {
+                if (response.body()==null) {
+                    hint1.setText("此id不存在，請重新掃描成品單號！");
+                    return;
+                }
+                else {
+                    String name = response.body().getTubg();
+                    hint3.setText(name);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Medicine_Api> call, Throwable t) {
+                hint1.setText("請重新掃描成品單號！");
             }
         });
     }

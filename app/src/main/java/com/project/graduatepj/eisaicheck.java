@@ -263,7 +263,6 @@ public class eisaicheck extends AppCompatActivity {
         });
     }
     public void Get_eisai(Retrofit retrofit, String id) {
-        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
         Call<Eisai_Api> call = resTfulApi.get_eisai(id);
         call.enqueue(new Callback<Eisai_Api>() {
             @Override
@@ -281,13 +280,11 @@ public class eisaicheck extends AppCompatActivity {
                     return;
                 }
                 else {
-                    assert response.body() != null;
                     String name = response.body().getName();
                     show.setText(name);
                     step.setText("掃描成功，請按傳送");
                 }
             }
-
             @Override
             public void onFailure(Call<Eisai_Api> call, Throwable t) {
                 step.setText("請重新掃描衛材條碼！");
