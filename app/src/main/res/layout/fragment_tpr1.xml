@@ -171,15 +171,37 @@
 
         <EditText
             android:id="@+id/input4"
-            android:layout_width="120dp"
+            android:layout_width="60dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/check_background"
-            android:hint="請輸入R"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
+            android:layout_marginLeft="5dp"
             android:textColor="@color/black"
-            android:textSize="15sp" />
+            android:background="@drawable/check_background"
+            android:textSize="15sp"
+            android:hint="請輸入BP"
+            />
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="60dp"
+            android:text="/"
+            android:textStyle="bold"
+            android:textColor="#504C4C"
+            android:layout_marginLeft="8dp"
+            android:textSize = "30sp"
+            />
+        <EditText
+            android:id="@+id/input5"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/black"
+            android:background="@drawable/check_background"
+            android:textSize="15sp"
+            android:hint="請輸入BP"
+            />
 
         <TextView
             android:layout_width="120dp"
