@@ -23,16 +23,16 @@ public class OperationVerify2 extends AppCompatActivity {
         Bundle NameBox = this.getIntent().getExtras();
         Bundle birthday = this.getIntent().getExtras();
 
-        String patientNumber = paitentNumbercheck.getString("KnifeNumberBox");
-        String wistNumber = wistNumbercheck.getString("wistNumber");
+        String patientNumber = paitentNumbercheck.getString("ora4chart");
+        String wistNumber = wistNumbercheck.getString("paitentNumbercheck");
         String ManCheckNumber = ManCheckBox.getString("ManCheckBox");
         String patientname = NameBox.getString("NameBox");
         String birth = birthday.getString("birth");
 
-         tv1 = (TextView) findViewById(R.id.KnifeNumberBox);
+         tv1 = (TextView) findViewById(R.id.PatientNumberBox);
          tv2 = (TextView) findViewById(R.id.wistNumberBox);
          tv3 = (TextView) findViewById(R.id.ManCheckBox);
-         tv4 = (TextView) findViewById(R.id.ManCheckBox);
+         tv4 = (TextView) findViewById(R.id.BirthdayBox);
 
         patientName = findViewById(R.id.NameBox);
         BirthdayBox = findViewById(R.id.BirthdayBox);
@@ -45,6 +45,7 @@ public class OperationVerify2 extends AppCompatActivity {
         patientName.setText(patientname);
 
         Button frontbt = (Button) findViewById(R.id.frontbt);
+        Button Upload = (Button) findViewById(R.id.Upload);
 
         frontbt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +55,7 @@ public class OperationVerify2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Button Upload = (Button) findViewById(R.id.Upload);
+
 
         Upload.setOnClickListener(new View.OnClickListener() {
             @Override
