@@ -36,7 +36,7 @@ public class TransferActivity extends AppCompatActivity {
     Button bt;
     Button bt2;
     SurfaceView surfaceView;
-        private RESTfulApi resTfulApi;
+    private RESTfulApi resTfulApi;
     TextView textView , step;
 
     CameraSource cameraSource;
@@ -133,8 +133,6 @@ public class TransferActivity extends AppCompatActivity {
         });
 
         TextView tv = (TextView)findViewById(R.id.title);
-        TextView tv1 = (TextView)findViewById(R.id.input);
-        TextView tv2 = (TextView)findViewById(R.id.show);
         bt = findViewById(R.id.nextbt);
         bt2 = findViewById(R.id.frontbt);
 
@@ -146,17 +144,14 @@ public class TransferActivity extends AppCompatActivity {
                     case 1:
                         tv.setText("輸血作業-核血人員");
                         step.setText("請掃核血人員！");
-                        tv1.setText("核血人員編號");
                         break;
                     case 2:
                         tv.setText("輸血作業-確認人員");
                         step.setText("請掃確認人員！");
-                        tv1.setText("確認人員編號");
                         break;
                     case 3:
                         tv.setText("輸血作業-掃描血袋");
                         step.setText("請掃血袋號碼！");
-                        tv1.setText("掃描血袋");
                         break;
                     case 4:
                         Intent intent = new Intent(TransferActivity.this,Transfer_sumActivity.class);
@@ -166,7 +161,6 @@ public class TransferActivity extends AppCompatActivity {
                     default:
                         tv.setText("輸血作業-病歷號");
                         step.setText("請掃病歷號！");
-                        tv1.setText("病歷號");
                 }
             }
         });
@@ -178,17 +172,14 @@ public class TransferActivity extends AppCompatActivity {
                     case 1:
                         tv.setText("輸血作業-核血人員");
                         step.setText("請掃核血人員！");
-                        tv1.setText("核血人員編號");
                         break;
                     case 2:
                         tv.setText("輸血作業-確認人員");
                         step.setText("請掃確認人員！");
-                        tv1.setText("確認人員編號");
                         break;
                     case 3:
                         tv.setText("輸血作業-掃描血袋");
                         step.setText("請掃血袋號碼！");
-                        tv1.setText("掃描血袋");
                         break;
                     case -1:
                         Intent intent = new Intent(TransferActivity.this,blood_homeActivity.class);
@@ -197,7 +188,6 @@ public class TransferActivity extends AppCompatActivity {
                     default:
                         tv.setText("輸血作業-病歷號");
                         step.setText("請掃病歷號！");
-                        tv1.setText("病歷號");
                 }
             }
         });

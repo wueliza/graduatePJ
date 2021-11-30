@@ -44,11 +44,12 @@
             >
 
             <TextView
-                android:id="@+id/ehint1"
+                android:id="@+id/step"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:text="請掃病歷號!"
                 android:textColor="@android:color/primary_text_dark_nodisable"
                 android:textSize="@dimen/dp_24"
                 android:background="@color/cardview_shadow_start_color"
