@@ -14,7 +14,7 @@ public class Patient_Api {
     private String birthDate ;
     private String ora4Chart ;
     private String Emid ;
-    private String BedNum ;
+    private String bedNum ;
     private String bloodType;
 
     public String getQrChart() {
@@ -62,7 +62,7 @@ public class Patient_Api {
     }
 
     public String getBedNum() {
-        return BedNum;
+        return bedNum;
     }
 
     public String getBloodType() {

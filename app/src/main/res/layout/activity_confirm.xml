@@ -64,6 +64,7 @@
                 android:layout_gravity="center"
                 android:background="@color/cardview_shadow_start_color"
                 android:gravity="center"
+                android:text="請掃領血單號!"
                 android:textColor="@android:color/primary_text_dark_nodisable"
                 android:textSize="@dimen/dp_24" />
             <TextView

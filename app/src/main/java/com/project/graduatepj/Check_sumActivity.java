@@ -20,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Check_sumActivity extends AppCompatActivity {
     private Button bt;
     private Button bt2;
-    TextView confirmman,checkman,paitent_Num,paitent_name,bloodtype,age,bednum,transop;
+    TextView confirmman,checkman,paitent_Num,paitent_name,bloodtype,age,bednum,transop,context;
     private RESTfulApi resTfulApi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class Check_sumActivity extends AppCompatActivity {
         bt = findViewById(R.id.nextbt);
         bt2 = findViewById(R.id.frontbt);
         Bundle bundle = getIntent().getExtras();
-
+        context = findViewById(R.id.context);
         confirmman = findViewById(R.id.confirm);
         checkman = findViewById(R.id.check);
         paitent_Num = findViewById(R.id.qrchart);
@@ -55,7 +55,9 @@ public class Check_sumActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         resTfulApi = retrofit.create(RESTfulApi.class);
+
         Get_staff(retrofit,paitent_num);
+        gettransop(retrofit,transo_num);
 
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +96,34 @@ public class Check_sumActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Patient_Api> call, Throwable t) {
                 bloodtype.setText("no this man");
+            }
+        });
+    }
+    private void gettransop(Retrofit retrofit,String id){
+        Call<TransOperation_Api> call = resTfulApi.get_transoperation(id);
+
+        call.enqueue(new Callback<TransOperation_Api>() {
+            @Override
+            public void onResponse(Call<TransOperation_Api> call, Response<TransOperation_Api> response) {
+                if(response.body()!=null) {
+                    BloodBanks[] a = response.body().getBloodBanks();
+
+                    String content = "";
+                    int n= 1;
+                    for(BloodBanks as :a){
+                        content += "血袋"+ n +": " +as.getBlnos() + "\n";
+                        n++;
+                    }
+                    context.setText(content);
+                }
+                else {
+                    context.setText("Code: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TransOperation_Api> call, Throwable t) {
+                context.setText(t.getMessage());
             }
         });
     }
