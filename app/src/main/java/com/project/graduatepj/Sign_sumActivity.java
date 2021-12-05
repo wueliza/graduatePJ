@@ -58,6 +58,7 @@ public class Sign_sumActivity extends AppCompatActivity {
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                post_bloodbagsign(transop.getText().toString(),bloodtype.getText().toString(),nurse.getText().toString(),transfer.getText().toString(),bloodnum.getText().toString());
                 Intent intent = new Intent(Sign_sumActivity.this,blood_homeActivity.class);
                 startActivity(intent);
             }
@@ -69,6 +70,29 @@ public class Sign_sumActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void post_bloodbagsign(String rqno,String bloodType,String emid,String transId,String bloodAmount){
+        BloodBagSignRecord bloodBagSignRecord = new BloodBagSignRecord(rqno,bloodType,emid,transId,bloodAmount);
+        Call<BloodBagSignRecord> call = resTfulApi.post_BloodBagSignRecord(bloodBagSignRecord);
+
+        call.enqueue(new Callback<BloodBagSignRecord>() {
+            @Override
+            public void onResponse(Call<BloodBagSignRecord> call, Response<BloodBagSignRecord> response) {
+//                if(response.body() == null){
+//                    text.setText("Code: " + response.code());
+//                }
+//                String code = "";
+//                code += response.code();
+//                text.setText(code);
+            }
+
+            @Override
+            public void onFailure(Call<BloodBagSignRecord> call, Throwable t) {
+                //text.setText(t.getMessage());
+            }
+        });
+
     }
 
     public void Get_staff(Retrofit retrofit,String id){
