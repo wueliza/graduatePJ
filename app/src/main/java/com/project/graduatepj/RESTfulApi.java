@@ -6,6 +6,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface RESTfulApi {
     @GET("patient")
@@ -41,6 +42,39 @@ public interface RESTfulApi {
     @GET("tpr/{tprnum}")
     Call<Tprtime_Api> get_tprtime(@Path("tprnum")String tprnum);
 
-    @GET("tpr/{rqno}")
+    @GET("transoperation/{rqno}")
     Call<TransOperation_Api> get_transoperation(@Path("rqno")String rqno);
+
+    @POST("BloodBagSignRecord")
+    Call<BloodBagSignRecord> post_BloodBagSignRecord(@Body BloodBagSignRecord bloodBagSignRecord);
+
+    @POST("BloodCheckRecord")
+    Call<BloodCheckRecord> post_BloodCheckRecord(@Body BloodCheckRecord bloodCheckRecord);
+
+    @POST("CheckOperationRecord")
+    Call<CheckOperationRecord> post_CheckOperationRecord(@Body CheckOperationRecord checkOperationRecord);
+
+    @POST("MedCheckRecord")
+    Call<MedCheckRecord> post_MedCheckRecord(@Body MedCheckRecord medCheckRecord);
+
+    @POST("MedGiveRecord")
+    Call<MedGiveRecord> post_MedGiveRecord(@Body MedGiveRecord medGiveRecord);
+
+    @POST("MedSignRecord")
+    Call<MedSignRecord> post_MedSignRecord(@Body MedSignRecord medSignRecord);
+
+    @POST("OperationRecord")
+    Call<OperationRecord> post_OperationRecord(@Body OperationRecord operationRecord);
+
+    @POST("Tpr1Record")
+    Call<Tpr1Record> post_Tpr1Record(@Body Tpr1Record tpr1Record);
+
+    @POST("Tpr2Record")
+    Call<Tpr2Record> post_Tpr2Record(@Body Tpr2Record tpr2Record);
+
+    @POST("Tpr3Record")
+    Call<Tpr3Record> post_Tpr3Record(@Body Tpr3Record tpr3Record);
+
+    @POST("TransOperationRecord")
+    Call<TransOperationRecord> post_TransOperationRecord(@Body TransOperationRecord transOperationRecord);
 }

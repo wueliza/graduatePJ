@@ -8,6 +8,8 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -21,11 +23,20 @@ import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class TPRActivity extends AppCompatActivity {
     private Button bt;
     private Button bt2;
+    private RESTfulApi resTfulApi;
     SurfaceView surfaceView;
-    TextView textView;
+    TextView textView,step,show;
+    Bundle bundle = new Bundle();
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
     int count = 0;
@@ -34,10 +45,13 @@ public class TPRActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tpractivity);
+
+        step = (TextView) findViewById(R.id.step);
+        show = findViewById(R.id.show);
         //相機製作
         getPermissionsCamera();
         surfaceView=(SurfaceView)findViewById(R.id.surfaceView);
-        textView=(TextView)findViewById(R.id.textView);
+        textView=(TextView)findViewById(R.id.input);
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.ALL_FORMATS).build();
 
@@ -68,6 +82,29 @@ public class TPRActivity extends AppCompatActivity {
                 cameraSource.stop();
             }
         });
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://140.136.151.75:8080/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        resTfulApi = retrofit.create(RESTfulApi.class);
+
+        textView.addTextChangedListener(new TextWatcher() { //監視editText是否有更變
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(textView.getText().toString() != null){
+                    Get_staff(retrofit,editable.toString());
+                }
+                //show.setText(editable);
+            }
+        });
+
         barcodeDetector.setProcessor(new Detector.Processor<Barcode>(){
 
             @Override
@@ -90,8 +127,6 @@ public class TPRActivity extends AppCompatActivity {
         });
 
         TextView tv = (TextView)findViewById(R.id.title);
-        TextView tv1 = (TextView)findViewById(R.id.input);
-        TextView tv2 = (TextView)findViewById(R.id.show);
         bt = findViewById(R.id.nextbt);
         bt2 = findViewById(R.id.frontbt);
 
@@ -101,14 +136,12 @@ public class TPRActivity extends AppCompatActivity {
                 count++;
                 switch (count){
                     case 1:
-                        tv.setText("輸血TPR-血袋號碼");
-                        tv1.setHint("血袋號碼");
-                        tv2.setHint("血袋號碼:");
+                        tv.setText("輸血TPR-領血單號");
+                        step.setText("請掃領血單號!");
                         break;
                     case 2:
                         tv.setText("輸血TPR-紀錄者");
-                        tv1.setHint("紀錄者");
-                        tv2.setHint("紀錄者:");
+                        step.setText("請掃紀錄者!");
                         break;
                     case 3:
                         Intent intent = new Intent(TPRActivity.this,PagerActivity.class);
@@ -116,8 +149,7 @@ public class TPRActivity extends AppCompatActivity {
                         break;
                     default:
                         tv.setText("輸血TPR-病歷號");
-                        tv1.setHint("病歷號");
-                        tv2.setHint("病歷號:");
+                        step.setText("請掃病歷號!");
                 }
             }
         });
@@ -127,14 +159,12 @@ public class TPRActivity extends AppCompatActivity {
                 count--;
                 switch (count){
                     case 1:
-                        tv.setText("輸血TPR-血袋號碼");
-                        tv1.setHint("血袋號碼");
-                        tv2.setHint("血袋號碼:");
+                        tv.setText("輸血TPR-領血單號");
+                        step.setText("請掃領血單號");
                         break;
                     case 2:
                         tv.setText("輸血TPR-紀錄者");
-                        tv1.setHint("紀錄者");
-                        tv2.setHint("紀錄者:");
+                        step.setText("請掃紀錄者!");
                         break;
                     case -1:
                         Intent intent = new Intent(TPRActivity.this,blood_homeActivity.class);
@@ -142,8 +172,7 @@ public class TPRActivity extends AppCompatActivity {
                         break;
                     default:
                         tv.setText("輸血TPR-病歷號");
-                        tv1.setHint("病歷號");
-                        tv2.setHint("病歷號:");
+                        step.setText("請掃病歷號!");
                 }
             }
         });
@@ -152,6 +181,81 @@ public class TPRActivity extends AppCompatActivity {
         if(ActivityCompat.checkSelfPermission(this,Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA},1);
+        }
+    }
+    private void Get_staff(Retrofit retrofit,String id) {
+        Call<Patient_Api> patient = resTfulApi.getOne(id);
+        Call<Staff_Api> staff = resTfulApi.get_staff(id);
+
+        if(count == 0) {
+            patient.enqueue(new Callback<Patient_Api>() {
+                @Override
+                public void onResponse(Call<Patient_Api> patient, Response<Patient_Api> response) {
+                    if (response.body()==null) {
+                        step.setText("此id不存在，請重新掃描病歷號！");
+                        return ;
+                    }
+                    String name = response.body().getName();
+                    show.setText(name);
+                    step.setText("掃描成功，請按下一步");
+                    bundle.putString("patient_num", id);
+                }
+
+                @Override
+                public void onFailure(Call<Patient_Api> patient, Throwable t) {
+                    show.setText(t.getMessage());
+                }
+            });
+        }
+        else {
+            staff.enqueue(new Callback<Staff_Api>() {
+                @Override
+                public void onResponse(Call<Staff_Api> staff, Response<Staff_Api> response) {
+                    if (response.body()==null) {
+                        switch (count) {
+                            case 1:
+                                step.setText("此id不存在，請重新掃描核血人員編號！");
+                                break;
+                            case 2:
+                                step.setText("此id不存在，請重新掃描確認人員！");
+                                break;
+                            case 3:
+                                step.setText("此id不存在，請重新掃描血袋編號！");
+                                break;
+                            case -1:
+                                break;
+                            default:
+                                bundle.putString("patient_num", show.getText().toString());
+                        }
+                        return;
+                    }
+                    String name = response.body().getName();
+                    show.setText(name);
+                    switch (count) {
+                        case 1:
+                            bundle.putString("confirm", show.getText().toString());
+                            step.setText("掃描成功，請按下一步");
+                            break;
+                        case 2:
+                            bundle.putString("check", show.getText().toString());
+                            step.setText("掃描成功，請按下一步");
+                            break;
+                        case 3:
+                            bundle.putString("scan", show.getText().toString());
+                            step.setText("掃描成功，請按下一步");
+                            break;
+                        case -1:
+                            break;
+                        default:
+                            bundle.putString("patient_num", show.getText().toString());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Staff_Api> staff, Throwable t) {
+                    show.setText("請掃描條碼");
+                }
+            });
         }
     }
 }

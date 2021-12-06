@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -36,7 +37,7 @@ public class confirmActivity extends AppCompatActivity {
     private Button bt2;
     private TextView show;
     SurfaceView surfaceView;
-    TextView textView;
+    TextView textView,step;
     private RESTfulApi resTfulApi;
     Bundle bundle = new Bundle();
     CameraSource cameraSource;
@@ -55,9 +56,10 @@ public class confirmActivity extends AppCompatActivity {
 
         surfaceView=(SurfaceView)findViewById(R.id.surfaceView);
         textView=(TextView)findViewById(R.id.input);
+        step=(TextView)findViewById(R.id.ehint1);
 
         Retrofit retrofit = new Retrofit.Builder() //api連接
-                .baseUrl("http://106.105.167.136:8080/api/")
+                .baseUrl("http://140.136.151.75:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         resTfulApi = retrofit.create(RESTfulApi.class);
@@ -77,7 +79,7 @@ public class confirmActivity extends AppCompatActivity {
                 if(textView.getText().toString() != null){
                     Get_staff(retrofit,editable.toString());
                 }
-                show.setText(editable);
+                //show.setText(editable);
             }
         });
 
@@ -132,8 +134,6 @@ public class confirmActivity extends AppCompatActivity {
         });
 
         TextView tv = (TextView)findViewById(R.id.title);
-        TextView tv1 = (TextView)findViewById(R.id.input);
-        TextView tv2 = (TextView)findViewById(R.id.show);
         bt = findViewById(R.id.nextbt);
         bt2 = findViewById(R.id.frontbt);
 
@@ -144,22 +144,20 @@ public class confirmActivity extends AppCompatActivity {
                 switch (count){
                     case 1:
                         tv.setText("核血作業-核血人員");
-                        tv1.setHint("核血人員編號");
-                        tv2.setHint("核血人員:");
+                        step.setText("請掃核血人員！");
                         break;
                     case 2:
                         tv.setText("核血作業-確認人員");
-                        tv1.setHint("確認人員編號");
-                        tv2.setHint("確認人員:");
+                        step.setText("請掃確認人員！");
                         break;
                     case 3:
                         Intent intent = new Intent(confirmActivity.this,Check_sumActivity.class);
+                        intent.putExtras(bundle);   // 記得put進去，不然資料不會帶過去哦
                         startActivity(intent);
                         break;
                     default:
                         tv.setText("核血作業-領血單號");
-                        tv1.setHint("領血單號");
-                        tv2.setHint("領血單號:");
+                        step.setText("請掃領血單號！");
                 }
             }
         });
@@ -170,13 +168,11 @@ public class confirmActivity extends AppCompatActivity {
                 switch (count){
                     case 1:
                         tv.setText("核血作業-核血人員");
-                        tv1.setHint("核血人員編號");
-                        tv2.setHint("核血人員:");
+                        step.setText("請掃核血人員！");
                         break;
                     case 2:
                         tv.setText("核血作業-確認人員");
-                        tv1.setHint("確認人員編號");
-                        tv2.setHint("確認人員:");
+                        step.setText("請掃確認人員！");
                         break;
                     case -1:
                         Intent intent = new Intent(confirmActivity.this,blood_homeActivity.class);
@@ -184,8 +180,7 @@ public class confirmActivity extends AppCompatActivity {
                         break;
                     default:
                         tv.setText("核血作業-領血單號");
-                        tv1.setHint("領血單號");
-                        tv2.setHint("領血單號:");
+                        step.setText("請掃領血單號！");
                 }
             }
         });
@@ -198,52 +193,63 @@ public class confirmActivity extends AppCompatActivity {
     }
 
     public void Get_staff(Retrofit retrofit,String id){
-        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
-        Call<Staff_Api> call = resTfulApi.get_staff(id);
-        Call<Patient_Api> patient_apiCall = resTfulApi.getOne(id);
+        Call<TransOperation_Api> trans = resTfulApi.get_transoperation(id);
+        Call<Staff_Api> staff_apiCall = resTfulApi.get_staff(id);
 
         if(count == 0){
-            patient_apiCall.enqueue(new Callback<Patient_Api>() {
+            trans.enqueue(new Callback<TransOperation_Api>() {
                 @Override
-                public void onResponse(Call<Patient_Api> patient_apiCall1, Response<Patient_Api> response) {
+                public void onResponse(Call<TransOperation_Api> patient_apiCall1, Response<TransOperation_Api> response) {
                     if (response.body()==null) {
-                        show.setText("找不到這個id");
+                        step.setText("此id不存在，請重新掃描領血單號！");
                         return;
                     }
-                    String name = response.body().getName();
-                    show.setText(name);
-                    bundle.putString("patient_num", id);
+                    String patient = response.body().getQrChart();
+                    bundle.putString("patient",patient);
+                    step.setText("掃描成功，請按下一步");
+                    show.setText(id);
+                    bundle.putString("trans", id);
                 }
                 @Override
-                public void onFailure(Call<Patient_Api> patient_apiCall1, Throwable t) {
+                public void onFailure(Call<TransOperation_Api> patient_apiCall1, Throwable t) {
                     show.setText("請掃描條碼");
                 }
             });
         }
         else {
-            call.enqueue(new Callback<Staff_Api>() {
+            staff_apiCall.enqueue(new Callback<Staff_Api>() {
                 @Override
                 public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
                     if (response.body()==null) {
-                        show.setText("找不到這個id");
+                        switch (count) {
+                            case 1:
+                                step.setText("此id不存在，請重新掃描核血人員編號！");
+                                break;
+                            case 2:
+                                step.setText("此id不存在，請重新掃描確認人員編號！");
+                                break;
+                            case -1:
+                                break;
+                            default:
+                                step.setText("此id不存在，請重新掃描領血單號！");
+                        }
                         return;
                     }
                     String name = response.body().getName();
+                    step.setText("掃描成功，請按下一步");
                     show.setText(name);
                     switch (count) {
                         case 1:
                             bundle.putString("confirm", show.getText().toString());
+                            step.setText("掃描成功，請按下一步");
                             break;
                         case 2:
                             bundle.putString("check", show.getText().toString());
-                            break;
-                        case 3:
-                            bundle.putString("scan", show.getText().toString());
+                            step.setText("掃描成功，請按下一步");
                             break;
                         case -1:
                             break;
                         default:
-                            bundle.putString("patient_num", show.getText().toString());
                     }
                 }
 
