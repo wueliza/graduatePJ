@@ -49,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:text="請掃病歷號！"
                 android:textColor="@android:color/primary_text_dark_nodisable"
                 android:textSize="@dimen/dp_24"
                 android:background="@color/cardview_shadow_start_color"
@@ -77,7 +78,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_130"
+                android:layout_height="130dp"
                 android:orientation="horizontal"
                 android:gravity="bottom"
                 >
@@ -92,8 +93,8 @@
                     <Button
                         android:id="@+id/frontbt"
                         android:text="返回"
-                        android:layout_width="@dimen/dp_140"
-                        android:layout_height="@dimen/dp_65"
+                        android:layout_width="140dp"
+                        android:layout_height="65dp"
                         android:layout_gravity="bottom"
                         android:textStyle="bold"
                         android:textColor="#FBFBFB"
@@ -112,8 +113,8 @@
                     <Button
                         android:id="@+id/nextbt"
                         android:text="下一步"
-                        android:layout_width="@dimen/dp_140"
-                        android:layout_height="@dimen/dp_65"
+                        android:layout_width="140dp"
+                        android:layout_height="65dp"
                         android:layout_gravity="bottom"
                         android:textStyle="bold"
                         android:textColor="#FBFBFB"

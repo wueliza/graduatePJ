@@ -21,6 +21,7 @@ public class CheckIn2 extends AppCompatActivity {
 
     Intent intent = new Intent();
     TextView tv1, tv2, tv3, tv4, BirthdayBox, patientName;
+    private RESTfulApi resTfulApi;
 
 
     @Override
@@ -74,8 +75,26 @@ public class CheckIn2 extends AppCompatActivity {
         Upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                post_Operation(tv1.getText().toString(), tv2.getText().toString(),tv3.getText().toString(), tv4.getText().toString(),patientName.getText().toString() );
                 intent.setClass(CheckIn2.this, OperationHome.class);
                 startActivity(intent);
+            }
+        });
+    }
+
+    private void post_Operation(String ORA4_CHART, String OR_CHART, String Emid,  String Birth,String Name) {
+        OperationRecord operationRecord = new OperationRecord(ORA4_CHART, OR_CHART, Emid, Birth,Name );
+        Call<OperationRecord> call = resTfulApi.post_OperationRecord(operationRecord);
+
+        call.enqueue(new Callback<OperationRecord>() {
+            @Override
+            public void onResponse(Call<OperationRecord> call, Response<OperationRecord> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<OperationRecord> call, Throwable t) {
+
             }
         });
     }

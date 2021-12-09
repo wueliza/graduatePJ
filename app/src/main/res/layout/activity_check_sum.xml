@@ -31,7 +31,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="10dp"
+                android:layout_width="0dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginLeft="12dp"
@@ -182,7 +182,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="300dp"
         android:orientation="vertical"
         android:layout_margin="10dp"
         android:layout_marginTop="10dp"
@@ -252,19 +252,19 @@
             android:layout_height="2dp"
             android:layout_width="fill_parent"
             />
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="150dp">
+            android:layout_height="200dp">
             <TextView
+                android:id="@+id/context"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="4dp"
-                android:text="內容"
                 android:textSize="18sp"
                 android:layout_marginLeft="8dp"
                 android:textColor="@color/black"
                 />
-        </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

@@ -143,12 +143,10 @@ public class SignActivity extends AppCompatActivity {
                     case 1:
                         tv.setText("血袋簽收-傳送人員");
                         step.setText("請掃傳送人員！");
-                        tv1.setText("傳送人員編號");
                         break;
                     case 2:
                         tv.setText("血袋簽收-領血單號");
                         step.setText("請掃領血單號！");
-                        tv1.setText("領血單號");
                         break;
                     case 3:
                         Intent intent = new Intent(SignActivity.this,Sign_sumActivity.class);
@@ -157,8 +155,7 @@ public class SignActivity extends AppCompatActivity {
                         break;
                     default:
                         tv.setText("血袋簽收-護理人員");
-                        step.setText("請掃核血人員！");
-                        tv1.setText("護理人員編號");
+                        step.setText("請掃護理人員！");
                         bundle.putString("nurse",tv1.getText().toString());
                 }
             }
@@ -171,12 +168,10 @@ public class SignActivity extends AppCompatActivity {
                     case 1:
                         tv.setText("血袋簽收-傳送人員");
                         step.setText("請掃傳送人員！");
-                        tv1.setText("傳送人員編號");
                         break;
                     case 2:
                         tv.setText("血袋簽收-領血單號");
                         step.setText("請掃領血人員！");
-                        tv1.setText("領血單號");
                         break;
                     case -1:
                         Intent intent = new Intent(SignActivity.this,blood_homeActivity.class);
@@ -185,7 +180,6 @@ public class SignActivity extends AppCompatActivity {
                     default:
                         tv.setText("血袋簽收-護理人員");
                         step.setText("請掃護理人員！");
-                        tv1.setText("護理人員編號");
                 }
             }
         });
