@@ -54,7 +54,11 @@ public class Waiting2 extends AppCompatActivity {
 
         Button BackButton = (Button) findViewById(R.id.frontbt);
         Button Upload = (Button) findViewById(R.id.Upload);
-
+        Retrofit retrofit = new Retrofit.Builder() //api連接
+                .baseUrl("http://140.136.151.75:8080/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        resTfulApi = retrofit.create(RESTfulApi.class);
 
         BackButton.setOnClickListener(new View.OnClickListener() {
             @Override

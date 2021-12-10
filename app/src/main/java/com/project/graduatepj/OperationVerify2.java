@@ -12,6 +12,8 @@ import android.widget.TextView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class OperationVerify2 extends AppCompatActivity {
     Intent intent = new Intent();
@@ -51,7 +53,11 @@ public class OperationVerify2 extends AppCompatActivity {
 
         Button frontbt = (Button) findViewById(R.id.frontbt);
         Button Upload = (Button) findViewById(R.id.Upload);
-
+        Retrofit retrofit = new Retrofit.Builder() //api連接
+                .baseUrl("http://140.136.151.75:8080/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        resTfulApi = retrofit.create(RESTfulApi.class);
         frontbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
