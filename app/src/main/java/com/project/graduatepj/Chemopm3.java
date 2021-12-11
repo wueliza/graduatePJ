@@ -5,12 +5,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Chemopm3 extends AppCompatActivity {
     private Button sendbt , upbt;
-    private TextView staffTv , checkTv , chemoTv , mednameTv , medsumTv;
+    private TextView staffTv , checkTv , chemoTv , mednameTv , medsumTv , hint;
+    private RadioButton y , n;
+    int check_re = 0;
+    private RESTfulApi resTfulApi;
+    String medName , medNum;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,20 +41,41 @@ public class Chemopm3 extends AppCompatActivity {
         chemoTv = findViewById(R.id.cpchemoTv);
         mednameTv = findViewById(R.id.cpmedTv);
         medsumTv = findViewById(R.id.cpamountTv);
+        hint = findViewById(R.id.hint);
+        y = findViewById(R.id.yes);
+        n = findViewById(R.id.no);
 
         staffTv.setText(staff);
         checkTv.setText(check);
         chemoTv.setText(chemo);
 
-        sendbt.setOnClickListener(new View.OnClickListener() {
+        Retrofit retrofit = new Retrofit.Builder() //api連接
+                .baseUrl("http://140.136.151.75:8080/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        resTfulApi = retrofit.create(RESTfulApi.class);
+        Get_med(retrofit , chemo);
+
+        y.setOnClickListener(this::onRadioButtonClicked);
+        n.setOnClickListener(this::onRadioButtonClicked);
+
+
+        sendbt.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent nintent = new Intent();
-                nintent.setClass(Chemopm3.this , Chemopm.class);
-                startActivity(nintent);
+                if(check_re == 1){
+                    post_med_sign(staff,check,chemo,medName,medNum);
+                    Intent nintent = new Intent();
+                    nintent.setClass(Chemopm3.this , Chemopm.class);
+                    startActivity(nintent);
+                }
+                else{
+                    hint.setText("未完成簽收請勿上傳資料");
+                }
+
             }
         });
-        upbt.setOnClickListener(new View.OnClickListener() {
+        upbt.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent uintent = new Intent();
@@ -49,4 +84,59 @@ public class Chemopm3 extends AppCompatActivity {
             }
         });
     }
+    public void onRadioButtonClicked(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+
+        switch(view.getId()) {
+            case R.id.yes:
+                if (checked)
+                    check_re = 1;
+                break;
+            case R.id.no:
+                if (checked)
+                    check_re = 0;
+                break;
+        }
+    }
+
+    private void post_med_sign(String emid, String transId, String tubg, String medAmount, String name){
+        MedSignRecord medSignRecord = new MedSignRecord(emid,transId,emid,transId,name);
+        Call<MedSignRecord> call = resTfulApi.post_MedSignRecord(medSignRecord);
+
+        call.enqueue(new Callback<MedSignRecord>() {
+            @Override
+            public void onResponse(Call<MedSignRecord> call, Response<MedSignRecord> response) {
+            }
+
+            @Override
+            public void onFailure(Call<MedSignRecord> call, Throwable t) {
+            }
+        });
+
+    }
+
+    public void Get_med(Retrofit retrofit, String id) {
+        Call<Medicine_Api> call = resTfulApi.get_medicine(id);
+        call.enqueue(new Callback<Medicine_Api>() {
+            @Override
+            public void onResponse(Call<Medicine_Api> call, Response<Medicine_Api> response) {
+                if (response.body()==null) {
+                    mednameTv.setText("此id不存在，請重新掃描成品編號！");
+                    medsumTv.setText("此id不存在，請重新掃描成品編號！");
+                    return;
+                }
+                else {
+                    medName = response.body().getmedicineName();
+                    mednameTv.setText(medName);
+                    medNum = response.body().getMedicineNum();
+                    medsumTv.setText(medNum);
+                }
+            }
+            @Override
+            public void onFailure(Call<Medicine_Api> call, Throwable t) {
+                mednameTv.setText("錯誤！");
+            }
+        });
+    }
+
 }

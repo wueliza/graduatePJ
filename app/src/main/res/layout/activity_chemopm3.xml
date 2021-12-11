@@ -20,10 +20,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_202"
+        android:layout_height="wrap_content"
         android:layout_margin="@dimen/dp_10"
         android:background="@color/white"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -199,7 +200,58 @@
                 android:layout_weight="1"
                 />
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_10"
+            >
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="應到藥品數量:"
+                android:textColor="#504C4C"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/dp_8"/>
+
+            <RadioGroup
+                android:id="@+id/rg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/dp_30"
+                >
+                <RadioButton
+                    android:id="@+id/yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="是"
+                    android:textSize="18sp"
+                    />
+                <RadioButton
+                    android:id="@+id/no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="否"
+                    android:checked="true"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="@dimen/dp_30"
+                    />
+            </RadioGroup>
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/hint"
+            android:textSize="18sp"
+            android:textColor="#ff0000"
+            />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
