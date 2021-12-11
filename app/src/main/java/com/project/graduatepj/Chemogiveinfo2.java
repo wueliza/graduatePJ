@@ -18,25 +18,29 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Chemogiveinfo2 extends AppCompatActivity {
     private Button sendbt , backbt;
     private TextView pa_id ,pa_name , pa_gender , pa_bed , pa_bsa ,pa_height , pa_weight , pa_age;
-    private TextView staffTv , checkTv , chemoTv;
+    private TextView staffTv , checkTv , chemoTv , mname , mdose , mfre;
     private RESTfulApi resTfulApi;
+    String name ,gender,bed,BSA ,height,weight , age;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = this.getIntent();
         setContentView(R.layout.activity_chemogiveinfo2);
-        pa_id = findViewById(R.id.pa_id_g);
-        pa_name = findViewById(R.id.pa_name_g);
-        pa_gender = findViewById(R.id.pa_gender_g);
-        pa_bed = findViewById(R.id.pa_bed_g);
-        pa_bsa = findViewById(R.id.pa_bsa_g);
-        pa_height = findViewById(R.id.pa_height_g);
-        pa_weight = findViewById(R.id.pa_weight_g);
-        pa_age = findViewById(R.id.pa_age_g);
+        pa_id = findViewById(R.id.pa_id);
+        pa_name = findViewById(R.id.pa_name);
+        pa_gender = findViewById(R.id.pa_gender);
+        pa_bed = findViewById(R.id.pa_bed);
+        pa_bsa = findViewById(R.id.pa_bsa);
+        pa_height = findViewById(R.id.pa_height);
+        pa_weight = findViewById(R.id.pa_weight);
+        pa_age = findViewById(R.id.pa_age);
+        mname = findViewById(R.id.medname);
+        mdose = findViewById(R.id.meddose);
+        mfre = findViewById(R.id.medfre);
 
-        staffTv = findViewById(R.id.sTv_g);
-        checkTv = findViewById(R.id.checkTV_g);
-        chemoTv = findViewById(R.id.chemoTv_g);
+        staffTv = findViewById(R.id.sTv);
+        checkTv = findViewById(R.id.checkTV);
+        chemoTv = findViewById(R.id.chemoTv);
 
         Bundle scan_result = intent.getExtras();
         String patient = scan_result.getString("givepatient_id");
@@ -52,6 +56,7 @@ public class Chemogiveinfo2 extends AppCompatActivity {
         sendbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                post_med_give(patient,name,gender,bed,BSA,height,weight,age,staff,check,chemo);
                 Intent intent = new Intent();
                 intent.setClass(Chemogiveinfo2.this , Chemopm.class);
                 startActivity(intent);
@@ -73,6 +78,8 @@ public class Chemogiveinfo2 extends AppCompatActivity {
                 .build();
         resTfulApi = retrofit.create(RESTfulApi.class);
         Get_patient(retrofit, patient);
+        Get_med(retrofit , chemo);
+
     }
 
     public void Get_patient(Retrofit retrofit, String id) {
@@ -87,13 +94,13 @@ public class Chemogiveinfo2 extends AppCompatActivity {
                 }
                 else {
                     //int id = response.body().getPatientNum();
-                    String name = response.body().getName();
-                    String gender = response.body().getSex();
-                    String bed = response.body().getBedNum();
-                    String BSA = response.body().getName();
-                    String height = response.body().getHeight();
-                    String weight = response.body().getWeight();
-                    String age = response.body().getAge();
+                    name = response.body().getName();
+                    gender = response.body().getSex();
+                    bed = response.body().getBedNum();
+                    BSA = response.body().getName();
+                    height = response.body().getHeight();
+                    weight = response.body().getWeight();
+                    age = response.body().getAge();
                     pa_name.setText(name);
                     pa_gender.setText(gender);
                     pa_bed.setText(bed);
@@ -109,5 +116,44 @@ public class Chemogiveinfo2 extends AppCompatActivity {
                 pa_id.setText("錯誤");
             }
         });
+    }
+    public void Get_med(Retrofit retrofit, String id) {
+        Call<Medicine_Api> call = resTfulApi.get_medicine(id);
+        call.enqueue(new Callback<Medicine_Api>() {
+            @Override
+            public void onResponse(Call<Medicine_Api> call, Response<Medicine_Api> response) {
+                if (response.body()==null) {
+                    chemoTv.setText("此id不存在，請重新掃描成品編號！");
+                    return;
+                }
+                else {
+                    String name = response.body().getmedicineName();
+                    mname.setText("名稱：" + name);
+                    String d = response.body().getDose();
+                    mdose.setText("劑量："+ d);
+                    String f = response.body().getFrequence();
+                    mfre.setText("流速：" + f);
+                }
+            }
+            @Override
+            public void onFailure(Call<Medicine_Api> call, Throwable t) {
+                chemoTv.setText("錯誤！");
+            }
+        });
+    }
+    private void post_med_give(String qrChart, String name, String sex, String bedNum, String bsa, String height, String weight, String age, String emid, String confirmId, String tubg){
+        MedGiveRecord medGiveRecord = new MedGiveRecord(qrChart,  name,  sex,  bedNum,  bsa,  height,  weight,  age,  emid,  confirmId, tubg);
+        Call<MedGiveRecord> call = resTfulApi.post_MedGiveRecord(medGiveRecord);
+
+        call.enqueue(new Callback<MedGiveRecord>() {
+            @Override
+            public void onResponse(Call<MedGiveRecord> call, Response<MedGiveRecord> response) {
+            }
+
+            @Override
+            public void onFailure(Call<MedGiveRecord> call, Throwable t) {
+            }
+        });
+
     }
 }

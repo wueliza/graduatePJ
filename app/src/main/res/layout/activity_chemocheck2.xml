@@ -33,7 +33,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_43"
+                android:layout_height="@dimen/dp_35"
                 android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
@@ -43,7 +43,6 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/dp_12"
                     android:layout_marginRight="@dimen/dp_20"
-                    android:layout_marginTop="@dimen/dp_4"
                     android:text="病歷號："
                     android:textColor="#504C4C"
                     android:textSize="18sp"
@@ -53,7 +52,6 @@
                     android:id="@+id/pa_id"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/dp_6"
                     android:layout_weight="1"
                     android:background="@drawable/check_background"
                     android:gravity="center"
@@ -63,7 +61,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_40"
+                android:layout_height="@dimen/dp_35"
                 android:layout_marginBottom="@dimen/dp_10"
                 android:orientation="horizontal">
 
@@ -74,7 +72,6 @@
                     android:text="姓名 :"
                     android:layout_marginRight="@dimen/dp_20"
                     android:layout_marginLeft="@dimen/dp_12"
-                    android:layout_marginTop="@dimen/dp_4"
                     android:textColor="#504C4C"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -84,7 +81,6 @@
                     android:layout_width="@dimen/dp_120"
                     android:layout_height="match_parent"
                     android:layout_marginRight="@dimen/dp_10"
-                    android:layout_marginTop="@dimen/dp_4"
                     android:background="@drawable/check_background"
                     android:gravity="center"
                     android:textColor="@color/black"
@@ -98,7 +94,6 @@
                     android:layout_marginRight="@dimen/dp_20"
                     android:layout_marginLeft="@dimen/dp_4"
                     android:textColor="#504C4C"
-                    android:layout_marginTop="@dimen/dp_4"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -106,7 +101,6 @@
                     android:id="@+id/pa_gender"
                     android:layout_width="@dimen/dp_70"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/dp_4"
                     android:background="@drawable/check_background"
                     android:gravity="center"
                     android:textColor="@color/black"
@@ -115,7 +109,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_40"
+                android:layout_height="@dimen/dp_35"
                 android:layout_marginBottom="@dimen/dp_10"
                 android:orientation="horizontal">
 
@@ -127,7 +121,6 @@
                     android:layout_marginRight="@dimen/dp_20"
                     android:layout_marginLeft="@dimen/dp_12"
                     android:textColor="#504C4C"
-                    android:layout_marginTop="@dimen/dp_4"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -135,7 +128,6 @@
                     android:id="@+id/pa_bed"
                     android:layout_width="@dimen/dp_120"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/dp_4"
                     android:layout_marginRight="@dimen/dp_10"
                     android:background="@drawable/check_background"
                     android:gravity="center"
@@ -157,7 +149,6 @@
                     android:id="@+id/pa_bsa"
                     android:layout_width="@dimen/dp_70"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/dp_4"
                     android:layout_marginRight="@dimen/dp_10"
                     android:background="@drawable/check_background"
                     android:gravity="center"
@@ -167,7 +158,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_40"
+                android:layout_height="@dimen/dp_35"
                 android:layout_marginBottom="@dimen/dp_10"
                 android:orientation="horizontal">
 
@@ -179,7 +170,6 @@
                     android:layout_marginRight="@dimen/dp_20"
                     android:layout_marginLeft="@dimen/dp_12"
                     android:textColor="#504C4C"
-                    android:layout_marginTop="@dimen/dp_4"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -187,7 +177,6 @@
                     android:id="@+id/pa_height"
                     android:layout_width="@dimen/dp_120"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/dp_4"
                     android:layout_marginRight="@dimen/dp_10"
                     android:background="@drawable/check_background"
                     android:gravity="center"
@@ -209,7 +198,6 @@
                     android:id="@+id/pa_weight"
                     android:layout_width="@dimen/dp_70"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/dp_4"
                     android:layout_marginRight="@dimen/dp_10"
                     android:background="@drawable/check_background"
                     android:gravity="center"
@@ -218,8 +206,7 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_40"
-                android:layout_marginBottom="@dimen/dp_10"
+                android:layout_height="@dimen/dp_35"
                 android:orientation="horizontal">
 
                 <TextView
@@ -230,7 +217,6 @@
                     android:layout_marginRight="@dimen/dp_20"
                     android:layout_marginLeft="@dimen/dp_12"
                     android:textColor="#504C4C"
-                    android:layout_marginTop="@dimen/dp_4"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -238,7 +224,6 @@
                     android:id="@+id/pa_age"
                     android:layout_width="@dimen/dp_120"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/dp_4"
                     android:layout_marginRight="@dimen/dp_10"
                     android:background="@drawable/check_background"
                     android:gravity="center"
@@ -264,7 +249,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_43"
+                android:layout_height="@dimen/dp_35"
                 android:orientation="horizontal"
                 android:layout_marginBottom="10dp">
 
@@ -294,7 +279,7 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_43"
+                android:layout_height="@dimen/dp_35"
                 android:orientation="horizontal"
                 android:layout_marginBottom="@dimen/dp_10">
 
@@ -324,7 +309,7 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_43"
+                android:layout_height="@dimen/dp_35"
                 android:orientation="horizontal">
 
                 <TextView
@@ -350,6 +335,57 @@
                     android:layout_weight="1"
                     android:textColor="@color/black"
                     />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="藥品明細 :"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:layout_marginRight="@dimen/dp_60"
+                    android:textColor="#504C4C"
+                    android:textSize="18sp"
+                    />
+                <TextView
+                    android:id="@+id/medname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:layout_marginRight="@dimen/dp_60"
+                    android:layout_marginTop="@dimen/dp_2"
+                    android:textColor="#504C4C"
+                    android:textSize="18sp"
+                    android:text="名稱"
+                    />
+                <TextView
+                    android:id="@+id/meddose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:layout_marginRight="@dimen/dp_60"
+                    android:layout_marginTop="@dimen/dp_2"
+                    android:textColor="#504C4C"
+                    android:textSize="18sp"
+                    android:text="劑量"
+                    />
+                <TextView
+                    android:id="@+id/medfre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:layout_marginRight="@dimen/dp_60"
+                    android:layout_marginTop="@dimen/dp_2"
+                    android:textColor="#504C4C"
+                    android:textSize="18sp"
+                    android:text="流速"
+                    />
+
+
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
