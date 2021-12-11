@@ -233,11 +233,13 @@ public class OperationVerify extends AppCompatActivity {
                 public void onResponse(Call<ORA4_CHART_API> ora4_chart_apiCall, Response<ORA4_CHART_API> response) {
                     if (response.body() == null) {
                         show.setText("找不到這個id");
+                        bt.setEnabled(false);
                         return;
                     }
                     String ora4Chart = response.body().getora4Chart();
                     show.setText("掃描成功 請按下一步");
                     bundle.putString("ora4chart", id);
+                    bt.setEnabled(true);
 
                 }
 
@@ -254,11 +256,13 @@ public class OperationVerify extends AppCompatActivity {
                 public void onResponse(Call<Patient_Api> patient_apiCall, Response<Patient_Api> response) {
                     if (response.body() == null) {
                         show.setText("找不到這個id");
+                        bt.setEnabled(false);
                         return;
                     }
                     String name = response.body().getName();
                     String birth = response.body().getBirthDate();
                     show.setText(name);
+                    bt.setEnabled(true);
                     bundle.putString("paitentNumbercheck", id);
                     bundle.putString("NameBox", show.getText().toString());
                     bundle.putString("birth", birth);
@@ -277,11 +281,12 @@ public class OperationVerify extends AppCompatActivity {
                 public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
                     if (response.body() == null) {
                         show.setText("找不到這個id");
+                        bt.setEnabled(false);
                         return;
                     }
                     String emid = response.body().getName();
                     show.setText(emid);
-
+                    bt.setEnabled(true);
                     bundle.putString("ManCheckBox", show.getText().toString());
                 }
 
