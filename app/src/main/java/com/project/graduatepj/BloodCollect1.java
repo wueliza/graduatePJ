@@ -141,8 +141,10 @@ public class BloodCollect1 extends AppCompatActivity {
         TextView tv = (TextView) findViewById(R.id.title);
         TextView tv1 = (TextView) findViewById(R.id.input);
         TextView tv2 = (TextView) findViewById(R.id.show);
+        TextView hint = (TextView) findViewById(R.id.hint);
         bt = findViewById(R.id.nextbt);
         bt2 = findViewById(R.id.frontbt);
+
 
 
         bt.setOnClickListener(new View.OnClickListener() {
@@ -151,19 +153,22 @@ public class BloodCollect1 extends AppCompatActivity {
                 count++;
                 switch (count) {
                     case 1:
-                        tv.setText("採血/備血作業-檢體編號");
-                        tv1.setHint("請掃描檢體編號");
-                        tv2.setHint("檢體編號: ");
+                        hint.setText("請掃描檢體編號");
+                        tv.setText("檢體編號");
+                        tv1.setText("檢體編號");
+                        tv2.setText("號碼");
                         break;
                     case 2:
-                        tv.setText("採血/備血作業-採檢員");
-                        tv1.setHint("請掃描採檢員編號");
-                        tv2.setHint("採檢員編號: ");
+                        hint.setText("請掃描採檢員編號");
+                        tv.setText("採檢員編號");
+                        tv1.setText("採檢員編號");
+                        tv2.setText("號碼");
                         break;
                     case 3:
-                        tv.setText("採血/備血作業-確認員");
-                        tv1.setHint("請掃描確認員編號");
-                        tv2.setHint("確認員編號: ");
+                        hint.setText("請掃描確認員編號");
+                        tv.setText("確認員編號");
+                        tv1.setText("確認員編號");
+                        tv2.setText("號碼");
                         break;
                     case 4:
                         Intent intent = new Intent(BloodCollect1.this, BloodCollect2.class);
@@ -171,9 +176,10 @@ public class BloodCollect1 extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     default:
-                        tv.setText("採血/備血作業-病歷號");
-                        tv1.setHint("請掃描病歷號");
-                        tv2.setHint("病歷號： ");
+                        hint.setText("請掃描手圈病歷號");
+                        tv.setText("病歷號");
+                        tv1.setText("病歷號");
+                        tv2.setText("號碼");
                 }
             }
         });
@@ -184,30 +190,32 @@ public class BloodCollect1 extends AppCompatActivity {
                 count--;
                 switch (count) {
                     case 1:
-                        tv.setText("採血/備血作業-檢體編號");
-                        tv1.setHint("請掃描檢體編號");
-                        tv2.setHint("檢體編號: ");
+                        hint.setText("請掃描檢體編號");
+                        tv.setText("檢體編號");
+                        tv1.setText("檢體編號");
+                        tv2.setText("號碼");
                         break;
                     case 2:
-                        tv.setText("採血/備血作業-採檢員");
-                        tv1.setHint("請掃描採檢員編號");
-                        tv2.setHint("採檢員編號: ");
+                        hint.setText("請掃描採檢員編號");
+                        tv.setText("採檢員編號");
+                        tv1.setText("採檢員編號");
+                        tv2.setText("號碼");
                         break;
                     case 3:
-                        tv.setText("採血/備血作業-確認員");
-                        tv1.setHint("請掃描確認員編號");
-                        tv2.setHint("確認員編號: ");
+                        hint.setText("請掃描確認員編號");
+                        tv.setText("確認員編號");
+                        tv1.setText("確認員編號");
+                        tv2.setText("號碼");
                         break;
                     case -1:
                         Intent intent = new Intent(BloodCollect1.this, examine_homePage.class);
                         startActivity(intent);
                         break;
                     default:
-                        tv.setText("採血/備血作業-病歷號");
-                        tv1.setHint("請掃描病歷號");
-                        tv2.setHint("病歷號： ");
-
-
+                        hint.setText("請掃描手圈病歷號");
+                        tv.setText("病歷號");
+                        tv1.setText("病歷號");
+                        tv2.setText("號碼");
                 }
             }
         });
@@ -236,10 +244,12 @@ public class BloodCollect1 extends AppCompatActivity {
                 public void onResponse(Call<CheckOperation_Api> checkOperation_apiCall1, Response<CheckOperation_Api> response) {
                     if (response.body() == null) {
                         show.setText("找不到這個id");
+                        bt.setEnabled(false);
                         return;
                     }
                     String checkOperation = response.body().getBsnos();
                     show.setText("掃描成功 請按下一步");
+                    bt.setEnabled(true);
                     bundle.putString("ora4chart", id);
 
                 }
@@ -255,10 +265,12 @@ public class BloodCollect1 extends AppCompatActivity {
                 public void onResponse(Call<Patient_Api> patient_apiCall, Response<Patient_Api> response) {
                     if (response.body() == null) {
                         show.setText("找不到這個id");
+                        bt.setEnabled(false);
                         return;
                     }
                     String name = response.body().getName();
                     show.setText(name);
+                    bt.setEnabled(true);
                     bundle.putString("patientNumber1Check", id);
                     /*, show.getText().toString()*/
                 }
@@ -275,10 +287,12 @@ public class BloodCollect1 extends AppCompatActivity {
                 public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
                     if (response.body() == null) {
                         show.setText("找不到這個id");
+                        bt.setEnabled(false);
                         return;
                     }
                     String emid = response.body().getName();
                     show.setText(emid);
+                    bt.setEnabled(true);
                     bundle.putString("collectorNumberCheck", id);
                     bundle.putString("recheckNumberCheck", id);
                     bundle.putString("sampleNumberCheck", id);

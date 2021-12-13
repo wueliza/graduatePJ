@@ -8,11 +8,16 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class BloodCollect2 extends AppCompatActivity {
 
     Intent intent = new Intent();
     TextView tv1, tv2, tv3, tv4;
+    private RESTfulApi resTfulApi;
 
 
     @Override
@@ -47,6 +52,7 @@ public class BloodCollect2 extends AppCompatActivity {
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                post_checkoperation(tv1.getText().toString(), tv2.getText().toString(),tv3.getText().toString(), tv4.getText().toString());
                 Intent intent = new Intent(BloodCollect2.this, examine_homePage.class);
                 startActivity(intent);
             }
@@ -58,7 +64,24 @@ public class BloodCollect2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
 
+    private void post_checkoperation(String qrChart, String bsno, String emid, String confirmId) {
 
+        CheckOperationRecord checkOperationRecord = new CheckOperationRecord(qrChart, bsno, emid, confirmId);
+        Call<CheckOperationRecord> call = resTfulApi.post_CheckOperationRecord(checkOperationRecord);
+
+        call.enqueue(new Callback<CheckOperationRecord>() {
+            @Override
+            public void onResponse(Call<CheckOperationRecord> call, Response<CheckOperationRecord> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<CheckOperationRecord> call, Throwable t) {
+
+            }
+        });
     }
 }
+
