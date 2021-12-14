@@ -11,9 +11,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,7 +28,8 @@ import java.util.Date;
 public class tpr1Fragment extends Fragment {
     private Button bt;
     private Button bt2;
-    EditText input;
+    private RESTfulApi resTfulApi;
+    EditText input,T,P,R1,BP1,BP2;
     LinearLayout soildetext;                        //使用LinearLayout來代替button去實踐頁面轉換
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -76,12 +82,12 @@ public class tpr1Fragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_tpr1, container, false);
         View view = inflater.inflate(R.layout.fragment_tpr1, null);
         soildetext = (LinearLayout) view.findViewById(R.id.soilclick);
+
         soildetext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,12 +97,40 @@ public class tpr1Fragment extends Fragment {
             }
         });
         input = view.findViewById(R.id.input);
+        T = view.findViewById(R.id.T);
+        P = view.findViewById(R.id.P);
+        R1 = view.findViewById(R.id.R);
+        BP1 = view.findViewById(R.id.BP1);
+        BP2 = view.findViewById(R.id.BP2);
+
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日HH:mm:ss"); //自動抓時間
         Date curDate = new Date(System.currentTimeMillis()) ;
         String str = formatter.format(curDate);
         input.setText(str);
+
         return view;
     }
 
+    private void post_tpr1(String T,String P,String R,String BP1,String BP2,String QrChart,String Emid){
+        Tpr1Record tpr1Record = new Tpr1Record(T.getText().toString(),P.getText().toString(),R1.getText().toString(),transId,bloodAmount);
+        Call<Tpr1Record> call = resTfulApi.post_Tpr1Record(tpr1Record);
 
+        call.enqueue(new Callback<Tpr1Record>() {
+            @Override
+            public void onResponse(Call<Tpr1Record> call, Response<Tpr1Record> response) {
+//                if(response.body() == null){
+//                    text.setText("Code: " + response.code());
+//                }
+//                String code = "";
+//                code += response.code();
+//                text.setText(code);
+            }
+
+            @Override
+            public void onFailure(Call<Tpr1Record> call, Throwable t) {
+                //text.setText(t.getMessage());
+            }
+        });
+
+    }
 }
