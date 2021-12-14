@@ -29,7 +29,7 @@ public class tpr1Fragment extends Fragment {
     private Button bt;
     private Button bt2;
     private RESTfulApi resTfulApi;
-    EditText input,T,P,R1,BP1,BP2;
+    EditText input,T,P,R1,BP1,BP2,patient,nurse;
     LinearLayout soildetext;                        //使用LinearLayout來代替button去實踐頁面轉換
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -102,17 +102,19 @@ public class tpr1Fragment extends Fragment {
         R1 = view.findViewById(R.id.R);
         BP1 = view.findViewById(R.id.BP1);
         BP2 = view.findViewById(R.id.BP2);
-
+        BP1 = view.findViewById(R.id.patient);
+        BP2 = view.findViewById(R.id.BP2);
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日HH:mm:ss"); //自動抓時間
         Date curDate = new Date(System.currentTimeMillis()) ;
         String str = formatter.format(curDate);
         input.setText(str);
 
+
         return view;
     }
 
-    private void post_tpr1(String T,String P,String R,String BP1,String BP2,String QrChart,String Emid){
-        Tpr1Record tpr1Record = new Tpr1Record(T.getText().toString(),P.getText().toString(),R1.getText().toString(),transId,bloodAmount);
+    private void post_tpr1(String transTime,String T,String P,String R,String BP1,String BP2,String QrChart,String Emid){
+        Tpr1Record tpr1Record = new Tpr1Record(transTime,T,P,R,BP1,BP2,QrChart,Emid);
         Call<Tpr1Record> call = resTfulApi.post_Tpr1Record(tpr1Record);
 
         call.enqueue(new Callback<Tpr1Record>() {
