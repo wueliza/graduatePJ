@@ -138,6 +138,7 @@ public class Print_examineNumber1 extends AppCompatActivity {
         TextView tv = (TextView)findViewById(R.id.title);
         TextView tv1 = (TextView)findViewById(R.id.input);
         TextView tv2 = (TextView)findViewById(R.id.show);
+        TextView hint = (TextView) findViewById(R.id.hint);
         bt = findViewById(R.id.nextbt);
         bt2 = findViewById(R.id.frontbt);
 
@@ -147,9 +148,10 @@ public class Print_examineNumber1 extends AppCompatActivity {
                 count++;
                 switch (count){
                     case 1:
-                        tv.setText("列印檢體編號-檢驗單");
-                        tv1.setHint("請掃描檢驗單編號");
-                        tv2.setHint("檢驗單編號: ");
+                        hint.setText("請掃描檢驗單編號");
+                        tv.setText("檢驗單");
+                        tv1.setText("檢驗單");
+                        tv2.setText("號碼");
                         break;
                     case 2:
                         Intent intent = new Intent(Print_examineNumber1.this, Print_examineNumber2.class);
@@ -157,9 +159,10 @@ public class Print_examineNumber1 extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     default:
-                        tv.setText("列印檢體編號-病歷號");
-                        tv1.setHint("請掃描手圈病歷號");
-                        tv2.setHint("手圈病歷號:");
+                        hint.setText("請掃描手圈病例號");
+                        tv.setText("手圈病歷號");
+                        tv1.setText("手圈病歷號");
+                        tv2.setText("號碼");
                 }
             }
         });
@@ -170,18 +173,20 @@ public class Print_examineNumber1 extends AppCompatActivity {
                 count--;
                 switch (count){
                     case 1:
-                        tv.setText("列印檢體編號-檢驗單");
-                        tv1.setHint("請掃描檢驗單編號");
-                        tv2.setHint("檢驗單編號: ");
+                        hint.setText("請掃描檢驗單編號");
+                        tv.setText("檢驗單");
+                        tv1.setText("檢驗單");
+                        tv2.setText("號碼");
                         break;
                     case -1:
                         Intent intent = new Intent(Print_examineNumber1.this, examine_homePage.class);
                         startActivity(intent);
                         break;
                     default:
-                        tv.setText("列印檢體編號-病歷號");
-                        tv1.setHint("請掃描手圈病歷號");
-                        tv2.setHint("手圈病歷號:");
+                        hint.setText("請掃描手圈病例號");
+                        tv.setText("手圈病歷號");
+                        tv1.setText("手圈病歷號");
+                        tv2.setText("號碼");
                 }
             }
         });
@@ -206,10 +211,12 @@ public class Print_examineNumber1 extends AppCompatActivity {
                 public void onResponse(Call<CheckOperation_Api> checkOperation_apiCall1, Response<CheckOperation_Api> response) {
                     if (response.body() == null) {
                         show.setText("找不到這個id");
+                        bt.setEnabled(false);
                         return;
                     }
                     String checkOperation = response.body().getBsnos();
                     show.setText("掃描成功 請按下一步");
+                    bt.setEnabled(true);
                     bundle.putString("ora4chart", id);
 
                 }
@@ -225,10 +232,12 @@ public class Print_examineNumber1 extends AppCompatActivity {
                 public void onResponse(Call<Patient_Api> patient_apiCall, Response<Patient_Api> response) {
                     if (response.body() == null) {
                         show.setText("找不到這個id");
+                        bt.setEnabled(false);
                         return;
                     }
                     String name = response.body().getName();
                     show.setText(name);
+                    bt.setEnabled(true);
                     bundle.putString("patientNumber1Check", show.getText().toString());
                     /*, show.getText().toString()*/
                 }
@@ -245,11 +254,12 @@ public class Print_examineNumber1 extends AppCompatActivity {
                 public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
                     if (response.body() == null) {
                         show.setText("找不到這個id");
+                        bt.setEnabled(false);
                         return;
                     }
                     String name = response.body().getName();
                     show.setText(name);
-
+                    bt.setEnabled(true);
                     bundle.putString("collectorNumberCheck", show.getText().toString());
                 }
 

@@ -77,4 +77,6 @@ public interface RESTfulApi {
 
     @POST("TransOperationRecord")
     Call<TransOperationRecord> post_TransOperationRecord(@Body TransOperationRecord transOperationRecord);
+
+    Call<OperationRecord> checkOperationRecord(CheckOperationRecord checkOperationRecord);
 }

@@ -7,10 +7,16 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class Print_examineNumber2 extends AppCompatActivity {
 
     Intent intent = new Intent();
     TextView tv1, tv2 ;
+    private RESTfulApi resTfulApi;
+
 
     @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,7 @@ public class Print_examineNumber2 extends AppCompatActivity {
 
 
             bt.setOnClickListener(v -> {
+                post_checkoperation(tv1.getText().toString(), tv2.getText().toString());
                 Intent intent = new Intent(Print_examineNumber2.this,examine_homePage.class);
                 startActivity(intent);
             });
@@ -41,5 +48,24 @@ public class Print_examineNumber2 extends AppCompatActivity {
                 Intent intent = new Intent(Print_examineNumber2.this,Print_examineNumber1.class);
                 startActivity(intent);
             });
-        }
     }
+
+
+    private void post_checkoperation(String qrChart, String bsno) {
+
+        CheckOperationRecord checkOperationRecord = new CheckOperationRecord(qrChart, bsno);
+        Call<CheckOperationRecord> call = resTfulApi.post_CheckOperationRecord(checkOperationRecord);
+
+        call.enqueue(new Callback<CheckOperationRecord>() {
+            @Override
+            public void onResponse(Call<CheckOperationRecord> call, Response<CheckOperationRecord> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<CheckOperationRecord> call, Throwable t) {
+
+            }
+        });
+    }
+}
