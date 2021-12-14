@@ -159,7 +159,6 @@ public class Print_examineNumber1 extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     default:
-                        hint.setText("請掃描手圈病例號");
                         tv.setText("手圈病歷號");
                         tv1.setText("手圈病歷號");
                         tv2.setText("號碼");
@@ -167,6 +166,7 @@ public class Print_examineNumber1 extends AppCompatActivity {
             }
         });
 
+        bt.setEnabled(false);
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -206,27 +206,6 @@ public class Print_examineNumber1 extends AppCompatActivity {
         Call<CheckOperation_Api> checkOperation_apiCall = resTfulApi.get_checkoperation(id);
 
         if (count == 0) {
-            checkOperation_apiCall .enqueue(new Callback<CheckOperation_Api>() {
-                @Override
-                public void onResponse(Call<CheckOperation_Api> checkOperation_apiCall1, Response<CheckOperation_Api> response) {
-                    if (response.body() == null) {
-                        show.setText("找不到這個id");
-                        bt.setEnabled(false);
-                        return;
-                    }
-                    String checkOperation = response.body().getBsnos();
-                    show.setText("掃描成功 請按下一步");
-                    bt.setEnabled(true);
-                    bundle.putString("ora4chart", id);
-
-                }
-                @Override
-                public void onFailure(Call<CheckOperation_Api> call, Throwable t) {
-                    show.setText("請掃描條碼");
-                }
-            });
-
-        } else if (count == 1) {
             patient_apiCall.enqueue(new Callback<Patient_Api>() {
                 @Override
                 public void onResponse(Call<Patient_Api> patient_apiCall, Response<Patient_Api> response) {
@@ -247,28 +226,27 @@ public class Print_examineNumber1 extends AppCompatActivity {
                     show.setText("請掃描條碼");
                 }
             });
-        }
-        else {
-            call.enqueue(new Callback<Staff_Api>() {
+        } else {
+            checkOperation_apiCall .enqueue(new Callback<CheckOperation_Api>() {
                 @Override
-                public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
+                public void onResponse(Call<CheckOperation_Api> checkOperation_apiCall, Response<CheckOperation_Api> response) {
                     if (response.body() == null) {
                         show.setText("找不到這個id");
                         bt.setEnabled(false);
                         return;
                     }
-                    String name = response.body().getName();
-                    show.setText(name);
+                    String bsnos = response.body().getBsnos();
+                    show.setText(bsnos);
                     bt.setEnabled(true);
-                    bundle.putString("collectorNumberCheck", show.getText().toString());
+                    bundle.putString("sampleNumberCheck", id);
                 }
-
                 @Override
-                public void onFailure(Call<Staff_Api> call, Throwable t) {
+                public void onFailure(Call<CheckOperation_Api> call, Throwable t) {
                     show.setText("請掃描條碼");
                 }
             });
         }
+
     }
 }
 

@@ -36,4 +36,5 @@ public class Bloodbank_Api {
     public String getQrChart() {
         return qrChart;
     }
+
 }
