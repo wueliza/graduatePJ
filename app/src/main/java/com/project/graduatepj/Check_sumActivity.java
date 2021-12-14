@@ -62,6 +62,7 @@ public class Check_sumActivity extends AppCompatActivity {
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                post_check(transop.getText().toString(),paitent_name.getText().toString(),bloodtype.getText().toString(),bednum.getText().toString(),paitent_Num.getText().toString(),checkman.getText().toString(),confirmman.getText().toString());
                 Intent intent = new Intent(Check_sumActivity.this,blood_homeActivity.class);
                 startActivity(intent);
             }
@@ -74,6 +75,29 @@ public class Check_sumActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void post_check(String Rqno,String Name,String Bloodtype,String BedNum,String QrChart,String Emid,String ConfrimId){
+        BloodCheckRecord bloodCheckRecord = new BloodCheckRecord(Rqno,Name,Bloodtype,BedNum,QrChart,Emid,ConfrimId);
+        Call<BloodCheckRecord> call = resTfulApi.post_BloodCheckRecord(bloodCheckRecord);
+
+        call.enqueue(new Callback<BloodCheckRecord>() {
+            @Override
+            public void onResponse(Call<BloodCheckRecord> call, Response<BloodCheckRecord> response) {
+//                if(response.body() == null){
+//                    text.setText("Code: " + response.code());
+//                }
+//                String code = "";
+//                code += response.code();
+//                text.setText(code);
+            }
+
+            @Override
+            public void onFailure(Call<BloodCheckRecord> call, Throwable t) {
+                //text.setText(t.getMessage());
+            }
+        });
+    }
+
     public void Get_staff(Retrofit retrofit,String id){
         Call<Patient_Api> call = resTfulApi.getOne(id); //A00010
         call.enqueue(new Callback<Patient_Api>() {

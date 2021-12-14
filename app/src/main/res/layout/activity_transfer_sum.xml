@@ -251,12 +251,12 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_75">
 
-
             <TextView
+                android:id="@+id/haveblood"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="已掃血袋"
+                android:text=""
                 android:textSize="24dp"
                 />
         </LinearLayout>
