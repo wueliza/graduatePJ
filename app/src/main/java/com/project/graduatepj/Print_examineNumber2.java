@@ -24,16 +24,16 @@ public class Print_examineNumber2 extends AppCompatActivity {
             setContentView(R.layout.activity_print_examine_number2);
 
             Bundle patientNumber1Check = this.getIntent().getExtras();
-            Bundle checkPaperNumberCheck = this.getIntent().getExtras();
+            Bundle sampleNumberCheck = this.getIntent().getExtras();
 
             String patientNumber1 = patientNumber1Check.getString("patientNumber1Check");
-            String checkPaperNumber = checkPaperNumberCheck.getString("checkPaperNumberCheck");
+            String sampleNumber = sampleNumberCheck.getString("sampleNumberCheck");
 
             tv1 = (TextView) findViewById(R.id.patientNumber1Box);
             tv2 = (TextView) findViewById(R.id.checkPaperNumberBox);
 
             tv1.setText(patientNumber1);
-            tv2.setText(checkPaperNumber);
+            tv2.setText(sampleNumber);
 
             Button bt = (Button) findViewById(R.id.nextbt);
             Button bt2 = (Button) findViewById(R.id.frontbt);

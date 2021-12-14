@@ -83,5 +83,28 @@ public class BloodCollect2 extends AppCompatActivity {
             }
         });
     }
+
+    private void post_Operation(String ORA4_CHART, String OR_CHART, String Emid,  String Birth,String Name) {
+        OperationRecord operationRecord = new OperationRecord(ORA4_CHART, OR_CHART, Emid, Birth,Name );
+        Call<OperationRecord> call = resTfulApi.post_OperationRecord(operationRecord);
+
+        call.enqueue(new Callback<OperationRecord>() {
+            @Override
+            public void onResponse(Call<OperationRecord> call, Response<OperationRecord> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<OperationRecord> call, Throwable t) {
+
+            }
+        });
+    }
+
+
+
+
+
+
 }
 
