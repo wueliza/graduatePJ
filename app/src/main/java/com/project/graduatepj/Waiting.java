@@ -117,6 +117,7 @@ public class Waiting extends AppCompatActivity {
                 }
             }
         });
+        bt.setEnabled(false);
 
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override

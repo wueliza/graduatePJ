@@ -173,6 +173,7 @@ public class CheckIn extends AppCompatActivity {
                 }
             }
         });
+        bt.setEnabled(false);
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
