@@ -59,20 +59,20 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:hint="手圈病歷號"
-                android:background="@color/cardview_shadow_start_color"
-                android:textColor="@color/black"
-                android:textSize="@dimen/dp_22" />
+                android:text="手圈病歷號"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dp_24"
+                android:background="@color/cardview_shadow_start_color"/>
             <TextView
                 android:id="@+id/show"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:hint="手圈病歷號"
-                android:background="@color/cardview_shadow_start_color"
-                android:textColor="@color/black"
-                android:textSize="@dimen/dp_22" />
+                android:text="手圈病歷號"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dp_24"
+                android:background="@color/cardview_shadow_start_color"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
