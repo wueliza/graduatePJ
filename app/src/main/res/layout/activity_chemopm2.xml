@@ -57,7 +57,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text=""
-                android:textColor="@color/black"
+                android:textColor="@android:color/white"
                 android:textSize="@dimen/dp_24"
                 android:background="@color/cardview_shadow_start_color"/>
 
@@ -68,7 +68,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text=""
-                android:textColor="@color/black"
+                android:textColor="@android:color/white"
                 android:textSize="@dimen/dp_24"
                 android:background="@color/cardview_shadow_start_color"/>
 

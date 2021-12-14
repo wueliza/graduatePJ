@@ -49,6 +49,7 @@ public class Chemopm2 extends AppCompatActivity {
         hint2 = findViewById(R.id.cphint2);
         hint3 = findViewById(R.id.cphint3);
         hint1.setText("請掃描成品單號");
+        nextbt.setEnabled(false);
 
         upbt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,14 +58,17 @@ public class Chemopm2 extends AppCompatActivity {
                     Intent uintent = new Intent();
                     uintent.setClass(Chemopm2.this , gotofunction.class);
                     startActivity(uintent);
+                    nextbt.setEnabled(false);
                 }
                 else if(count == 1){
                     hint1.setText("請掃描成品單號");
                     count = 0;
+                    nextbt.setEnabled(false);
                 }
                 else if(count == 2){
                     hint1.setText("請掃描護理人員編號");
                     count = 1;
+                    nextbt.setEnabled(false);
                 }
             }
         });
@@ -78,6 +82,7 @@ public class Chemopm2 extends AppCompatActivity {
                     hint1.setText("請掃描護理人員編號");
                     hint3.setText(" ");
                     count = 1;
+                    nextbt.setEnabled(false);
                 }
                 else if(count == 1){
                     bundle.putString("staff_id", hint3.getText().toString());
@@ -86,11 +91,13 @@ public class Chemopm2 extends AppCompatActivity {
                     hint3.setText(" ");
                     nextbt.setText("傳送");
                     count = 2;
+                    nextbt.setEnabled(false);
                 }
                 else if (count == 2){
                     bundle.putString("check_id", hint3.getText().toString());
                     intent.putExtras(bundle);
                     startActivity(intent);
+                    nextbt.setEnabled(false);
                 }
             }
         });
@@ -175,7 +182,6 @@ public class Chemopm2 extends AppCompatActivity {
                     Get_staff(retrofit, editable.toString());
                 }
                 else if (count == 2) {
-                    //傳送人員API
                 }
                 //result.setText(editable);
             }
@@ -195,6 +201,7 @@ public class Chemopm2 extends AppCompatActivity {
                     String name = response.body().getName();
                     hint3.setText(name);
                     hint1.setText("掃描成功，請按下一步");
+                    nextbt.setEnabled(true);
                 }
             }
 
@@ -223,6 +230,7 @@ public class Chemopm2 extends AppCompatActivity {
                 else {
                     String name = response.body().getTubg();
                     hint3.setText(name);
+                    nextbt.setEnabled(true);
                 }
             }
 

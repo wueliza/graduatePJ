@@ -64,6 +64,7 @@ public class eisaicheck extends AppCompatActivity {
         upstepbt.setOnClickListener(this::upStep);
         step.setText("請掃描檢驗員員工編號條碼");
         intent.setClass(eisaicheck.this , eisairesult.class);
+        nextBt.setEnabled(false);
 
         //camera
         barcodeDetector = new BarcodeDetector.Builder(this).setBarcodeFormats(Barcode.ALL_FORMATS).build();
@@ -176,6 +177,7 @@ public class eisaicheck extends AppCompatActivity {
             result.setText(" ");
             count = 1;
             step.setText("請掃描病歷號條碼");
+            nextBt.setEnabled(false);
         }
         else if(count == 1){
             bundle.putString("patient_id", show.getText().toString());
@@ -185,11 +187,13 @@ public class eisaicheck extends AppCompatActivity {
             step.setText("請掃描衛材條碼");
             nextBt.setText("傳送");
             count = 2;
+            nextBt.setEnabled(false);
         }
         else if(count == 2){
             bundle.putString("eisai_id", result.getText().toString());
             intent.putExtras(bundle);
             startActivity(intent);
+            nextBt.setEnabled(false);
         }
     }
 
@@ -222,6 +226,7 @@ public class eisaicheck extends AppCompatActivity {
                     String name = response.body().getName();
                     show.setText(name);
                     step.setText("掃描成功，請按下一步");
+                    nextBt.setEnabled(true);
                 }
             }
 
@@ -253,6 +258,7 @@ public class eisaicheck extends AppCompatActivity {
                     String name = response.body().getName();
                     show.setText(name);
                     step.setText("掃描成功，請按下一步");
+                    nextBt.setEnabled(true);
                 }
             }
 
@@ -283,6 +289,7 @@ public class eisaicheck extends AppCompatActivity {
                     String name = response.body().getName();
                     show.setText(name);
                     step.setText("掃描成功，請按傳送");
+                    nextBt.setEnabled(true);
                 }
             }
             @Override
