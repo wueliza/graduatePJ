@@ -3,13 +3,14 @@ package com.project.graduatepj;
 import java.sql.Date;
 
 public class TransOperationRecord {
-    private String Rqno ;
+    private String Rqno ;//血袋號碼
     private String Name;
     private String BloodType ;
     private String BedNum ;
-    private String QrChart ;
-    private String Emid ;
+    private String QrChart ;//手圈病歷號
+    private String Emid ;//護理人員編號
     private String ConfrimId ;
+
     private Date RecordTime;
     private String RecordId ;
 
