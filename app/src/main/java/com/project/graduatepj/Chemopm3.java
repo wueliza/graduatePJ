@@ -136,8 +136,8 @@ public class Chemopm3 extends AppCompatActivity {
                         medNum += "劑量" + n + ": " + as.getCheckNum() + "\n";
                         n++;
                     }
-                    mednameTv.setText(medname);
-                    medsumTv.setText(medNum);
+                    mednameTv.setText(medNum);
+                    medsumTv.setText(medname);
 //                    medName = response.body().getmedicineName();
 //                    mednameTv.setText(medName);
 //                    medNum = response.body().getMedicineNum();

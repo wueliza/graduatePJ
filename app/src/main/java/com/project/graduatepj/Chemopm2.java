@@ -91,13 +91,13 @@ public class Chemopm2 extends AppCompatActivity {
                     hint3.setText(" ");
                     nextbt.setText("傳送");
                     count = 2;
-                    nextbt.setEnabled(false);
+
                 }
                 else if (count == 2){
-                    bundle.putString("check_id", hint3.getText().toString());
+                    bundle.putString("check_id", hint2.getText().toString());
                     intent.putExtras(bundle);
                     startActivity(intent);
-                    nextbt.setEnabled(false);
+
                 }
             }
         });
