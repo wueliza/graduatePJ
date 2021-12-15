@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class BloodCollect2 extends AppCompatActivity {
@@ -47,6 +49,12 @@ public class BloodCollect2 extends AppCompatActivity {
 
         Button bt = (Button) findViewById(R.id.nextbt);
         Button bt2 = (Button) findViewById(R.id.frontbt);
+
+        Retrofit retrofit = new Retrofit.Builder() //api連接
+                .baseUrl("http://140.136.151.75:8080/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        resTfulApi = retrofit.create(RESTfulApi.class);
 
 
         bt.setOnClickListener(new View.OnClickListener() {
