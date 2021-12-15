@@ -60,7 +60,7 @@ public class Chemocheck2 extends AppCompatActivity {
         resTfulApi = retrofit.create(RESTfulApi.class);
 
         Get_med(retrofit , chemo);
-        Get_patient(retrofit, pid);
+
 
 
         sentbt = (Button)findViewById(R.id.sendbt);
@@ -142,6 +142,7 @@ public class Chemocheck2 extends AppCompatActivity {
                         d += "劑量" + n + ": " + as.getDose() + "\n";
                         f += "流速" + n +": " + as.getFrequence() + "\n";
                         pid = as.getQrChart();
+                        Get_patient(retrofit, pid);
                         n++;
                     }
                     mname.setText(medname);
