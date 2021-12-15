@@ -73,7 +73,7 @@ public class Chemogiveinfo2 extends AppCompatActivity {
         });
         //api連接
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://140.136.151.75/api/")
+                .baseUrl("http://140.136.151.75:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         resTfulApi = retrofit.create(RESTfulApi.class);
