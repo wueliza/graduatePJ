@@ -2,33 +2,21 @@ package com.project.graduatepj;
 
 public class Medicine_Api {
     private String tubg;
-    private String frequence;
-    private String medicineNum;
-    private String dose;
-    private String name;
-    private String qrChart;
+    private MedDtails[] medDetails;
 
     public String getTubg() {
         return tubg;
     }
 
-    public String getFrequence() {
-        return frequence;
+    public void setTubg(String tubg) {
+        this.tubg = tubg;
     }
 
-    public String getMedicineNum() {
-        return medicineNum;
+    public MedDtails[] getMedDetails() {
+        return medDetails;
     }
 
-    public String getDose() {
-        return dose;
-    }
-
-    public String getmedicineName() {
-        return name;
-    }
-
-    public String getQrChart() {
-        return qrChart;
+    public void setMedDetails(MedDtails[] medDetails) {
+        this.medDetails = medDetails;
     }
 }

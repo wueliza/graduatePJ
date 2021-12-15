@@ -131,13 +131,28 @@ public class Chemocheck2 extends AppCompatActivity {
                     return;
                 }
                 else {
-                    String name = response.body().getmedicineName();
-                    mname.setText("名稱：" + name);
-                    String d = response.body().getDose();
-                    mdose.setText("劑量："+ d);
-                    String f = response.body().getFrequence();
-                    mfre.setText("流速：" + f);
-                    pid = response.body().getQrChart();
+                    MedDtails[] a = response.body().getMedDetails();
+
+                    String medname = "";
+                    String d = "";
+                    String f = "";
+                    int n= 1;
+                    for(MedDtails as :a){
+                        medname += "血袋"+ n +": " +as.getName() + "\n";
+                        d += "劑量" + n + ": " + as.getDose() + "\n";
+                        f += "流速" + n +": " + as.getFrequence() + "\n";
+                        n++;
+                    }
+                    mname.setText(medname);
+                    mdose.setText(d);
+                    mfre.setText(f);
+//                    String name = response.body().getmedicineName();
+//                    mname.setText("名稱：" + name);
+//                    String d = response.body().getDose();
+//                    mdose.setText("劑量："+ d);
+//                    String f = response.body().getFrequence();
+//                    mfre.setText("流速：" + f);
+//                    pid = response.body().getQrChart();
                 }
             }
             @Override
