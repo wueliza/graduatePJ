@@ -141,6 +141,7 @@ public class Chemocheck2 extends AppCompatActivity {
                         medname += "血袋"+ n +": " +as.getName() + "\n";
                         d += "劑量" + n + ": " + as.getDose() + "\n";
                         f += "流速" + n +": " + as.getFrequence() + "\n";
+                        pid = as.getQrChart();
                         n++;
                     }
                     mname.setText(medname);
