@@ -55,7 +55,7 @@ public class Chemogiveinfo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(count == 0){
-                    bundle.putString("givepatient_id", hint3.getText().toString());
+                    bundle.putString("givepatient_id", hint2.getText().toString());
                     intent.putExtras(bundle);
                     hint1.setText("請掃描成品單號");
                     hint3.setText(" ");
@@ -170,7 +170,7 @@ public class Chemogiveinfo extends AppCompatActivity {
         });
         //api連接
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://140.136.151.75/api/")
+                .baseUrl("http://140.136.151.75:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         resTfulApi = retrofit.create(RESTfulApi.class);
@@ -242,6 +242,7 @@ public class Chemogiveinfo extends AppCompatActivity {
                     String name = response.body().getName();
                     hint3.setText(name);
                     nextbt.setEnabled(true);
+                    hint1.setText("掃描成功，請按下一步");
                 }
             }
 
@@ -264,6 +265,7 @@ public class Chemogiveinfo extends AppCompatActivity {
                     String name = response.body().getTubg();
                     hint3.setText(name);
                     nextbt.setEnabled(true);
+                    hint1.setText("掃描成功，請按下一步");
                 }
             }
 

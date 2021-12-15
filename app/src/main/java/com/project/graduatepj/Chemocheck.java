@@ -199,7 +199,15 @@ public class Chemocheck extends AppCompatActivity {
             @Override
             public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
                 if (response.body()==null) {
-                    hint1.setText("此id不存在，請重新掃描員工編號！");
+                    if(count == 0) {
+                        hint1.setText("此id不存在，請重新掃描成品單號！");
+                    }
+                    else if(count == 1) {
+                        hint1.setText("此id不存在，請重新掃描員工編號！");
+                    }
+                    if(count == 2) {
+                        hint1.setText("此id不存在，請重新掃描員工編號！");
+                    }
                     return;
                 }
                 else {
@@ -216,40 +224,28 @@ public class Chemocheck extends AppCompatActivity {
             }
         });
     }
-    public void Get_patient(Retrofit retrofit, String id) {
-        Call<Patient_Api> call = resTfulApi.getOne(id); //A00010
-        call.enqueue(new Callback<Patient_Api>() {
-            @Override
-            public void onResponse(Call<Patient_Api> call, Response<Patient_Api> response) {
-                if (response.body()==null) {
-                    hint1.setText("此id不存在，請重新掃描病歷號！");
-                    return;
-                }
-                else {
-                    String name = response.body().getName();
-                    hint3.setText(name);
-                    nextbt.setEnabled(true);
-                }
-            }
 
-            @Override
-            public void onFailure(Call<Patient_Api> call, Throwable t) {
-                hint1.setText("請重新掃描病歷號！");
-            }
-        });
-    }
     public void Get_Medicine(Retrofit retrofit, String id) {
         Call<Medicine_Api> call = resTfulApi.get_medicine(id); //A00010
         call.enqueue(new Callback<Medicine_Api>() {
             @Override
             public void onResponse(Call<Medicine_Api> call, Response<Medicine_Api> response) {
                 if (response.body()==null) {
-                    hint1.setText("此id不存在，請重新掃描成品單號！");
+                    if(count == 0) {
+                        hint1.setText("此id不存在，請重新掃描成品單號！");
+                    }
+                    else if(count == 1) {
+                        hint1.setText("此id不存在，請重新掃描員工編號！");
+                    }
+                    if(count == 2) {
+                        hint1.setText("此id不存在，請重新掃描員工編號！");
+                    }
                     return;
                 }
                 else {
                     String name = response.body().getTubg();
                     hint3.setText(name);
+                    hint1.setText("掃描成功，請按下一步");
                     nextbt.setEnabled(true);
                 }
             }

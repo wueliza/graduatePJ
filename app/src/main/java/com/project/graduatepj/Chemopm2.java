@@ -161,7 +161,7 @@ public class Chemopm2 extends AppCompatActivity {
 
         //api連接
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://140.136.151.75/api/")
+                .baseUrl("http://140.136.151.75:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         resTfulApi = retrofit.create(RESTfulApi.class);
@@ -230,6 +230,7 @@ public class Chemopm2 extends AppCompatActivity {
                 else {
                     String name = response.body().getTubg();
                     hint3.setText(name);
+                    hint1.setText("掃描成功，請按下一步");
                     nextbt.setEnabled(true);
                 }
             }
