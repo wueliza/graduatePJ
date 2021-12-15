@@ -134,7 +134,7 @@ public class Chemogiveinfo2 extends AppCompatActivity {
                     String f = "";
                     int n= 1;
                     for(MedDtails as :a){
-                        medname += "血袋"+ n +": " +as.getName() + "\n";
+                        medname += "藥品"+ n +": " +as.getName() + "\n";
                         d += "劑量" + n + ": " + as.getDose() + "\n";
                         f += "流速" + n +": " + as.getFrequence() + "\n";
                         n++;

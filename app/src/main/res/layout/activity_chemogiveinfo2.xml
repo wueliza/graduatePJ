@@ -336,57 +336,63 @@
                     android:textColor="@color/black"
                     />
             </LinearLayout>
-            <LinearLayout
+
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="藥品明細 :"
-                    android:layout_marginTop="@dimen/dp_4"
-                    android:layout_marginLeft="@dimen/dp_8"
-                    android:layout_marginRight="@dimen/dp_60"
-                    android:textColor="#504C4C"
-                    android:textSize="18sp"
-                    />
-                <TextView
-                    android:id="@+id/medname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/dp_8"
-                    android:layout_marginRight="@dimen/dp_60"
-                    android:layout_marginTop="@dimen/dp_2"
-                    android:textColor="#504C4C"
-                    android:textSize="18sp"
-                    android:text="名稱"
-                    />
-                <TextView
-                    android:id="@+id/meddose"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/dp_8"
-                    android:layout_marginRight="@dimen/dp_60"
-                    android:layout_marginTop="@dimen/dp_2"
-                    android:textColor="#504C4C"
-                    android:textSize="18sp"
-                    android:text="劑量"
-                    />
-                <TextView
-                    android:id="@+id/medfre"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/dp_8"
-                    android:layout_marginRight="@dimen/dp_60"
-                    android:layout_marginTop="@dimen/dp_2"
-                    android:textColor="#504C4C"
-                    android:textSize="18sp"
-                    android:text="流速"
-                    />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_8"
+                        android:layout_marginTop="@dimen/dp_4"
+                        android:layout_marginRight="@dimen/dp_60"
+                        android:text="藥品明細 :"
+                        android:textColor="#504C4C"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/medname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dp_8"
+                        android:layout_marginTop="@dimen/dp_2"
+                        android:layout_marginRight="@dimen/dp_60"
+                        android:text="名稱"
+                        android:textColor="#504C4C"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/meddose"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dp_8"
+                        android:layout_marginTop="@dimen/dp_2"
+                        android:layout_marginRight="@dimen/dp_60"
+                        android:text="劑量"
+                        android:textColor="#504C4C"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/medfre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dp_8"
+                        android:layout_marginTop="@dimen/dp_2"
+                        android:layout_marginRight="@dimen/dp_60"
+                        android:text="流速"
+                        android:textColor="#504C4C"
+                        android:textSize="18sp" />
 
 
-            </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
