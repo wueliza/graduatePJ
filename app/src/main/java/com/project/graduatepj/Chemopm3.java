@@ -126,10 +126,22 @@ public class Chemopm3 extends AppCompatActivity {
                     return;
                 }
                 else {
-                    medName = response.body().getmedicineName();
-                    mednameTv.setText(medName);
-                    medNum = response.body().getMedicineNum();
+                    MedDtails[] a = response.body().getMedDetails();
+
+                    String medname = "";
+                    String medNum = "";
+                    int n= 1;
+                    for(MedDtails as :a){
+                        medname += "血袋"+ n +": " +as.getName() + "\n";
+                        medNum += "劑量" + n + ": " + as.getCheckNum() + "\n";
+                        n++;
+                    }
+                    mednameTv.setText(medname);
                     medsumTv.setText(medNum);
+//                    medName = response.body().getmedicineName();
+//                    mednameTv.setText(medName);
+//                    medNum = response.body().getMedicineNum();
+//                    medsumTv.setText(medNum);
                 }
             }
             @Override
