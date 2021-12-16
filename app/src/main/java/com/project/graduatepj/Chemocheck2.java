@@ -48,8 +48,8 @@ public class Chemocheck2 extends AppCompatActivity {
         check = scan_result.getString("chemocheck_id");
         String chemo = scan_result.getString("chemo_id");
 
-        staffTv.setText(staff);
-        checkTv.setText(check);
+//        staffTv.setText(staff);
+//        checkTv.setText(check);
         chemoTv.setText(chemo);
 
         //api連接
@@ -60,8 +60,7 @@ public class Chemocheck2 extends AppCompatActivity {
         resTfulApi = retrofit.create(RESTfulApi.class);
 
         Get_med(retrofit , chemo);
-
-
+        Get_staff(retrofit , staff);
 
         sentbt = (Button)findViewById(R.id.sendbt);
         sentbt.setOnClickListener(new View.OnClickListener() {
@@ -100,7 +99,6 @@ public class Chemocheck2 extends AppCompatActivity {
                     name = response.body().getName();
                     gender = response.body().getSex();
                     bed = response.body().getBedNum();
-                    BSA = response.body().getName();
                     height = response.body().getHeight();
                     weight = response.body().getWeight();
                     age = response.body().getAge();
@@ -108,10 +106,25 @@ public class Chemocheck2 extends AppCompatActivity {
                     pa_name.setText(name);
                     pa_gender.setText(gender);
                     pa_bed.setText(bed);
-                    pa_bsa.setText(BSA);
+
                     pa_height.setText(height);
                     pa_weight.setText(weight);
                     pa_age.setText(age);
+                    Double h = Double.parseDouble(height);
+                    Double w = Double.parseDouble(weight);
+                    Double ibw = (Math.pow(h/100 , 2) * 22);
+                    Double abw , b;
+                    if(w > ibw){
+                        abw = ibw + 0.25 * (w - ibw);
+                        b = Math.pow(h * abw /3600 , 0.5);
+                        b = Math.round(b*100.0)/100.0;
+                        BSA = b.toString();
+                    }
+                    else{
+                        b = Math.pow(h * w /3600 , 1/2);
+                        BSA = b.toString();
+                    }
+                    pa_bsa.setText(BSA);
                 }
             }
 

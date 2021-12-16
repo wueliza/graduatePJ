@@ -71,7 +71,7 @@ public class Chemogiveinfo extends AppCompatActivity {
                     nextbt.setEnabled(false);
                 }
                 else if(count == 2){
-                    bundle.putString("givestaff_id", hint3.getText().toString());
+                    bundle.putString("givestaff_id", hint2.getText().toString());
                     intent.putExtras(bundle);
                     hint1.setText("請掃描確認員編號");
                     hint3.setText(" ");
@@ -80,7 +80,7 @@ public class Chemogiveinfo extends AppCompatActivity {
                     nextbt.setEnabled(false);
                 }
                 else if (count == 3){
-                    bundle.putString("givecheck_id", hint3.getText().toString());
+                    bundle.putString("givecheck_id", hint2.getText().toString());
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }
