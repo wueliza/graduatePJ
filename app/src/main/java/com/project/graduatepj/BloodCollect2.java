@@ -61,7 +61,7 @@ public class BloodCollect2 extends AppCompatActivity {
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                post_checkoperation(tv1.getText().toString(), tv2.getText().toString(),tv3.getText().toString(), tv4.getText().toString());
+                post_checkoperation(patientNumber1, sampleNumber,collectorNumber,recheckNumber);
                 Intent intent = new Intent(BloodCollect2.this, examine_homePage.class);
                 startActivity(intent);
             }
