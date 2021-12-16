@@ -71,7 +71,7 @@ public class Transfer_sumActivity extends AppCompatActivity {
             public void onClick(View v) {
                 for(int i = 1 ; i <= bloodbag.size();i++)
                     post_transop(bloodbag.get(i-1).toString(),getname,getbloodtype,getbednum,paitent_Num.getText().toString(),checkman.getText().toString(),confirmman.getText().toString());
-                Intent intent = new Intent(Transfer_sumActivity.this,PagerActivity.class);
+                Intent intent = new Intent(Transfer_sumActivity.this,blood_homeActivity.class);
                 startActivity(intent);
             }
         });

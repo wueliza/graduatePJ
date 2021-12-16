@@ -297,7 +297,7 @@
                 android:layout_height="@dimen/dp_55"
                 android:layout_gravity="bottom"
                 android:background="@drawable/nextbutton_general"
-                android:text="到TPR"
+                android:text="傳送"
                 android:textSize="18dp" />
         </LinearLayout>
     </LinearLayout>
