@@ -275,6 +275,7 @@ public class CheckIn extends AppCompatActivity {
 
                     if(!ORA4.contains(id)){
                         show.setText("此號碼不在病歷號裡面");
+
                         bt.setEnabled(false);
                     }
                     else {
