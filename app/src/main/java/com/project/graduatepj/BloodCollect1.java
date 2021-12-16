@@ -265,7 +265,7 @@ public class BloodCollect1 extends AppCompatActivity {
                     String emid = response.body().getName();
                     show.setText(emid);
                     bt.setEnabled(true);
-                    if(count == 2){
+                    if(count == 1){
                         bundle.putString("collectorNumberCheck", id);
                     }
                     else{
