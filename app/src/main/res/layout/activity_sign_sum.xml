@@ -87,8 +87,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="8dp"
-                android:layout_marginRight="90dp"
-                android:layout_weight="1"
+                android:layout_marginRight="20dp"
+                android:layout_weight="2"
                 android:background="@drawable/check_background"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -117,8 +117,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="8dp"
-                android:layout_marginRight="90dp"
-                android:layout_weight="1"
+                android:layout_marginRight="20dp"
+                android:layout_weight="2"
                 android:background="@drawable/check_background"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -147,8 +147,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="4dp"
-                android:layout_marginRight="90dp"
-                android:layout_weight="1"
+                android:layout_marginRight="20dp"
+                android:layout_weight="2"
                 android:background="@drawable/check_background"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -177,8 +177,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="8dp"
-                android:layout_marginRight="90dp"
-                android:layout_weight="1"
+                android:layout_marginRight="20dp"
+                android:layout_weight="2"
                 android:background="@drawable/check_background"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -209,7 +209,7 @@
             android:layout_marginBottom="10dp">
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="應到血袋數量 :"
                 android:layout_marginTop="4dp"
@@ -224,10 +224,10 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:background="@drawable/check_background"
-                android:layout_marginRight="90dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="12"
                 android:layout_marginTop="4dp"
                 android:textSize="18sp"
-                android:layout_weight="1"
                 android:textColor="@color/black"
                 />
         </LinearLayout>
@@ -236,11 +236,13 @@
             android:layout_width="match_parent"
             android:layout_height="150dp">
             <TextView
+                android:id="@+id/hint"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:textSize="18sp"
                 android:layout_marginLeft="4dp"
+                android:textColor="#ff0000"
                 />
         </LinearLayout>
     </LinearLayout>
