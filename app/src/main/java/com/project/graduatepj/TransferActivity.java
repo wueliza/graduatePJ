@@ -26,6 +26,7 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,7 +41,7 @@ public class TransferActivity extends AppCompatActivity {
     private RESTfulApi resTfulApi;
     TextView textView , step;
     int num;
-
+    ArrayList<String> bloodbag = new ArrayList<>();
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
     Bundle bundle = new Bundle();
@@ -137,8 +138,8 @@ public class TransferActivity extends AppCompatActivity {
                         step.setText("請掃確認人員！");
                         break;
                     case 3:
-                        if (num != 0) {
-                            if(num > 0)
+                        if (num > 0) {
+                            if(num > 1)
                                 count--;
                             num--;
                             tv.setText("輸血作業-掃描血袋");
@@ -228,7 +229,7 @@ public class TransferActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<Patient_Api> patient, Throwable t) {
-                    show.setText(t.getMessage());
+                    show.setText("請掃描條碼");
                 }
             });
         }
@@ -236,20 +237,21 @@ public class TransferActivity extends AppCompatActivity {
             blood.enqueue(new Callback<Bloodbank_Api>() {
                 @Override
                 public void onResponse(Call<Bloodbank_Api> patient, Response<Bloodbank_Api> response) {
-                    ArrayList<String> bloodbag = new ArrayList<String>();
+
                     if (response.body()==null) {
                         step.setText("此id不存在，請重新血袋號碼！");
                         return ;
                     }
                     else{
-                        if(num >= 0)
-                            if(bloodbag.indexOf(id) == -1) {
+                        if(num >= 0) {
+                            if (bloodbag.indexOf(id) == -1) {
+                                step.setText("掃描成功，請按下一步"+bloodbag.indexOf(id));
                                 bloodbag.add(id);
                                 show.setText(id);
-                                step.setText("掃描成功，請按下一步");
                             }
                             else
                                 step.setText("已掃過此血袋，請重新血袋號碼！");
+                        }
                         if(num == 0)
                             bundle.putStringArrayList("bloodbag", bloodbag);
                     }
@@ -257,7 +259,7 @@ public class TransferActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<Bloodbank_Api> patient, Throwable t) {
-                    show.setText(t.getMessage());
+                    show.setText("請掃描條碼");
                 }
             });
         }
@@ -314,23 +316,31 @@ public class TransferActivity extends AppCompatActivity {
     }
 
     private void Get_bloodnum(String id) {
-        Call<TransOperation_Api> patient = resTfulApi.get_transoperationquery(id);
+        Call<List<TransOperation_Api>> patient = resTfulApi.get_transoperationquery(id);
 
-        patient.enqueue(new Callback<TransOperation_Api>() {
+        patient.enqueue(new Callback<List<TransOperation_Api>>() {
             @Override
-            public void onResponse(Call<TransOperation_Api> patient, Response<TransOperation_Api> response) {
+            public void onResponse(Call<List<TransOperation_Api>> patient, Response<List<TransOperation_Api>> response) {
                 if (response.body()==null) {
                     step.setText("此id不存在，請重新掃描病歷號！");
                     return ;
                 }
-                String bloodnum = response.body().getBloodBagAmount();
+                String bloodnum = "";
+                String rqno = "";
+                List<TransOperation_Api> Trans = response.body();
+                for(TransOperation_Api transOperation_api : Trans){
+                    bloodnum += transOperation_api.getBloodBagAmount();
+                    rqno +=transOperation_api.getRqno();
+                }
                 num = Integer.parseInt(bloodnum);
+                //show.append(" " + num);
                 bundle.putString("blood_num", bloodnum);
+                bundle.putString("rqno",rqno);
             }
 
             @Override
-            public void onFailure(Call<TransOperation_Api> patient, Throwable t) {
-                show.setText(t.getMessage());
+            public void onFailure(Call<List<TransOperation_Api>> patient, Throwable t) {
+                show.setText("沒璉上URL");
             }
         });
     }

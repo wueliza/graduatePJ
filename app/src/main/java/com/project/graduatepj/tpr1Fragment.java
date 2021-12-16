@@ -102,8 +102,6 @@ public class tpr1Fragment extends Fragment {
         R1 = view.findViewById(R.id.R);
         BP1 = view.findViewById(R.id.BP1);
         BP2 = view.findViewById(R.id.BP2);
-        BP1 = view.findViewById(R.id.patient);
-        BP2 = view.findViewById(R.id.BP2);
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日HH:mm:ss"); //自動抓時間
         Date curDate = new Date(System.currentTimeMillis()) ;
         String str = formatter.format(curDate);

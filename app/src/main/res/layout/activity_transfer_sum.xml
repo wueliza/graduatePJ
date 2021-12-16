@@ -38,12 +38,13 @@
                 android:layout_marginTop="@dimen/dp_4"
                 android:layout_marginLeft="@dimen/dp_12"
                 android:layout_weight="1"
-                android:text="血袋號碼 :"
+                android:text="領血單號 :"
                 android:textColor="#504C4C"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/rqno"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/dp_6"

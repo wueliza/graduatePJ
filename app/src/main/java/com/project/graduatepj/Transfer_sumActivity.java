@@ -23,7 +23,7 @@ public class Transfer_sumActivity extends AppCompatActivity {
     private Button bt2;
     private RESTfulApi resTfulApi;
     String getname,getage,getbednum,getbloodtype;
-    TextView confirmman,checkman,paitent_Num,paitent_name,bloodtype,age,bednum,haveblood;
+    TextView confirmman,checkman,paitent_Num,paitent_name,bloodtype,age,bednum,haveblood,rqno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,17 +41,20 @@ public class Transfer_sumActivity extends AppCompatActivity {
         age = findViewById(R.id.age);
         bednum = findViewById(R.id.bednum);
         haveblood = findViewById(R.id.haveblood);
+        rqno = findViewById(R.id.rqno);
 
         String confirm = bundle.getString("confirm");
         String check = bundle.getString("check");
         String paitent_num = bundle.getString("patient_num");
-        ArrayList bloodbag = bundle.getStringArrayList("bloodbag");
+        ArrayList bloodbag = (ArrayList) bundle.getStringArrayList("bloodbag");
+        String trans = bundle.getString("rqno");
 
         confirmman.setText(confirm);
         checkman.setText(check);
         paitent_Num.setText(paitent_num);
+        rqno.setText(trans);
         for(int i = 1 ; i <= bloodbag.size();i++){
-            haveblood.append("血袋號碼" + i + ": " + bloodbag.get(i-1));
+            haveblood.append("血袋號碼" + i + ": " + bloodbag.get(i-1)+"\n");
         }
 
         Retrofit retrofit = new Retrofit.Builder() //api連接

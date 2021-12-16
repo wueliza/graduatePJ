@@ -46,7 +46,7 @@ public interface RESTfulApi {
     Call<TransOperation_Api> get_transoperation(@Path("rqno")String rqno);
 
     @GET("transoperation")
-    Call<TransOperation_Api> get_transoperationquery(@Query("qrChart") String qrChart);
+    Call<List<TransOperation_Api>> get_transoperationquery(@Query("qrChart") String qrChart);
 
     @POST("BloodBagSignRecord")
     Call<BloodBagSignRecord> post_BloodBagSignRecord(@Body BloodBagSignRecord bloodBagSignRecord);
