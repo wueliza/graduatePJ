@@ -51,10 +51,6 @@ public class Chemopm3 extends AppCompatActivity {
         checkTv.setText(check);
         chemoTv.setText(chemo);
 
-<<<<<<< HEAD
-=======
-        //api連接
->>>>>>> 9d5260b17228f9c9c37424c62ccb074577a287e9
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://140.136.151.75:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -72,7 +68,7 @@ public class Chemopm3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(check_re == 1){
-                    medsign(staff,check,chemo,medamount.toString(),medName);
+                    medsign(staff,check,chemo,medamount.toString(),medNum);
                     Intent nintent = new Intent();
                     nintent.setClass(Chemopm3.this , Chemopm.class);
                     startActivity(nintent);
@@ -150,10 +146,7 @@ public class Chemopm3 extends AppCompatActivity {
                     }
                     mednameTv.setText(medNum);
                     medsumTv.setText(medName);
-//                    medName = response.body().getmedicineName();
-//                    mednameTv.setText(medName);
-//                    medNum = response.body().getMedicineNum();
-//                    medsumTv.setText(medNum);
+
                 }
             }
             @Override
