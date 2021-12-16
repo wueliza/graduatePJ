@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -22,8 +23,9 @@ public class Chemopm3 extends AppCompatActivity {
     private TextView staffTv , checkTv , chemoTv , mednameTv , medsumTv , hint;
     private RadioButton y , n;
     int check_re = 0;
+    Integer medamount = 0;
     private RESTfulApi resTfulApi;
-    String medName , medNum , staff , check , chemo;
+    String medName , medNum , staff , check , chemo,amount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +51,12 @@ public class Chemopm3 extends AppCompatActivity {
         checkTv.setText(check);
         chemoTv.setText(chemo);
 
-        Retrofit retrofit = new Retrofit.Builder() //api連接
+        Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://140.136.151.75:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         resTfulApi = retrofit.create(RESTfulApi.class);
+
         Get_staff(retrofit , staff);
         Get_med(retrofit , chemo);
 
@@ -65,7 +68,7 @@ public class Chemopm3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(check_re == 1){
-                    post_med_sign(staff,check,chemo,medName,medNum);
+                    medsign(staff,check,chemo,medamount.toString(),medName);
                     Intent nintent = new Intent();
                     nintent.setClass(Chemopm3.this , Chemopm.class);
                     startActivity(nintent);
@@ -100,20 +103,24 @@ public class Chemopm3 extends AppCompatActivity {
         }
     }
 
-    private void post_med_sign(String emid, String transId, String tubg, String medAmount, String name){
+    private void medsign(String emid,String transId,String tubg,String medAmount,String name){
+
         MedSignRecord medSignRecord = new MedSignRecord(emid,transId,tubg,medAmount,name);
         Call<MedSignRecord> call = resTfulApi.post_MedSignRecord(medSignRecord);
 
         call.enqueue(new Callback<MedSignRecord>() {
             @Override
             public void onResponse(Call<MedSignRecord> call, Response<MedSignRecord> response) {
+                String code = "";
+                code += response.code();
+                Log.i("code:",code);
             }
 
             @Override
             public void onFailure(Call<MedSignRecord> call, Throwable t) {
+                //text.setText(t.getMessage());
             }
         });
-
     }
 
     public void Get_med(Retrofit retrofit, String id) {
@@ -123,7 +130,6 @@ public class Chemopm3 extends AppCompatActivity {
             public void onResponse(Call<Medicine_Api> call, Response<Medicine_Api> response) {
                 if (response.body()==null) {
                     mednameTv.setText("此id不存在，請重新掃描成品編號！");
-                    medsumTv.setText("此id不存在，請重新掃描成品編號！");
                     return;
                 }
                 else {
@@ -133,9 +139,10 @@ public class Chemopm3 extends AppCompatActivity {
                     medNum = "";
                     int n= 1;
                     for(MedDtails as :a){
-                        medName += "血袋"+ n +": " +as.getName() + "\n";
-                        medNum += "劑量" + n + ": " + as.getCheckNum() + "\n";
+                        medName += "藥品"+ n +": " +as.getName() + "\n";
+                        medNum += "劑量" + n + ": " + as.getDose() + "\n";
                         n++;
+                        medamount++;
                     }
                     mednameTv.setText(medNum);
                     medsumTv.setText(medName);
