@@ -68,7 +68,7 @@ public class Chemopm3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(check_re == 1){
-                    medsign(staff,check,chemo,medamount.toString(),medNum);
+                    medsign(staff,check,chemo,medamount.toString(),medName);
                     Intent nintent = new Intent();
                     nintent.setClass(Chemopm3.this , Chemopm.class);
                     startActivity(nintent);
