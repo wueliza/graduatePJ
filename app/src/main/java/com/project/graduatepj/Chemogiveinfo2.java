@@ -20,7 +20,7 @@ public class Chemogiveinfo2 extends AppCompatActivity {
     private TextView pa_id ,pa_name , pa_gender , pa_bed , pa_bsa ,pa_height , pa_weight , pa_age;
     private TextView staffTv , checkTv , chemoTv , mname , mdose , mfre;
     private RESTfulApi resTfulApi;
-    String name ,gender,bed,BSA ,height,weight , age;
+    String name ,gender,bed,BSA ,height,weight , age , staff , check;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,14 +44,15 @@ public class Chemogiveinfo2 extends AppCompatActivity {
 
         Bundle scan_result = intent.getExtras();
         String patient = scan_result.getString("givepatient_id");
-        String staff = scan_result.getString("givestaff_id");
-        String check = scan_result.getString("givecheck_id");
+        staff = scan_result.getString("givestaff_id");
+        check = scan_result.getString("givecheck_id");
         String chemo = scan_result.getString("givechemo_id");
 
         pa_id.setText(patient);
-        staffTv.setText(staff);
-        checkTv.setText(check);
+//        staffTv.setText(staff);
+//        checkTv.setText(check);
         chemoTv.setText(chemo);
+
         sendbt = (Button)findViewById(R.id.sendbt);
         sendbt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +79,7 @@ public class Chemogiveinfo2 extends AppCompatActivity {
                 .build();
         resTfulApi = retrofit.create(RESTfulApi.class);
         Get_patient(retrofit, patient);
+        Get_staff(retrofit);
         Get_med(retrofit , chemo);
 
     }
@@ -104,16 +106,72 @@ public class Chemogiveinfo2 extends AppCompatActivity {
                     pa_name.setText(name);
                     pa_gender.setText(gender);
                     pa_bed.setText(bed);
-                    pa_bsa.setText(BSA);
+
                     pa_height.setText(height);
                     pa_weight.setText(weight);
                     pa_age.setText(age);
+                    Double h = Double.parseDouble(height);
+                    Double w = Double.parseDouble(weight);
+                    Double ibw = (Math.pow(h/100 , 2) * 22);
+                    Double abw , b;
+                    if(w > ibw){
+                        abw = ibw + 0.25 * (w - ibw);
+                        b = Math.pow(h * abw /3600 , 0.5);
+                        b = Math.round(b*100.0)/100.0;
+                        BSA = b.toString();
+                    }
+                    else{
+                        b = Math.pow(h * w /3600 , 1/2);
+                        BSA = b.toString();
+                    }
+                    pa_bsa.setText(BSA);
                 }
             }
 
             @Override
             public void onFailure(Call<Patient_Api> call, Throwable t) {
                 pa_id.setText("錯誤");
+            }
+        });
+    }
+    public void Get_staff(Retrofit retrofit) {
+        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
+        Call<Staff_Api> call = resTfulApi.get_staff(staff); //A00010
+        call.enqueue(new Callback<Staff_Api>() {
+            @Override
+            public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
+                if (response.body()==null) {
+                    staffTv.setText("此id不存在，請重新掃描員工編號！");
+                    return;
+                }
+                else {
+                    String name = response.body().getName();
+                    staffTv.setText(name);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Staff_Api> call, Throwable t) {
+                staffTv.setText("錯誤！");
+            }
+        });
+        Call<Staff_Api> call2 = resTfulApi.get_staff(check); //A00010
+        call2.enqueue(new Callback<Staff_Api>() {
+            @Override
+            public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
+                if (response.body()==null) {
+                    checkTv.setText("此id不存在，請重新掃描員工編號！");
+                    return;
+                }
+                else {
+                    String name = response.body().getName();
+                    checkTv.setText(name);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Staff_Api> call, Throwable t) {
+                checkTv.setText("錯誤！");
             }
         });
     }

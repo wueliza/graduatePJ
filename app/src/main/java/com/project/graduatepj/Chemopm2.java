@@ -56,7 +56,7 @@ public class Chemopm2 extends AppCompatActivity {
             public void onClick(View v) {
                 if(count == 0){
                     Intent uintent = new Intent();
-                    uintent.setClass(Chemopm2.this , gotofunction.class);
+                    uintent.setClass(Chemopm2.this , Chemopm.class);
                     startActivity(uintent);
                     nextbt.setEnabled(false);
                 }

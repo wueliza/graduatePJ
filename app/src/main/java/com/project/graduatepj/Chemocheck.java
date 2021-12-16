@@ -89,7 +89,7 @@ public class Chemocheck extends AppCompatActivity {
             public void onClick(View v) {
                 if(count == 0){
                     Intent uintent = new Intent();
-                    uintent.setClass(Chemocheck.this , gotofunction.class);
+                    uintent.setClass(Chemocheck.this , Chemopm.class);
                     startActivity(uintent);
                 }
                 else if(count == 1){

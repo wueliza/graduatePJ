@@ -48,7 +48,7 @@ public class Chemogiveinfo extends AppCompatActivity {
         hint1 = findViewById(R.id.ghint1);
         hint2 = findViewById(R.id.ghint2);
         hint3 = findViewById(R.id.ghint3);
-        hint1.setText("請掃描病歷號");
+        hint1.setText("請掃描手圈病歷號");
         intent.setClass(Chemogiveinfo.this , Chemogiveinfo2.class);
         nextbt.setEnabled(false);
         nextbt.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +71,7 @@ public class Chemogiveinfo extends AppCompatActivity {
                     nextbt.setEnabled(false);
                 }
                 else if(count == 2){
-                    bundle.putString("givestaff_id", hint3.getText().toString());
+                    bundle.putString("givestaff_id", hint2.getText().toString());
                     intent.putExtras(bundle);
                     hint1.setText("請掃描確認員編號");
                     hint3.setText(" ");
@@ -80,7 +80,7 @@ public class Chemogiveinfo extends AppCompatActivity {
                     nextbt.setEnabled(false);
                 }
                 else if (count == 3){
-                    bundle.putString("givecheck_id", hint3.getText().toString());
+                    bundle.putString("givecheck_id", hint2.getText().toString());
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }
@@ -92,11 +92,11 @@ public class Chemogiveinfo extends AppCompatActivity {
             public void onClick(View v) {
                 if(count == 0){
                     Intent uintent = new Intent();
-                    uintent.setClass(Chemogiveinfo.this , gotofunction.class);
+                    uintent.setClass(Chemogiveinfo.this , Chemopm.class);
                     startActivity(uintent);
                 }
                 else if(count == 1){
-                    hint1.setText("請掃描病歷號");
+                    hint1.setText("請掃描手圈病歷號");
                     count = 0;
                     nextbt.setEnabled(false);
                 }

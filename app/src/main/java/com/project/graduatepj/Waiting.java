@@ -91,14 +91,14 @@ public class Waiting extends AppCompatActivity {
                 switch (count) {
                     case 1:
                         hint.setText("請掃描手圈病歷號");
-                        tv.setText("手圈病歷號");
+//                        tv.setText("手圈病歷號");
                         tv1.setText("手圈病歷號");
                         tv2.setText("號碼");
                         break;
 
                     case 2:
                         hint.setText("請掃描確認員號碼");
-                        tv.setText("確認員號碼");
+//                        tv.setText("確認員號碼");
                         tv1.setText("確認員號碼");
                         tv2.setText("號碼");
                         break;
@@ -112,7 +112,7 @@ public class Waiting extends AppCompatActivity {
 
                     default:
                         hint.setText("請掃描病歷號");
-                        tv.setText("病歷號");
+//                        tv.setText("病歷號");
                         tv1.setText("病歷號");
                         tv2.setText("號碼");
                         break;
@@ -129,14 +129,14 @@ public class Waiting extends AppCompatActivity {
 
                     case 1:
                         hint.setText("請掃描手圈病歷號");
-                        tv.setText("手圈病歷號");
+//                        tv.setText("手圈病歷號");
                         tv1.setHint("手圈病歷號");
                         tv2.setHint("號碼");
                         break;
 
                     case 2:
                         hint.setText("請掃描檢驗員");
-                        tv.setText("檢驗員");
+//                        tv.setText("檢驗員");
                         tv1.setHint("檢驗員");
                         tv2.setHint("號碼");
                         break;
@@ -147,7 +147,7 @@ public class Waiting extends AppCompatActivity {
 
                     default:
                         hint.setText("請掃描病歷號");
-                        tv.setText("病歷號");
+//                        tv.setText("病歷號");
                         tv1.setHint("病歷號");
                         tv2.setHint("號碼");
 
@@ -233,10 +233,10 @@ public class Waiting extends AppCompatActivity {
                         bt.setEnabled(false);
                         return;
                     }
-//                    String ora4Chart = response.body().getora4Chart();
+
                     Patients[] a = response.body().getPatients();
 
-                    for(Patients as :a){
+                    for (Patients as : a) {
                         ORA4.add(as.getQrChart());
                     }
                     show.setText("掃描成功 請按下一步");
@@ -262,14 +262,20 @@ public class Waiting extends AppCompatActivity {
                         bt.setEnabled(false);
                         return;
                     }
-                    String name = response.body().getName();
-                    String birth = response.body().getBirthDate();
-                    show.setText(name);
-                    bt.setEnabled(true);
-                    bundle.putString("paitentNumbercheck", id);
-                    bundle.putString("NameBox", show.getText().toString());
-                    bundle.putString("birth", birth);
 
+                    if (!ORA4.contains(id)) {
+                        show.setText("此號碼不在病歷號裡面");
+
+                        bt.setEnabled(false);
+                    } else {
+                        String name = response.body().getName();
+                        String birth = response.body().getBirthDate();
+                        show.setText(name);
+                        bt.setEnabled(true);
+                        bundle.putString("paitentNumbercheck", id);
+                        bundle.putString("NameBox", show.getText().toString());
+                        bundle.putString("birth", birth);
+                    }
 
                 }
 
