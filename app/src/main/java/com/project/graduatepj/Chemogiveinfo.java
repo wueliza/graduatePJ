@@ -92,7 +92,7 @@ public class Chemogiveinfo extends AppCompatActivity {
             public void onClick(View v) {
                 if(count == 0){
                     Intent uintent = new Intent();
-                    uintent.setClass(Chemogiveinfo.this , gotofunction.class);
+                    uintent.setClass(Chemogiveinfo.this , Chemopm.class);
                     startActivity(uintent);
                 }
                 else if(count == 1){
