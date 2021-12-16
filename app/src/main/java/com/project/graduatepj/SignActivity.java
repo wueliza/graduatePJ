@@ -223,7 +223,8 @@ public class SignActivity extends AppCompatActivity {
             step.setText("");
             show.setText(id);
             bundle.putString("transfer", show.getText().toString());
-            if(show.getTextSize() == 10){
+            String tr = show.getText().toString();
+            if(tr.length() == 10){
                 step.setText("掃描成功，請按下一步");
                 bt.setEnabled(true);
             }
