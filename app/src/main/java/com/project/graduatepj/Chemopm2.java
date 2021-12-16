@@ -77,7 +77,7 @@ public class Chemopm2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(count == 0){
-                    bundle.putString("chemo_id", hint3.getText().toString());
+                    bundle.putString("chemo_id", hint2.getText().toString());
                     intent.putExtras(bundle);
                     hint1.setText("請掃描護理人員編號");
                     hint3.setText(" ");
@@ -85,7 +85,7 @@ public class Chemopm2 extends AppCompatActivity {
                     nextbt.setEnabled(false);
                 }
                 else if(count == 1){
-                    bundle.putString("staff_id", hint3.getText().toString());
+                    bundle.putString("staff_id", hint2.getText().toString());
                     intent.putExtras(bundle);
                     hint1.setText("請掃描傳送人員編號");
                     hint3.setText(" ");
