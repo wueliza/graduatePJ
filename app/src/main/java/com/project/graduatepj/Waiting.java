@@ -233,10 +233,10 @@ public class Waiting extends AppCompatActivity {
                         bt.setEnabled(false);
                         return;
                     }
-//                    String ora4Chart = response.body().getora4Chart();
+
                     Patients[] a = response.body().getPatients();
 
-                    for(Patients as :a){
+                    for (Patients as : a) {
                         ORA4.add(as.getQrChart());
                     }
                     show.setText("掃描成功 請按下一步");
@@ -262,14 +262,20 @@ public class Waiting extends AppCompatActivity {
                         bt.setEnabled(false);
                         return;
                     }
-                    String name = response.body().getName();
-                    String birth = response.body().getBirthDate();
-                    show.setText(name);
-                    bt.setEnabled(true);
-                    bundle.putString("paitentNumbercheck", id);
-                    bundle.putString("NameBox", show.getText().toString());
-                    bundle.putString("birth", birth);
 
+                    if (!ORA4.contains(id)) {
+                        show.setText("此號碼不在病歷號裡面");
+
+                        bt.setEnabled(false);
+                    } else {
+                        String name = response.body().getName();
+                        String birth = response.body().getBirthDate();
+                        show.setText(name);
+                        bt.setEnabled(true);
+                        bundle.putString("paitentNumbercheck", id);
+                        bundle.putString("NameBox", show.getText().toString());
+                        bundle.putString("birth", birth);
+                    }
 
                 }
 

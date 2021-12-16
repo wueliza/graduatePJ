@@ -243,8 +243,8 @@ public class CheckIn extends AppCompatActivity {
                         show.setText("掃描成功 請按下一步");
 
                         Patients[] a = response.body().getPatients();
-                        if(count == 0){
-                            for(Patients as :a){
+                        if (count == 0) {
+                            for (Patients as : a) {
                                 ORA4.add(as.getQrChart());
                             }
                         }
@@ -271,14 +271,14 @@ public class CheckIn extends AppCompatActivity {
                         show.setText("找不到這個id");
                         bt.setEnabled(false);
                         return;
+
                     }
 
-                    if(!ORA4.contains(id)){
+                    if (!ORA4.contains(id)) {
                         show.setText("此號碼不在病歷號裡面");
 
                         bt.setEnabled(false);
-                    }
-                    else {
+                    } else {
                         String name = response.body().getName();
                         String birth = response.body().getBirthDate();
                         show.setText(name);
