@@ -59,7 +59,7 @@ public class Chemocheck extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(count == 0){
-                    bundle.putString("chemo_id", hint3.getText().toString());
+                    bundle.putString("chemo_id", hint2.getText().toString());
                     intent.putExtras(bundle);
                     hint1.setText("請掃描核藥員編號");
                     hint3.setText(" ");
@@ -76,7 +76,7 @@ public class Chemocheck extends AppCompatActivity {
                     nextbt.setEnabled(false);
                 }
                 else if (count == 2){
-                    bundle.putString("chemocheck_id", hint3.getText().toString());
+                    bundle.putString("chemocheck_id", hint2.getText().toString());
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }
@@ -224,6 +224,7 @@ public class Chemocheck extends AppCompatActivity {
             }
         });
     }
+
 
     public void Get_Medicine(Retrofit retrofit, String id) {
         Call<Medicine_Api> call = resTfulApi.get_medicine(id); //A00010

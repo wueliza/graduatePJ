@@ -37,7 +37,7 @@ public class BloodCollect1 extends AppCompatActivity {
     Bundle bundle = new Bundle();
     private TextView show;
     SurfaceView surfaceView;
-    TextView textView;
+    TextView textView , hint;
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
     int count = 0;
@@ -141,7 +141,7 @@ public class BloodCollect1 extends AppCompatActivity {
         TextView tv = (TextView) findViewById(R.id.title);
         TextView tv1 = (TextView) findViewById(R.id.input);
         TextView tv2 = (TextView) findViewById(R.id.show);
-        TextView hint = (TextView) findViewById(R.id.hint);
+        hint = (TextView) findViewById(R.id.hint);
         bt = findViewById(R.id.nextbt);
         bt2 = findViewById(R.id.frontbt);
 
@@ -250,6 +250,7 @@ public class BloodCollect1 extends AppCompatActivity {
                     show.setText(name);
                     bt.setEnabled(true);
                     bundle.putString("patientNumber1Check", id);
+                    hint.setText("掃描完成，請按下一步！");
                     /*, show.getText().toString()*/
                 }
 
@@ -272,6 +273,7 @@ public class BloodCollect1 extends AppCompatActivity {
                     show.setText(bsnos);
                     bt.setEnabled(true);
                     bundle.putString("sampleNumberCheck", id);
+                    hint.setText("掃描完成，請按下一步！");
                 }
                 @Override
                 public void onFailure(Call<CheckOperation_Api> call, Throwable t) {
@@ -291,8 +293,14 @@ public class BloodCollect1 extends AppCompatActivity {
                     String emid = response.body().getName();
                     show.setText(emid);
                     bt.setEnabled(true);
-                    bundle.putString("collectorNumberCheck", id);
-                    bundle.putString("recheckNumberCheck", id);
+                    if(count == 3){
+                        bundle.putString("collectorNumberCheck", id);
+                    }
+                    else{
+                        bundle.putString("recheckNumberCheck", id);
+                    }
+
+                    hint.setText("掃描完成，請按下一步！");
 
                 }
                 @Override
