@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import retrofit2.Call;
@@ -18,8 +19,9 @@ public class Sign_sumActivity extends AppCompatActivity {
     private Button bt;
     private Button bt2;
     private RESTfulApi resTfulApi;
-
-    TextView nurse,transfer,bloodnum,bloodtype,transop;
+    private RadioButton y , n;
+    int check_re = 0;
+    TextView nurse,transfer,bloodnum,bloodtype,transop ,hint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,9 @@ public class Sign_sumActivity extends AppCompatActivity {
         bloodnum = findViewById(R.id.bloodnum);
         bloodtype = findViewById(R.id.bloodtype);
         transop = findViewById(R.id.transop);
+        y = findViewById(R.id.yes);
+        n = findViewById(R.id.no);
+        hint = findViewById(R.id.hint);
 
         String nurseman = bundle.getString("nurse");
         String transferman = bundle.getString("transfer");
@@ -55,12 +60,20 @@ public class Sign_sumActivity extends AppCompatActivity {
 
         Get_staff(retrofit,patients);
 
+        y.setOnClickListener(this::onRadioButtonClicked);
+        n.setOnClickListener(this::onRadioButtonClicked);
+
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                post_bloodbagsign(transop.getText().toString(),bloodtype.getText().toString(),nurse.getText().toString(),transfer.getText().toString(),bloodnum.getText().toString());
-                Intent intent = new Intent(Sign_sumActivity.this,blood_homeActivity.class);
-                startActivity(intent);
+                if(check_re == 1) {
+                    post_bloodbagsign(transop.getText().toString(), bloodtype.getText().toString(), nurse.getText().toString(), transfer.getText().toString(), bloodnum.getText().toString());
+                    Intent intent = new Intent(Sign_sumActivity.this, blood_homeActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    hint.setText("未完成簽收請勿上傳資料");
+                }
             }
         });
         bt2.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +84,20 @@ public class Sign_sumActivity extends AppCompatActivity {
             }
         });
     }
+    public void onRadioButtonClicked(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
 
+        switch(view.getId()) {
+            case R.id.yes:
+                if (checked)
+                    check_re = 1;
+                break;
+            case R.id.no:
+                if (checked)
+                    check_re = 0;
+                break;
+        }
+    }
     private void post_bloodbagsign(String rqno,String bloodType,String emid,String transId,String bloodAmount){
         BloodBagSignRecord bloodBagSignRecord = new BloodBagSignRecord(rqno,bloodType,emid,transId,bloodAmount);
         Call<BloodBagSignRecord> call = resTfulApi.post_BloodBagSignRecord(bloodBagSignRecord);

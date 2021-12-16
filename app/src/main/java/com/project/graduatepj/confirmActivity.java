@@ -161,6 +161,7 @@ public class confirmActivity extends AppCompatActivity {
                 }
             }
         });
+        bt.setEnabled(false);
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -202,6 +203,7 @@ public class confirmActivity extends AppCompatActivity {
                 public void onResponse(Call<TransOperation_Api> patient_apiCall1, Response<TransOperation_Api> response) {
                     if (response.body()==null) {
                         step.setText("此id不存在，請重新掃描領血單號！");
+                        bt.setEnabled(false);
                         return;
                     }
                     String patient = response.body().getQrChart();
@@ -209,6 +211,7 @@ public class confirmActivity extends AppCompatActivity {
                     step.setText("掃描成功，請按下一步");
                     show.setText(id);
                     bundle.putString("trans", id);
+                    bt.setEnabled(true);
                 }
                 @Override
                 public void onFailure(Call<TransOperation_Api> patient_apiCall1, Throwable t) {
@@ -233,6 +236,7 @@ public class confirmActivity extends AppCompatActivity {
                             default:
                                 step.setText("此id不存在，請重新掃描領血單號！");
                         }
+                        bt.setEnabled(false);
                         return;
                     }
                     String name = response.body().getName();
@@ -251,6 +255,7 @@ public class confirmActivity extends AppCompatActivity {
                             break;
                         default:
                     }
+                    bt.setEnabled(true);
                 }
 
                 @Override

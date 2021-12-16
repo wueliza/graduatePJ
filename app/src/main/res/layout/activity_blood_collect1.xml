@@ -47,11 +47,8 @@
                 android:layout_gravity="center"
                 android:background="@color/cardview_shadow_start_color"
                 android:gravity="center"
-
-
                 android:text=" 請掃描手圈病歷號 "
                 android:textColor="@color/white"
-                android:textColorHint="@color/white"
                 android:textSize="@dimen/dp_24" />
 
             <TextView

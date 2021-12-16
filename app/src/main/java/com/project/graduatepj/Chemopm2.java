@@ -182,6 +182,7 @@ public class Chemopm2 extends AppCompatActivity {
                     Get_staff(retrofit, editable.toString());
                 }
                 else if (count == 2) {
+                    hint1.setText("掃描成功，請按下一步");
                 }
                 //result.setText(editable);
             }

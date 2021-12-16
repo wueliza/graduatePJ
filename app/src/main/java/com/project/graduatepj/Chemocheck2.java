@@ -18,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Chemocheck2 extends AppCompatActivity {
     private Button sentbt , backbt;
     private TextView staffTv , checkTv , chemoTv , mednum, mname , mdose , mfre;
-    String medName , pid , name ,gender,bed,BSA ,height,weight , age;
+    String medName , pid , name ,gender,bed,BSA ,height,weight , age , check;
     private TextView pa_id ,pa_name , pa_gender , pa_bed , pa_bsa ,pa_height , pa_weight , pa_age;
     private RESTfulApi resTfulApi;
 
@@ -45,7 +45,7 @@ public class Chemocheck2 extends AppCompatActivity {
 
         Bundle scan_result = intent.getExtras();
         String staff = scan_result.getString("chemostaff_id");
-        String check = scan_result.getString("chemocheck_id");
+        check = scan_result.getString("chemocheck_id");
         String chemo = scan_result.getString("chemo_id");
 
         staffTv.setText(staff);
@@ -118,6 +118,47 @@ public class Chemocheck2 extends AppCompatActivity {
             @Override
             public void onFailure(Call<Patient_Api> call, Throwable t) {
                 pa_id.setText("錯誤");
+            }
+        });
+    }
+    public void Get_staff(Retrofit retrofit, String id) {
+        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
+        Call<Staff_Api> call = resTfulApi.get_staff(id); //A00010
+        call.enqueue(new Callback<Staff_Api>() {
+            @Override
+            public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
+                if (response.body()==null) {
+                    staffTv.setText("此id不存在，請重新掃描員工編號！");
+                    return;
+                }
+                else {
+                    String name = response.body().getName();
+                    staffTv.setText(name);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Staff_Api> call, Throwable t) {
+                staffTv.setText("錯誤！");
+            }
+        });
+        Call<Staff_Api> call2 = resTfulApi.get_staff(check); //A00010
+        call2.enqueue(new Callback<Staff_Api>() {
+            @Override
+            public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
+                if (response.body()==null) {
+                    checkTv.setText("此id不存在，請重新掃描員工編號！");
+                    return;
+                }
+                else {
+                    String name = response.body().getName();
+                    checkTv.setText(name);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Staff_Api> call, Throwable t) {
+                checkTv.setText("錯誤！");
             }
         });
     }

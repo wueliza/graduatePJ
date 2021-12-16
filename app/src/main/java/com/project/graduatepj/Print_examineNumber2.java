@@ -41,12 +41,6 @@ public class Print_examineNumber2 extends AppCompatActivity {
             Button bt2 = (Button) findViewById(R.id.frontbt);
 
 
-            Retrofit retrofit = new Retrofit.Builder() //api連接
-                    .baseUrl("http://140.136.151.75:8080/api/")
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-            resTfulApi = retrofit.create(RESTfulApi.class);
-
 
             bt.setOnClickListener(v -> {
                 post_checkoperation(tv1.getText().toString(), tv2.getText().toString());

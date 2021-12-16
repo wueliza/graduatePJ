@@ -157,6 +157,7 @@ public class TransferActivity extends AppCompatActivity {
                 }
             }
         });
+        bt.setEnabled(false);
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -218,12 +219,14 @@ public class TransferActivity extends AppCompatActivity {
                 public void onResponse(Call<Patient_Api> patient, Response<Patient_Api> response) {
                     if (response.body()==null) {
                         step.setText("此id不存在，請重新掃描病歷號！");
+                        bt.setEnabled(false);
                         return ;
                     }
                     String name = response.body().getName();
                     show.setText(name);
                     step.setText("掃描成功，請按下一步");
                     bundle.putString("patient_num", id);
+                    bt.setEnabled(true);
                     Get_bloodnum(id);
                 }
 
@@ -240,6 +243,7 @@ public class TransferActivity extends AppCompatActivity {
 
                     if (response.body()==null) {
                         step.setText("此id不存在，請重新血袋號碼！");
+                        bt.setEnabled(false);
                         return ;
                     }
                     else{
@@ -254,6 +258,7 @@ public class TransferActivity extends AppCompatActivity {
                         }
                         if(num == 0)
                             bundle.putStringArrayList("bloodbag", bloodbag);
+                        bt.setEnabled(true);
                     }
                 }
 
@@ -283,6 +288,7 @@ public class TransferActivity extends AppCompatActivity {
                             default:
                                 bundle.putString("patient_num", show.getText().toString());
                         }
+                        bt.setEnabled(false);
                         return;
                     }
                     String name = response.body().getName();
@@ -305,6 +311,7 @@ public class TransferActivity extends AppCompatActivity {
                         default:
                             bundle.putString("patient_num", show.getText().toString());
                     }
+                    bt.setEnabled(true);
                 }
 
                 @Override

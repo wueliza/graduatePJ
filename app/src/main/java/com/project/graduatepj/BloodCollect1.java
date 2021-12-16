@@ -37,7 +37,7 @@ public class BloodCollect1 extends AppCompatActivity {
     Bundle bundle = new Bundle();
     private TextView show;
     SurfaceView surfaceView;
-    TextView textView;
+    TextView textView , hint;
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
     int count = 0;
@@ -141,7 +141,7 @@ public class BloodCollect1 extends AppCompatActivity {
         TextView tv = (TextView) findViewById(R.id.title);
         TextView tv1 = (TextView) findViewById(R.id.input);
         TextView tv2 = (TextView) findViewById(R.id.show);
-        TextView hint = (TextView) findViewById(R.id.hint);
+        hint = (TextView) findViewById(R.id.hint);
         bt = findViewById(R.id.nextbt);
         bt2 = findViewById(R.id.frontbt);
 
@@ -153,30 +153,24 @@ public class BloodCollect1 extends AppCompatActivity {
                 count++;
                 switch (count) {
                     case 1:
-                        hint.setText("請掃描檢體編號");
-                        tv.setText("檢體編號");
-                        tv1.setText("檢體編號");
-                        tv2.setText("號碼");
-                        break;
-                    case 2:
-                        hint.setText("請掃描採檢員編號");
-                        tv.setText("採檢員編號");
+                        show.setText("請掃描採檢員編號");
+//                        tv.setText("採檢員編號");
                         tv1.setText("採檢員編號");
                         tv2.setText("號碼");
                         break;
-                    case 3:
-                        hint.setText("請掃描確認員編號");
-                        tv.setText("確認員編號");
+                    case 2:
+                        show.setText("請掃描確認員編號");
+//                        tv.setText("確認員編號");
                         tv1.setText("確認員編號");
                         tv2.setText("號碼");
                         break;
-                    case 4:
+                    case 3:
                         Intent intent = new Intent(BloodCollect1.this, BloodCollect2.class);
                         intent.putExtras(bundle);
                         startActivity(intent);
                         break;
                     default:
-                        tv.setText("病歷號");
+//                        tv.setText("病歷號");
                         tv1.setText("病歷號");
                         tv2.setText("號碼");
                 }
@@ -190,20 +184,14 @@ public class BloodCollect1 extends AppCompatActivity {
                 count--;
                 switch (count) {
                     case 1:
-                        hint.setText("請掃描檢體編號");
-                        tv.setText("檢體編號");
-                        tv1.setText("檢體編號");
-                        tv2.setText("號碼");
-                        break;
-                    case 2:
-                        hint.setText("請掃描採檢員編號");
-                        tv.setText("採檢員編號");
+                        show.setText("請掃描採檢員編號");
+//                        tv.setText("採檢員編號");
                         tv1.setText("採檢員編號");
                         tv2.setText("號碼");
                         break;
-                    case 3:
-                        hint.setText("請掃描確認員編號");
-                        tv.setText("確認員編號");
+                    case 2:
+                        show.setText("請掃描確認員編號");
+//                        tv.setText("確認員編號");
                         tv1.setText("確認員編號");
                         tv2.setText("號碼");
                         break;
@@ -212,8 +200,8 @@ public class BloodCollect1 extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     default:
-                        hint.setText("請掃描手圈病歷號");
-                        tv.setText("病歷號");
+                        show.setText("請掃描手圈病歷號");
+//                        tv.setText("病歷號");
                         tv1.setText("病歷號");
                         tv2.setText("號碼");
                 }
@@ -247,10 +235,16 @@ public class BloodCollect1 extends AppCompatActivity {
                         return;
                     }
                     String name = response.body().getName();
+                    String bsnos = response.body().getBsnos();
                     show.setText(name);
                     bt.setEnabled(true);
                     bundle.putString("patientNumber1Check", id);
+                    bundle.putString("sampleNumberCheck", bsnos);
+
+                    hint.setText("掃描完成，請按下一步！");
                     /*, show.getText().toString()*/
+
+
                 }
 
                 @Override
@@ -259,27 +253,7 @@ public class BloodCollect1 extends AppCompatActivity {
                 }
             });
 
-        } else if (count == 1) {
-            checkOperation_apiCall .enqueue(new Callback<CheckOperation_Api>() {
-                @Override
-                public void onResponse(Call<CheckOperation_Api> checkOperation_apiCall, Response<CheckOperation_Api> response) {
-                    if (response.body() == null) {
-                        show.setText("找不到這個id");
-                        bt.setEnabled(false);
-                        return;
-                    }
-                    String bsnos = response.body().getBsnos();
-                    show.setText(bsnos);
-                    bt.setEnabled(true);
-                    bundle.putString("sampleNumberCheck", id);
-                }
-                @Override
-                public void onFailure(Call<CheckOperation_Api> call, Throwable t) {
-                    show.setText("請掃描條碼");
-                }
-            });
-
-        } else {
+        }  else {
             call.enqueue(new Callback<Staff_Api>() {
                 @Override
                 public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
@@ -291,8 +265,14 @@ public class BloodCollect1 extends AppCompatActivity {
                     String emid = response.body().getName();
                     show.setText(emid);
                     bt.setEnabled(true);
-                    bundle.putString("collectorNumberCheck", id);
-                    bundle.putString("recheckNumberCheck", id);
+                    if(count == 2){
+                        bundle.putString("collectorNumberCheck", id);
+                    }
+                    else{
+                        bundle.putString("recheckNumberCheck", id);
+                    }
+
+                    hint.setText("掃描完成，請按下一步！");
 
                 }
                 @Override

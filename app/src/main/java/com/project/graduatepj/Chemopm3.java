@@ -46,7 +46,7 @@ public class Chemopm3 extends AppCompatActivity {
         n = findViewById(R.id.no);
 
 //        staffTv.setText(staff);
-//        checkTv.setText(check);
+        checkTv.setText(check);
         chemoTv.setText(chemo);
 
         Retrofit retrofit = new Retrofit.Builder() //api連接
@@ -164,7 +164,7 @@ public class Chemopm3 extends AppCompatActivity {
                 else {
                     String name = response.body().getName();
                     staffTv.setText(name);
-                    Get_staff(retrofit , check);
+
                 }
             }
 
