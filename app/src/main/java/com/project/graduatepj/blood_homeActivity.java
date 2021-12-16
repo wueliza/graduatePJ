@@ -22,7 +22,7 @@ public class blood_homeActivity extends AppCompatActivity {
         bt = findViewById(R.id.bt);
         bt2 = findViewById(R.id.bt2);
         bt3 = findViewById(R.id.bt3);
-        bt4 = findViewById(R.id.bt4);
+//        bt4 = findViewById(R.id.bt4);
         bt5 = findViewById(R.id.home);
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,13 +45,13 @@ public class blood_homeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        bt4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(blood_homeActivity.this,TPRActivity.class);
-                startActivity(intent);
-            }
-        });
+//        bt4.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(blood_homeActivity.this,TPRActivity.class);
+//                startActivity(intent);
+//            }
+//        });
         bt5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

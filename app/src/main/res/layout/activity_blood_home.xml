@@ -48,15 +48,15 @@
         android:layout_gravity="center"
         android:textSize="23sp"/>
 
-    <Button
-        android:id="@+id/bt4"
-        android:text="輸血TPR"
-        android:layout_width="170dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="35dp"
-        android:background="@drawable/collectpagebutton"
-        android:layout_gravity="center"
-        android:textSize="23sp"/>
+<!--    <Button-->
+<!--        android:id="@+id/bt4"-->
+<!--        android:text="輸血TPR"-->
+<!--        android:layout_width="170dp"-->
+<!--        android:layout_height="80dp"-->
+<!--        android:layout_marginTop="35dp"-->
+<!--        android:background="@drawable/collectpagebutton"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:textSize="23sp"/>-->
 
     <LinearLayout
         android:layout_width="match_parent"
