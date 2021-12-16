@@ -31,7 +31,7 @@ public class Waiting2 extends AppCompatActivity {
         Bundle NameBox = this.getIntent().getExtras();
         Bundle birthday = this.getIntent().getExtras();
 
-        String patientNumber = paitentNumbercheck.getString("paitentNumbercheck");
+        String patientNumber = paitentNumbercheck.getString("ora4chart");
         String wistNumber = wistNumbercheck.getString("paitentNumbercheck");
         String ManCheckNumber = ManCheckBox.getString("ManCheckBox");
         String patientname = NameBox.getString("NameBox");
