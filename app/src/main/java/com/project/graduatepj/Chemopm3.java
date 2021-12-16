@@ -51,6 +51,10 @@ public class Chemopm3 extends AppCompatActivity {
         checkTv.setText(check);
         chemoTv.setText(chemo);
 
+<<<<<<< HEAD
+=======
+        //api連接
+>>>>>>> 9d5260b17228f9c9c37424c62ccb074577a287e9
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://140.136.151.75:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())

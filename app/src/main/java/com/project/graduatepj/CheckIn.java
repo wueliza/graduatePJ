@@ -274,11 +274,7 @@ public class CheckIn extends AppCompatActivity {
 
                     }
 
-                    if (!ORA4.contains(id)) {
-                        show.setText("此號碼不在病歷號裡面");
-
-                        bt.setEnabled(false);
-                    } else {
+                    if (ORA4.contains(id)) {
                         String name = response.body().getName();
                         String birth = response.body().getBirthDate();
                         show.setText(name);
@@ -286,6 +282,9 @@ public class CheckIn extends AppCompatActivity {
                         bundle.putString("paitentNumbercheck", id);
                         bundle.putString("NameBox", show.getText().toString());
                         bundle.putString("birth", birth);
+                    } else {
+                        show.setText("此號碼不在病歷號裡面");
+                        bt.setEnabled(false);
                     }
 
                 }
