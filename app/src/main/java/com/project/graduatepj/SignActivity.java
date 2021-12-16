@@ -160,6 +160,7 @@ public class SignActivity extends AppCompatActivity {
                 }
             }
         });
+        bt.setEnabled(false);
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -202,12 +203,14 @@ public class SignActivity extends AppCompatActivity {
                 public void onResponse(Call<Staff_Api> staff, Response<Staff_Api> response) {
                     if (response.body() == null) {
                         step.setText("此id不存在，請重新掃描護理人員編號！");
+                        bt.setEnabled(false);
                         return;
                     }
                     String name = response.body().getName();
                     show.setText(name);
                     bundle.putString("nurse", show.getText().toString());
                     step.setText("掃描成功，請按下一步");
+                    bt.setEnabled(true);
                 }
 
                 @Override
@@ -220,8 +223,13 @@ public class SignActivity extends AppCompatActivity {
             step.setText("");
             show.setText(id);
             bundle.putString("transfer", show.getText().toString());
-            if(show != null){
+            if(show.getTextSize() == 10){
                 step.setText("掃描成功，請按下一步");
+                bt.setEnabled(true);
+            }
+            else {
+                step.setText("掃描失敗，請重新掃描");
+                bt.setEnabled(false);
             }
         }
         else{
@@ -230,6 +238,7 @@ public class SignActivity extends AppCompatActivity {
                 public void onResponse(Call<TransOperation_Api> call, Response<TransOperation_Api> response) {
                     if (response.body()==null) {
                         step.setText("此id不存在，請重新掃描領血單號！");
+                        bt.setEnabled(false);
                         return;
                     }
                     step.setText("掃描成功，請按下一步");
@@ -239,6 +248,7 @@ public class SignActivity extends AppCompatActivity {
                     bundle.putString("patient",patient);
                     bundle.putString("transop",id);
                     bundle.putString("bloodnum", show.getText().toString());
+                    bt.setEnabled(true);
                 }
 
                 @Override
