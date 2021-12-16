@@ -43,7 +43,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/dp_12"
                     android:layout_marginRight="@dimen/dp_20"
-                    android:text="病歷號："
+                    android:text="手圈病歷號："
                     android:textColor="#504C4C"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -339,7 +339,7 @@
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_150"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_10">
 
                 <LinearLayout

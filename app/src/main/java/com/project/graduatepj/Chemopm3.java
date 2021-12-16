@@ -23,7 +23,7 @@ public class Chemopm3 extends AppCompatActivity {
     private RadioButton y , n;
     int check_re = 0;
     private RESTfulApi resTfulApi;
-    String medName , medNum;
+    String medName , medNum , staff , check , chemo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +31,9 @@ public class Chemopm3 extends AppCompatActivity {
         setContentView(R.layout.activity_chemopm3);
         Intent intent = this.getIntent();
         Bundle scan_result = intent.getExtras();
-        String staff = scan_result.getString("staff_id");
-        String check = scan_result.getString("check_id");
-        String chemo = scan_result.getString("chemo_id");
+        staff = scan_result.getString("staff_id");
+        check = scan_result.getString("check_id");
+        chemo = scan_result.getString("chemo_id");
         sendbt = (Button)findViewById(R.id.sendbt);
         upbt = findViewById(R.id.cpfrontbt);
         staffTv = findViewById(R.id.cpstaffTv);
@@ -45,8 +45,8 @@ public class Chemopm3 extends AppCompatActivity {
         y = findViewById(R.id.yes);
         n = findViewById(R.id.no);
 
-        staffTv.setText(staff);
-        checkTv.setText(check);
+//        staffTv.setText(staff);
+//        checkTv.setText(check);
         chemoTv.setText(chemo);
 
         Retrofit retrofit = new Retrofit.Builder() //api連接
@@ -54,6 +54,7 @@ public class Chemopm3 extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         resTfulApi = retrofit.create(RESTfulApi.class);
+        Get_staff(retrofit , staff);
         Get_med(retrofit , chemo);
 
         y.setOnClickListener(this::onRadioButtonClicked);
@@ -128,16 +129,16 @@ public class Chemopm3 extends AppCompatActivity {
                 else {
                     MedDtails[] a = response.body().getMedDetails();
 
-                    String medname = "";
-                    String medNum = "";
+                    medName = "";
+                    medNum = "";
                     int n= 1;
                     for(MedDtails as :a){
-                        medname += "血袋"+ n +": " +as.getName() + "\n";
+                        medName += "血袋"+ n +": " +as.getName() + "\n";
                         medNum += "劑量" + n + ": " + as.getCheckNum() + "\n";
                         n++;
                     }
                     mednameTv.setText(medNum);
-                    medsumTv.setText(medname);
+                    medsumTv.setText(medName);
 //                    medName = response.body().getmedicineName();
 //                    mednameTv.setText(medName);
 //                    medNum = response.body().getMedicineNum();
@@ -150,5 +151,27 @@ public class Chemopm3 extends AppCompatActivity {
             }
         });
     }
+    public void Get_staff(Retrofit retrofit, String id) {
+        RESTfulApi jsonPlaceHolderApi = retrofit.create(RESTfulApi.class);
+        Call<Staff_Api> call = resTfulApi.get_staff(id); //A00010
+        call.enqueue(new Callback<Staff_Api>() {
+            @Override
+            public void onResponse(Call<Staff_Api> call, Response<Staff_Api> response) {
+                if (response.body()==null) {
+                    staffTv.setText("此id不存在，請重新掃描員工編號！");
+                    return;
+                }
+                else {
+                    String name = response.body().getName();
+                    staffTv.setText(name);
+                    Get_staff(retrofit , check);
+                }
+            }
 
+            @Override
+            public void onFailure(Call<Staff_Api> call, Throwable t) {
+                staffTv.setText("請重新掃描員工編號！");
+            }
+        });
+    }
 }
