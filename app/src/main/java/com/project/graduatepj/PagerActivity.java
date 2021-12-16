@@ -27,23 +27,23 @@ public class PagerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pager);
 
-        bt = findViewById(R.id.nextbt);
-        bt2 = findViewById(R.id.frontbt);
-
-        bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PagerActivity.this,blood_homeActivity.class);
-                startActivity(intent);
-            }
-        });
-        bt2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PagerActivity.this,blood_homeActivity.class);
-                startActivity(intent);
-            }
-        });
+//        bt = findViewById(R.id.nextbt);
+//        bt2 = findViewById(R.id.frontbt);
+//
+//        bt.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(PagerActivity.this,blood_homeActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//        bt2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(PagerActivity.this,blood_homeActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

@@ -148,11 +148,12 @@ public class TPRActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     default:
-                        tv.setText("輸血TPR-病歷號");
-                        step.setText("請掃病歷號!");
+                        tv.setText("輸血TPR-手圈病歷號");
+                        step.setText("請掃手圈病歷號!");
                 }
             }
         });
+        bt.setEnabled(false);
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -171,8 +172,8 @@ public class TPRActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     default:
-                        tv.setText("輸血TPR-病歷號");
-                        step.setText("請掃病歷號!");
+                        tv.setText("輸血TPR-手圈病歷號");
+                        step.setText("請掃手圈病歷號!");
                 }
             }
         });
@@ -186,19 +187,22 @@ public class TPRActivity extends AppCompatActivity {
     private void Get_staff(Retrofit retrofit,String id) {
         Call<Patient_Api> patient = resTfulApi.getOne(id);
         Call<Staff_Api> staff = resTfulApi.get_staff(id);
+        Call<TransOperation_Api> trans = resTfulApi.get_transoperation(id);
 
         if(count == 0) {
             patient.enqueue(new Callback<Patient_Api>() {
                 @Override
                 public void onResponse(Call<Patient_Api> patient, Response<Patient_Api> response) {
                     if (response.body()==null) {
-                        step.setText("此id不存在，請重新掃描病歷號！");
+                        step.setText("此id不存在，請重新掃描手圈病歷號！");
+                        bt.setEnabled(false);
                         return ;
                     }
                     String name = response.body().getName();
                     show.setText(name);
                     step.setText("掃描成功，請按下一步");
                     bundle.putString("patient_num", id);
+                    bt.setEnabled(true);
                 }
 
                 @Override
@@ -207,52 +211,46 @@ public class TPRActivity extends AppCompatActivity {
                 }
             });
         }
-        else {
+        else if(count == 2){
             staff.enqueue(new Callback<Staff_Api>() {
                 @Override
                 public void onResponse(Call<Staff_Api> staff, Response<Staff_Api> response) {
                     if (response.body()==null) {
-                        switch (count) {
-                            case 1:
-                                step.setText("此id不存在，請重新掃描核血人員編號！");
-                                break;
-                            case 2:
-                                step.setText("此id不存在，請重新掃描確認人員！");
-                                break;
-                            case 3:
-                                step.setText("此id不存在，請重新掃描血袋編號！");
-                                break;
-                            case -1:
-                                break;
-                            default:
-                                bundle.putString("patient_num", show.getText().toString());
-                        }
+                        step.setText("此id不存在，請重新掃描紀錄者！");
+                        bt.setEnabled(false);
                         return;
                     }
                     String name = response.body().getName();
                     show.setText(name);
-                    switch (count) {
-                        case 1:
-                            bundle.putString("confirm", show.getText().toString());
-                            step.setText("掃描成功，請按下一步");
-                            break;
-                        case 2:
-                            bundle.putString("check", show.getText().toString());
-                            step.setText("掃描成功，請按下一步");
-                            break;
-                        case 3:
-                            bundle.putString("scan", show.getText().toString());
-                            step.setText("掃描成功，請按下一步");
-                            break;
-                        case -1:
-                            break;
-                        default:
-                            bundle.putString("patient_num", show.getText().toString());
-                    }
+                    bundle.putString("confirm", show.getText().toString());
+                    step.setText("掃描成功，請按下一步");
+                    bt.setEnabled(true);
                 }
 
                 @Override
                 public void onFailure(Call<Staff_Api> staff, Throwable t) {
+                    show.setText("請掃描條碼");
+                }
+            });
+        }
+        else{
+            trans.enqueue(new Callback<TransOperation_Api>() {
+                @Override
+                public void onResponse(Call<TransOperation_Api> staff, Response<TransOperation_Api> response) {
+                    if (response.body()==null) {
+                        step.setText("此id不存在，請重新掃描領血單號！");
+                        bt.setEnabled(false);
+                        return;
+                    }
+                    String name = response.body().getRqno();
+                    show.setText(name);
+                    bundle.putString("confirm", show.getText().toString());
+                    step.setText("掃描成功，請按下一步");
+                    bt.setEnabled(true);
+                }
+
+                @Override
+                public void onFailure(Call<TransOperation_Api> staff, Throwable t) {
                     show.setText("請掃描條碼");
                 }
             });

@@ -107,7 +107,6 @@ public class tpr1Fragment extends Fragment {
         String str = formatter.format(curDate);
         input.setText(str);
 
-
         return view;
     }
 
