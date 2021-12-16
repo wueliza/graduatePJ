@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,31 +20,55 @@ import java.util.List;
 public class PagerActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
-    private Button bt;
-    private Button bt2;
+    private android.app.FragmentManager fragmentManager;
+//    private Button bt;
+//    private Button bt2;
     public static int lastPosition = 3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pager);
 
-        bt = findViewById(R.id.nextbt);
-        bt2 = findViewById(R.id.frontbt);
+        Bundle bundleget = getIntent().getExtras();
+        String patient = bundleget.getString("patient_num");
+        String confirmman = bundleget.getString("confirm");
+        String trans = bundleget.getString("rqno");
 
-        bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PagerActivity.this,blood_homeActivity.class);
-                startActivity(intent);
-            }
-        });
-        bt2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PagerActivity.this,blood_homeActivity.class);
-                startActivity(intent);
-            }
-        });
+        Bundle bundle = new Bundle();
+        tpr1Fragment fragment1 = new tpr1Fragment();
+        tpr2Fragment fragment2 = new tpr2Fragment();
+        tpr3Fragment fragment3 = new tpr3Fragment();
+
+        bundle.putString("patient",patient);
+        bundle.putString("confirmman",confirmman);
+        bundle.putString("trans",trans);
+
+        fragment1.setArguments(bundle);
+//        fragmentManager = getFragmentManager();
+//        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(R.id.tpr1,tpr1Fragment);
+//        fragmentTransaction.commit();
+
+        fragment2.setArguments(bundle);
+        fragment3.setArguments(bundle);
+
+//        bt = findViewById(R.id.nextbt);
+//        bt2 = findViewById(R.id.frontbt);
+//
+//        bt.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(PagerActivity.this,blood_homeActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//        bt2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(PagerActivity.this,blood_homeActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
