@@ -101,7 +101,7 @@ public class Chemopm3 extends AppCompatActivity {
     }
 
     private void post_med_sign(String emid, String transId, String tubg, String medAmount, String name){
-        MedSignRecord medSignRecord = new MedSignRecord(emid,transId,emid,transId,name);
+        MedSignRecord medSignRecord = new MedSignRecord(emid,transId,tubg,medAmount,name);
         Call<MedSignRecord> call = resTfulApi.post_MedSignRecord(medSignRecord);
 
         call.enqueue(new Callback<MedSignRecord>() {
