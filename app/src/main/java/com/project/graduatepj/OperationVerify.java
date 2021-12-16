@@ -23,6 +23,7 @@ import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,6 +41,7 @@ public class OperationVerify extends AppCompatActivity {
     Bundle bundle = new Bundle();
     private TextView show;
     private RESTfulApi resTfulApi;
+    ArrayList<String> ORA4 = new ArrayList<>();
     int count = 0;
 
     @Override
@@ -237,7 +239,12 @@ public class OperationVerify extends AppCompatActivity {
                         bt.setEnabled(false);
                         return;
                     }
-                    String ora4Chart = response.body().getora4Chart();
+//                    String ora4Chart = response.body().getora4Chart();
+                    Patients[] a = response.body().getPatients();
+
+                    for(Patients as :a){
+                        ORA4.add(as.getQrChart());
+                    }
                     show.setText("掃描成功 請按下一步");
                     bundle.putString("ora4chart", id);
                     bt.setEnabled(true);
