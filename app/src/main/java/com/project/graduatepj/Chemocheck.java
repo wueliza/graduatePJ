@@ -67,7 +67,7 @@ public class Chemocheck extends AppCompatActivity {
                     nextbt.setEnabled(false);
                 }
                 else if(count == 1){
-                    bundle.putString("chemostaff_id", hint3.getText().toString());
+                    bundle.putString("chemostaff_id", hint2.getText().toString());
                     intent.putExtras(bundle);
                     hint1.setText("請掃描確認員編號");
                     hint3.setText(" ");
