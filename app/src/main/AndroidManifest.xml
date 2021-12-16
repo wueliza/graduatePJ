@@ -11,7 +11,7 @@
         android:normalScreens="true"
         android:resizeable="true"
         android:smallScreens="true"
-        android:screenOrientation="portrait" />
+         />
 
     <application
         android:allowBackup="true"
@@ -24,7 +24,8 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".test"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity android:name=".BloodCollect2" />
         <activity android:name=".BloodCollect1" />
         <activity android:name=".confirmActivity" />
