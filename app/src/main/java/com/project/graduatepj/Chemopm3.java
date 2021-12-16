@@ -49,11 +49,13 @@ public class Chemopm3 extends AppCompatActivity {
         checkTv.setText(check);
         chemoTv.setText(chemo);
 
-        Retrofit retrofit = new Retrofit.Builder() //api連接
+        //api連接
+        Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://140.136.151.75:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         resTfulApi = retrofit.create(RESTfulApi.class);
+
         Get_staff(retrofit , staff);
         Get_med(retrofit , chemo);
 
@@ -113,7 +115,6 @@ public class Chemopm3 extends AppCompatActivity {
             public void onFailure(Call<MedSignRecord> call, Throwable t) {
             }
         });
-
     }
 
     public void Get_med(Retrofit retrofit, String id) {
