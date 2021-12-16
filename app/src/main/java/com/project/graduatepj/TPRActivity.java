@@ -145,6 +145,7 @@ public class TPRActivity extends AppCompatActivity {
                         break;
                     case 3:
                         Intent intent = new Intent(TPRActivity.this,PagerActivity.class);
+                        intent.putExtras(bundle);   // 記得put進去，不然資料不會帶過去哦
                         startActivity(intent);
                         break;
                     default:
@@ -244,7 +245,7 @@ public class TPRActivity extends AppCompatActivity {
                     }
                     String name = response.body().getRqno();
                     show.setText(name);
-                    bundle.putString("confirm", show.getText().toString());
+                    bundle.putString("rqno", show.getText().toString());
                     step.setText("掃描成功，請按下一步");
                     bt.setEnabled(true);
                 }

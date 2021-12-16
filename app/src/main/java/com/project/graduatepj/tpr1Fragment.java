@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.BounceInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -29,7 +30,8 @@ public class tpr1Fragment extends Fragment {
     private Button bt;
     private Button bt2;
     private RESTfulApi resTfulApi;
-    EditText input,T,P,R1,BP1,BP2,patient,nurse;
+    EditText input,T,P,R1,BP1,BP2;
+    TextView patient,nurse;
     LinearLayout soildetext;                        //使用LinearLayout來代替button去實踐頁面轉換
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -87,6 +89,8 @@ public class tpr1Fragment extends Fragment {
 //        return inflater.inflate(R.layout.fragment_tpr1, container, false);
         View view = inflater.inflate(R.layout.fragment_tpr1, null);
         soildetext = (LinearLayout) view.findViewById(R.id.soilclick);
+        Bundle bundle = getArguments();;
+        String patient_num = bundle.getString("patient");
 
         soildetext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,6 +101,7 @@ public class tpr1Fragment extends Fragment {
             }
         });
         input = view.findViewById(R.id.input);
+        patient = view.findViewById(R.id.patient);
         T = view.findViewById(R.id.T);
         P = view.findViewById(R.id.P);
         R1 = view.findViewById(R.id.R);
@@ -106,6 +111,7 @@ public class tpr1Fragment extends Fragment {
         Date curDate = new Date(System.currentTimeMillis()) ;
         String str = formatter.format(curDate);
         input.setText(str);
+        patient.setText(patient_num);
 
         return view;
     }
