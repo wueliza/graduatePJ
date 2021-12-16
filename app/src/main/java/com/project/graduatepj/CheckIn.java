@@ -248,7 +248,7 @@ public class CheckIn extends AppCompatActivity {
                                 ORA4.add(as.getQrChart());
                             }
                         }
-//                        show.setText(ORA4.toString());
+
                         bt.setEnabled(true);
                         bundle.putString("ora4chart", id);
 
