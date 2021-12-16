@@ -153,20 +153,20 @@ public class BloodCollect1 extends AppCompatActivity {
                 count++;
                 switch (count) {
                     case 1:
-                        hint.setText("請掃描檢體編號");
-                        tv.setText("檢體編號");
+                        show.setText("請掃描檢體編號");
+//                        tv.setText("檢體編號");
                         tv1.setText("檢體編號");
                         tv2.setText("號碼");
                         break;
                     case 2:
-                        hint.setText("請掃描採檢員編號");
-                        tv.setText("採檢員編號");
+                        show.setText("請掃描採檢員編號");
+//                        tv.setText("採檢員編號");
                         tv1.setText("採檢員編號");
                         tv2.setText("號碼");
                         break;
                     case 3:
-                        hint.setText("請掃描確認員編號");
-                        tv.setText("確認員編號");
+                        show.setText("請掃描確認員編號");
+//                        tv.setText("確認員編號");
                         tv1.setText("確認員編號");
                         tv2.setText("號碼");
                         break;
@@ -176,7 +176,7 @@ public class BloodCollect1 extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     default:
-                        tv.setText("病歷號");
+//                        tv.setText("病歷號");
                         tv1.setText("病歷號");
                         tv2.setText("號碼");
                 }
@@ -190,20 +190,20 @@ public class BloodCollect1 extends AppCompatActivity {
                 count--;
                 switch (count) {
                     case 1:
-                        hint.setText("請掃描檢體編號");
-                        tv.setText("檢體編號");
+                        show.setText("請掃描檢體編號");
+//                        tv.setText("檢體編號");
                         tv1.setText("檢體編號");
                         tv2.setText("號碼");
                         break;
                     case 2:
-                        hint.setText("請掃描採檢員編號");
-                        tv.setText("採檢員編號");
+                        show.setText("請掃描採檢員編號");
+//                        tv.setText("採檢員編號");
                         tv1.setText("採檢員編號");
                         tv2.setText("號碼");
                         break;
                     case 3:
-                        hint.setText("請掃描確認員編號");
-                        tv.setText("確認員編號");
+                        show.setText("請掃描確認員編號");
+//                        tv.setText("確認員編號");
                         tv1.setText("確認員編號");
                         tv2.setText("號碼");
                         break;
@@ -212,8 +212,8 @@ public class BloodCollect1 extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     default:
-                        hint.setText("請掃描手圈病歷號");
-                        tv.setText("病歷號");
+                        show.setText("請掃描手圈病歷號");
+//                        tv.setText("病歷號");
                         tv1.setText("病歷號");
                         tv2.setText("號碼");
                 }

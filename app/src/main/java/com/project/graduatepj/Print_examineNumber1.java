@@ -37,7 +37,7 @@ public class Print_examineNumber1 extends AppCompatActivity {
     Bundle bundle = new Bundle();
     private TextView show;
     SurfaceView surfaceView;
-    TextView textView;
+    TextView textView , hint;
     CameraSource cameraSource;
     BarcodeDetector barcodeDetector;
     int count = 0;
@@ -138,7 +138,7 @@ public class Print_examineNumber1 extends AppCompatActivity {
         TextView tv = (TextView)findViewById(R.id.title);
         TextView tv1 = (TextView)findViewById(R.id.input);
         TextView tv2 = (TextView)findViewById(R.id.show);
-        TextView hint = (TextView) findViewById(R.id.hint);
+        hint = (TextView) findViewById(R.id.hint);
         bt = findViewById(R.id.nextbt);
         bt2 = findViewById(R.id.frontbt);
 
@@ -149,7 +149,7 @@ public class Print_examineNumber1 extends AppCompatActivity {
                 switch (count){
                     case 1:
                         hint.setText("請掃描檢驗單編號");
-                        tv.setText("檢驗單");
+//                        tv.setText("檢驗單");
                         tv1.setText("檢驗單");
                         tv2.setText("號碼");
                         break;
@@ -159,7 +159,7 @@ public class Print_examineNumber1 extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     default:
-                        tv.setText("手圈病歷號");
+//                        tv.setText("手圈病歷號");
                         tv1.setText("手圈病歷號");
                         tv2.setText("號碼");
                 }
@@ -174,7 +174,7 @@ public class Print_examineNumber1 extends AppCompatActivity {
                 switch (count){
                     case 1:
                         hint.setText("請掃描檢驗單編號");
-                        tv.setText("檢驗單");
+//                        tv.setText("檢驗單");
                         tv1.setText("檢驗單");
                         tv2.setText("號碼");
                         break;
@@ -184,7 +184,7 @@ public class Print_examineNumber1 extends AppCompatActivity {
                         break;
                     default:
                         hint.setText("請掃描手圈病例號");
-                        tv.setText("手圈病歷號");
+//                        tv.setText("手圈病歷號");
                         tv1.setText("手圈病歷號");
                         tv2.setText("號碼");
                 }
@@ -210,7 +210,7 @@ public class Print_examineNumber1 extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<Patient_Api> patient_apiCall, Response<Patient_Api> response) {
                     if (response.body() == null) {
-                        show.setText("找不到這個id");
+                        hint.setText("找不到這個id，請重新掃描病歷號");
                         bt.setEnabled(false);
                         return;
                     }
@@ -218,6 +218,7 @@ public class Print_examineNumber1 extends AppCompatActivity {
                     show.setText(name);
                     bt.setEnabled(true);
                     bundle.putString("patientNumber1Check", show.getText().toString());
+                    hint.setText("掃描完成，請按下一步！");
                     /*, show.getText().toString()*/
                 }
 
@@ -231,7 +232,7 @@ public class Print_examineNumber1 extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<CheckOperation_Api> checkOperation_apiCall, Response<CheckOperation_Api> response) {
                     if (response.body() == null) {
-                        show.setText("找不到這個id");
+                        show.setText("找不到這個id，請重新掃描檢體編號");
                         bt.setEnabled(false);
                         return;
                     }
@@ -239,6 +240,7 @@ public class Print_examineNumber1 extends AppCompatActivity {
                     show.setText(bsnos);
                     bt.setEnabled(true);
                     bundle.putString("sampleNumberCheck", id);
+                    hint.setText("掃描完成，請按下一步！");
                 }
                 @Override
                 public void onFailure(Call<CheckOperation_Api> call, Throwable t) {
