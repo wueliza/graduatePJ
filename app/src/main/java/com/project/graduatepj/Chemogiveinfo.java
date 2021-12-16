@@ -48,7 +48,7 @@ public class Chemogiveinfo extends AppCompatActivity {
         hint1 = findViewById(R.id.ghint1);
         hint2 = findViewById(R.id.ghint2);
         hint3 = findViewById(R.id.ghint3);
-        hint1.setText("請掃描病歷號");
+        hint1.setText("請掃描手圈病歷號");
         intent.setClass(Chemogiveinfo.this , Chemogiveinfo2.class);
         nextbt.setEnabled(false);
         nextbt.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +96,7 @@ public class Chemogiveinfo extends AppCompatActivity {
                     startActivity(uintent);
                 }
                 else if(count == 1){
-                    hint1.setText("請掃描病歷號");
+                    hint1.setText("請掃描手圈病歷號");
                     count = 0;
                     nextbt.setEnabled(false);
                 }
